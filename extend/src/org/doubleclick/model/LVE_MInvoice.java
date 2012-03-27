@@ -14,7 +14,7 @@
  * ComPiere, Inc., 2620 Augustine Dr. #245, Santa Clara, CA 95054, USA        *
  * or via info@compiere.org or http://www.compiere.org/license.html           *
  *****************************************************************************/
-package org.globalqss.model;
+package org.doubleclick.model;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -36,7 +36,11 @@ import org.compiere.model.MPriceList;
 import org.compiere.model.MTax;
 import org.compiere.util.DB;
 import org.compiere.util.Env;
-import org.eevolution.model.X_LVE_PaymentWithHolding;
+import org.globalqss.model.MLCOInvoiceWithholding;
+import org.globalqss.model.X_LCO_WithholdingCalc;
+import org.globalqss.model.X_LCO_WithholdingRule;
+import org.globalqss.model.X_LCO_WithholdingRuleConf;
+import org.globalqss.model.X_LCO_WithholdingType;
 
 /**
  *	LCO_MInvoice
