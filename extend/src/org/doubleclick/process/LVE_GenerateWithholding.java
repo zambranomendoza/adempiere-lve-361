@@ -26,10 +26,7 @@ import org.compiere.process.ProcessInfoParameter;
 import org.compiere.process.SvrProcess;
 import org.compiere.util.AdempiereUserError;
 import org.compiere.util.DB;
-import org.compiere.util.Env;
-import org.eevolution.model.X_LVE_PaymentWithHolding;
-import org.globalqss.model.LVE_MInvoice;
-import org.globalqss.model.MLCOInvoiceWithholding;
+import org.doubleclick.model.LVE_MInvoice;
 
 /**
  *	LVE_GenerateWithholding
