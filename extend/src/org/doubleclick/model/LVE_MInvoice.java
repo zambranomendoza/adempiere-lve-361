@@ -45,7 +45,7 @@ import org.eevolution.model.X_LVE_PaymentWithHolding;
  *  Contributor : Rafael Salazar C. - rsalazar@dcsla.com, Double Click Sistemas http://www.dcsla.com
  *  @version  $Id: LCO_MInvoice.java,v 1.5 2007/06/28 03:37:29 cruiz Exp $
  */
- 
+ //Esto es una prueba
 public class LVE_MInvoice extends MInvoice
 {
 	/**
