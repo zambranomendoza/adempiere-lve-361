@@ -5,7 +5,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/LCO_360"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/adempiere361liberoHR"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/patches_360"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/adempiere360lts"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/adempiere361libero"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/SmartReport"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/adempiere361"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
