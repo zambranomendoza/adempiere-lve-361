@@ -27,7 +27,7 @@ import org.compiere.process.SvrProcess;
 import org.compiere.util.AdempiereUserError;
 import org.compiere.util.DB;
 import org.doubleclick.model.LVE_MInvoice;
-
+ 
 /**
  *	LVE_GenerateWithholding
  *
