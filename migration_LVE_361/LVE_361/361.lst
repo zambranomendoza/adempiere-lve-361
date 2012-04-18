@@ -1,0 +1,58 @@
+        filename         
+-------------------------
+ 001_edition_invoice.sql
+(1 fila)
+
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+              filename              
+------------------------------------
+ 002_delete_or_cancel_documente.sql
+(1 fila)
+
+DELETE 6
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+                filename                
+----------------------------------------
+ 003_process_delete invoice_consola.sql
+(1 fila)
+
+DELETE 4
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+           filename            
+-------------------------------
+ 004_generation_oc_from_ov.sql
+(1 fila)
+
+         filename          
+---------------------------
+ 005_validation_seniat.sql
+(1 fila)
+
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+COMMIT
