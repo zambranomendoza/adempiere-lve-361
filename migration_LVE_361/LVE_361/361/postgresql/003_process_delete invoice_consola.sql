@@ -1,4 +1,4 @@
-// Original contribution by Rafael Tomás Salazar Colmenárez - rsalazar@dcsla.com --- rtsc08@gmail.com  for Double Click Sistemas C.A.
+-- Original contribution by Rafael Tomás Salazar Colmenárez - rsalazar@dcsla.com --- rtsc08@gmail.com  for Double Click Sistemas C.A.
 
 INSERT INTO adempiere.AD_Table(ad_table_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, help, tablename, isview, accesslevel, entitytype, ad_window_id, ad_val_rule_id, loadseq, issecurityenabled, isdeleteable, ishighvolume, importtable, ischangelog, replicationtype, po_window_id, copycolumnsfromtable, iscentrallymaintained)
   VALUES((select max(ad_table_id) + 1 from ad_table), 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'LVE_PaymentWithHolding', 'LVE_PaymentWithHolding', 'LVE_PaymentWithHolding', 'LVE_PaymentWithHolding', 'N', '3', 'DCS', NULL, NULL, 0, 'N', 'Y', 'Y', 'N', 'Y', 'L', NULL, 'N', 'Y')

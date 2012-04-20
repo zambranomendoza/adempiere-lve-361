@@ -1,4 +1,4 @@
-// Original contribution by Rafael Tomás Salazar Colmenárez - rsalazar@dcsla.com --- rtsc08@gmail.com  for Double Click Sistemas C.A.
+-- Original contribution by Rafael Tomás Salazar Colmenárez - rsalazar@dcsla.com --- rtsc08@gmail.com  for Double Click Sistemas C.A.
 
 ALTER TABLE adempiere.c_bpartner ADD COLUMN acctionbutton               char(1) NULL DEFAULT NULL::bpchar;
 ALTER TABLE adempiere.c_bpartner ADD COLUMN LVE_nameSeniat            	varchar(60) NULL DEFAULT NULL::character varying;
@@ -69,14 +69,14 @@ INSERT INTO adempiere.AD_Element_Trl(ad_element_id, ad_language, ad_client_id, a
   VALUES((select max(AD_Element_id) from AD_Element), 'es_VE', 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'RIF Seniat', 'RIF Seniat', 'RIF Seniat', 'RIF Seniat', NULL, NULL, NULL, NULL, 'N');
 
 INSERT INTO adempiere.AD_Column(ad_column_id, ad_client_id, ad_org_id, isactive, created, updated, createdby, updatedby, name, description, help, version, entitytype, columnname, ad_table_id, ad_reference_id, ad_reference_value_id, ad_val_rule_id, fieldlength, defaultvalue, iskey, isparent, ismandatory, isupdateable, readonlylogic, isidentifier, seqno, istranslated, isencrypted, callout, vformat, valuemin, valuemax, isselectioncolumn, ad_element_id, ad_process_id, issyncdatabase, isalwaysupdateable, columnsql, mandatorylogic, infofactoryclass, isautocomplete, isallowlogging, formatpattern)
-  VALUES((select max(ad_column_id)+1 from ad_column), 0, 0, 'Y', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 100, 100, 'RifSeniat', 'RifSeniat', 'RifSeniat', 0, 'DCS', 'RifSeniat', 291, 10, NULL, NULL, 12, NULL, 'N', 'N', 'N', 'Y', NULL, 'N', 0, 'N', 'N', NULL, NULL, NULL, NULL, 'N', (select max(AD_Element_id) from AD_Element), NULL, 'N', 'N', NULL, NULL, NULL, 'N', 'Y', NULL);
+  VALUES((select max(ad_column_id)+1 from ad_column), 0, 0, 'Y', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 100, 100, 'LVE_rifSeniat', 'LVE_rifSeniat', 'LVE_rifSeniat', 0, 'DCS', 'LVE_rifSeniat', 291, 10, NULL, NULL, 12, NULL, 'N', 'N', 'N', 'Y', NULL, 'N', 0, 'N', 'N', NULL, NULL, NULL, NULL, 'N', (select max(AD_Element_id) from AD_Element), NULL, 'N', 'N', NULL, NULL, NULL, 'N', 'Y', NULL);
 
 
 INSERT INTO adempiere.AD_Column_Trl(ad_column_id, ad_language, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, istranslated)
  VALUES((select max(ad_column_id) from ad_column), 'es_VE', 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'RIF Seniat', 'N');
 
 INSERT INTO adempiere.AD_Field(ad_field_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, help, iscentrallymaintained, ad_tab_id, ad_column_id, ad_fieldgroup_id, isdisplayed, displaylogic, displaylength, isreadonly, seqno, sortno, issameline, isheading, isfieldonly, isencrypted, entitytype, obscuretype, ad_reference_id, ismandatory, included_tab_id, defaultvalue, ad_reference_value_id, ad_val_rule_id, infofactoryclass)
-  VALUES((select max(ad_field_id)+1 from adempiere.ad_field ), 0, 0, 'Y', CURRENT_TIMESTAMP, 100,CURRENT_TIMESTAMP, 100, 'Rif Seniat', 'Rif Seniat', 'RifSeniat', 'Y', 220, (select max(ad_column_id) from adempiere.ad_column), NULL, 'Y', '@LVE_IsValidationSeniat=Y', 12, 'N', 80, NULL, 'N', 'N', 'N', 'N', 'DCS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+  VALUES((select max(ad_field_id)+1 from adempiere.ad_field ), 0, 0, 'Y', CURRENT_TIMESTAMP, 100,CURRENT_TIMESTAMP, 100, 'Rif Seniat', 'Rif Seniat', 'LVE_rifSeniat', 'Y', 220, (select max(ad_column_id) from adempiere.ad_column), NULL, 'Y', '@LVE_IsValidationSeniat=Y', 12, 'N', 80, NULL, 'N', 'N', 'N', 'N', 'DCS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 INSERT INTO adempiere.AD_Field_Trl(ad_field_id, ad_language, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, help, istranslated)
