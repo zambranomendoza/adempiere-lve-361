@@ -669,7 +669,7 @@ INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, crea
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000034, 5000004, 5000011, 5000039, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PNR', NULL, NULL, '053')
-  ;
+;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PJD', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000035, 5000007, 5000011, 5000040, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PJD', NULL, NULL, '072')
 ;
