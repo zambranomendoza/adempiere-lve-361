@@ -60,5 +60,19 @@ Sequence Check .
          sudo ./LVE_postgresql.sh 361 commit | psql -U adempiere -d
 adempiere >361.lst
 
-16. Finalmente ejecutar el proceso ubicado en: Menu -> System Admin ->
-General Rules -> Sequence Check .
+16. Ejecutar el proceso ubicado en: Menu -> System Admin ->
+General Rules -> Sequence Check.
+
+17. Ubicar y abrir el scrip de retenciones:
+
+    migration_LVE_361/LVE_361/withholding_LVE361.sql
+    
+18. Antes de la ejecución del script previamente 
+usted debe tener creada la compañía a la cual se le va a 
+aplicar la configuración, una vez que esté creada reemplace las 
+ocurrencias de  @ID_CLIENT@ por el ID que se le generó al momento 
+de la creación de la compañía.
+
+19. Proceda a la ejecución del script withholding_LVE361.sql
+
+     
