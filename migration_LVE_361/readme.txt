@@ -75,4 +75,14 @@ de la creación de la compañía.
 
 19. Proceda a la ejecución del script withholding_LVE361.sql
 
-     
+20. Ubicar y abrir el scrip de traducción de documentos:
+
+    migration_LVE_361/LVE_361/documentsTraslation_LVE361.sql
+    
+21. Antes de la ejecución del script previamente 
+usted debe tener creada la compañía a la cual se le va a 
+aplicar la configuración, una vez que esté creada reemplace las 
+ocurrencias de  @ID_CLIENT@ por el ID que se le generó al momento 
+de la creación de la compañía.
+
+22. Proceda a la ejecución del script documentsTraslation_LVE361.sql
