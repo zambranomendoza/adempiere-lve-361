@@ -461,7 +461,12 @@ public class LVE_MInvoice extends MInvoice
 						}
 						iwh.setTaxAmt(taxamt);
 						iwh.setTaxBaseAmt(base);
-						if (wt.isIVA()){
+						sql= "SELECT * FROM c_doctype where docbasetype= 'API' and c_doctype_id='"+ getC_DocType_ID() +"'";
+						PreparedStatement pstmt = DB.prepareStatement(sql, get_TrxName());
+						
+						ResultSet rst2 = pstmt.executeQuery();
+					    if (rst2.next() && wt.isIVA()){
+					   
 								if (nroReten == null)
 							 		nroReten= generateNroRetention( "NroRetenIVA",get_TrxName(),getCtx());
 								
@@ -553,7 +558,7 @@ public class LVE_MInvoice extends MInvoice
 			calendario.setTime(fecha); 
 			
 			DecimalFormat formMonth = new DecimalFormat("00"); 
-			String month = formMonth.format(calendario.get(Calendar.MONTH));
+			String month = formMonth.format(calendario.get(Calendar.MONTH)+1);
 			
 			return  calendario.get(Calendar.YEAR)+""+month+codigo;
 		}else{
