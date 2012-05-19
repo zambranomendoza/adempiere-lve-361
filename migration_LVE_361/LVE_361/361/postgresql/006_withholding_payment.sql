@@ -66,7 +66,7 @@ INSERT INTO adempiere.AD_Field_Trl(ad_field_id, ad_language, ad_client_id, ad_or
   VALUES((select max(ad_field_id) from adempiere.ad_field), 'es_VE', 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'Generar Retenciones', NULL, NULL, 'N')
 ;
 
-ALTER TABLE adempiere.c_payment ADD COLUMN GenerateWithholding       	character(20) DEFAULT NULL::bpchar;
+
 ALTER TABLE adempiere.c_paymentallocate ADD COLUMN GenerateWithholding       	character(20) DEFAULT NULL::bpchar;
 
 
