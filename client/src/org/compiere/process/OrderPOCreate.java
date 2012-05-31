@@ -29,7 +29,7 @@ import org.compiere.model.MOrgInfo;
 import org.compiere.util.AdempiereUserError;
 import org.compiere.util.DB;
 
-/**
+/***
  *	Generate PO from Sales Order
  *	
  *  @author Jorg Janke 
