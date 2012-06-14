@@ -15,7 +15,7 @@
  * or via info@compiere.org or http://www.compiere.org/license.html           *
  *****************************************************************************/
 /** Generated Model - DO NOT CHANGE */
-package org.eevolution.model;
+package org.doubleclick.model;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;

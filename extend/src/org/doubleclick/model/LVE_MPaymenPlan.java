@@ -1,4 +1,4 @@
-package org.eevolution.model;
+package org.doubleclick.model;
 
 import java.sql.ResultSet;
 import java.util.Properties;

@@ -18,7 +18,7 @@
  * Contributor(s): Jenny Cecilia Rodriguez Alvarado www.dcsla.com             *  
  *****************************************************************************/
 
-package org.eevolution.model;
+package org.doubleclick.model;
 
 import java.math.*;
 import java.math.RoundingMode;
