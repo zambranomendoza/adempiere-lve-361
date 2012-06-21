@@ -14,10 +14,10 @@ ALTER TABLE adempiere.c_bpartner
 ;
 
 INSERT INTO adempiere.lco_taxidtype(lco_taxidtype_id, ad_client_id, ad_org_id, created, createdby, description, isactive, isdefault, updated, updatedby, name, isdigitchecked, lco_taxcodedian, isusetaxiddigit, isdetailednames)
-  VALUES((select case when  max(lco_taxidtype_id) is null  then 1000000 else max(lco_taxidtype_id)+1  end  from lco_taxidtype), 0, 0, getdate(), 100, 'RIF', 'Y', 'Y', getdate(), 100, 'RIF', 'N', NULL, 'N', 'N');
+  VALUES((select case when  max(lco_taxidtype_id) is null  then 1000000 else max(lco_taxidtype_id)+1  end  from lco_taxidtype), 0, 0, CURRENT_TIMESTAMP, 100, 'RIF', 'Y', 'Y', CURRENT_TIMESTAMP, 100, 'RIF', 'N', NULL, 'N', 'N');
 
 INSERT INTO adempiere.lco_taxidtype(lco_taxidtype_id, ad_client_id, ad_org_id, created, createdby, description, isactive, isdefault, updated, updatedby, name, isdigitchecked, lco_taxcodedian, isusetaxiddigit, isdetailednames)
-  VALUES((select max(lco_taxidtype_id)+1 from lco_taxidtype), 0, 0, getdate(), 100, 'CEDULA DE IDENTIDAD', 'Y', 'N', getdate(), 100, 'CI', 'N', NULL, 'N', 'N');
+  VALUES((select max(lco_taxidtype_id)+1 from lco_taxidtype), 0, 0, CURRENT_TIMESTAMP, 100, 'CEDULA DE IDENTIDAD', 'Y', 'N', CURRENT_TIMESTAMP, 100, 'CI', 'N', NULL, 'N', 'N');
 
 INSERT INTO adempiere.AD_Element(ad_element_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, columnname, entitytype, name, printname, description, help, po_name, po_printname, po_description, po_help)
   VALUES((select max(AD_Element_id)+1 from AD_Element), 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'LVE_ActionButon', 'DCS', 'LVE_ActionButon', 'LVE_ActionButon', 'LVE_ActionButon', 'LVE_ActionButon', NULL, NULL, NULL, NULL);

@@ -68,4 +68,4 @@ INSERT INTO adempiere.AD_Field_Trl(ad_field_id, ad_language, ad_client_id, ad_or
 
 ALTER TABLE adempiere.c_paymentallocate ADD COLUMN GenerateWithholding       	character(20) DEFAULT NULL::bpchar;
 
-update  AD_Field set isdisplayed='N' where name = 'Generate Withholding' and ad_tab_id='263'
+update  AD_Field set isdisplayed='N' where name = 'Generate Withholding' and ad_tab_id='263';
