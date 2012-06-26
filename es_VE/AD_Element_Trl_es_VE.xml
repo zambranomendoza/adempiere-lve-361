@@ -565,8 +565,8 @@
  <row id="173" trl="Y">
   <value column="Name" original="Invoice To">Facturar A</value>
   <value column="PrintName" original="Invoice To">Facturar A</value>
-  <value column="Description" original="Bill to Address">Dirección de Facturar A</value>
-  <value column="Help" original="The Bill/Invoice To indicates the address to use when remitting bills">El Facturar A indica la dirección a usar cuando se emiten las facturas</value>
+  <value column="Description" original="Bill to Address">Dirección Fiscal</value>
+  <value column="Help" original="The Bill/Invoice To indicates the address to use when remitting bills">La Dirección Fiscal indica la dirección a usar cuando se emiten las facturas</value>
   <value column="PO_Description" original="Bill From Address"/>
   <value column="PO_Help" original="The Bill/Invoice From indicated the address where the invoice is created by the vendor"/>
   <value column="PO_Name" original="Invoice From"/>
@@ -773,8 +773,8 @@
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="204" trl="Y">
-  <value column="Name" original="Payment Term">Término de Pago</value>
-  <value column="PrintName" original="Payment Term">Término de Pago</value>
+  <value column="Name" original="Payment Term">Condiciones de Pago</value>
+  <value column="PrintName" original="Payment Term">Condiciones de Pago</value>
   <value column="Description" original="The terms of Payment (timing, discount)">Condiciones de pago de esta transacción</value>
   <value column="Help" original="Payment Terms identify the method and timing of payment.">Las condiciones de pago indican el método y tiempo de pago para esta transacción.</value>
   <value column="PO_Description" original=""/>
@@ -4056,10 +4056,10 @@ El callout es una clase Java que implementa org.compiere.model.Callout y un nomb
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="916" trl="Y">
-  <value column="Name" original="Invoice Address">Dirección Facturar-A</value>
-  <value column="PrintName" original="Invoice Address">Dirección Facturar-A</value>
-  <value column="Description" original="Business Partner Invoice/Bill Address">Indica que esta dirección es la dirección de facturar A</value>
-  <value column="Help" original="If the Invoice Address is selected, the location is used to send invoices to a customer or receive invoices from a vendor.">El cuadro de verificación facturar A indica si esta ubicación es la dirección de facturar A para este tercero</value>
+  <value column="Name" original="Invoice Address">Dirección Fiscal</value>
+  <value column="PrintName" original="Invoice Address">Dirección Fiscal</value>
+  <value column="Description" original="Business Partner Invoice/Bill Address">Indica que esta dirección es la dirección fiscal</value>
+  <value column="Help" original="If the Invoice Address is selected, the location is used to send invoices to a customer or receive invoices from a vendor.">El cuadro de verificación dirección fiscal indica si esta dirección es la dirección fiscal para este tercero</value>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
   <value column="PO_Name" original=""/>
@@ -4136,10 +4136,10 @@ El callout es una clase Java que implementa org.compiere.model.Callout y un nomb
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="925" trl="Y">
-  <value column="Name" original="Pay-From Address">Dirección Pagar-Desde</value>
-  <value column="PrintName" original="Pay-From Address">Dirección Pagar-Desde</value>
+  <value column="Name" original="Pay-From Address">Dirección Emitir Pagos Clientes</value>
+  <value column="PrintName" original="Pay-From Address">Dirección Emitir Pagos Clientes</value>
   <value column="Description" original="Business Partner pays from that address and we'll send dunning letters there">El tercero paga desde esta dirección y a donde se envían las cartas de morosidad</value>
-  <value column="Help" original="If the Pay-From Address is selected, this location is the address the Business Partner pays from and where dunning letters will be sent to.">El cuadro de verificación pagado desde la dirección; indica si esta localización es la dirección donde paga el tercero y a donde las cartas de morosidad serán enviadas.</value>
+  <value column="Help" original="If the Pay-From Address is selected, this location is the address the Business Partner pays from and where dunning letters will be sent to.">El cuadro de verificación pagado desde la dirección; indica si esta es la dirección donde paga el tercero y a donde las cartas de morosidad serán enviadas.</value>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
   <value column="PO_Name" original=""/>
@@ -4156,10 +4156,10 @@ El callout es una clase Java que implementa org.compiere.model.Callout y un nomb
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="927" trl="Y">
-  <value column="Name" original="Remit-To Address">Dirección Remitir-A</value>
-  <value column="PrintName" original="Remit-To Address">Dirección Remitir-A</value>
+  <value column="Name" original="Remit-To Address">Dirección Emitir Pagos Proveedores</value>
+  <value column="PrintName" original="Remit-To Address">Dirección Emitir Pagos Proveedores</value>
   <value column="Description" original="Business Partner payment address">Dirección a la que enviamos el pago</value>
-  <value column="Help" original="If the Remit-To Address is selected, the location is used to send payments to the vendor.">El cuadro de verificación remitir a la dirección indica si esta localización es la dirección a la cual se deben enviar los pagos a este tercero</value>
+  <value column="Help" original="If the Remit-To Address is selected, the location is used to send payments to the vendor.">El cuadro de verificación emitir pago proveedores, la dirección indica si esta es la dirección a la cual se deben enviar los pagos a este tercero</value>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
   <value column="PO_Name" original=""/>
@@ -4176,10 +4176,10 @@ El callout es una clase Java que implementa org.compiere.model.Callout y un nomb
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="929" trl="Y">
-  <value column="Name" original="Ship Address">Dirección Entregar-A</value>
-  <value column="PrintName" original="Ship address">Dirección Entregar-A</value>
-  <value column="Description" original="Business Partner Shipment Address">Dirección del tercero a donde embarcar los bienes</value>
-  <value column="Help" original="If the Ship Address is selected, the location is used to ship goods to a customer or receive goods from a vendor.">El cuadro de verificación embarcar a la dirección indica si esta localización es la dirección a usar cuando las órdenes se embarquen a este tercero</value>
+  <value column="Name" original="Ship Address">Dirección de Entrega</value>
+  <value column="PrintName" original="Ship address">Dirección de Entrega</value>
+  <value column="Description" original="Business Partner Shipment Address">Dirección del tercero a donde envia la mercancia</value>
+  <value column="Help" original="If the Ship Address is selected, the location is used to ship goods to a customer or receive goods from a vendor.">El cuadro de verificación dirección de entrega, esta dirección indica si esta es la dirección a usar cuando se envía la mercancía a este tercero</value>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
   <value column="PO_Name" original=""/>
@@ -4266,10 +4266,10 @@ El callout es una clase Java que implementa org.compiere.model.Callout y un nomb
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="950" trl="Y">
-  <value column="Name" original="Payment Rule">Regla de Pago</value>
-  <value column="PrintName" original="Payment Rule">Regla de Pago</value>
+  <value column="Name" original="Payment Rule">Forma de Pago</value>
+  <value column="PrintName" original="Payment Rule">Forma de Pago</value>
   <value column="Description" original="Purchase payment option">Opción de pago por compras</value>
-  <value column="Help" original="The Payment Rule indicates the method of purchase payment.">La Regla de Pago indica el método de pago de las compras</value>
+  <value column="Help" original="The Payment Rule indicates the method of purchase payment.">La Forma de Pago indica el método de pago de las compras</value>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
   <value column="PO_Name" original=""/>
@@ -5476,10 +5476,10 @@ El callout es una clase Java que implementa org.compiere.model.Callout y un nomb
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="1143" trl="Y">
-  <value column="Name" original="Payment Rule">Regla de Pago</value>
-  <value column="PrintName" original="Payment Rule">Regla de Pago</value>
+  <value column="Name" original="Payment Rule">Forma de Pago</value>
+  <value column="PrintName" original="Payment Rule">Forma de Pago</value>
   <value column="Description" original="How you pay the invoice">Como se pagará la factura</value>
-  <value column="Help" original="The Payment Rule indicates the method of invoice payment.">La Regla de Pagos indica el método de pago de la factura</value>
+  <value column="Help" original="The Payment Rule indicates the method of invoice payment.">La Forma de Pagos indica el método de pago de la factura</value>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
   <value column="PO_Name" original=""/>
@@ -8416,9 +8416,9 @@ El callout es una clase Java que implementa org.compiere.model.Callout y un nomb
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="1576" trl="Y">
-  <value column="Name" original="PO Payment Term">Término Pago OC</value>
-  <value column="PrintName" original="PO Payment Term">Término de Pago en OC</value>
-  <value column="Description" original="Payment rules for a purchase order">Término de Pago en una Orden de Compra</value>
+  <value column="Name" original="PO Payment Term">Condiciones Pago OC</value>
+  <value column="PrintName" original="PO Payment Term">Condiciones de Pago en OC</value>
+  <value column="Description" original="Payment rules for a purchase order">Condiciones de Pago en una Orden de Compra</value>
   <value column="Help" original="The PO Payment Term indicates the payment term that will be used when this purchase order becomes an invoice.">Las Condiciones de Pago de la OC indica los términos de pago que serán usados cuando se llegue a facturar esta orden de compra</value>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
@@ -10816,9 +10816,9 @@ El callout es una clase Java que implementa org.compiere.model.Callout y un nomb
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="1847" trl="Y">
-  <value column="Name" original="Payment Term">Término de pago</value>
-  <value column="PrintName" original="Payment Term">Término de Pago</value>
-  <value column="Description" original="Payment Term">Término de Pago</value>
+  <value column="Name" original="Payment Term">Condiciones de pago</value>
+  <value column="PrintName" original="Payment Term">Condiciones de Pago</value>
+  <value column="Description" original="Payment Term">Condiciones de Pago</value>
   <value column="Help" original=""/>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
@@ -10826,9 +10826,9 @@ El callout es una clase Java que implementa org.compiere.model.Callout y un nomb
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="1848" trl="Y">
-  <value column="Name" original="Payment Term Note">Nota Término de Pago</value>
-  <value column="PrintName" original="Payment Term Note">Nota del Término de Pago</value>
-  <value column="Description" original="Note of a Payment Term">Nota de un término de pago</value>
+  <value column="Name" original="Payment Term Note">Nota Condición de Pago</value>
+  <value column="PrintName" original="Payment Term Note">Nota de la Condición de Pago</value>
+  <value column="Description" original="Note of a Payment Term">Nota de una condición de pago</value>
   <value column="Help" original=""/>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
@@ -11076,9 +11076,9 @@ El callout es una clase Java que implementa org.compiere.model.Callout y un nomb
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="1874" trl="Y">
-  <value column="Name" original="Org Address">Localización de Org.</value>
-  <value column="PrintName" original="Org Address">Localización de Org.</value>
-  <value column="Description" original="Organization Location/Address">Localización de la organización.</value>
+  <value column="Name" original="Org Address">Dirección de Org.</value>
+  <value column="PrintName" original="Org Address">Dirección de Org.</value>
+  <value column="Description" original="Organization Location/Address">Dirección de la organización.</value>
   <value column="Help" original=""/>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
@@ -13358,9 +13358,9 @@ Si no se incorpora ninguna, se utiliza la impresora por default. Usted especific
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="2116" trl="Y">
-  <value column="Name" original="Payment Term Key">Código Término Pago</value>
-  <value column="PrintName" original="Payment Term Key">Código Término Pago</value>
-  <value column="Description" original="Key of the Payment Term">Código del término de Pago</value>
+  <value column="Name" original="Payment Term Key">Código Condición Pago</value>
+  <value column="PrintName" original="Payment Term Key">Código Condición Pago</value>
+  <value column="Description" original="Key of the Payment Term">Código de la condición de Pago</value>
   <value column="Help" original=""/>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
@@ -14405,11 +14405,11 @@ de proyecto - capacidad de publicar el material</value>
   <value column="Description" original="Also check access in dependent entities">También compruebe el acceso en entidades dependientes</value>
   <value column="Help" original="Also dependent entities are included.  Please be aware, that enabling this rule has severe consequences and that this is only wanted in some circumstances.&#10;&lt;p&gt;Example Rule: &quot;Include Payment Term Immediate with Dependent Entities&quot;&#10;&lt;br&gt;Primary effect: users with this role can only select the payment term Immediate&#10;&lt;br&gt;Secondary effect (dependent entities): users with this role can see only invoices/orders with the payment term immediate."><![CDATA[También las entidades dependientes son incluidas. Esté por favor enterado, lo que permite esta regla tiene consecuencias severas y esto se desea solamente en algunas circunstancias.
 
-<p>Regla de ejemplo: "Incluya el término del pago inmediato con las entidades dependientes"
+<p>Regla de ejemplo: "Incluya la condición del pago inmediato con las entidades dependientes"
 
-<br>Efecto Primario: los usuarios con este Rol pueden seleccionar solamente el término del pago inmediato
+<br>Efecto Primario: los usuarios con este Rol pueden seleccionar solamente la condición de pago inmediato
 
-<br>Efecto Secundario (Entidades Dependientes): los usuarios con este Rol pueden ver solamente facturas/ordenes con el término del pago inmediato.]]></value>
+<br>Efecto Secundario (Entidades Dependientes): los usuarios con este Rol pueden ver solamente facturas/ordenes con la condición de pago inmediato.]]></value>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
   <value column="PO_Name" original=""/>
@@ -15758,7 +15758,7 @@ de proyecto - capacidad de publicar el material</value>
  <row id="2374" trl="Y">
   <value column="Name" original="Related Partner Location">Dirección de Tercero Relacionado</value>
   <value column="PrintName" original="Related Partner Location">Dirección de Tercero Relacionado</value>
-  <value column="Description" original="Location of the related Business Partner">Localización del tercero relacionado.</value>
+  <value column="Description" original="Location of the related Business Partner">Dirección del tercero relacionado.</value>
   <value column="Help" original=""/>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
@@ -16206,9 +16206,9 @@ de proyecto - capacidad de publicar el material</value>
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="2421" trl="Y">
-  <value column="Name" original="Payment Location">Localización Pago</value>
-  <value column="PrintName" original="Payment Location">Localización Pago</value>
-  <value column="Description" original="Location of the Business Partner responsible for the payment">Localización del tercero responsable para el pago.</value>
+  <value column="Name" original="Payment Location">Dirección de Pago</value>
+  <value column="PrintName" original="Payment Location">Dirección de Pago</value>
+  <value column="Description" original="Location of the Business Partner responsible for the payment">Dirección del tercero responsable para el pago.</value>
   <value column="Help" original=""/>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
@@ -22675,10 +22675,10 @@ El tiempo representa un valor en un tiempo dado (ej Cantidad Facturada en 1/1 ) 
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="3091" trl="Y">
-  <value column="Name" original="Set Payment Term">Establecer término de pago</value>
-  <value column="PrintName" original="Set Payment Term">Establecer término de pago</value>
-  <value column="Description" original="Set the payment term of the Business Partner">Establecer término de pago del el tercero.</value>
-  <value column="Help" original="If a dunning letter of this level is created, the payment term of this business partner is overwritten.">Si una carta de cobro de este nivel es creada, el término de pago de este tercero es sobreescrito.</value>
+  <value column="Name" original="Set Payment Term">Establecer condición de pago</value>
+  <value column="PrintName" original="Set Payment Term">Establecer condición de pago</value>
+  <value column="Description" original="Set the payment term of the Business Partner">Establecer condición de pago del el tercero.</value>
+  <value column="Help" original="If a dunning letter of this level is created, the payment term of this business partner is overwritten.">Si una carta de cobro de este nivel es creada, la condición de pago de este tercero es sobreescrito.</value>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>
   <value column="PO_Name" original=""/>
@@ -29475,9 +29475,9 @@ Crédito Cuenta Trabajo en Proceso</value>
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="54392" trl="Y">
-  <value column="Name" original="Payment Term Usage">Uso Término de Pago</value>
-  <value column="PrintName" original="Payment Term Usage">Uso Término de Pago</value>
-  <value column="Description" original="Payment term usage indicates if this payment term is used for sales, purchases or both.">Uso Término de Pago indica si este término de pago es utilizado para ventas, compras o ambos.</value>
+  <value column="Name" original="Payment Term Usage">Uso Condición de Pago</value>
+  <value column="PrintName" original="Payment Term Usage">Uso Condición de Pago</value>
+  <value column="Description" original="Payment term usage indicates if this payment term is used for sales, purchases or both.">Uso Condición de Pago indica si esta condición de pago es utilizada para ventas, compras o ambos.</value>
   <value column="Help" original=""/>
   <value column="PO_Description" original=""/>
   <value column="PO_Help" original=""/>

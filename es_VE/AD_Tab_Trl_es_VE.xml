@@ -274,10 +274,10 @@ Debe reiniciar su servidor de aplicaciones para que la mayoría de los cambios h
   <value column="Help" original="The Element Tab defines the Name, Description and Format for an Element.  Additionally, a Type of Account or User Defined is selected. Each Account Schema must have an Account Element type.  The User Defined Elements are optional.">La pestaña de elementos define el nombre, descripción y formato de los elementos.</value>
  </row>
  <row id="154" trl="Y">
-  <value column="Name" original="Location">Localización</value>
+  <value column="Name" original="Location">Dirección</value>
   <value column="CommitWarning" original=""/>
-  <value column="Description" original="Define Location">Definir localización</value>
-  <value column="Help" original="The Location Tab defines the location of an Organization.">La pestaña de localización define la localización de una organización.</value>
+  <value column="Description" original="Define Location">Definir dirección</value>
+  r<value column="Help" original="The Location Tab defines the location of an Organization.">La pestaña de dirección define la dirección de una organización.</value>
  </row>
  <row id="156" trl="Y">
   <value column="Name" original="Preference">Preferencia</value>
@@ -406,7 +406,7 @@ Debe reiniciar su servidor de aplicaciones para que la mayoría de los cambios h
   <value column="Help" original="The Pricing Tab displays the List, Standard and Limit prices for each price list a product is contained in.">La pestaña de precios despliega los precios de lista, estándar, y límite para cada precio de lista que tiene el producto contenido en ella.</value>
  </row>
  <row id="184" trl="Y">
-  <value column="Name" original="Payment Term">Término de Pago</value>
+  <value column="Name" original="Payment Term">Condición de Pago</value>
   <value column="CommitWarning" original=""/>
   <value column="Description" original="Define Payment Terms">Definir Términos de Pago</value>
   <value column="Help" original="The Payment Term Tab defines the different payments terms that you offer to your Business Partners when paying invoices and also those terms which your Vendors offer you for payment of your invoices. On the standard invoice, the Name and the Document Note of the Payment Term is printed.">La pestaña de términos de pago define los diferentes términos que se le ofrece a un tercero cuando paga sus facturas y también aquellos términos que sus proveedores le ofrecen a su organización para pagar sus facturas. En la factura estándar, el nombre y la nota del documento de los términos de pago son impresos.</value>
@@ -578,10 +578,10 @@ Necesita volver a ingresar y reiniciar su servidor de aplicaciones para que los 
   <value column="Help" original="The Business Partner Tab defines any Entity with whom an organization transacts.">La pestaña tercero define las entidades con las cuales una organización se relaciona para los negocios.</value>
  </row>
  <row id="222" trl="Y">
-  <value column="Name" original="Location">Localización</value>
+  <value column="Name" original="Location">Dirección</value>
   <value column="CommitWarning" original=""/>
-  <value column="Description" original="Define Location">Definir localización</value>
-  <value column="Help" original="The Location Tab defines the physical location of a business partner.  A business partner may have multiple location records.">La pestaña Localización define la localización física de un tercero. Un tercero puede tener registros múltiples de localización.</value>
+  <value column="Description" original="Define Location">Definir dirección</value>
+  <value column="Help" original="The Location Tab defines the physical location of a business partner.  A business partner may have multiple location records.">La pestaña dirección define la dirección física de un tercero. Un tercero puede tener registros múltiples de localización.</value>
  </row>
  <row id="223" trl="Y">
   <value column="Name" original="Customer">Cliente</value>
@@ -2708,7 +2708,7 @@ Observe por favor que hay tres campos de la organización: La organización del 
   <value column="Name" original="Relation">Relación</value>
   <value column="CommitWarning" original=""/>
   <value column="Description" original="Business Partner Relation">Relación de tercero</value>
-  <value column="Help" original="Business Partner Relation allow to maintain Third Party Relationship rules: who receives invoices for shipments or pays for invoices.  If the Location of the Business partner is not defined, the rule applies to all location of that Business Partner">La relación de tercero permite mantener reglas de relación de terceros: quién recibe las facturas para los envíos o paga facturas. Si la localización del tercero no se define, la regla se aplica a toda la localización de ese tercero.</value>
+  <value column="Help" original="Business Partner Relation allow to maintain Third Party Relationship rules: who receives invoices for shipments or pays for invoices.  If the Location of the Business partner is not defined, the rule applies to all location of that Business Partner">La relación de tercero permite mantener reglas de relación de terceros: quién recibe las facturas para los envíos o paga facturas. Si la dirección del tercero no se define, la regla se aplica a toda las direcciones de ese tercero.</value>
  </row>
  <row id="613" trl="Y">
   <value column="Name" original="RfQ">SCP (RfQ)</value>
@@ -4721,10 +4721,10 @@ Válido Desde/Hasta es determinado por el impuesto padre.]]></value>
   <value column="Help" original="The Define Bank Account Tab defines the banking information for this business partner.  This data is used for processing payments and remittances."/>
  </row>
  <row id="53107" trl="Y">
-  <value column="Name" original="Location">Localización</value>
+  <value column="Name" original="Location">Dirección</value>
   <value column="CommitWarning" original=""/>
-  <value column="Description" original="Define Location">Define localización</value>
-  <value column="Help" original="The Location Tab defines the physical location of a business partner.  A business partner may have multiple location records.">La pestaña de localización define las direcciones físicas de un tercero.  Un tercero puede tener múltiples registros de localización.</value>
+  <value column="Description" original="Define Location">Define dirección</value>
+  <value column="Help" original="The Location Tab defines the physical location of a business partner.  A business partner may have multiple location records.">La pestaña de dirección define las direcciones físicas de un tercero.  Un tercero puede tener múltiples registros de localización.</value>
  </row>
  <row id="53108" trl="Y">
   <value column="Name" original="Contact (User)">Contacto (Usuario)</value>
