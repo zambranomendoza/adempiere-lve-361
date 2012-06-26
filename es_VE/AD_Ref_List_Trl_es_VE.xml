@@ -211,7 +211,7 @@
   <value column="Description" original=""/>
  </row>
  <row id="145" trl="Y">
-  <value column="Name" original="Drop-off Location">Localización entrega directa</value>
+  <value column="Name" original="Drop-off Location">Dirección entrega directa</value>
   <value column="Description" original=""/>
  </row>
  <row id="146" trl="Y">
@@ -648,11 +648,11 @@
  </row>
  <row id="277" trl="Y">
   <value column="Name" original="Location From">Dirección Desde</value>
-  <value column="Description" original="Location From">Localización Desde</value>
+  <value column="Description" original="Location From">Dirección Desde</value>
  </row>
  <row id="278" trl="Y">
   <value column="Name" original="Location To">Dirección A</value>
-  <value column="Description" original="Location To">Localización A</value>
+  <value column="Description" original="Location To">Dirección A</value>
  </row>
  <row id="279" trl="Y">
   <value column="Name" original="Sales Region">Región de Ventas</value>
@@ -803,7 +803,7 @@
   <value column="Description" original=""/>
  </row>
  <row id="332" trl="Y">
-  <value column="Name" original="Cash">Caja de Punto de Venta</value>
+  <value column="Name" original="Cash">Caja / Efectivo</value>
   <value column="Description" original=""/>
  </row>
  <row id="333" trl="Y">
@@ -819,7 +819,7 @@
   <value column="Description" original=""/>
  </row>
  <row id="337" trl="Y">
-  <value column="Name" original="On Credit">Con Término de Pago</value>
+  <value column="Name" original="On Credit">Aplica Condiciones de Pago</value>
   <value column="Description" original=""/>
  </row>
  <row id="338" trl="Y">
@@ -2015,11 +2015,11 @@
   <value column="Description" original=""/>
  </row>
  <row id="651" trl="Y">
-  <value column="Name" original="Direct Debit">Débito Directo</value>
+  <value column="Name" original="Direct Debit">Tarjeta de Débito</value>
   <value column="Description" original=""/>
  </row>
  <row id="652" trl="Y">
-  <value column="Name" original="Direct Debit">Débito Directo</value>
+  <value column="Name" original="Direct Debit">Tarjeta de Débito</value>
   <value column="Description" original=""/>
  </row>
  <row id="653" trl="Y">
@@ -3079,7 +3079,7 @@
   <value column="Description" original=""/>
  </row>
  <row id="922" trl="Y">
-  <value column="Name" original="Direct Debit">Débito Directo</value>
+  <value column="Name" original="Direct Debit">Tarjeta de Débito</value>
   <value column="Description" original=""/>
  </row>
  <row id="923" trl="Y">

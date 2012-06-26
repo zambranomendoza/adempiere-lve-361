@@ -1,4 +1,4 @@
--- Original contribution by Rafael Tomás Salazar Colmenárez - rsalazar@dcsla.com --- rtsc08@gmail.com  for Double Click Sistemas C.A.
+-- Original contribution by Rafael Tom?s Salazar Colmen?rez - rsalazar@dcsla.com --- rtsc08@gmail.com  for Double Click Sistemas C.A.
 -- Date:      22/08/2011 
 -- Updated: 16/09/2011
 -- Note: if you want to run script , you must  replaced all occurrences @ID_CLIENT@  the company that is creating
@@ -6,16 +6,16 @@
 
 BEGIN;
 
-INSERT INTO adempiere.AD_Process(ad_process_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, value, name, description, help, accesslevel, entitytype, procedurename, isreport, isdirectprint, ad_reportview_id, classname, statistic_count, statistic_seconds, ad_printformat_id, workflowvalue, ad_workflow_id, isbetafunctionality, isserverprocess, showhelp, jasperreport, ad_form_id, copyfromprocess)
+/*INSERT INTO adempiere.AD_Process(ad_process_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, value, name, description, help, accesslevel, entitytype, procedurename, isreport, isdirectprint, ad_reportview_id, classname, statistic_count, statistic_seconds, ad_printformat_id, workflowvalue, ad_workflow_id, isbetafunctionality, isserverprocess, showhelp, jasperreport, ad_form_id, copyfromprocess)
   VALUES((select max(ad_Process_id)+1 from adempiere.ad_Process), 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'LVE_GenerateWithholding', 'Generate Withholding', NULL, NULL, '3', 'DCS', NULL, 'N', 'N', NULL, 'org.eevolution.process.LVE_GenerateWithholding', 192, 682, NULL, NULL, NULL, 'N', 'N', 'Y', NULL, NULL, NULL)
-;
+;*/
 
 
-INSERT INTO adempiere.AD_Process_Trl(ad_process_id, ad_language, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, help, istranslated)
+/*INSERT INTO adempiere.AD_Process_Trl(ad_process_id, ad_language, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, help, istranslated)
   VALUES((select max(ad_Process_id) from adempiere.ad_Process), 'es_VE', 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'Genera Retenciones', NULL, NULL, 'N')
-;
+;*/
 
-INSERT INTO adempiere.AD_Process_Access(ad_process_id, ad_role_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, isreadwrite)
+/*INSERT INTO adempiere.AD_Process_Access(ad_process_id, ad_role_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, isreadwrite)
   VALUES((select max(ad_Process_id) from adempiere.ad_Process), 0, 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'Y')
 ;
 
@@ -31,16 +31,16 @@ INSERT INTO adempiere.AD_Process_Access(ad_process_id, ad_role_id, ad_client_id,
 ;
 INSERT INTO adempiere.AD_Process_Access(ad_process_id, ad_role_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, isreadwrite)
   VALUES((select max(ad_Process_id) from adempiere.ad_Process), 50002, 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'Y')
-;
+;*/
 
 
-INSERT INTO adempiere.ad_column(ad_column_id, ad_client_id, ad_org_id, isactive, created, updated, createdby, updatedby, name, description, help, version, entitytype, columnname, ad_table_id, ad_reference_id, ad_reference_value_id, ad_val_rule_id, fieldlength, defaultvalue, iskey, isparent, ismandatory, isupdateable, readonlylogic, isidentifier, seqno, istranslated, isencrypted, callout, vformat, valuemin, valuemax, isselectioncolumn, ad_element_id, ad_process_id, issyncdatabase, isalwaysupdateable, columnsql, mandatorylogic, infofactoryclass, isautocomplete, isallowlogging, formatpattern)
+/*INSERT INTO adempiere.ad_column(ad_column_id, ad_client_id, ad_org_id, isactive, created, updated, createdby, updatedby, name, description, help, version, entitytype, columnname, ad_table_id, ad_reference_id, ad_reference_value_id, ad_val_rule_id, fieldlength, defaultvalue, iskey, isparent, ismandatory, isupdateable, readonlylogic, isidentifier, seqno, istranslated, isencrypted, callout, vformat, valuemin, valuemax, isselectioncolumn, ad_element_id, ad_process_id, issyncdatabase, isalwaysupdateable, columnsql, mandatorylogic, infofactoryclass, isautocomplete, isallowlogging, formatpattern)
   VALUES((select max(ad_column_id)+1 from adempiere.ad_column ) , 0, 0, 'Y', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 100, 100, 'Generate Withholding', NULL, NULL, 0, 'DCS', 'GenerateWithholding', 335, 28, NULL, NULL, 20, NULL, 'N', 'N', 'N', 'Y', NULL, 'N', 0, 'N', 'N', NULL, NULL, NULL, NULL, 'N',(select ad_element_id from adempiere.ad_element WHERE columnname ='GenerateWithholding' AND entitytype='QSS_LCO'), (select max(ad_Process_id) from adempiere.ad_Process), 'N', 'N', NULL, NULL, NULL, 'N', 'Y', NULL)
 
 ;
 
 INSERT INTO adempiere.AD_Column_Trl(ad_column_id, ad_language, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, istranslated)
-  VALUES((select max(ad_column_id) from adempiere.ad_column) , 'es_VE', 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'Generar Retención', 'N')
+  VALUES((select max(ad_column_id) from adempiere.ad_column) , 'es_VE', 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'Generar Retenci?n', 'N')
 ;
 
 INSERT INTO adempiere.ad_field(ad_field_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, help, iscentrallymaintained, ad_tab_id, ad_column_id, ad_fieldgroup_id, isdisplayed, displaylogic, displaylength, isreadonly, seqno, sortno, issameline, isheading, isfieldonly, isencrypted, entitytype, obscuretype, ad_reference_id, ismandatory, included_tab_id, defaultvalue, ad_reference_value_id, ad_val_rule_id, infofactoryclass)
@@ -49,16 +49,16 @@ INSERT INTO adempiere.ad_field(ad_field_id, ad_client_id, ad_org_id, isactive, c
 
 INSERT INTO adempiere.AD_Field_Trl(ad_field_id, ad_language, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, help, istranslated)
   VALUES((select max(ad_field_id) from adempiere.ad_field), 'es_VE', 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'Generar Retenciones', NULL, NULL, 'N')
-;
+;*/
 ---------------------------
 
-INSERT INTO adempiere.ad_column(ad_column_id, ad_client_id, ad_org_id, isactive, created, updated, createdby, updatedby, name, description, help, version, entitytype, columnname, ad_table_id, ad_reference_id, ad_reference_value_id, ad_val_rule_id, fieldlength, defaultvalue, iskey, isparent, ismandatory, isupdateable, readonlylogic, isidentifier, seqno, istranslated, isencrypted, callout, vformat, valuemin, valuemax, isselectioncolumn, ad_element_id, ad_process_id, issyncdatabase, isalwaysupdateable, columnsql, mandatorylogic, infofactoryclass, isautocomplete, isallowlogging, formatpattern)
+/*INSERT INTO adempiere.ad_column(ad_column_id, ad_client_id, ad_org_id, isactive, created, updated, createdby, updatedby, name, description, help, version, entitytype, columnname, ad_table_id, ad_reference_id, ad_reference_value_id, ad_val_rule_id, fieldlength, defaultvalue, iskey, isparent, ismandatory, isupdateable, readonlylogic, isidentifier, seqno, istranslated, isencrypted, callout, vformat, valuemin, valuemax, isselectioncolumn, ad_element_id, ad_process_id, issyncdatabase, isalwaysupdateable, columnsql, mandatorylogic, infofactoryclass, isautocomplete, isallowlogging, formatpattern)
   VALUES((select max(ad_column_id)+1 from adempiere.ad_column ) , 0, 0, 'Y', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 100, 100, 'Generate Withholding', NULL, NULL, 0, 'DCS', 'GenerateWithholding', 812, 28, NULL, NULL, 20, NULL, 'N', 'N', 'N', 'Y', NULL, 'N', 0, 'N', 'N', NULL, NULL, NULL, NULL, 'N',(select ad_element_id from adempiere.ad_element WHERE columnname ='GenerateWithholding' AND entitytype='QSS_LCO'), (select max(ad_Process_id) from adempiere.ad_Process), 'N', 'N', NULL, NULL, NULL, 'N', 'Y', NULL)
 
 ;
 
 INSERT INTO adempiere.AD_Column_Trl(ad_column_id, ad_language, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, istranslated)
-  VALUES((select max(ad_column_id) from adempiere.ad_column) , 'es_VE', 0, 0, 'Y', CURRENT_TIMESTAMP, 100,CURRENT_TIMESTAMP, 100, 'Generar Retención', 'N')
+  VALUES((select max(ad_column_id) from adempiere.ad_column) , 'es_VE', 0, 0, 'Y', CURRENT_TIMESTAMP, 100,CURRENT_TIMESTAMP, 100, 'Generar Retenci?n', 'N')
 ;
 
 INSERT INTO adempiere.ad_field(ad_field_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, help, iscentrallymaintained, ad_tab_id, ad_column_id, ad_fieldgroup_id, isdisplayed, displaylogic, displaylength, isreadonly, seqno, sortno, issameline, isheading, isfieldonly, isencrypted, entitytype, obscuretype, ad_reference_id, ismandatory, included_tab_id, defaultvalue, ad_reference_value_id, ad_val_rule_id, infofactoryclass)
@@ -67,7 +67,7 @@ INSERT INTO adempiere.ad_field(ad_field_id, ad_client_id, ad_org_id, isactive, c
 
 INSERT INTO adempiere.AD_Field_Trl(ad_field_id, ad_language, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, help, istranslated)
   VALUES((select max(ad_field_id) from adempiere.ad_field), 'es_VE', 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'Generar Retenciones', NULL, NULL, 'N')
-;
+;*/
 
 ----------------------------------------------
 
@@ -88,41 +88,30 @@ INSERT INTO adempiere.AD_Field_Trl(ad_field_id, ad_language, ad_client_id, ad_or
 
 ---------------------------------------------
 
-delete From lco_withholdingrule where lco_withholdingrule_id in ('5000010','5000014','5000025','5000021','5000017','5000018',
-                                                                    '5000029','5000007','5000022','5000030','5000036','5000020',
-                                                                    '5000019','5000031','5000032','5000033','5000035','5000037',
-                                                                    '5000034','5000038','5000016','5000028','5000000','5000013',
-                                                                    '5000039','5000040','5000041','5000043','5000044')
-;
-delete From lco_withholdingcategory Where lco_withholdingcategory_id in ('5000001','5000002','5000004','5000005','5000006','5000007','5000009')
-;
-delete From lco_taxpayertype Where lco_taxpayertype_id in ('5000002','5000000','5000001','5000006') 
-;
-delete From lco_withholdingcalc Where lco_withholdingcalc_id in ('5000021','5000016','5000017','5000024','5000019','5000020',
-                                                                   '5000026','5000013','5000015','5000027','5000028','5000029',
-                                                                   '5000030','5000031','5000032','5000033','5000034','5000035',
-                                                                   '5000000','5000014','5000003','5000018','5000022','5000023',
-                                                                   '5000025','5000036') 
-;
-delete From c_tax Where c_tax_id in ('5000101','5000103','5000104','5000006','5000110','5000106',
-                                       '5000105','5000107','5000108','5000109','5000098','5000000',
-                                       '5000007','5000111','5000100','5000008','5000102') 
-;
-delete From c_taxcategory Where c_taxcategory_id in ('5000006','5000009','5000000','5000001','5000011','5000010') 
-;
-delete From lco_withholdingruleconf Where lco_withholdingtype_id in ('5000000','5000003','5000004','5000008') 
-;
-delete From lco_withholdingtype Where lco_withholdingtype_id in ('5000000','5000003','5000004','5000008') 
-; 
+delete From lco_withholdingrule;
+
+delete From lco_withholdingcategory;
+
+delete From lco_taxpayertype;
+
+delete From lco_withholdingcalc;
+
+delete from c_tax ;
+
+delete from c_taxcategory;
+
+delete From lco_withholdingruleconf;
+
+delete From lco_withholdingtype;
 
 
 ---------------------------------------------
 
 INSERT INTO adempiere.lco_withholdingtype(ad_client_id, ad_org_id, created, createdby, updatedby, isactive, issotrx, lco_withholdingtype_id, description, updated, name, LVE_isiva, LVE_isislr)
-  VALUES(@ID_CLIENT@, 0,CURRENT_TIMESTAMP, 100, 100, 'Y', 'Y', 5000000, 'Retención del 75 % del Iva en Ventas', CURRENT_TIMESTAMP, 'Retención 75% IVA en Ventas', 'Y', 'N')
+  VALUES(@ID_CLIENT@, 0,CURRENT_TIMESTAMP, 100, 100, 'Y', 'Y', 5000000, 'Retenci?n del 75 % del Iva en Ventas', CURRENT_TIMESTAMP, 'Retenci?n 75% IVA en Ventas', 'Y', 'N')
 ;
 INSERT INTO adempiere.lco_withholdingtype(ad_client_id, ad_org_id, created, createdby, updatedby, isactive, issotrx, lco_withholdingtype_id, description, updated, name, LVE_isiva, LVE_isislr)
-  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 100, 'Y', 'N', 5000003, 'Retenciónes de IVA 75% en Compras', CURRENT_TIMESTAMP, 'Ret. IVA 75% en Compras', 'Y', 'N')
+  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 100, 'Y', 'N', 5000003, 'Retenci?nes de IVA 75% en Compras', CURRENT_TIMESTAMP, 'Ret. IVA 75% en Compras', 'Y', 'N')
 ;
 INSERT INTO adempiere.lco_withholdingtype(ad_client_id, ad_org_id, created, createdby, updatedby, isactive, issotrx, lco_withholdingtype_id, description, updated, name, LVE_isiva, LVE_isislr)
   VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 100, 'Y', 'Y', 5000004, 'Retenciones de ISLR Venta', CURRENT_TIMESTAMP, 'Retencion de ISLR Venta  ', 'N', 'Y')
@@ -218,7 +207,7 @@ tt.C_TaxCategory_ID=t.C_TaxCategory_ID)
 
 
 INSERT INTO adempiere.c_tax(c_tax_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, name, updatedby, description, taxindicator, isdocumentlevel, validfrom, issummary, requirestaxcertificate, rate, parent_tax_id, c_country_id, c_region_id, to_country_id, to_region_id, c_taxcategory_id, isdefault, istaxexempt, sopotype, issalestax, ad_rule_id)
-  VALUES(5000101, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PNR', 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago (PNR)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 1, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
+  VALUES(5000101, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PNR', 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago (PNR)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 1, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
 ;
 INSERT INTO C_Tax_Trl (AD_Language,C_Tax_ID, Description,Name,TaxIndicator, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,
 UpdatedBy) SELECT l.AD_Language,t.C_Tax_ID, t.Description,t.Name,t.TaxIndicator, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,
@@ -232,7 +221,7 @@ FROM C_AcctSchema_Default p WHERE p.AD_Client_ID=11 AND NOT EXISTS (SELECT * FRO
  AND e.C_Tax_ID=5000101)
 ;
 INSERT INTO adempiere.c_tax(c_tax_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, name, updatedby, description, taxindicator, isdocumentlevel, validfrom, issummary, requirestaxcertificate, rate, parent_tax_id, c_country_id, c_region_id, to_country_id, to_region_id, c_taxcategory_id, isdefault, istaxexempt, sopotype, issalestax, ad_rule_id)
-  VALUES(5000103, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PNR', 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el país  (PNR)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 3, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
+  VALUES(5000103, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PNR', 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el pa?s  (PNR)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 3, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
 ;
 INSERT INTO C_Tax_Trl (AD_Language,C_Tax_ID, Description,Name,TaxIndicator, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,
 UpdatedBy) SELECT l.AD_Language,t.C_Tax_ID, t.Description,t.Name,t.TaxIndicator, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,
@@ -246,7 +235,7 @@ FROM C_AcctSchema_Default p WHERE p.AD_Client_ID=11 AND NOT EXISTS (SELECT * FRO
  AND e.C_Tax_ID=5000103)
 ;
 INSERT INTO adempiere.c_tax(c_tax_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, name, updatedby, description, taxindicator, isdocumentlevel, validfrom, issummary, requirestaxcertificate, rate, parent_tax_id, c_country_id, c_region_id, to_country_id, to_region_id, c_taxcategory_id, isdefault, istaxexempt, sopotype, issalestax, ad_rule_id)
-  VALUES(5000104, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PJD', 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el país  (PJD)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 5, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
+  VALUES(5000104, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PJD', 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el pa?s  (PJD)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 5, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
 ;
 INSERT INTO C_Tax_Trl (AD_Language,C_Tax_ID, Description,Name,TaxIndicator, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,
 UpdatedBy) SELECT l.AD_Language,t.C_Tax_ID, t.Description,t.Name,t.TaxIndicator, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,
@@ -274,7 +263,7 @@ FROM C_AcctSchema_Default p WHERE p.AD_Client_ID=11 AND NOT EXISTS (SELECT * FRO
  AND e.C_Tax_ID=5000006)
 ;
 INSERT INTO adempiere.c_tax(c_tax_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, name, updatedby, description, taxindicator, isdocumentlevel, validfrom, issummary, requirestaxcertificate, rate, parent_tax_id, c_country_id, c_region_id, to_country_id, to_region_id, c_taxcategory_id, isdefault, istaxexempt, sopotype, issalestax, ad_rule_id)
-  VALUES(5000110, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesión  PNR', 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesión de la Venta de Espacios para Tales Fines (PNR)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 3, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
+  VALUES(5000110, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesi?n  PNR', 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesi?n de la Venta de Espacios para Tales Fines (PNR)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 3, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
 ;
 INSERT INTO C_Tax_Trl (AD_Language,C_Tax_ID, Description,Name,TaxIndicator, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,
 UpdatedBy) SELECT l.AD_Language,t.C_Tax_ID, t.Description,t.Name,t.TaxIndicator, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,
@@ -288,7 +277,7 @@ FROM C_AcctSchema_Default p WHERE p.AD_Client_ID=11 AND NOT EXISTS (SELECT * FRO
  AND e.C_Tax_ID=5000110)
 ;
 INSERT INTO adempiere.c_tax(c_tax_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, name, updatedby, description, taxindicator, isdocumentlevel, validfrom, issummary, requirestaxcertificate, rate, parent_tax_id, c_country_id, c_region_id, to_country_id, to_region_id, c_taxcategory_id, isdefault, istaxexempt, sopotype, issalestax, ad_rule_id)
-  VALUES(5000106, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Cánones de Arrenda. de Bienes Inmu. en el País  PJD', 100, 'ISLR Cánones de Arrendamientos de Bines Muebles Situados en el País  (PJD)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 5, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
+  VALUES(5000106, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR C?nones de Arrenda. de Bienes Inmu. en el Pa?s  PJD', 100, 'ISLR C?nones de Arrendamientos de Bines Muebles Situados en el Pa?s  (PJD)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 5, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
 ;
 INSERT INTO C_Tax_Trl (AD_Language,C_Tax_ID, Description,Name,TaxIndicator, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,
 UpdatedBy) SELECT l.AD_Language,t.C_Tax_ID, t.Description,t.Name,t.TaxIndicator, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,
@@ -302,7 +291,7 @@ FROM C_AcctSchema_Default p WHERE p.AD_Client_ID=11 AND NOT EXISTS (SELECT * FRO
  AND e.C_Tax_ID=5000106)
 ;
 INSERT INTO adempiere.c_tax(c_tax_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, name, updatedby, description, taxindicator, isdocumentlevel, validfrom, issummary, requirestaxcertificate, rate, parent_tax_id, c_country_id, c_region_id, to_country_id, to_region_id, c_taxcategory_id, isdefault, istaxexempt, sopotype, issalestax, ad_rule_id)
-  VALUES(5000105, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Cánones de Arrenda. de Bienes Inmu. en el País  PNR', 100, 'ISLR Cánones de Arrendamientos de Bines Muebles Situados en el País  (PNR)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 3, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
+  VALUES(5000105, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR C?nones de Arrenda. de Bienes Inmu. en el Pa?s  PNR', 100, 'ISLR C?nones de Arrendamientos de Bines Muebles Situados en el Pa?s  (PNR)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 3, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
 ;
 INSERT INTO C_Tax_Trl (AD_Language,C_Tax_ID, Description,Name,TaxIndicator, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,
 UpdatedBy) SELECT l.AD_Language,t.C_Tax_ID, t.Description,t.Name,t.TaxIndicator, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,
@@ -344,7 +333,7 @@ FROM C_AcctSchema_Default p WHERE p.AD_Client_ID=11 AND NOT EXISTS (SELECT * FRO
  AND e.C_Tax_ID=5000108)
 ;
 INSERT INTO adempiere.c_tax(c_tax_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, name, updatedby, description, taxindicator, isdocumentlevel, validfrom, issummary, requirestaxcertificate, rate, parent_tax_id, c_country_id, c_region_id, to_country_id, to_region_id, c_taxcategory_id, isdefault, istaxexempt, sopotype, issalestax, ad_rule_id)
-  VALUES(5000109, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesión  PJD', 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesión de la Venta de Espacios para Tales Fines (PJD)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 5, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
+  VALUES(5000109, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesi?n  PJD', 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesi?n de la Venta de Espacios para Tales Fines (PJD)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 5, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
 ;
 INSERT INTO C_Tax_Trl (AD_Language,C_Tax_ID, Description,Name,TaxIndicator, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,
 UpdatedBy) SELECT l.AD_Language,t.C_Tax_ID, t.Description,t.Name,t.TaxIndicator, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,
@@ -442,7 +431,7 @@ FROM C_AcctSchema_Default p WHERE p.AD_Client_ID=11 AND NOT EXISTS (SELECT * FRO
  AND e.C_Tax_ID=5000008)
 ;
 INSERT INTO adempiere.c_tax(c_tax_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, name, updatedby, description, taxindicator, isdocumentlevel, validfrom, issummary, requirestaxcertificate, rate, parent_tax_id, c_country_id, c_region_id, to_country_id, to_region_id, c_taxcategory_id, isdefault, istaxexempt, sopotype, issalestax, ad_rule_id)
-  VALUES(5000102, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PJD', 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago (PJD)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 2, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
+  VALUES(5000102, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PJD', 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago (PJD)', NULL, 'Y', '2000-01-01 00:00:00.0', 'N', 'N', 2, NULL, NULL, NULL, NULL, NULL, 5000011, 'N', 'N', 'B', 'N', NULL)
 ;
 INSERT INTO C_Tax_Trl (AD_Language,C_Tax_ID, Description,Name,TaxIndicator, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,
 UpdatedBy) SELECT l.AD_Language,t.C_Tax_ID, t.Description,t.Name,t.TaxIndicator, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,
@@ -468,25 +457,25 @@ INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_b
   VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000107, CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PNR', 'Y', 'N', 'Y', 'N', 5000021, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pago por Gastos Transporte Conformado por Flete PNR', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000102, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago (PJD)', 'Y', 'N', 'Y', 'N', 5000016, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PJD', 0, 0)
+  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000102, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago (PJD)', 'Y', 'N', 'Y', 'N', 5000016, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PJD', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000103, CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el país  (PNR)', 'Y', 'N', 'Y', 'N', 5000017, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PNR', 0, 0)
+  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000103, CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el pa?s  (PNR)', 'Y', 'N', 'Y', 'N', 5000017, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PNR', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000109, CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesión de la Venta de Espacios para Tales Fines (PJD)', 'Y', 'N', 'Y', 'N', 5000024, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesión  PJD', 0, 0)
+  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000109, CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesi?n de la Venta de Espacios para Tales Fines (PJD)', 'Y', 'N', 'Y', 'N', 5000024, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesi?n  PJD', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000105, CURRENT_TIMESTAMP, 100, 'ISLR Cánones de Arrendamientos de Bines Muebles Situados en el País  (PNR)', 'Y', 'N', 'Y', 'N', 5000019, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Cánones de Arrenda. de Bienes Inmu. en el País  PNR', 0, 0)
+  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000105, CURRENT_TIMESTAMP, 100, 'ISLR C?nones de Arrendamientos de Bines Muebles Situados en el Pa?s  (PNR)', 'Y', 'N', 'Y', 'N', 5000019, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR C?nones de Arrenda. de Bienes Inmu. en el Pa?s  PNR', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000106, CURRENT_TIMESTAMP, 100, 'ISLR Cánones de Arrendamientos de Bines Muebles Situados en el País  (PJD)', 'Y', 'N', 'Y', 'N', 5000020, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Cánones de Arrenda. de Bienes Inmu. en el País  PJD', 0, 0)
+  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000106, CURRENT_TIMESTAMP, 100, 'ISLR C?nones de Arrendamientos de Bines Muebles Situados en el Pa?s  (PJD)', 'Y', 'N', 'Y', 'N', 5000020, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR C?nones de Arrenda. de Bienes Inmu. en el Pa?s  PJD', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000105, CURRENT_TIMESTAMP, 100, 'ISLR Cánones de Arrendamientos de Bines Muebles Situados en el País  (PNR)', 'Y', 'N', 'Y', 'N', 5000026, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Cánones de Arrenda. de Bienes Inmu. en el País  PNR', 0, 0)
+  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000105, CURRENT_TIMESTAMP, 100, 'ISLR C?nones de Arrendamientos de Bines Muebles Situados en el Pa?s  (PNR)', 'Y', 'N', 'Y', 'N', 5000026, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR C?nones de Arrenda. de Bienes Inmu. en el Pa?s  PNR', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000101, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago (PNR)', 'Y', 'N', 'Y', 'N', 5000013, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PNR', 0, 0)
+  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000101, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago (PNR)', 'Y', 'N', 'Y', 'N', 5000013, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PNR', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
   VALUES(@ID_CLIENT@, 100, 'L', NULL, 5000008, CURRENT_TIMESTAMP, 100, 'ISLR Honorarios Profesionales Mancomunados NoMercantiles PNR', 'Y', 'N', 'Y', 'N', 5000015, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Honorarios Profesionales Mancomunados NoMercantiles PNR', 0, 0)
@@ -498,22 +487,22 @@ INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_b
   VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000008, CURRENT_TIMESTAMP, 100, 'ISLR Honorarios Profecionales Mancomunados NoMercantiles PNR', 'Y', 'N', 'Y', 'N', 5000028, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Honorarios Profecionales Mancomunados NoMercantiles PNR', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000109, CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesión de la Venta de Espacios para Tales Fines (PJD)', 'Y', 'N', 'Y', 'N', 5000029, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesión  PJD', 0, 0)
+  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000109, CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesi?n de la Venta de Espacios para Tales Fines (PJD)', 'Y', 'N', 'Y', 'N', 5000029, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesi?n  PJD', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000110, CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesión de la Venta de Espacios para Tales Fines (PNR)', 'Y', 'N', 'Y', 'N', 5000030, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesión  PNR', 0, 0)
+  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000110, CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesi?n de la Venta de Espacios para Tales Fines (PNR)', 'Y', 'N', 'Y', 'N', 5000030, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesi?n  PNR', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000104, CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el país  (PJD)', 'Y', 'N', 'Y', 'N', 5000031, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PJD', 0, 0)
+  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000104, CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el pa?s  (PJD)', 'Y', 'N', 'Y', 'N', 5000031, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PJD', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000103, CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el país  (PNR)', 'Y', 'N', 'Y', 'N', 5000032, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PNR', 0, 0)
+  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000103, CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el pa?s  (PNR)', 'Y', 'N', 'Y', 'N', 5000032, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PNR', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000102, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago (PJD)', 'Y', 'N', 'Y', 'N', 5000033, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PJD', 0, 0)
+  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000102, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago (PJD)', 'Y', 'N', 'Y', 'N', 5000033, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PJD', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000101, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago (PNR)', 'Y', 'N', 'Y', 'N', 5000034, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PNR', 0, 0)
+  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000101, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago (PNR)', 'Y', 'N', 'Y', 'N', 5000034, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PNR', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
   VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000108, CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PJD', 'Y', 'N', 'Y', 'N', 5000035, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pago por Gastos Transporte Conformado por Flete PJD', 0, 0)
@@ -528,16 +517,16 @@ INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_b
   VALUES(@ID_CLIENT@, 5000040, 'T', 5000000, 5000098, CURRENT_TIMESTAMP, 5000010, NULL, 'Y', 'N', 'Y', 'N', 5000003, 5000003, 0, 0, CURRENT_TIMESTAMP, 'Ret. IVA 75% en Compras', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000104, CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el país  (PJD)', 'Y', 'N', 'Y', 'N', 5000018, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PJD', 0, 0)
+  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000104, CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el pa?s  (PJD)', 'Y', 'N', 'Y', 'N', 5000018, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PJD', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
   VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000108,CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PJD', 'Y', 'N', 'Y', 'N', 5000022, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pago por Gastos Transporte Conformado por Flete PJD', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000110, CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesión de la Venta de Espacios para Tales Fines (PNR)', 'Y', 'N', 'Y', 'N', 5000023, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesión  PNR', 0, 0)
+  VALUES(@ID_CLIENT@, 5000040, 'L', NULL, 5000110, CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesi?n de la Venta de Espacios para Tales Fines (PNR)', 'Y', 'N', 'Y', 'N', 5000023, 5000008, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesi?n  PNR', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
-  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000106,CURRENT_TIMESTAMP, 100, 'ISLR Cánones de Arrendamientos de Bines Muebles Situados en el País  (PJD)', 'Y', 'N', 'Y', 'N', 5000025, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Cánones de Arrenda. de Bienes Inmu. en el País  PJD', 0, 0)
+  VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000106,CURRENT_TIMESTAMP, 100, 'ISLR C?nones de Arrendamientos de Bines Muebles Situados en el Pa?s  (PJD)', 'Y', 'N', 'Y', 'N', 5000025, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR C?nones de Arrenda. de Bienes Inmu. en el Pa?s  PJD', 0, 0)
 ;
 INSERT INTO adempiere.lco_withholdingcalc(ad_client_id, updatedby, basetype, c_basetax_id, c_tax_id, created, createdby, description, isactive, iscalconinvoice, iscalconpayment, ismodifiableonpayment, lco_withholdingcalc_id, lco_withholdingtype_id, ad_org_id, thresholdmin, updated, name, thresholdmax, amountrefunded)
   VALUES(@ID_CLIENT@, 5000000, 'L', NULL, 5000107, CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PNR', 'Y', 'N', 'Y', 'N', 5000036, 5000004, 0, 0, CURRENT_TIMESTAMP, 'ISLR Pago por Gastos Transporte Conformado por Flete PNR', 0, 0)
@@ -572,19 +561,19 @@ INSERT INTO adempiere.lco_withholdingcategory(ad_client_id, ad_org_id, created, 
   VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'Ret. ISLR Honorarios Profecionales Mancomunados No Mercantiles ', 100, 'N', 5000002, 'Y', CURRENT_TIMESTAMP, 'Ret. ISLR Honorarios Profecionales Mancomunados No Mercantil')
 ;
 INSERT INTO adempiere.lco_withholdingcategory(ad_client_id, ad_org_id, created, createdby, description, updatedby, isdefault, lco_withholdingcategory_id, isactive, updated, name)
-  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago', 100, 'N', 5000004, 'Y', CURRENT_TIMESTAMP, 'Ret ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv')
+  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago', 100, 'N', 5000004, 'Y', CURRENT_TIMESTAMP, 'Ret ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv')
 ;
 INSERT INTO adempiere.lco_withholdingcategory(ad_client_id, ad_org_id, created, createdby, description, updatedby, isdefault, lco_withholdingcategory_id, isactive, updated, name)
-  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago ', 100, 'N', 5000005, 'Y', CURRENT_TIMESTAMP, 'Ret.ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.')
+  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago ', 100, 'N', 5000005, 'Y', CURRENT_TIMESTAMP, 'Ret.ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.')
 ;
 INSERT INTO adempiere.lco_withholdingcategory(ad_client_id, ad_org_id, created, createdby, description, updatedby, isdefault, lco_withholdingcategory_id, isactive, updated, name)
-  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'ISLR Cánones de Arrendamientos de Bines Muebles Situados en el País', 100, 'N', 5000006, 'Y', CURRENT_TIMESTAMP, 'Ret. ISLR Cánones de Arrenda. de Bienes Inmu. en el País')
+  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'ISLR C?nones de Arrendamientos de Bines Muebles Situados en el Pa?s', 100, 'N', 5000006, 'Y', CURRENT_TIMESTAMP, 'Ret. ISLR C?nones de Arrenda. de Bienes Inmu. en el Pa?s')
 ;
 INSERT INTO adempiere.lco_withholdingcategory(ad_client_id, ad_org_id, created, createdby, description, updatedby, isdefault, lco_withholdingcategory_id, isactive, updated, name)
   VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete', 100, 'N', 5000007, 'Y', CURRENT_TIMESTAMP, 'Ret. ISLR Pago por Gastos Transporte Conformado por Flete')
 ;
 INSERT INTO adempiere.lco_withholdingcategory(ad_client_id, ad_org_id, created, createdby, description, updatedby, isdefault, lco_withholdingcategory_id, isactive, updated, name)
-  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesión de la Venta de Espacios para Tales Fines', 100, 'N', 5000009, 'Y', CURRENT_TIMESTAMP, 'Ret. ISLR Pag. por Serv. de Public. y Propag.  y la cesión')
+  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesi?n de la Venta de Espacios para Tales Fines', 100, 'N', 5000009, 'Y', CURRENT_TIMESTAMP, 'Ret. ISLR Pag. por Serv. de Public. y Propag.  y la cesi?n')
 ;
 
 
@@ -602,19 +591,19 @@ INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, crea
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Honorarios Profesionales Mancomunados No Mercantiles (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000014, 5000002, 5000011, 5000014, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Honorarios Profesionales Mancomunados NoMercantiles PJD', NULL, NULL, '008')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000013, 5000004, 5000011, 5000025, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PNR', NULL, NULL, '053')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000013, 5000004, 5000011, 5000025, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PNR', NULL, NULL, '053')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PNR', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000021, 5000007, 5000011, 5000021, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PNR', NULL, NULL, '071')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el país  (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000017, 5000005, 5000011, 5000017, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PNR', NULL, NULL, '057')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el pa?s  (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000017, 5000005, 5000011, 5000017, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PNR', NULL, NULL, '057')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0',CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el país  (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000018, 5000005, 5000011, 5000018, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PJD', NULL, NULL, '059')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0',CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el pa?s  (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000018, 5000005, 5000011, 5000018, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PJD', NULL, NULL, '059')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2011-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesión de la Venta de Espacios para Tales Fines (JD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000024, 5000009, 5000011, 5000029, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesión  PJD', NULL, NULL, '084')
+  VALUES(@ID_CLIENT@, '2011-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesi?n de la Venta de Espacios para Tales Fines (JD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000024, 5000009, 5000011, 5000029, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesi?n  PJD', NULL, NULL, '084')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, NULL, 'Y', 'N', NULL, 5000000, NULL, 5000000, 5000000, NULL, 5000000, 5000007, 5000000, 0, CURRENT_TIMESTAMP, 100, 'Retiene 75% de IVA en Ventas', NULL, NULL, NULL)
@@ -623,19 +612,19 @@ INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, crea
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PJD', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000022, 5000007, 5000011, 5000022, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PJD', NULL, NULL, '072')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0',CURRENT_TIMESTAMP, 100, 'ISLR Cánones de Arrendamientos de Bines Muebles Situados en el País  (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000025, 5000006, 5000011, 5000030, 5000004, 0,CURRENT_TIMESTAMP, 100, 'ISLR Cánones de Arrenda. de Bienes Inmu. en el País  PJD', NULL, NULL, '063')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0',CURRENT_TIMESTAMP, 100, 'ISLR C?nones de Arrendamientos de Bines Muebles Situados en el Pa?s  (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000025, 5000006, 5000011, 5000030, 5000004, 0,CURRENT_TIMESTAMP, 100, 'ISLR C?nones de Arrenda. de Bienes Inmu. en el Pa?s  PJD', NULL, NULL, '063')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el país  (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000031, 5000005, 5000011, 5000036, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PJD', NULL, NULL, '059')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el pa?s  (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000031, 5000005, 5000011, 5000036, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PJD', NULL, NULL, '059')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Cánones de Arrendamientos de Bines Muebles Situados en el País  (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000019, 5000006, 5000011, 5000020, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Cánones de Arrenda. de Bienes Inmu. en el País  PNR', NULL, NULL, '061')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR C?nones de Arrendamientos de Bines Muebles Situados en el Pa?s  (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000019, 5000006, 5000011, 5000020, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR C?nones de Arrenda. de Bienes Inmu. en el Pa?s  PNR', NULL, NULL, '061')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Cánones de Arrendamientos de Bines Muebles Situados en el País  (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000020, 5000006, 5000011, 5000019, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Cánones de Arrenda. de Bienes Inmu. en el País  PJD', NULL, NULL, '063')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR C?nones de Arrendamientos de Bines Muebles Situados en el Pa?s  (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000020, 5000006, 5000011, 5000019, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR C?nones de Arrenda. de Bienes Inmu. en el Pa?s  PJD', NULL, NULL, '063')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Cánones de Arrendamientos de Bines Muebles Situados en el País  (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000026, 5000006, 5000011, 5000031, 5000004, 0,CURRENT_TIMESTAMP, 100, 'ISLR Cánones de Arrenda. de Bienes Inmu. en el País  PNR', NULL, NULL, '061')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR C?nones de Arrendamientos de Bines Muebles Situados en el Pa?s  (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000026, 5000006, 5000011, 5000031, 5000004, 0,CURRENT_TIMESTAMP, 100, 'ISLR C?nones de Arrenda. de Bienes Inmu. en el Pa?s  PNR', NULL, NULL, '061')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Honorarios Profecionales Mancomunados No Mercantiles (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000027, 5000002, 5000011, 5000032, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Honorarios Profecionales Mancomunados NoMercantiles PJD', NULL, NULL, '008')
@@ -644,22 +633,22 @@ INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, crea
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Honorarios Profecionales Mancomunados No Mercantiles (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000028, 5000002, 5000011, 5000033, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Honorarios Profecionales Mancomunados NoMercantiles PNR', NULL, NULL, '006')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2011-01-07 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesión de la Venta de Espacios para Tales Fines (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000030, 5000009, 5000011, 5000035, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesión  PNR', NULL, NULL, '083')
+  VALUES(@ID_CLIENT@, '2011-01-07 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesi?n de la Venta de Espacios para Tales Fines (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000030, 5000009, 5000011, 5000035, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesi?n  PNR', NULL, NULL, '083')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el país  (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000032, 5000005, 5000011, 5000037, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PNR', NULL, NULL, '057')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pago de los Administradores de Bines Inmuebles a los Arrendadores de los Bines Inmuebles situados en el pa?s  (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000032, 5000005, 5000011, 5000037, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag Admin. Bienes inmuebles a los Arren bien inmu.  PNR', NULL, NULL, '057')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesión de la Venta de Espacios para Tales Fines (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000029, 5000009, 5000011, 5000034, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesión  PJD', NULL, NULL, '084')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesi?n de la Venta de Espacios para Tales Fines (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000029, 5000009, 5000011, 5000034, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesi?n  PJD', NULL, NULL, '084')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000033, 5000004, 5000011, 5000038, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PJD', NULL, NULL, '055')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000033, 5000004, 5000011, 5000038, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PJD', NULL, NULL, '055')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', '2011-07-07 10:37:52.0', 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000016, 5000004, 5000011, 5000016, 5000008, 0, '2011-07-08 11:10:53.0', 100, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PJD', NULL, NULL, '055')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', '2011-07-07 10:37:52.0', 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago (PJD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000016, 5000004, 5000011, 5000016, 5000008, 0, '2011-07-08 11:10:53.0', 100, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PJD', NULL, NULL, '055')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2011-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesión de la Venta de Espacios para Tales Fines (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000023, 5000009, 5000011, 5000028, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesión  PNR', NULL, NULL, '083')
+  VALUES(@ID_CLIENT@, '2011-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesi?n de la Venta de Espacios para Tales Fines (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000023, 5000009, 5000011, 5000028, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesi?n  PNR', NULL, NULL, '083')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, NULL, 'N', 'N', NULL, 5000001, NULL, 5000000, 5000000, NULL, 5000000, 5000000, 5000000, 0, CURRENT_TIMESTAMP, 100, 'Retiene 75% de IVA en Ventas', NULL, NULL, NULL)
@@ -668,7 +657,7 @@ INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, crea
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Honorarios Profesionales Mancomunados No Mercantiles (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000015, 5000002, 5000011, 5000013, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Honorarios Profesionales Mancomunados NoMercantiles PNR', NULL, NULL, '006')
  ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000034, 5000004, 5000011, 5000039, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PNR', NULL, NULL, '053')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago (PNR)', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000034, 5000004, 5000011, 5000039, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PNR', NULL, NULL, '053')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PJD', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000035, 5000007, 5000011, 5000040, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PJD', NULL, NULL, '072')
@@ -677,10 +666,10 @@ INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, crea
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PNR', 'Y', 'N', NULL, 5000006, NULL, NULL, 5000036, 5000007, 5000011, 5000041, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PNR', NULL, NULL, '071')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesión de la Venta de Espacios para Tales Fines (PJD)', 'Y', 'N', NULL, 5000000, NULL, NULL, 5000029, 5000009, 5000011, 5000043, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesión  PJD', NULL, NULL, '084')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesi?n de la Venta de Espacios para Tales Fines (PJD)', 'Y', 'N', NULL, 5000000, NULL, NULL, 5000029, 5000009, 5000011, 5000043, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesi?n  PJD', NULL, NULL, '084')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el país, por la ejecución de obras o de la prestación de servicios en base a evaluaciones y ordenes de pago (PJD)', 'Y', 'N', NULL, 5000000, NULL, NULL, 5000033, 5000004, 5000011, 5000044, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PJD', NULL, NULL, '055')
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago (PJD)', 'Y', 'N', NULL, 5000000, NULL, NULL, 5000033, 5000004, 5000011, 5000044, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PJD', NULL, NULL, '055')
 ;
 
 
