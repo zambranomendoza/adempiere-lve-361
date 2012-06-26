@@ -285,7 +285,7 @@
  <row id="121" trl="Y">
   <value column="Name" original="X12DE98 Entity Identifier Code">X12DE98 Entity Identifier Code</value>
   <value column="Description" original="X12DE98 Entity Identifier Code list">Lista de códigos de identificación de entidades X12DE98</value>
-  <value column="Help" original="Identify organizational entity physical location property or individual list">Identifica la localización de una propiedad física de la entidad organizacional o de una lista individual</value>
+  <value column="Help" original="Identify organizational entity physical location property or individual list">Identifica la dirección de una propiedad física de la entidad organizacional o de una lista individual</value>
  </row>
  <row id="122" trl="Y">
   <value column="Name" original="C_AcctSchema Costing Method">C_AcctSchema Costing Method</value>
@@ -339,7 +339,7 @@
  </row>
  <row id="133" trl="Y">
   <value column="Name" original="C_Location">C_Location</value>
-  <value column="Description" original="Location selection">Selección de Localización</value>
+  <value column="Description" original="Location selection">Selección de Dirección</value>
   <value column="Help" original=""/>
  </row>
  <row id="134" trl="Y">
