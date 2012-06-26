@@ -1,4 +1,4 @@
-begin;
+
 -- 22-may-2012 9:07:07 VET
 -- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
 INSERT INTO AD_Window (AD_Client_ID,AD_Org_ID,AD_Window_ID,Created,CreatedBy,EntityType,IsActive,IsBetaFunctionality,IsDefault,IsSOTrx,
@@ -829,5 +829,4 @@ LastScript,ScriptUser) VALUES
 '007_lve_info.sql',
 'Edickson Martinez')
 ;
-commit;
 
