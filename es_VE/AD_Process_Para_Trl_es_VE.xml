@@ -13,9 +13,9 @@
   <value column="Help" original=""/>
  </row>
  <row id="302" trl="Y">
-  <value column="Name" original="Overwrite Payment Rule">Sobreescribir Regla de Pago</value>
+  <value column="Name" original="Overwrite Payment Rule">Sobreescribir Forma de Pago</value>
   <value column="Description" original="Overwrite how to pay the invoice">Sobreescribe como se paga la factura</value>
-  <value column="Help" original="The Payment Rule indicates how the incoice will be settled - you can overwrite the value from the invoice.">La regla de pago indica el método como la factura será pagada - puede sobreescribir el valor de la factura.</value>
+  <value column="Help" original="The Payment Rule indicates how the incoice will be settled - you can overwrite the value from the invoice.">La forma de pago indica el método como la factura será pagada - puede sobreescribir el valor de la factura.</value>
  </row>
  <row id="315" trl="Y">
   <value column="Name" original="From User">Desde Usuario</value>
