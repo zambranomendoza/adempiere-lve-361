@@ -1,6 +1,6 @@
 -- Original contribution by Rafael Tomás Salazar Colmenárez - rsalazar@dcsla.com --- rtsc08@gmail.com  for Double Click Sistemas C.A.
 
-ALTER TABLE adempiere.c_bpartner ADD COLUMN acctionbutton               char(1) NULL DEFAULT NULL::bpchar;
+ALTER TABLE adempiere.c_bpartner ADD COLUMN LVE_ActionButon              char(1) NULL DEFAULT NULL::bpchar;
 ALTER TABLE adempiere.c_bpartner ADD COLUMN LVE_nameSeniat            	varchar(60) NULL DEFAULT NULL::character varying;
 ALTER TABLE adempiere.c_bpartner ADD COLUMN LVE_rifSeniat             	varchar(12) NULL DEFAULT NULL::character varying;
 ALTER TABLE adempiere.c_bpartner ADD COLUMN LVE_isValidationSeniat	char(1) NULL DEFAULT 'N'::bpchar;
@@ -23,15 +23,15 @@ INSERT INTO adempiere.AD_Element(ad_element_id, ad_client_id, ad_org_id, isactiv
   VALUES((select max(AD_Element_id)+1 from AD_Element), 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'LVE_ActionButon', 'DCS', 'LVE_ActionButon', 'LVE_ActionButon', 'LVE_ActionButon', 'LVE_ActionButon', NULL, NULL, NULL, NULL);
 
 INSERT INTO adempiere.AD_Column(ad_column_id, ad_client_id, ad_org_id, isactive, created, updated, createdby, updatedby, name, description, help, version, entitytype, columnname, ad_table_id, ad_reference_id, ad_reference_value_id, ad_val_rule_id, fieldlength, defaultvalue, iskey, isparent, ismandatory, isupdateable, readonlylogic, isidentifier, seqno, istranslated, isencrypted, callout, vformat, valuemin, valuemax, isselectioncolumn, ad_element_id, ad_process_id, issyncdatabase, isalwaysupdateable, columnsql, mandatorylogic, infofactoryclass, isautocomplete, isallowlogging, formatpattern)
-  VALUES((select max(ad_column_id)+1 from ad_column), 0, 0, 'Y', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 100, 100, 'AcctionButton', NULL, NULL, 0, 'DCS', 'AcctionButton', 291, 28, NULL, NULL, 1, NULL, 'N', 'N', 'N', 'Y', NULL, 'N', 0, 'N', 'N', 'org.doubleclick.callout.LVE_ValidationSENIAT.validation', NULL, NULL, NULL, 'N', (select max(AD_Element_id) from AD_Element), NULL, 'N', 'N', NULL, NULL, NULL, 'N', 'Y', NULL);
+  VALUES((select max(ad_column_id)+1 from ad_column), 0, 0, 'Y', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 100, 100, 'LVE_ActionButon', NULL, NULL, 0, 'DCS', 'LVE_ActionButon', 291, 28, NULL, NULL, 1, NULL, 'N', 'N', 'N', 'Y', NULL, 'N', 0, 'N', 'N', 'org.doubleclick.callout.LVE_ValidationSENIAT.validation', NULL, NULL, NULL, 'N', (select max(AD_Element_id) from AD_Element), NULL, 'N', 'N', NULL, NULL, NULL, 'N', 'Y', NULL);
 
 
 INSERT INTO adempiere.AD_Column_Trl(ad_column_id, ad_language, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, istranslated)
-  VALUES((select max(ad_column_id) from ad_column), 'es_VE', 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'AccionBoton', 'N');
+  VALUES((select max(ad_column_id) from ad_column), 'es_VE', 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'LVE_ActionButon', 'N');
 
 
 INSERT INTO adempiere.AD_Field(ad_field_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, help, iscentrallymaintained, ad_tab_id, ad_column_id, ad_fieldgroup_id, isdisplayed, displaylogic, displaylength, isreadonly, seqno, sortno, issameline, isheading, isfieldonly, isencrypted, entitytype, obscuretype, ad_reference_id, ismandatory, included_tab_id, defaultvalue, ad_reference_value_id, ad_val_rule_id, infofactoryclass)
-  VALUES((select max(ad_field_id)+1 from adempiere.ad_field ), 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'AcctionButton', 'AcctionButton', 'AcctionButton', 'Y', 220, (select max(ad_column_id) from adempiere.ad_column), NULL, 'Y', '', 1, 'N', 51, NULL, 'N', 'N', 'N', 'N', 'DCS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+  VALUES((select max(ad_field_id)+1 from adempiere.ad_field ), 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'LVE_ActionButon', 'LVE_ActionButon', 'AcctionButton', 'Y', 220, (select max(ad_column_id) from adempiere.ad_column), NULL, 'Y', '', 1, 'N', 51, NULL, 'N', 'N', 'N', 'N', 'DCS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 INSERT INTO adempiere.AD_Field_Trl(ad_field_id, ad_language, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, help, istranslated)
   VALUES((select max(ad_field_id) from adempiere.ad_field), 'es_VE', 0, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'Validar Seniat', 'Validar Seniat', 'Validar Seniat', 'N');
