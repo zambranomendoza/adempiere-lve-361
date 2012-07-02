@@ -558,7 +558,7 @@ INSERT INTO adempiere.lco_withholdingcategory(ad_client_id, ad_org_id, created, 
   VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'RETENCIONES DEL IVA DE LAS FATURAS DE VENTA', 100, 'N', 5000001, 'Y', CURRENT_TIMESTAMP, 'RETENCIONES DE IVA')
 ;
 INSERT INTO adempiere.lco_withholdingcategory(ad_client_id, ad_org_id, created, createdby, description, updatedby, isdefault, lco_withholdingcategory_id, isactive, updated, name)
-  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'Ret. ISLR Honorarios Profecionales Mancomunados No Mercantiles ', 100, 'N', 5000002, 'Y', CURRENT_TIMESTAMP, 'Ret. ISLR Honorarios Profecionales Mancomunados No Mercantil')
+  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'Ret. ISLR Honorarios Profesionales Mancomunados No Mercantiles', 100, 'N', 5000002, 'Y', CURRENT_TIMESTAMP, 'Ret. ISLR Honorarios Profesionales Mancomunados No Mercantil')
 ;
 INSERT INTO adempiere.lco_withholdingcategory(ad_client_id, ad_org_id, created, createdby, description, updatedby, isdefault, lco_withholdingcategory_id, isactive, updated, name)
   VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago', 100, 'N', 5000004, 'Y', CURRENT_TIMESTAMP, 'Ret ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv')
