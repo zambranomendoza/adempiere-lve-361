@@ -155,8 +155,9 @@ t.C_TaxCategory_ID=5000006 AND NOT EXISTS (SELECT * FROM C_TaxCategory_Trl tt WH
 tt.C_TaxCategory_ID=t.C_TaxCategory_ID)
 ;
 INSERT INTO adempiere.c_taxcategory(c_taxcategory_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, commoditycode, isdefault, iswithholding)
-  VALUES(5000009, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'IVA 8 %', 'IVA 8 %', 'IVA', 'N', 'N')
+  VALUES(5000009, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'IVA 8', 'IVA 8', 'IVA', 'N', 'N')
 ;
+/*
 INSERT INTO C_TaxCategory_Trl (AD_Language,C_TaxCategory_ID, Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,
 Updated,UpdatedBy) SELECT l.AD_Language,t.C_TaxCategory_ID, t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,
 t.Updated,t.UpdatedBy FROM AD_Language l, C_TaxCategory t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND 
@@ -170,10 +171,10 @@ INSERT INTO C_TaxCategory_Trl (AD_Language,C_TaxCategory_ID, Description,Name, I
 Updated,UpdatedBy) SELECT l.AD_Language,t.C_TaxCategory_ID, t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,
 t.Updated,t.UpdatedBy FROM AD_Language l, C_TaxCategory t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND 
 t.C_TaxCategory_ID=5000000 AND NOT EXISTS (SELECT * FROM C_TaxCategory_Trl tt WHERE tt.AD_Language=l.AD_Language AND 
-tt.C_TaxCategory_ID=t.C_TaxCategory_ID)
+tt.C_TaxCategory_ID=t.C_TaxCategory_ID)*/
 ;
 INSERT INTO adempiere.c_taxcategory(c_taxcategory_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, commoditycode, isdefault, iswithholding)
-  VALUES(5000001, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'IVA 12% IMPUESTO', 'IVA 12% IMPUESTO', NULL, 'N', 'N')
+  VALUES(5000001, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'IVA 12', 'IVA 12', NULL, 'N', 'N')
 ;
 INSERT INTO C_TaxCategory_Trl (AD_Language,C_TaxCategory_ID, Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,
 Updated,UpdatedBy) SELECT l.AD_Language,t.C_TaxCategory_ID, t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,
@@ -558,7 +559,7 @@ INSERT INTO adempiere.lco_withholdingcategory(ad_client_id, ad_org_id, created, 
   VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'RETENCIONES DEL IVA DE LAS FATURAS DE VENTA', 100, 'N', 5000001, 'Y', CURRENT_TIMESTAMP, 'RETENCIONES DE IVA')
 ;
 INSERT INTO adempiere.lco_withholdingcategory(ad_client_id, ad_org_id, created, createdby, description, updatedby, isdefault, lco_withholdingcategory_id, isactive, updated, name)
-  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'Ret. ISLR Honorarios Profecionales Mancomunados No Mercantiles ', 100, 'N', 5000002, 'Y', CURRENT_TIMESTAMP, 'Ret. ISLR Honorarios Profecionales Mancomunados No Mercantil')
+  VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'Ret. ISLR Honorarios Profesionales Mancomunados No Mercantiles', 100, 'N', 5000002, 'Y', CURRENT_TIMESTAMP, 'Ret. ISLR Honorarios Profesionales Mancomunados No Mercantil')
 ;
 INSERT INTO adempiere.lco_withholdingcategory(ad_client_id, ad_org_id, created, createdby, description, updatedby, isdefault, lco_withholdingcategory_id, isactive, updated, name)
   VALUES(@ID_CLIENT@, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pa?s, por la ejecuci?n de obras o de la prestaci?n de servicios en base a evaluaciones y ordenes de pago', 100, 'N', 5000004, 'Y', CURRENT_TIMESTAMP, 'Ret ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv')
@@ -606,7 +607,7 @@ INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, crea
   VALUES(@ID_CLIENT@, '2011-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos por Servicios de Publicidad y Propaganda y la Cesi?n de la Venta de Espacios para Tales Fines (JD)', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000024, 5000009, 5000011, 5000029, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pag. por Serv. de Public. y Propag.  y la cesi?n  PJD', NULL, NULL, '084')
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
-  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, NULL, 'Y', 'N', NULL, 5000000, NULL, 5000000, 5000000, NULL, 5000000, 5000007, 5000000, 0, CURRENT_TIMESTAMP, 100, 'Retiene 75% de IVA en Ventas', NULL, NULL, NULL)
+  VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, NULL, 'Y', 'N', NULL, 5000000, NULL, 5000000, 5000000, NULL, NULL, 5000007, 5000000, 0, CURRENT_TIMESTAMP, 100, 'Retiene 75% de IVA en Ventas', NULL, NULL, NULL)
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PJD', 'Y', 'N', NULL, 5000001, NULL, NULL, 5000022, 5000007, 5000011, 5000022, 5000008, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago por Gastos Transporte Conformado por Flete PJD', NULL, NULL, '072')
