@@ -12,6 +12,14 @@ CREATE UNIQUE INDEX m_pricelist_name
   USING btree
   (ad_client_id, ad_org_id, name);
 
+DROP INDEX c_paymentterm_name;
+
+CREATE UNIQUE INDEX c_paymentterm_name
+  ON c_paymentterm
+  USING btree
+  (ad_client_id, ad_org_id, name);
+
+
 INSERT INTO LVE_SqlScript
 (LVE_SqlScript_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,Date1,
 LastScript,ScriptUser) VALUES
