@@ -48,7 +48,13 @@ public class SmjXlsReport {
 			String city, Integer logoId) {
 		int fila = 0;
 		HSSFRow row;
-		cols = m_columns.length + 2;
+		
+		int j=0;
+		for (MReportColumn mcolumn:m_columns)
+			if(mcolumn.isPrinted())
+				j++;
+		
+		cols = j + 2;
 		endRegion = (short) (cols -1);
 		try {
 			// create workbook
@@ -155,7 +161,7 @@ public class SmjXlsReport {
 			titleTable(book, sheet, fila++, m_columns);
 
 			// llena datos del reporte - fill data report
-			reportTable(book, data, sheet, fila);
+			reportTable(book, data, sheet, fila, m_columns);
 			return book;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -208,12 +214,14 @@ public class SmjXlsReport {
 
 		// columnas de valores - Value Columns
 		for (MReportColumn mcol:m_columns){
-			String colName = mcol.getName();
-			text = new HSSFRichTextString(colName.toUpperCase());
-			cell = row.createCell(col++);
-			cell.setCellStyle(cellStyle);
-			cell.setCellType(HSSFCell.CELL_TYPE_STRING);
-			cell.setCellValue(text);
+			if(mcol.isPrinted()){
+				String colName = mcol.getName();
+				text = new HSSFRichTextString(colName.toUpperCase());
+				cell = row.createCell(col++);
+				cell.setCellStyle(cellStyle);
+				cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+				cell.setCellValue(text);
+			}
 		}//for columnas
 	}// titleTable
 
@@ -225,7 +233,7 @@ public class SmjXlsReport {
 	 * @param fila
 	 */
 	public void reportTable(HSSFWorkbook book, LinkedList<ReportTO> data,
-			HSSFSheet sheet, int fila) {
+			HSSFSheet sheet, int fila, MReportColumn[] m_columns) {
 		HSSFRow row;
 		// crea fuente - create font
 		HSSFFont font = book.createFont();
@@ -302,7 +310,7 @@ public class SmjXlsReport {
 				//--------------
 				row = sheet.createRow(fila++);
 				ReportTO rptD = new ReportTO();
-				putRow(cellStyle, cellStyleD, cellStyleN, sheet, row, fila, rptD);
+				putRow(cellStyle, cellStyleD, cellStyleN, sheet, row, fila, rptD, m_columns);
 				cellStyle = book.createCellStyle();
 				newRow = true;
 			}else if (rpt.getSmj_reportline() != null && rpt.getSmj_reportline().equals("D")) {
@@ -332,7 +340,7 @@ public class SmjXlsReport {
 				newRow = true;
 			}else {
 				row = sheet.createRow(fila++);
-				putRow(cellStyle, cellStyleD, cellStyleN, sheet, row, fila, rpt);
+				putRow(cellStyle, cellStyleD, cellStyleN, sheet, row, fila, rpt,m_columns);
 				
 			}//else
 		}// while itData
@@ -350,7 +358,7 @@ public class SmjXlsReport {
 	 * @param rpt
 	 */
 	private void putRow(HSSFCellStyle cellStyle, HSSFCellStyle cellStyleD, HSSFCellStyle cellStyleN, 
-			HSSFSheet sheet, HSSFRow row, int fila, ReportTO rpt){
+			HSSFSheet sheet, HSSFRow row, int fila, ReportTO rpt, MReportColumn[] m_columns){
 		HSSFRichTextString text;
 		short col = 0;
 		cellStyle.setAlignment(HSSFCellStyle.ALIGN_RIGHT);
@@ -364,147 +372,147 @@ public class SmjXlsReport {
 		cell.setCellStyle(cellStyleD);
 		cell = row.createCell(col++);
 		cell.setCellValue(text);
-		if (cols >= 3) {
+		if (m_columns.length >= 1 && m_columns[0].isPrinted()) {
 			//Col0
 			text = new HSSFRichTextString(formatValue(rpt.getCol_0()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 4) {
+		if (m_columns.length >= 2 && m_columns[1].isPrinted()) {
 			//Col1
 			text = new HSSFRichTextString(formatValue(rpt.getCol_1()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 5) {
+		if (m_columns.length >= 3 && m_columns[2].isPrinted()) {
 			//Col2
 			text = new HSSFRichTextString(formatValue(rpt.getCol_2()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 6) {
+		if (m_columns.length >= 4 && m_columns[3].isPrinted()) {
 			//Col3
 			text = new HSSFRichTextString(formatValue(rpt.getCol_3()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 7) {
+		if (m_columns.length >= 5 && m_columns[4].isPrinted()) {
 			//Col4
 			text = new HSSFRichTextString(formatValue(rpt.getCol_4()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 8) {
+		if (m_columns.length >= 6 && m_columns[5].isPrinted()) {
 			//Col5
 			text = new HSSFRichTextString(formatValue(rpt.getCol_5()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 9) {
+		if (m_columns.length >= 7 && m_columns[6].isPrinted()) {
 			//Col6
 			text = new HSSFRichTextString(formatValue(rpt.getCol_6()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 10) {
+		if (m_columns.length >= 8 && m_columns[7].isPrinted()) {
 			//Col7
 			text = new HSSFRichTextString(formatValue(rpt.getCol_7()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 11) {
+		if (m_columns.length >= 9 && m_columns[8].isPrinted()) {
 			//Col8
 			text = new HSSFRichTextString(formatValue(rpt.getCol_8()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 12) {
+		if (m_columns.length >= 10 && m_columns[9].isPrinted()) {
 			//Col9
 			text = new HSSFRichTextString(formatValue(rpt.getCol_9()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 13) {
+		if (m_columns.length >= 11 && m_columns[10].isPrinted()) {
 			//Col10
 			text = new HSSFRichTextString(formatValue(rpt.getCol_10()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 14) {
+		if (m_columns.length >= 12 && m_columns[11].isPrinted()) {
 			//Col11
 			text = new HSSFRichTextString(formatValue(rpt.getCol_11()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 15) {
+		if (m_columns.length >= 13 && m_columns[12].isPrinted()) {
 			//Col12
 			text = new HSSFRichTextString(formatValue(rpt.getCol_12()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 16) {
+		if (m_columns.length >= 14 && m_columns[13].isPrinted()) {
 			//Col13
 			text = new HSSFRichTextString(formatValue(rpt.getCol_13()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 17) {
+		if (m_columns.length >= 15 && m_columns[14].isPrinted()) {
 			//Col14
 			text = new HSSFRichTextString(formatValue(rpt.getCol_14()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 18) {
+		if (m_columns.length >= 16 && m_columns[15].isPrinted()) {
 			//Col15
 			text = new HSSFRichTextString(formatValue(rpt.getCol_15()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 19) {
+		if (m_columns.length >= 17 && m_columns[16].isPrinted()) {
 			//Col16
 			text = new HSSFRichTextString(formatValue(rpt.getCol_16()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 20) {
+		if (m_columns.length >= 18 && m_columns[17].isPrinted()) {
 			//Col17
 			text = new HSSFRichTextString(formatValue(rpt.getCol_17()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 21) {
+		if (m_columns.length >= 19 && m_columns[18].isPrinted()) {
 			//Col18
 			text = new HSSFRichTextString(formatValue(rpt.getCol_18()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 22) {
+		if (m_columns.length >= 20 && m_columns[19].isPrinted()) {
 			//Col19
 			text = new HSSFRichTextString(formatValue(rpt.getCol_19()));
 			cell = row.createCell(col++);
 			cell.setCellStyle(cellStyle);
 			cell.setCellValue(text);
 		}
-		if (cols >= 23) {
+		if (m_columns.length >= 21 && m_columns[20].isPrinted()) {
 			//Col20
 			text = new HSSFRichTextString(formatValue(rpt.getCol_20()));
 			cell = row.createCell(col++);

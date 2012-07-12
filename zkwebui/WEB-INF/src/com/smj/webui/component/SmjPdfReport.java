@@ -36,6 +36,7 @@ import com.lowagie.text.pdf.PdfPageEventHelper;
 import com.lowagie.text.pdf.PdfTemplate;
 import com.lowagie.text.pdf.PdfWriter;
 import com.smj.entity.ReportTO;
+import com.lowagie.text.Image;
 
 /**
  * @version <li>SmartJSP: SmjPdfReport.java, 2011/03/01
@@ -64,6 +65,7 @@ public class SmjPdfReport extends PdfPageEventHelper {
 	private PdfPTable table = null;
 	private BaseFont helv;
 	private PdfTemplate total;
+	
 
 	/**
 	 * genera el PDF en un ByteArrayOutputStream ** Generate PDF Report into
@@ -98,6 +100,7 @@ public class SmjPdfReport extends PdfPageEventHelper {
 			// //////////////////////////////////////////////////////////////////////////////////////
 			// agrega el logo
 			// add logo
+			
 			java.awt.Image img;
 			if (logoId > 0) {
 				MImage mimage = MImage.get(Env.getCtx(), logoId);
@@ -106,9 +109,10 @@ public class SmjPdfReport extends PdfPageEventHelper {
 			} else {
 				img = org.compiere.Adempiere.getImageLogoSmall(true); // 48x15
 			}
-			com.lowagie.text.Image logo = com.lowagie.text.Image.getInstance(img, null);
-			logo.scaleToFit(100, 30);
-			document.add(logo);
+			//Image logo = Image.getInstance(img, null);
+//			com.lowagie.text.Image logo = com.lowagie.text.Image.getInstance(img, null);
+//			logo.scaleToFit(100, 30);
+//			document.add(logo);
 			// Titulo General - general Title
 			Paragraph genTitle = new Paragraph(dataNull(generalTitle[0]).toUpperCase(), titleFont);
 			genTitle.setAlignment(Paragraph.ALIGN_CENTER);
@@ -143,37 +147,52 @@ public class SmjPdfReport extends PdfPageEventHelper {
 			currency.setAlignment(Paragraph.ALIGN_CENTER);
 			addEmptyLine(currency, 2);
 			document.add(currency);
-			cols = m_columns.length + 2;
+			
+			// Excluye las columnas no imprimibles
+			// Edickson Martinez - DCS			
+			//m_columns_aux = new MReportColumn[m_columns.length];
+			int j=0;
+			for (MReportColumn mcolumn:m_columns)
+				if(mcolumn.isPrinted())
+					j++;
+					
+					
+			cols = j + 2;
 			float[] columnWidths = new float[cols];
 			columnWidths[0] = 1f;
 			columnWidths[1] = 3f;
-			for (int i = 2; i < cols; i++) {
+			
+			for (int i = 2; i < cols; i++)				
 				columnWidths[i] = 1f;
-			}
+					
+				
+			
 			table = new PdfPTable(columnWidths);
 
 			// //Titulos de la tabla - Table titles
 			// Nombre - name
 			PdfPCell cellTitle = new PdfPCell(new Paragraph(Msg.translate(Env.getCtx(), "name").toUpperCase(), catFont));
-			cellTitle.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
+			cellTitle.setHorizontalAlignment(Paragraph.ALIGN_CENTER);
 			cellTitle.setBackgroundColor(Color.LIGHT_GRAY);
 			table.addCell(cellTitle);
 			// Desripcion - description
 			cellTitle = new PdfPCell(new Paragraph(Msg.translate(Env.getCtx(), "description").toUpperCase(), catFont));
-			cellTitle.setHorizontalAlignment(Paragraph.ALIGN_LEFT);
+			cellTitle.setHorizontalAlignment(Paragraph.ALIGN_CENTER);
 			cellTitle.setBackgroundColor(Color.LIGHT_GRAY);
 			table.addCell(cellTitle);
 			// columnas de valores - Value Columns
 			for (MReportColumn mcol:m_columns){
-				String colName = mcol.getName();
-				cellTitle = new PdfPCell(new Paragraph(colName.toUpperCase(), catFont));
-				cellTitle.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
-				cellTitle.setBackgroundColor(Color.LIGHT_GRAY);
-				table.addCell(cellTitle);
+					if(mcol.isPrinted()){
+						String colName = mcol.getName();
+						cellTitle = new PdfPCell(new Paragraph(colName.toUpperCase(), catFont));
+						cellTitle.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
+						cellTitle.setBackgroundColor(Color.LIGHT_GRAY);
+						table.addCell(cellTitle);
+					}
 			}//for columnas
 
 			// TABLA DEL REPORTE - REPORT TABLE
-			reportTable();
+			reportTable(m_columns);
 			document.add(table);
 
 			// funciones que ponen el pie del porte - put footer
@@ -193,7 +212,7 @@ public class SmjPdfReport extends PdfPageEventHelper {
 	/**
 	 * coloca la tabla en el reporte ** Put table in report
 	 */
-	public void reportTable() {
+	public void reportTable(MReportColumn[] m_columns) {
 		PdfPCell tableCell;
 		Iterator<ReportTO> itRep = data.iterator();
 		while (itRep.hasNext()) {
@@ -272,127 +291,127 @@ public class SmjPdfReport extends PdfPageEventHelper {
 					tableCell.setBorder(0);
 					table.addCell(tableCell);
 					// columnas 0 a 20 - cols 0 to 20
-					if (cols >= 3) {
+					if (m_columns.length >= 1 && m_columns[0].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_0()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 4) {
+					if (m_columns.length >= 2 && m_columns[1].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_1()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 5) {
+					if (m_columns.length >= 3 && m_columns[2].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_2()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 6) {
+					if (m_columns.length >= 4 && m_columns[3].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_3()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 7) {
+					if (m_columns.length >= 5 && m_columns[4].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_4()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 8) {
+					if (m_columns.length >= 6 && m_columns[5].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_5()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 9) {
+					if (m_columns.length >= 7 && m_columns[6].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_6()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 10) {
+					if (m_columns.length >= 8 && m_columns[7].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_7()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 11) {
+					if (m_columns.length >= 9 && m_columns[8].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_8()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 12) {
+					if (m_columns.length >= 10 && m_columns[9].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_9()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 13) {
+					if (m_columns.length >= 11 && m_columns[10].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_10()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 14) {
+					if (m_columns.length >= 12 && m_columns[11].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_11()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 15) {
+					if (m_columns.length >= 13 && m_columns[12].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_12()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 16) {
+					if (m_columns.length >= 14 && m_columns[13].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_13()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 17) {
+					if (m_columns.length >= 15 && m_columns[14].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_14()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 18) {
+					if (m_columns.length >= 16 && m_columns[15].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_15()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 19) {
+					if (m_columns.length >= 17 && m_columns[16].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_16()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 20) {
+					if (m_columns.length >= 18 && m_columns[17].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_17()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 21) {
+					if (m_columns.length >= 19 && m_columns[18].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_18()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 22) {
+					if (m_columns.length >= 20 && m_columns[19].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_19()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
 						table.addCell(tableCell);
 					}
-					if (cols >= 23) {
+					if (m_columns.length >= 21 && m_columns[20].isPrinted()) {
 						tableCell = new PdfPCell(new Phrase(formatValue(rpt.getCol_20()), subFont));
 						tableCell.setBorder(0);
 						tableCell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT);
