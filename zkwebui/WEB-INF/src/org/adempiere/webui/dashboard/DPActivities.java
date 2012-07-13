@@ -177,7 +177,6 @@ public class DPActivities extends DashboardPanel implements EventListener {
 			pstmt.setInt (2, AD_User_ID);
 			pstmt.setInt (3, AD_User_ID);
 			pstmt.setInt (4, AD_User_ID);
-			pstmt.setInt (5, AD_Client_ID);
 			rs = pstmt.executeQuery ();
 			if (rs.next ()) {
 				count = rs.getInt(1);
