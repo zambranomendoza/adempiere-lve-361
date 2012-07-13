@@ -2,6 +2,7 @@ package org.doubleclick.callout;
 
 import java.util.Properties;
 
+import org.adempiere.webui.window.FDialog;
 import org.compiere.model.CalloutEngine;  	
 import org.compiere.model.GridField;     	
 import org.compiere.model.GridTab;  
@@ -67,6 +68,7 @@ public class LVE_ValidationSENIAT extends CalloutEngine{
 		   if (br== null && rif.length()<10 && (rif.substring(0, 1).equals("V") ||rif.substring(0, 1).equals("E"))  ){
 //			   if (Messagebox.show("Â¿Desea que el sistema busque posibles Terceros?", "Pregunta",
 //						Messagebox.YES | Messagebox.NO, Messagebox.QUESTION)== Messagebox.YES){	
+			   if (FDialog.ask (WindowNo, null, "¿Desea que el sistema busque posibles Tercero?") ){
 			     		rifAux=  rif.substring(1,rif.length());
 					    if (rifAux.length()==7){
 						 	rifAux= "0"+rifAux;
@@ -85,7 +87,7 @@ public class LVE_ValidationSENIAT extends CalloutEngine{
 					    if (br==null) return "RIF NO EXISTE";
 					    
 						
-					
+			   }
 				
 			}
 
