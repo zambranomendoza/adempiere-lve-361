@@ -5,6 +5,7 @@ import java.util.Properties;
 import org.compiere.model.CalloutEngine;  	
 import org.compiere.model.GridField;     	
 import org.compiere.model.GridTab;  
+import org.compiere.model.MSysConfig;
 import org.compiere.util.AdempiereSystemError; 	
 import org.compiere.util.Env;
 
@@ -29,6 +30,8 @@ import org.xml.sax.InputSource;
  *	Validator for LVE_ValidationSENIAT
  *	
  * @author Rafael Salazar C. - rsalazar@dcsla.com - rtsc08@gmail.com , Double Click Sistemas http://www.dcsla.com
+ * 
+ * @contributor Miguel Hernández Giusti - mhernandez@ghintech.com, Ghintech de Venezuela http://www.ghintech.com
  */ 
 
 public class LVE_ValidationSENIAT extends CalloutEngine{
@@ -49,30 +52,33 @@ public class LVE_ValidationSENIAT extends CalloutEngine{
 		if (isCalloutActive())
 			return "";
 		
-		
+		String url = getUrlSeniat();
 		
 		String rif =String.valueOf(	mTab.getValue("taxid")).replaceAll("-", "");
 		
+		if (rif.equals("null"))
+			return "";
+
 		try {
 
 			
 			String rifAux=rif;
-		    BufferedReader br =this.existe("http://contribuyente.seniat.gob.ve/getContribuyente/getrif?rif="+rif);
+		    BufferedReader br =this.existe(url+rif);
 		   if (br== null && rif.length()<10 && (rif.substring(0, 1).equals("V") ||rif.substring(0, 1).equals("E"))  ){
-//			   if (Messagebox.show("¿Desea que el sistema busque posibles Terceros?", "Pregunta",
+//			   if (Messagebox.show("Â¿Desea que el sistema busque posibles Terceros?", "Pregunta",
 //						Messagebox.YES | Messagebox.NO, Messagebox.QUESTION)== Messagebox.YES){	
 			     		rifAux=  rif.substring(1,rif.length());
 					    if (rifAux.length()==7){
 						 	rifAux= "0"+rifAux;
 						}
 					    rifAux= "0"+rifAux;
-					    br =this.existe("http://contribuyente.seniat.gob.ve/getContribuyente/getrif?rif="+rifAux);
+					    br =this.existe(url+rifAux);
 					    if (br== null){
 					    	rifAux=rif.substring(0, 1)+rifAux.substring(1, rifAux.length());
 					    	Integer i=0;
 					    	while (br==null && i<10){
 					    		 rifAux=rifAux.substring(0, 9) +i;
-					    		 br =this.existe("http://contribuyente.seniat.gob.ve/getContribuyente/getrif?rif="+rifAux);
+					    		 br =this.existe(url+rifAux);
 								 i++;  
 					    	}
 					    }
@@ -139,7 +145,7 @@ public class LVE_ValidationSENIAT extends CalloutEngine{
 						contrib = ((Node) tercerNombre.item(0)).getNodeValue().toString();
 						 mTab.setValue("LVE_descriptionSeniat",	"Los datos del Asociados son: RIF: "+
 							rifAux.substring(0, 1)+"-"+rifAux.substring(1, 9)+"-"+rifAux.substring(9, 10)+
-							" \nNombre: '"+nombre +"' \nAgente de Retención: '"+agenteRet
+							" \nNombre: '"+nombre +"' \nAgente de RetenciÃ³n: '"+agenteRet
 							+"' \nContribuyente de IVA: '"+ contrib );
 						
 							if (cantidadOcurrencia(nombre, "(")>=2)														
@@ -215,5 +221,12 @@ public class LVE_ValidationSENIAT extends CalloutEngine{
 	}
 		
 	}
+
+  public String getUrlSeniat() {
+		String urlSeniat = MSysConfig.getValue("URL_SENIAT",
+				"", // default
+				Env.getAD_Client_ID(Env.getCtx()));
+		return urlSeniat;
+  }
 }
 
