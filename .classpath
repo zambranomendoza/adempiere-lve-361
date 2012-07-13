@@ -9,5 +9,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/adempiere361libero"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/patches361"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/adempiere361"/>
+	<classpathentry kind="lib" path="lib/jdom-1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
