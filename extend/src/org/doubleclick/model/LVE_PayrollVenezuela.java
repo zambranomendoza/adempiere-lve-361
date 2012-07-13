@@ -17,19 +17,22 @@
  *****************************************************************************/
 package org.doubleclick.model;
 
-import org.eevolution.model.MHRProcess;
-
 import java.math.BigDecimal;
-import java.sql.*;
 import java.sql.Date;
-import java.text.DecimalFormat;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Vector;
 
-import java.util.*;
-
-
-import org.apache.poi.hssf.record.formula.functions.Round;
 import org.compiere.model.Query;
 import org.compiere.util.DB;
+import org.eevolution.model.MHRAttribute;
+import org.eevolution.model.MHRConcept;
+import org.eevolution.model.MHRPeriod;
+import org.eevolution.model.MHRProcess;
 
 /**
  *  Venezuelan Payroll

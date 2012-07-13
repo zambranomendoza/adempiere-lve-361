@@ -19,14 +19,11 @@
 
 package org.doubleclick.model;
 
-import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.logging.Level;
+
 import org.compiere.model.MClient;
 import org.compiere.model.MInvoice;
 import org.compiere.model.ModelValidationEngine;
@@ -34,24 +31,6 @@ import org.compiere.model.ModelValidator;
 import org.compiere.model.PO;
 import org.compiere.util.CLogger;
 import org.compiere.util.DB;
-import org.compiere.util.Env;
-import java.net.URL;
-
-import javax.swing.JOptionPane;
-
-import com.google.gdata.client.calendar.CalendarQuery;
-import com.google.gdata.client.calendar.CalendarService;
-import com.google.gdata.data.DateTime;
-import com.google.gdata.data.Person;
-import com.google.gdata.data.PlainTextConstruct;
-import com.google.gdata.data.calendar.CalendarEventEntry;
-import com.google.gdata.data.calendar.CalendarEventFeed;
-import com.google.gdata.data.extensions.EventEntry;
-import com.google.gdata.data.extensions.Reminder;
-import com.google.gdata.data.extensions.Reminder.Method;
-import com.google.gdata.data.extensions.When;
-import com.google.gdata.data.extensions.Where;
-import com.google.gdata.util.ServiceException;
 
 
 /**

@@ -14,7 +14,7 @@
  * ComPiere, Inc., 2620 Augustine Dr. #245, Santa Clara, CA 95054, USA        *
  * or via info@compiere.org or http://www.compiere.org/license.html           *
  *****************************************************************************/
-package org.globalqss.model;
+package org.doubleclick.model;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -36,7 +36,11 @@ import org.compiere.model.MPriceList;
 import org.compiere.model.MTax;
 import org.compiere.util.DB;
 import org.compiere.util.Env;
-import org.eevolution.model.X_LVE_PaymentWithHolding;
+import org.globalqss.model.MLCOInvoiceWithholding;
+import org.globalqss.model.X_LCO_WithholdingCalc;
+import org.globalqss.model.X_LCO_WithholdingRule;
+import org.globalqss.model.X_LCO_WithholdingRuleConf;
+import org.globalqss.model.X_LCO_WithholdingType;
 
 /**
  *	LCO_MInvoice
@@ -45,7 +49,7 @@ import org.eevolution.model.X_LVE_PaymentWithHolding;
  *  Contributor : Rafael Salazar C. - rsalazar@dcsla.com, Double Click Sistemas http://www.dcsla.com
  *  @version  $Id: LCO_MInvoice.java,v 1.5 2007/06/28 03:37:29 cruiz Exp $
  */
- //Esto es una prueba
+ 
 public class LVE_MInvoice extends MInvoice
 {
 	/**
@@ -457,7 +461,12 @@ public class LVE_MInvoice extends MInvoice
 						}
 						iwh.setTaxAmt(taxamt);
 						iwh.setTaxBaseAmt(base);
-						if (wt.isIVA()){
+						sql= "SELECT * FROM c_doctype where docbasetype= 'API' and c_doctype_id='"+ getC_DocType_ID() +"'";
+						PreparedStatement pstmt = DB.prepareStatement(sql, get_TrxName());
+						
+						ResultSet rst2 = pstmt.executeQuery();
+					    if (rst2.next() && wt.isIVA()){
+					   
 								if (nroReten == null)
 							 		nroReten= generateNroRetention( "NroRetenIVA",get_TrxName(),getCtx());
 								
@@ -549,7 +558,7 @@ public class LVE_MInvoice extends MInvoice
 			calendario.setTime(fecha); 
 			
 			DecimalFormat formMonth = new DecimalFormat("00"); 
-			String month = formMonth.format(calendario.get(Calendar.MONTH));
+			String month = formMonth.format(calendario.get(Calendar.MONTH)+1);
 			
 			return  calendario.get(Calendar.YEAR)+""+month+codigo;
 		}else{
