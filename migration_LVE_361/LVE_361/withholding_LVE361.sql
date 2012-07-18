@@ -157,14 +157,14 @@ tt.C_TaxCategory_ID=t.C_TaxCategory_ID)
 INSERT INTO adempiere.c_taxcategory(c_taxcategory_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, commoditycode, isdefault, iswithholding)
   VALUES(5000009, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'IVA 8', 'IVA 8', 'IVA', 'N', 'N')
 ;
-/*
+
 INSERT INTO C_TaxCategory_Trl (AD_Language,C_TaxCategory_ID, Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,
 Updated,UpdatedBy) SELECT l.AD_Language,t.C_TaxCategory_ID, t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,
 t.Updated,t.UpdatedBy FROM AD_Language l, C_TaxCategory t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND 
 t.C_TaxCategory_ID=5000009 AND NOT EXISTS (SELECT * FROM C_TaxCategory_Trl tt WHERE tt.AD_Language=l.AD_Language AND 
 tt.C_TaxCategory_ID=t.C_TaxCategory_ID)
 ;
-INSERT INTO adempiere.c_taxcategory(c_taxcategory_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, commoditycode, isdefault, iswithholding)
+/*INSERT INTO adempiere.c_taxcategory(c_taxcategory_id, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, name, description, commoditycode, isdefault, iswithholding)
   VALUES(5000000, @ID_CLIENT@, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100, 'IVA 12 %', 'IVA 12 %', NULL, 'N', 'N')
 ;
 INSERT INTO C_TaxCategory_Trl (AD_Language,C_TaxCategory_ID, Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,
