@@ -463,8 +463,8 @@
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="158" trl="Y">
-  <value column="Name" original="After Delivery">Después de Entrega</value>
-  <value column="PrintName" original="After Delivery">Después de Entrega</value>
+  <value column="Name" original="After Delivery">Despues de Entrega</value>
+  <value column="PrintName" original="After Delivery">Despues de Entrega</value>
   <value column="Description" original="Due after delivery rather than after invoicing">Vencimiento después de la entrega y no después de la facturación</value>
   <value column="Help" original="The After Delivery checkbox indicates that payment is due after delivery as opposed to after invoicing.">El cuadro de verificación después de entrega indica que el pago se vence después de la entrega; en contraste con el vencimiento después de la facturación</value>
   <value column="PO_Description" original=""/>
