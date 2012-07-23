@@ -419,11 +419,11 @@
   <value column="Description" original=""/>
  </row>
  <row id="214" trl="Y">
-  <value column="Name" original="After Order delivered">Después de Entregada la Orden</value>
+  <value column="Name" original="After Order delivered">Despues de Entregada la Orden</value>
   <value column="Description" original="Invoice for every order">Factura para cada orden</value>
  </row>
  <row id="215" trl="Y">
-  <value column="Name" original="After Delivery">Después de Entrega</value>
+  <value column="Name" original="After Delivery">Despues de Entrega</value>
   <value column="Description" original="Invoice per Delivery">Factura por entrega</value>
  </row>
  <row id="216" trl="Y">
@@ -2015,11 +2015,11 @@
   <value column="Description" original=""/>
  </row>
  <row id="651" trl="Y">
-  <value column="Name" original="Direct Debit">Tarjeta de Débito</value>
+  <value column="Name" original="Direct Debit">Tarjeta de Debito</value>
   <value column="Description" original=""/>
  </row>
  <row id="652" trl="Y">
-  <value column="Name" original="Direct Debit">Tarjeta de Débito</value>
+  <value column="Name" original="Direct Debit">Tarjeta de Debito</value>
   <value column="Description" original=""/>
  </row>
  <row id="653" trl="Y">
@@ -3079,7 +3079,7 @@
   <value column="Description" original=""/>
  </row>
  <row id="922" trl="Y">
-  <value column="Name" original="Direct Debit">Tarjeta de Débito</value>
+  <value column="Name" original="Direct Debit">Tarjeta de Debito</value>
   <value column="Description" original=""/>
  </row>
  <row id="923" trl="Y">
