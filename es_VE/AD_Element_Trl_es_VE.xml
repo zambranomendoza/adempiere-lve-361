@@ -4496,8 +4496,8 @@ El callout es una clase Java que implementa org.compiere.model.Callout y un nomb
   <value column="PO_PrintName" original=""/>
  </row>
  <row id="1012" trl="Y">
-  <value column="Name" original="Credit Card">Tarjeta de Crédito</value>
-  <value column="PrintName" original="Credit Card">Tarjeta de Crédito</value>
+  <value column="Name" original="Credit Card">Tarjeta de Credito</value>
+  <value column="PrintName" original="Credit Card">Tarjeta de Credito</value>
   <value column="Description" original="Credit Card (Visa, MC, AmEx)">Tarjeta de Crédito (Visa; MC; Am Ex)</value>
   <value column="Help" original="The Credit Card drop down list box is used for selecting the type of Credit Card presented for payment.">El cuadro de lista de tarjeta de crédito se usa para seleccionar el tipo de tarjeta de crédito presentada para pago.</value>
   <value column="PO_Description" original=""/>
