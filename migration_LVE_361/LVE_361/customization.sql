@@ -11,4 +11,5 @@ INSERT INTO ad_sysconfig(
             updatedby, isactive, name, value, description, entitytype, configurationlevel)
     VALUES ((select max( ad_sysconfig_id) +1 from ad_sysconfig),0,0,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,0,0,'Y','URL_SENIAT','http://contribuyente.seniat.gob.ve/getContribuyente/getrif?rif=','Url para consulta del Rif del Seniat','U','S');
 
-
+UPDATE AD_ReportView SET WhereClause='docstatus not in (''VO'',''WC'', ''IN'') ',Updated=CURRENT_TIMESTAMP,UpdatedBy=0 WHERE AD_ReportView_ID=119
+;
