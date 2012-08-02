@@ -20,7 +20,10 @@ import org.compiere.util.CLogger;
 import org.compiere.util.Env;
 import org.compiere.util.Msg;
 
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.ExceptionConverter;
 import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
@@ -29,12 +32,14 @@ import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfPageEventHelper;
 import com.lowagie.text.pdf.PdfTemplate;
 import com.lowagie.text.pdf.PdfWriter;
+import com.lowagie.text.Element;
 import com.smj.entity.ReportTO;
 import com.lowagie.text.Image;
 
@@ -54,8 +59,8 @@ public class SmjPdfReport extends PdfPageEventHelper {
 	/** Logger */
 	public CLogger log = CLogger.getCLogger(Allocation.class);
 	private ByteArrayOutputStream baosPDF;
-	private Font titleFont = new Font(Font.HELVETICA, 15, Font.BOLDITALIC);
-	private Font titleTableFont = new Font(Font.HELVETICA, 12, Font.BOLDITALIC);
+	private Font titleFont = new Font(Font.HELVETICA, 10, Font.BOLDITALIC);
+	private Font titleTableFont = new Font(Font.HELVETICA, 8, Font.BOLDITALIC);
 	private Font catFont = new Font(Font.HELVETICA, 12, Font.BOLD);
 	private Font subFont = new Font(Font.HELVETICA, 10, Font.NORMAL);
 	private int cols = 0;
@@ -65,8 +70,20 @@ public class SmjPdfReport extends PdfPageEventHelper {
 	private PdfPTable table = null;
 	private BaseFont helv;
 	private PdfTemplate total;
+	private int MarginLeft=20;
+	private int MarginRight=20;
+	private int MarginTop=95;
+	private int MarginBottom=30;
+	protected Phrase header;
+	protected String Adempiere;
+	protected String clitName;
+	protected String cliNIT; 
+	protected String perName;
+	protected String currency;
+	String genTitle;
+	//Image logo;
 	
-
+	
 	/**
 	 * genera el PDF en un ByteArrayOutputStream ** Generate PDF Report into
 	 * ByteArrayOutputStream
@@ -76,77 +93,29 @@ public class SmjPdfReport extends PdfPageEventHelper {
 	public ByteArrayOutputStream generate(LinkedList<ReportTO> dataReport,
 			String nameTrx, String[] generalTitle, String clientName,
 			String clientNIT, String periodName, String currencyName,
-			MReportColumn[] m_columns, String codeFont, String city, Integer logoId) {
+			MReportColumn[] m_columns, String codeFont, String city) {
 		baosPDF = new ByteArrayOutputStream();
 		data = dataReport;
 		String fontPar[] = codeFont.split("-");
 		Integer lFont = Integer.parseInt(fontPar[2]);
-		titleFont = FontFactory.getFont(fontPar[0], lFont + 5, Font.BOLDITALIC);
-		titleTableFont = FontFactory.getFont(fontPar[0], lFont + 2,
-				Font.BOLDITALIC);
-		catFont = FontFactory.getFont(fontPar[0], lFont + 2, Font.BOLD);
-		subFont = FontFactory.getFont(fontPar[0], lFont, Font.NORMAL);
+		titleFont = FontFactory.getFont(fontPar[0], lFont-1, Font.BOLDITALIC);
+		titleTableFont = FontFactory.getFont(fontPar[0], lFont-2, Font.BOLDITALIC);
+		catFont = FontFactory.getFont(fontPar[0], lFont-2, Font.BOLD);
+		subFont = FontFactory.getFont(fontPar[0], lFont-3, Font.NORMAL);
 		try {
-			document = new Document(PageSize.LETTER, 20, 20, 20, 40);// izq-der-arrib
+			document = new Document(PageSize.LETTER, MarginLeft, MarginRight, MarginTop, MarginBottom);// izq-der-arrib
 			writer = PdfWriter.getInstance(document, baosPDF);
+			writer.setPageEvent(new SmjPdfReport(generalTitle, clientName, clientNIT, periodName, currencyName));
 			document.open();
 			// metadata del documento
 			document.addTitle(generalTitle[0]);
 			document.addAuthor("SmartJSP S.A.S.");
 			document.addCreator("SmartJSP S.A.S.");
 			onOpenDocument(writer, document);
-			onEndPage(writer, document);
-
-			// //////////////////////////////////////////////////////////////////////////////////////
-			// agrega el logo
-			// add logo
+			log.warning("Angel Prueba 1X "+cliNIT);
+			//onStartPage(writer, document);
+			//onEndPage(writer, document);
 			
-			java.awt.Image img;
-			if (logoId > 0) {
-				MImage mimage = MImage.get(Env.getCtx(), logoId);
-				byte[] imageData = mimage.getData();
-				img = Toolkit.getDefaultToolkit().createImage(imageData);
-			} else {
-				img = org.compiere.Adempiere.getImageLogoSmall(true); // 48x15
-			}
-			//Image logo = Image.getInstance(img, null);
-//			com.lowagie.text.Image logo = com.lowagie.text.Image.getInstance(img, null);
-//			logo.scaleToFit(100, 30);
-//			document.add(logo);
-			// Titulo General - general Title
-			Paragraph genTitle = new Paragraph(dataNull(generalTitle[0]).toUpperCase(), titleFont);
-			genTitle.setAlignment(Paragraph.ALIGN_CENTER);
-			document.add(genTitle);
-			// empresa - Company
-			Paragraph clitName = new Paragraph(dataNull(clientName).toUpperCase(), titleFont);
-			clitName.setAlignment(Paragraph.ALIGN_CENTER);
-			document.add(clitName);
-			// Ciudad - City
-			Paragraph cliCity = new Paragraph(dataNull(city).toUpperCase(),	titleFont);
-			cliCity.setAlignment(Paragraph.ALIGN_CENTER);
-			document.add(cliCity);
-			// NIT
-			Paragraph cliNIT = new Paragraph(dataNull(clientNIT).toUpperCase(),	titleFont);
-			cliNIT.setAlignment(Paragraph.ALIGN_CENTER);
-			document.add(cliNIT);
-			// periodo - Period
-			String pn = "";
-			if (generalTitle[1]!=null && generalTitle[1].length()>0){
-				pn = generalTitle[1]+" "+periodName;
-			}else{
-				pn = periodName;
-			}
-			if (generalTitle[2]!=null && generalTitle[2].length()>0){
-				pn = pn+" "+generalTitle[2];
-			}
-			Paragraph perName = new Paragraph(dataNull(pn).toUpperCase(), titleTableFont);
-			perName.setAlignment(Paragraph.ALIGN_CENTER);
-			document.add(perName);
-			// tipo moneda - currency
-			Paragraph currency = new Paragraph(dataNull(currencyName),titleTableFont);
-			currency.setAlignment(Paragraph.ALIGN_CENTER);
-			addEmptyLine(currency, 2);
-			document.add(currency);
 			
 			// Excluye las columnas no imprimibles
 			// Edickson Martinez - DCS			
@@ -164,20 +133,20 @@ public class SmjPdfReport extends PdfPageEventHelper {
 			
 			for (int i = 2; i < cols; i++)				
 				columnWidths[i] = 1f;
-					
-				
 			
 			table = new PdfPTable(columnWidths);
-
+			table.setLockedWidth(false);
+			table.setWidthPercentage(100);
+			table.setHeaderRows(1);
 			// //Titulos de la tabla - Table titles
 			// Nombre - name
 			PdfPCell cellTitle = new PdfPCell(new Paragraph(Msg.translate(Env.getCtx(), "name").toUpperCase(), catFont));
-			cellTitle.setHorizontalAlignment(Paragraph.ALIGN_CENTER);
+			cellTitle.setHorizontalAlignment(Paragraph.ALIGN_LEFT);
 			cellTitle.setBackgroundColor(Color.LIGHT_GRAY);
 			table.addCell(cellTitle);
 			// Desripcion - description
 			cellTitle = new PdfPCell(new Paragraph(Msg.translate(Env.getCtx(), "description").toUpperCase(), catFont));
-			cellTitle.setHorizontalAlignment(Paragraph.ALIGN_CENTER);
+			cellTitle.setHorizontalAlignment(Paragraph.ALIGN_LEFT);
 			cellTitle.setBackgroundColor(Color.LIGHT_GRAY);
 			table.addCell(cellTitle);
 			// columnas de valores - Value Columns
@@ -196,8 +165,8 @@ public class SmjPdfReport extends PdfPageEventHelper {
 			document.add(table);
 
 			// funciones que ponen el pie del porte - put footer
-			onEndPage(writer, document);
-			onCloseDocument(writer, document);
+			//onEndPage(writer, document);
+			//onCloseDocument(writer, document);
 			document.close();
 		} catch (Exception e) {
 			System.out
@@ -207,8 +176,61 @@ public class SmjPdfReport extends PdfPageEventHelper {
 		}
 		return baosPDF;
 	}// generar
+	
+	public SmjPdfReport(){
+		header = new Phrase("**** THIS IS HEADER PART OF THIS PDF ****");
+	}
 
-
+	public SmjPdfReport(String[] generalTitle, String clientName, String clientNIT, String periodName, String currencyName) {
+		
+		// Adempiere
+		Adempiere = new String("ADEMPIERE");
+		
+		//CLIENTNAME
+		clitName = new String(dataNull(clientName).toUpperCase());
+		log.warning("Prueba clitName"+clitName);
+		
+		// NIT
+		cliNIT = new String("RIF: "+dataNull(clientNIT).toUpperCase());
+		
+		// Titulo General - general Title
+		genTitle = new String(dataNull(generalTitle[0]).toUpperCase());
+		// periodo - Period
+		String pn = "";
+		if (generalTitle[1]!=null && generalTitle[1].length()>0){
+			pn = generalTitle[1]+" "+periodName;
+		}else{
+			pn = periodName;
+		}
+		if (generalTitle[2]!=null && generalTitle[2].length()>0){
+			pn = pn+" "+generalTitle[2];
+		}
+		perName = new String(dataNull(pn).toUpperCase());
+		// tipo moneda - currency
+		currency = new String("Moneda: "+dataNull(currencyName));
+		
+		// //////////////////////////////////////////////////////////////////////////////////////
+		// agrega el logo
+		// add logo
+		/*java.awt.Image img;
+		if (logoId > 0) {
+			MImage mimage = MImage.get(Env.getCtx(), logoId);
+			byte[] imageData = mimage.getData();
+			img = Toolkit.getDefaultToolkit().createImage(imageData);
+			log.warning("Prueba Imagen "+img);
+		} else {
+			img = org.compiere.Adempiere.getImageLogoSmall(true); // 48x15
+		}
+		try {
+			logo = Image.getInstance(img, null);
+			logo.scaleToFit(100, 30);
+		} catch (BadElementException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}*/
+		
+	}
 	/**
 	 * coloca la tabla en el reporte ** Put table in report
 	 */
@@ -219,8 +241,7 @@ public class SmjPdfReport extends PdfPageEventHelper {
 			ReportTO rpt = itRep.next();
 			if (rpt.getSmj_reportline() != null	&& rpt.getSmj_reportline().equals("T")) {
 				// Coloca titulo - put title
-				PdfPCell title = new PdfPCell(new Paragraph(
-						dataNull(rpt.getDescription()), titleTableFont));
+				PdfPCell title = new PdfPCell(new Paragraph(dataNull(rpt.getDescription()), titleTableFont));
 				title.setColspan(cols);
 				title.setHorizontalAlignment(Paragraph.ALIGN_CENTER);
 				title.setBorder(0);
@@ -287,7 +308,7 @@ public class SmjPdfReport extends PdfPageEventHelper {
 					table.addCell(tableCell);
 					// descripcion - description
 					tableCell = new PdfPCell(new Phrase(
-							dataNull(rpt.getDescription()), subFont));
+							dataNull(rpt.getDescription().toUpperCase()), subFont));
 					tableCell.setBorder(0);
 					table.addCell(tableCell);
 					// columnas 0 a 20 - cols 0 to 20
@@ -444,14 +465,15 @@ public class SmjPdfReport extends PdfPageEventHelper {
 	}//simpleLine
 	
 	/**
-	 * predefine los valores del pie de pagina ** predefined values ​​footer
-	 * 
+	 * predefine los valores del pie de pagina
+	 * in all pages
 	 * @param writer
 	 * @param document
 	 */
 	public void onOpenDocument(PdfWriter writer, Document document) {
 		total = writer.getDirectContent().createTemplate(100, 100);
 		total.setBoundingBox(new Rectangle(-20, -20, 100, 100));
+		
 		try {
 			helv = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.WINANSI, BaseFont.NOT_EMBEDDED);
 		} catch (Exception e) {
@@ -462,37 +484,60 @@ public class SmjPdfReport extends PdfPageEventHelper {
 	/**
 	 * define el pie de pagina a colocar en las paginas ** define footer to put
 	 * in all pages
-	 * 
 	 * @param writer
 	 * @param document
 	 */
 	public void onEndPage(PdfWriter writer, Document document) {
-		PdfContentByte cb = writer.getDirectContent();
+		
+		PdfContentByte cb = writer.getDirectContentUnder();		
 		cb.saveState();
 		Date date = new Date();
-		String textLeft = "Pagina " + writer.getPageNumber() + " de ";
-		String textRight = date + "         " + "Pagina "+ writer.getPageNumber() + " de ";
-		float textBase = document.bottom() - 20;
-		float textSizeLeft = helv.getWidthPoint(textLeft, 12);
-		float textSizeRigth = helv.getWidthPoint(textRight, 12);
+		String textRight = date.getDate()+"-"+(date.getMonth()+1)+"-"+(date.getYear()+1900) + "  /  " + "Pagina "+ writer.getPageNumber() + " de ";
+		float textBase = document.bottom() - 10;
+		float textSizeRigth = helv.getWidthPoint(textRight, 8);
+		/*try {
+			cb.addImage(logo, logo.getWidth(), 0, 0, logo.getHeight(), document.left(), document.top() + 60);
+		} catch (DocumentException e) {
+			// TODO Bloque catch generado automáticamente
+			e.printStackTrace();
+		}*/
 		cb.beginText();
-		cb.setFontAndSize(helv, 12);
-		if ((writer.getPageNumber() % 2) == 1) {
-			cb.setTextMatrix(document.left(), textBase);
-			cb.showText(textLeft + "         " + date);
-			cb.endText();
-			cb.addTemplate(total, document.left() + textSizeLeft, textBase);
-		} else {
-			float adjust = helv.getWidthPoint("", 12);
-			cb.setTextMatrix(document.right() - textSizeRigth - adjust,
-					textBase);
-			cb.showText(textRight);
-			cb.endText();
-			cb.addTemplate(total, document.right() - adjust, textBase);
-		}
+		Chunk CAux = new Chunk(Adempiere);
+		CAux.setFont(titleFont);
+		Phrase PAux = new Phrase(CAux);
+		ColumnText.showTextAligned(cb, Element.ALIGN_LEFT, PAux,document.leftMargin(), document.top() + 75, 0);
+		CAux = new Chunk(clitName);
+		CAux.setFont(titleFont);
+		PAux = new Phrase(CAux);
+		ColumnText.showTextAligned(cb, Element.ALIGN_LEFT, PAux,document.leftMargin(), document.top() + 63, 0);
+		CAux = new Chunk(cliNIT);
+		CAux.setFont(titleFont);
+		PAux = new Phrase(CAux);
+		ColumnText.showTextAligned(cb, Element.ALIGN_LEFT, PAux,document.leftMargin(), document.top() + 51, 0);
+		CAux = new Chunk(genTitle);
+		CAux.setFont(titleFont);
+		PAux = new Phrase(CAux);
+		ColumnText.showTextAligned(cb, Element.ALIGN_CENTER, PAux, (document.right() - document.left()) / 2 + document.leftMargin(), document.top() + 30, 0);
+		CAux = new Chunk(perName);
+		CAux.setFont(titleTableFont);
+		PAux = new Phrase(CAux);
+		ColumnText.showTextAligned(cb, Element.ALIGN_CENTER, PAux, (document.right() - document.left()) / 2 + document.leftMargin(), document.top() + 19, 0);
+		CAux = new Chunk(currency);
+		CAux.setFont(titleTableFont);
+		PAux = new Phrase(CAux);
+		ColumnText.showTextAligned(cb, Element.ALIGN_CENTER, PAux, (document.right() - document.left()) / 2 + document.leftMargin(), document.top() + 8, 0);
+		cb.setFontAndSize(helv, 8);
+		float adjust = helv.getWidthPoint("    ", 8);
+	    cb.setTextMatrix(document.right() - textSizeRigth - adjust,	textBase);
+		cb.showText(textRight);
+		cb.endText();
+		cb.addTemplate(total, document.right() - adjust, textBase);		
+		
+		
 		cb.restoreState();
 	}
-
+	
+	
 	/**
 	 * coloca la pagina total en el pie de pagina ** put total number page in footer
 	 * 
@@ -501,9 +546,9 @@ public class SmjPdfReport extends PdfPageEventHelper {
 	 */
 	public void onCloseDocument(PdfWriter writer, Document document) {
 		total.beginText();
-		total.setFontAndSize(helv, 12);
+		total.setFontAndSize(helv, 8);
 		total.setTextMatrix(0, 0);
-		total.showText(String.valueOf(writer.getPageNumber()));
+		total.showText(String.valueOf(writer.getPageNumber()-1));
 		total.endText();
 	}// onCloseDocument
 
@@ -569,3 +614,8 @@ public class SmjPdfReport extends PdfPageEventHelper {
 	}// formatValue
 
 }// SMpdfReport
+	
+	
+	
+	
+	

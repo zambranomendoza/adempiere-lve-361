@@ -92,7 +92,7 @@ public class SMJReportViewer extends Window implements EventListener {
 			private Listbox previewType = new Listbox();
 			private MReportColumn[] m_columns;
 			private String city;
-			private Integer logoId;
+			//private Integer logoId;
 			
 			/**
 			 * 	Static Layout
@@ -212,7 +212,8 @@ public class SMJReportViewer extends Window implements EventListener {
 				SmjReportLogic logic = new SmjReportLogic();
 				data = logic.getDataReport(reportId, trxName);
 				generalTitle = logic.getGeneralTitle(reportLineSetId, trxName);
-				clientName = logic.getOrgName(trxName);
+				clientName = logic.getOrgName(Env.getCtx(), trxName);
+				log.warning("Prueba Viewer Org "+clientName);
 //				if (clientName.equals("") || clientName.length()<=0){
 //					clientName = logic.getClientName(trxName);
 //				}
@@ -222,15 +223,15 @@ public class SMJReportViewer extends Window implements EventListener {
 				codeFont = logic.getCodeFont(trxName, p_AD_PrintFont_ID);
 				city = logic.getClientCity(trxName);
 				//logo
-				Properties prop = Env.getCtx();
+				/*Properties prop = Env.getCtx();
 				MOrgInfo oi = MOrgInfo.get(prop, Env.getAD_Org_ID(prop), null);
 				logoId = oi.getLogo_ID();
 				if (logoId <= 0){
 					MClientInfo ci = MClientInfo.get(prop);
 					logoId = ci.getLogoReport_ID();
-				}
+				}*/
 				SmjPdfReport pdf = new SmjPdfReport();
-				baosPDF = pdf.generate(data, trxName, generalTitle, clientName, clientNIT, periodName, currencyName, m_columns, codeFont, city, logoId);
+				baosPDF = pdf.generate(data, trxName, generalTitle, clientName, clientNIT, periodName, currencyName, m_columns, codeFont, city);
 				filePdf = pdf.tofile(baosPDF.toByteArray(), generalTitle);
 				revalidate();
 			}	//	dynInit
@@ -240,7 +241,7 @@ public class SMJReportViewer extends Window implements EventListener {
 			 */
 			private void createXlsReport (){
 				SmjXlsReport xls = new SmjXlsReport(); 
-				HSSFWorkbook book =  xls.generate(data, generalTitle, clientName, clientNIT, periodName, currencyName, m_columns, city, logoId);
+				HSSFWorkbook book =  xls.generate(data, generalTitle, clientName, clientNIT, periodName, currencyName, m_columns, city);
 				fileXls = xls.tofile(book, generalTitle);
 				revalidate();
 			}//
