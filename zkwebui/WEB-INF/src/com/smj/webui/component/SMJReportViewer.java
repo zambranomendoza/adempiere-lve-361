@@ -212,7 +212,7 @@ public class SMJReportViewer extends Window implements EventListener {
 				SmjReportLogic logic = new SmjReportLogic();
 				data = logic.getDataReport(reportId, trxName);
 				generalTitle = logic.getGeneralTitle(reportLineSetId, trxName);
-				clientName = logic.getOrgName(Env.getCtx(), trxName);
+				clientName = logic.getOrgName(trxName);
 				log.warning("Prueba Viewer Org "+clientName);
 //				if (clientName.equals("") || clientName.length()<=0){
 //					clientName = logic.getClientName(trxName);
