@@ -45,7 +45,7 @@ public class SmjXlsReport {
 	public HSSFWorkbook generate(LinkedList<ReportTO> data,
 			String generalTitle[], String clientName, String clientNIT,
 			String periodName, String currencyName, MReportColumn[] m_columns, 
-			String city, Integer logoId) {
+			String city) {
 		int fila = 0;
 		HSSFRow row;
 		
@@ -76,7 +76,7 @@ public class SmjXlsReport {
 			// //////////////////////////////////////////////////////////////////////////////////////
 			// agrega el logo
 			// add logo
-			if (logoId > 0) {
+			/*if (logoId > 0) {
 				MImage mimage = MImage.get(Env.getCtx(), logoId);
 				byte[] imageData = mimage.getData();
 				HSSFPatriarch patriarch = sheet.createDrawingPatriarch();
@@ -87,7 +87,8 @@ public class SmjXlsReport {
 				patriarch.createPicture(anchor, pictureIndex);
 				for (int i=0;i<5;i++)
 					row = sheet.createRow(fila++);
-			}//if Logo report
+			}*/
+			//if Logo report
 			
 			// Titulo General - general Title
 			row = sheet.createRow(fila++);
