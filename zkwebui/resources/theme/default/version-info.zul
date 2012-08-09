@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2009 Low Heng Sin
+Copyright (C) 2009 Idalica Corporation
+-->
+<zk>
+<zscript>
+	import org.compiere.Adempiere;
+	var mainVersion = Adempiere.MAIN_VERSION;
+	var dateVersion = Adempiere.DATE_VERSION;
+	var dbVersion = Adempiere.DB_VERSION;
+	var vendor = Adempiere.getImplementationVendor();
+	var vendorVersion = Adempiere.getImplementationVersion();
+	var jvm = Adempiere.getJavaInfo();
+	var os = Adempiere.getOSInfo();
+</zscript>
+<html>
+<![CDATA[
+<style>
+	.versionInfoBox {
+		background-color: #9CBDFF;
+		margin: 5px;
+		padding: 3px;
+		margin-top: 20px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		font-size: 8pt;
+	}
+.LogoBox{
+		margin-left: 90px;
+	}
+</style>
+
+<div class="LogoBox">
+	<img id="zk_comp_13" z.type="zul.widget.Img" src="/webui/images/AdemPiere150x50.png">
+</div>
+<div class="versionInfoBox">
+	<table border="0">
+		<tr>
+			<td align="right">Version Principal</td>
+			<td>:</td>
+			<td aligh="left">${mainVersion}</td>
+		</tr>
+		<tr>
+			<td align="right">Fecha</td>
+			<td>:</td>
+			<td aligh="left">${dateVersion}</td>
+		</tr>
+		<tr>
+			<td align="right">Version DB</td>
+			<td>:</td>
+			<td aligh="left">${dbVersion}</td>
+		</tr>
+		<tr>
+			<td align="right">Implementador</td>
+			<td>:</td>
+			<td aligh="left">Double Click Sistemas C.A.</td>
+		</tr>
+		<tr>
+		<td align="right">Direccion</td>
+		<td>:</td>
+		<td aligh="left">Av. Libertador con Calle 33, C.C. El Recreo Nivel II Local 39</td>
+	</tr>
+	<tr>
+		<td align="right">Telf.</td>
+		<td>:</td>
+		<td aligh="left">+58 (251) 4454389 / +58 (251) 4463764</td>
+	</tr>
+	<tr>
+		<td align="right">Email</td>
+		<td>:</td>
+		<td aligh="left">contacto@dcs.net.ve</td>
+	</tr>
+	<tr>
+		<td align="right">Para Mayor Informacion</td>
+		<td></td>
+		<td aligh="left">www.dcs.net.ve</td>
+	</tr>
+	</table>
+</div>
+]]>
+</html>
+</zk>
