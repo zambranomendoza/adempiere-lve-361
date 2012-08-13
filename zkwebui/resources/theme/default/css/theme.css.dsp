@@ -454,3 +454,7 @@ div.z-vfiletree-body td.menu-tree-cell {
 .z-timebox-focus .z-timebox-inp {
 	background: #FFFFCC;
 }
+
+td.z-row-inner, td.z-group-foot-inner {
+	padding: 5px !important;
+}
