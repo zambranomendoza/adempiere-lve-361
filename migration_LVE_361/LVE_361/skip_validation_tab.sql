@@ -1,6 +1,6 @@
 -- 13-ago-2012 14:56:13 VET
 -- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
-INSERT INTO AD_Message (MsgType,MsgText,AD_Message_ID,EntityType,Value,IsActive,Updated,AD_Client_ID,AD_Org_ID,CreatedBy,Created,UpdatedBy) VALUES ('I','LVE_Client',(SELECT COALESCE(MAX(AD_Message_ID,1000000)) FROM AD_Message),'DCS','skip_validation_tab','Y',CURRENT_TIMESTAMP,0,0,100,CURRENT_TIMESTAMP,100)
+INSERT INTO AD_Message (MsgType,MsgText,MsgTip,AD_Message_ID,EntityType,Value,IsActive,Updated,AD_Client_ID,AD_Org_ID,CreatedBy,Created,UpdatedBy) VALUES ('I','LVE_Client','Insert all windows you want to skip the validation of tabs, please separate each window with the character ;',(SELECT COALESCE(MAX(AD_Message_ID,1000000)) FROM AD_Message),'DCS','skip_validation_tab','Y',CURRENT_TIMESTAMP,0,0,100,CURRENT_TIMESTAMP,100)
 ;
 
 -- 13-ago-2012 14:56:13 VET
