@@ -1123,7 +1123,7 @@ public class GridTab implements DataStatusListener, Evaluatee, Serializable
 		//	but not apply for TabLevel=0 - teo_sarca [ 1673902 ]
 		
 		//Se Salta la validacion para las Ventanas que estas contanidas en el Mensaje "Saltar_Validacion_TAB"
-		String windows = Msg.getMsg(Env.getAD_Language(m_vo.ctx), "Saltar_Validacion_TAB");
+		String windows = Msg.getMsg(Env.getAD_Language(m_vo.ctx), "skip_validation_tab");
 		log.warning("Prueba Mensaje "+windows);
 		
 		String [] windowsval = windows.split("/");
