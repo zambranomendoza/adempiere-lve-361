@@ -24,7 +24,7 @@ Copyright (C) 2009 Idalica Corporation
 		margin-top: 20px;
 		-moz-border-radius: 5px;
 		-webkit-border-radius: 5px;
-		font-size: 8pt;
+		font-size: 10pt;
 	}
 .LogoBox{
 		margin-left: 90px;

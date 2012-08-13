@@ -29,6 +29,7 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.adempiere.webui.AdempiereIdGenerator;
 import org.adempiere.webui.LayoutUtils;
@@ -96,6 +97,7 @@ public class LoginPanel extends Window implements EventListener
 	private static final String RESOURCE = "org.compiere.apps.ALoginRes";
     private ResourceBundle res = ResourceBundle.getBundle(RESOURCE);
     private static CLogger logger = CLogger.getCLogger(LoginPanel.class);
+    private static Logger log = Logger.getLogger(LoginPanel.class.getName());
 
     private Properties ctx;
     private Label lblUserId;
@@ -349,7 +351,7 @@ public class LoginPanel extends Window implements EventListener
 		String userId = txtUserId.getValue();
 		if(userId != null && userId.length() > 0)
 		{
-			int AD_User_ID = DB.getSQLValue(null, "SELECT AD_User_ID FROM AD_User WHERE LdapUser = ?", userId);
+			int AD_User_ID = DB.getSQLValue(null, "SELECT Coalesce(AD_User_ID,0) FROM AD_User WHERE LdapUser = ?", userId);
 			
 			if (AD_User_ID < 1){
 				AD_User_ID = DB.getSQLValue(null, "SELECT AD_User_ID FROM AD_User WHERE Name = ?", userId);
