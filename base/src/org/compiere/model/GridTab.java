@@ -1126,7 +1126,7 @@ public class GridTab implements DataStatusListener, Evaluatee, Serializable
 		String windows = Msg.getMsg(Env.getAD_Language(m_vo.ctx), "skip_validation_tab");
 		log.warning("Prueba Mensaje "+windows);
 		
-		String [] windowsval = windows.split("/");
+		String [] windowsval = windows.split(";");
 		int aux = 0;
 		
 		for (String window : windowsval) {
