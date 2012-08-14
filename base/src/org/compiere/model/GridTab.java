@@ -1135,11 +1135,12 @@ public class GridTab implements DataStatusListener, Evaluatee, Serializable
 		int aux = 0;
 		
 		for (String window : windowsval) {
-			if (window.compareTo(m_window.getName()) == 0){
+			if (window.compareTo(m_window.getName()) == 0)
 				aux = 1;
-			}
+			
 		}
 		
+				
 				if (m_vo.TabLevel > 0 && m_vo.TabNo > 0 && aux == 0)
 				{
 					boolean processed = isProcessed();
