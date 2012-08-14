@@ -1130,28 +1130,30 @@ public class GridTab implements DataStatusListener, Evaluatee, Serializable
 		*
 		*/
 		String windows = MSysConfig.getValue("skip_validation_tab");
-		
-		String [] windowsval = windows.split(";");
 		int aux = 0;
 		
-		for (String window : windowsval) {
-			if (window.compareTo(m_window.getName()) == 0)
-				aux = 1;
+		if (windows != null){
+			String [] windowsval = windows.split(";");
 			
-		}
-		
+			
+			for (String window : windowsval) {
+				if (window.compareTo(m_window.getName()) == 0)
+					aux = 1;
 				
-				if (m_vo.TabLevel > 0 && m_vo.TabNo > 0 && aux == 0)
-				{
-					boolean processed = isProcessed();
-				//	boolean active = "Y".equals(Env.getContext(m_vo.ctx, m_vo.WindowNo, "IsActive"));
-					if (processed)
-					{
-						log.warning ("Not allowed in TabNo=" + m_vo.TabNo + " -> Processed=" + processed);
-						return false;
-					}
-					log.finest("Processed=" + processed);
-				}
+			}			
+		}
+				
+		if (m_vo.TabLevel > 0 && m_vo.TabNo > 0 && aux == 0)
+		{
+			boolean processed = isProcessed();
+			//	boolean active = "Y".equals(Env.getContext(m_vo.ctx, m_vo.WindowNo, "IsActive"));
+			if (processed)
+			{
+				log.warning ("Not allowed in TabNo=" + m_vo.TabNo + " -> Processed=" + processed);
+				return false;
+			}
+			log.finest("Processed=" + processed);
+		}
 		
 		
 		//hengsin, don't create new when parent is empty
