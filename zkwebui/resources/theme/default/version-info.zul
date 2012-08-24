@@ -29,10 +29,18 @@ Copyright (C) 2009 Idalica Corporation
 .LogoBox{
 		margin-left: 90px;
 	}
+	
+	.loginLinksBox {
+		padding: 0;
+		margin: 0;
+		padding-left: 5px;
+		font-size: 8pt;
+		background-color: transparent;
+	}
 </style>
 
 <div class="LogoBox">
-	<img id="zk_comp_13" z.type="zul.widget.Img" src="/webui/images/AdemPiere150x50.png">
+	<a id="logo" href="//www.dcs.net.ve" target="_blank"><img id="zk_comp_13" z.type="zul.widget.Img" src="/webui/images/dcslogo.png"></a>
 </div>
 <div class="versionInfoBox">
 	<table border="0">
@@ -78,6 +86,21 @@ Copyright (C) 2009 Idalica Corporation
 	</tr>
 	</table>
 </div>
+<div id="zk_comp_48" class="loginLinksBox" style="position: absolute; bottom: 5px;">
+
+	<a id="zk_comp_49" z.type="zul.btn.Tbtn" class="z-toolbar-button " title="Powered by Zk" z.zcls="z-toolbar-button" href="http://www.zkoss.org" target="_blank"><img src="http://www.zkoss.org/img/zkpowered_s.png" align="absmiddle" id="zk_comp_49!hvig"></a>
+	<span z.type="zul.btn.Button" id="zk_comp_50" class="z-button" z.zcls="z-button" z.href="http://www.mozilla.com/?from=sfx&amp;uid=0&amp;t=306" z.target="_blank"><table id="zk_comp_50!box" cellspacing="0" cellpadding="0" border="0" class="z-button">
+<tbody><tr><td class="z-button-tl"><button id="zk_comp_50!real" class="z-button"></button></td><td class="z-button-tm"></td><td class="z-button-tr"></td></tr>
+<tr><td class="z-button-cl"></td><td class="z-button-cm"><a id="logo" href="//www.google.com/chrome" target="_blank"><img class="logo" src="//www.google.com/intl/es/images/logos/chrome_logo.gif" alt="Google Chrome"></a></td>
+<td class="z-button-cr"><div></div></td></tr>
+<tr><td class="z-button-bl"></td><td class="z-button-bm"></td><td class="z-button-br"></td></tr>
+</tbody></table></span>
+	<span z.type="zul.btn.Button" id="zk_comp_51" class="z-button" title="ADempiere Community" z.zcls="z-button" z.href="http://www.adempiere.org" z.target="_blank"><table id="zk_comp_51!box" cellspacing="0" cellpadding="0" border="0" class="z-button z-button-over z-button-clk z-button-focus" style="height:32px; width:32px;">
+<tbody><tr><td class="z-button-tl"><button id="zk_comp_51!real" class="z-button"></button></td><td class="z-button-tm"></td><td class="z-button-tr"></td></tr>
+<tr><td class="z-button-cl"></td><td class="z-button-cm"><img src="/webui/images/AD32.png;jsessionid=3C8707A813D0D94509AD88F477887298" align="absmiddle" id="zk_comp_51!hvig"></td>
+<td class="z-button-cr"><div></div></td></tr>
+<tr><td class="z-button-bl"></td><td class="z-button-bm"></td><td class="z-button-br"></td></tr>
+</tbody></table></span></div>
 ]]>
 </html>
 </zk>
