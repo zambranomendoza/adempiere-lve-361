@@ -36,6 +36,7 @@ import org.eevolution.model.MHRConcept;
 import org.eevolution.model.MHRMovement;
 import org.eevolution.model.MHRPeriod;
 import org.eevolution.model.MHRProcess;
+import org.eevolution.model.LVE_Payroll;
 /**
  *	Validator for Payroll Venezuela
  *	
@@ -78,7 +79,9 @@ public class LVE_PayrollValidatorModel implements ModelValidator
 			log.info("Initializing global validator: " + this.toString());
 		}
 
-	
+		//	Tables to be monitored
+		// engine.addModelChange(MInvoice.Table_Name, this);
+
 		//	Documents to be monitored
 		engine.addDocValidate(MHRProcess.Table_Name, this);
 
@@ -132,13 +135,12 @@ public class LVE_PayrollValidatorModel implements ModelValidator
 		}
 		
 		// after complete a payroll
-		if (po.get_TableName().equals(MHRProcess.Table_Name) && timing == TIMING_AFTER_COMPLETE) {
+		if (po.get_TableName().equals(MHRProcess.Table_Name) && timing == TIMING_BEFORE_COMPLETE) {
 			MHRProcess process = (MHRProcess) po; 
 	    	/*LVE_ClosingAndOpeningPayroll cloOpePayroll = new LVE_ClosingAndOpeningPayroll();
 			msg = cloOpePayroll.addComplete001(process.get_TrxName(), process, 1, this  );*/
 			try {
-				
-				LVE_PayrollVenezuela.ExecutionOfConceptsClosed(process.get_TrxName(),process,"isoption10","Y", process.getHR_Payroll_ID());
+				LVE_Payroll.ExecutionOfConceptsClosed(process.get_TrxName(),process,"isoption10","Y", process.getHR_Payroll_ID());
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -191,34 +193,34 @@ public class LVE_PayrollValidatorModel implements ModelValidator
 		int nRecords;
 		if (activate==false){
 			sql = ""
-				+ "INSERT INTO LVE_ProcessActiveEmployees "
-				+ "(ad_client_id, ad_org_id, c_bpartner_id, created, createdby, LVE_ProcessActiveEmployees_ID, "
+				+ "INSERT INTO hr_process_active_employees "
+				+ "(ad_client_id, ad_org_id, c_bpartner_id, created, createdby, hr_process_active_employees_id, "
 				+ "hr_process_id, isactive, updated, updatedby) "
 				+ "select " + process.getAD_Client_ID() + ", "
 				+ process.getAD_Org_ID() + ", "
 				+ " e.c_bpartner_id, " 
 				+ "getdate(), e.createdby, "
-				+ "(select case when max(LVE_processActiveEmployees_id) is null then 1000000 else max(LVE_processActiveEmployees_id) end from LVE_ProcessActiveEmployees) + ROW_NUMBER() over (ORDER BY e.c_bpartner_id), "
+				+ "(select case when max(hr_process_active_employees_id) is null then 1000000 else max(hr_process_active_employees_id) end from hr_process_active_employees) + ROW_NUMBER() over (ORDER BY e.c_bpartner_id), "
 				+ process.getHR_Process_ID() + ", "
 				+ "e.isactive, "
 				+ "getdate(), e.updatedby "
 				+ "from hr_employee e inner join hr_process p on e.hr_payroll_id = p.hr_payroll_id "
 				+ "where e.isactive='Y' "
 				+ "and p.hr_process_id = " + process.getHR_Process_ID() + " "
-				+ "and e.c_bpartner_id not in (select c_bpartner_id from LVE_ProcessEmployee where hr_process_id = " + process.getHR_Process_ID() + ")";
+				+ "and e.c_bpartner_id not in (select c_bpartner_id from hr_process_employee where hr_process_id = " + process.getHR_Process_ID() + ")";
 			
 			nRecords = DB.executeUpdate(sql, process.get_TrxName());
-			log.fine("LVE_ProcessActiveEmployees inserted #" + nRecords);
+			log.fine("hr_process_active_employees inserted #" + nRecords);
 		}
 		
 		sql = "update hr_employee set isactive = " + (activate==true? "'Y'" : "'N'") + " " +
-			  "where c_bpartner_id in (select c_bpartner_id from LVE_ProcessActiveEmployees where hr_process_id = " + process.getHR_Process_ID() + ") " +
+			  "where c_bpartner_id in (select c_bpartner_id from hr_process_active_employees where hr_process_id = " + process.getHR_Process_ID() + ") " +
 			  "and hr_payroll_id in (select hr_payroll_id from hr_process where hr_process_id = " + process.getHR_Process_ID() + ")";
 		nRecords = DB.executeUpdate(sql, process.get_TrxName());
 		log.fine("hr_employee updated #" + nRecords);
 		
 		if (activate==true){
-			sql = "delete from LVE_ProcessActiveEmployees where hr_process_id = " + process.getHR_Process_ID();
+			sql = "delete from hr_process_active_employees where hr_process_id = " + process.getHR_Process_ID();
 			nRecords = DB.executeUpdate(sql, process.get_TrxName());
 			log.fine("hr_employee deleted #" + nRecords);
 		}
@@ -376,7 +378,7 @@ public class LVE_PayrollValidatorModel implements ModelValidator
 	 */
 	public String toString ()
 	{
-		StringBuffer sb = new StringBuffer ("LVE_PayrollValidator");
+		StringBuffer sb = new StringBuffer ("LVE_PayrollValidatorModel");
 		return sb.toString ();
 	}	//	toString
 	
