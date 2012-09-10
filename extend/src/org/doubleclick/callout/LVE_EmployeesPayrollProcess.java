@@ -34,8 +34,8 @@ public class LVE_EmployeesPayrollProcess extends CalloutEngine{
 		if (mTab.getValue("hr_process_id").equals(0))
 			   return "";
 		
-		if (mTab.getValue("hr_process_employee_filters_id").equals(0) || mTab.getValue("hr_process_employee_filters_id").equals(null))
-			   return "";
+		if (mTab.getValue("hr_process_employee_filters_id")==null)
+			   return "Debe guardar los filtros para poder agregar los empleados";
 	    	
 		// Se agregan los empleados de acuerdo a los parámetros que se especifiquen
 		String  sql = "";		
