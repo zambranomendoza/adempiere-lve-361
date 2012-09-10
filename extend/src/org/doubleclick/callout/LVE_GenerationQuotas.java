@@ -42,31 +42,32 @@ public class LVE_GenerationQuotas extends CalloutEngine{
 		if (isCalloutActive())
 			return "";
 		
-		if (mTab.getValue("LVE_LoanEmployee_ID").equals(0))
+		//if (mTab.getValue("LVE_LoanEmployee_ID").equals(0))
+		if (mTab.getValue("LVE_Loan_Employee_ID").equals(0))
 			   return "";
 	    	//Elimino las cuotas existentes 
 		
 		String  sql = ""
-			+ "DELETE FROM LVE_LoanQuotas "
-			+ "WHERE  LVE_LoanEmployee_id =  " + mTab.getValue("LVE_loanEmployee_id") 
+			+ "DELETE FROM LVE_Loan_Quotas "
+			+ "WHERE  LVE_Loan_Employee_id =  " + mTab.getValue("LVE_loan_Employee_id") 
 			+ " AND   ad_client_id = " + mTab.getValue("ad_client_id") 
 			+ " AND   ad_org_id = " + mTab.getValue("ad_org_id") ;
 		int no2 = DB.executeUpdate(sql, null);
-		log.fine("LVE_loanQuotas deleted #" + no2);
+		log.fine("LVE_loan_Quotas deleted #" + no2);
 		
 		
 		
         Integer valor=0;
-		BigDecimal amount_loan = (BigDecimal)mTab.getValue("LVE_amountLoan") ;
+		BigDecimal amount_loan = (BigDecimal)mTab.getValue("amount_Loan") ;
 		BigDecimal taxamt= (BigDecimal)mTab.getValue("taxamt");
 		
 		Double totPay= ((amount_loan.doubleValue()*taxamt.doubleValue())/100)+amount_loan.doubleValue();
 		
-		Double amountGenerated= ((BigDecimal)mTab.getValue("LVE_amountInitialQuota")).doubleValue()+
-		                        ( ((BigDecimal)mTab.getValue("LVE_quantitySpecialQuota")).doubleValue()
-		                        		 * ((BigDecimal)mTab.getValue("LVE_amountSpecialQuota")).doubleValue()) +
-		                        ( ((BigDecimal)mTab.getValue("LVE_quantityQuota")).doubleValue() *
-		                        		 ((BigDecimal)mTab.getValue("LVE_amountQuota")).doubleValue());
+		Double amountGenerated= ((BigDecimal)mTab.getValue("amount_Initial_Quota")).doubleValue()+
+		                        ( ((BigDecimal)mTab.getValue("quantity_Special_Quota")).doubleValue()
+		                        		 * ((BigDecimal)mTab.getValue("amount_Special_Quota")).doubleValue()) +
+		                        ( ((BigDecimal)mTab.getValue("quantity_Quota")).doubleValue() *
+		                        		 ((BigDecimal)mTab.getValue("amount_Quota")).doubleValue());
 		
 		if ( totPay < amountGenerated)
 		{			 
@@ -76,7 +77,7 @@ public class LVE_GenerationQuotas extends CalloutEngine{
 			return "El monto total de las cuotas es menor al monto que debe ser pagado";
 		}
 	
-		sql = "SELECT MAX(LVE_LoanQuotas_id) FROM LVE_LoanQuotas";		
+		sql = "SELECT MAX(LVE_Loan_Quotas_id) FROM LVE_Loan_Quotas";		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null; 
 		try
@@ -95,7 +96,7 @@ public class LVE_GenerationQuotas extends CalloutEngine{
 		//Generación de la cuota inicial 
 		
 		sql = ""
-				+ "INSERT INTO LVE_LoanQuotas "
+				+ "INSERT INTO LVE_Loan_Quotas "
 				+ "            (ad_client_id, "
 				+ "             ad_org_id, "
 				+ "             amount, "
@@ -103,11 +104,11 @@ public class LVE_GenerationQuotas extends CalloutEngine{
 				+ "             createdby, "
 				+ "             description, "
 				+ "             isactive, "
-				+ "             LVE_loanEmployee_id, "
+				+ "             LVE_loan_Employee_id, "
 				+ "             qty, "
 				+ "             updated, "
 				+ "             updatedby, "
-				+ "             LVE_loanQuotas_id ) "
+				+ "             LVE_loan_Quotas_id ) "
 				+ "VALUES      ( "+ mTab.getValue("ad_client_id")  +", "
 				+ 					mTab.getValue("ad_org_id") +", "
 				+					mTab.getValue("amount_initial_quota")+", '"
@@ -115,7 +116,7 @@ public class LVE_GenerationQuotas extends CalloutEngine{
 				+					mTab.getValue("createdby")+", "
 				+					"'CUOTA INICIAL' , "
 				+					"'Y' , "
-				+					mTab.getValue("LVE_loanEmployee_id")+", "
+				+					mTab.getValue("LVE_loan_Employee_id")+", "
 				+					"1 , '"
 				+					mTab.getValue("updated")+"', "
 				+					mTab.getValue("updatedby")+", "
@@ -124,16 +125,16 @@ public class LVE_GenerationQuotas extends CalloutEngine{
 		
 	
 	     no2 = DB.executeUpdate(sql, null);
-	     log.fine("LVE_LoanQuotas deleted #" + no2);
+	     log.fine("LVE_Loan_Quotas deleted #" + no2);
 	  
          int numberQuota=1;
 	     //Generación de las cuotas especiales
-	        BigDecimal quantity= (BigDecimal) mTab.getValue("LVE_quantitySpecialQuota");
+	        BigDecimal quantity= (BigDecimal) mTab.getValue("quantity_Special_Quota");
 			for (int i = 0; i < quantity.intValue(); i++) {
 				
 				  
 				sql = ""
-						+ "INSERT INTO LVE_LoanQuotas "
+						+ "INSERT INTO LVE_Loan_Quotas "
 						+ "            (ad_client_id, "
 						+ "             ad_org_id, "
 						+ "             amount, "
@@ -141,19 +142,19 @@ public class LVE_GenerationQuotas extends CalloutEngine{
 						+ "             createdby, "
 						+ "             description, "
 						+ "             isactive, "
-						+ "             LVE_loanEmployee_id, "
+						+ "             LVE_loan_Employee_id, "
 						+ "             updated, "
 						+ "             updatedby, "
 						+ "             qty, "
-						+ "             LVE_loanQuotas_id ) "
+						+ "             LVE_loan_Quotas_id ) "
 						+ "VALUES      ( "+ mTab.getValue("ad_client_id")  +", "
 						+ 					mTab.getValue("ad_org_id") +", "
-						+					mTab.getValue("LVE_amountSpecialQuota")+", '"
+						+					mTab.getValue("amount_Special_Quota")+", '"
 						+					mTab.getValue("created")+"', "
 						+					mTab.getValue("createdby")+", "
 						+					"'CUOTA ESPECIAL' , "
 						+					"'Y' , "
-						+					mTab.getValue("LVE_loanEmployee_id")+", '"
+						+					mTab.getValue("LVE_loan_Employee_id")+", '"
 						+					mTab.getValue("updated")+"', "
 						+					mTab.getValue("updatedby")+", "
 						+                   ++numberQuota + ", "
@@ -162,16 +163,16 @@ public class LVE_GenerationQuotas extends CalloutEngine{
 				
 			
 			     no2 = DB.executeUpdate(sql, null);
-			     log.fine("LVE_LoanQuotas deleted #" + no2);
+			     log.fine("LVE_Loan_Quotas deleted #" + no2);
 			}    
 			
 	     //Generación de las cuotas regulares 
-	    quantity= (BigDecimal) mTab.getValue("LVE_quantityQuota");
+	    quantity= (BigDecimal) mTab.getValue("quantity_Quota");
 		for (int i = 0; i < quantity.intValue(); i++) {
 			   
 			
 			sql = ""
-					+ "INSERT INTO LVE_LoanQuotas "
+					+ "INSERT INTO LVE_Loan_Quotas "
 					+ "            (ad_client_id, "
 					+ "             ad_org_id, "
 					+ "             amount, "
@@ -179,19 +180,19 @@ public class LVE_GenerationQuotas extends CalloutEngine{
 					+ "             createdby, "
 					+ "             description, "
 					+ "             isactive, "
-					+ "             LVE_loanEmployee_id, "
+					+ "             LVE_loan_Employee_id, "
 					+ "             updated, "
 					+ "             updatedby, "
 					+ "             qty, "
-					+ "             LVE_loanQuotas_id ) "
+					+ "             LVE_loan_Quotas_id ) "
 					+ "VALUES      ( "+ mTab.getValue("ad_client_id")  +", "
 					+ 					mTab.getValue("ad_org_id") +", "
-					+					mTab.getValue("LVE_amountQuota")+", '"
+					+					mTab.getValue("amount_Quota")+", '"
 					+					mTab.getValue("created")+"', "
 					+					mTab.getValue("createdby")+", "
 					+					"'CUOTA REGULAR' , "
 					+					"'Y' , "
-					+					mTab.getValue("LVE_loanEmployee_id")+", '"
+					+					mTab.getValue("LVE_loan_Employee_id")+", '"
 					+					mTab.getValue("updated")+"', "
 					+					mTab.getValue("updatedby")+", "
 					+                   ++numberQuota + ", " 
@@ -200,7 +201,7 @@ public class LVE_GenerationQuotas extends CalloutEngine{
 			
 		
 		     no2 = DB.executeUpdate(sql, null);
-		     log.fine("LVE_LoanQuotas deleted #" + no2);
+		     log.fine("LVE_Loan_Quotas deleted #" + no2);
 		}    
 	   
 		   
