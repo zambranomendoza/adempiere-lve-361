@@ -1,12 +1,15 @@
 package org.doubleclick.callout;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Properties;
 import java.util.logging.Level;
+import org.compiere.process.*;
 
 import javax.swing.JOptionPane;
 
@@ -41,6 +44,67 @@ public class LVE_Customization extends CalloutEngine{
 		mTab.getField("isOption8").setDisplayed(mTab.getValue("isRegistered").equals(true));	  
 	} 
 	
+	//Funcion que genneradora de codigos con formato SL-L8J
+	// RTSC
+	public String generationCode (Properties ctx, int WindowNo, GridTab mTab, GridField mField, Object value) throws SQLException
+	{
+		
+		if (isCalloutActive())
+			return "";
+		String code = (String) value;
+		code=code.toUpperCase();
+		
+		if (code == null || code.length()<6)
+			return "";
+		
+		
+		
+		String sql1 = "Select * from c_bpartner " +
+        				" where value like ('"+code+"')";		
+		PreparedStatement pstmt1 = null;
+		ResultSet rs1 = null; 
+		pstmt1 = DB.prepareStatement(sql1, null);
+		rs1 = pstmt1.executeQuery();		
+		if (rs1.next())
+		{
+			return "Existe un Tercero con dicho código";
+		}
+		
+		
+		String sql = "Select max(substring(VALUE, 7,length(value)-1) ) from c_bpartner " +
+                     " where value like ('"+code.substring(0, 6)+"%')";		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null; 
+		try
+		{
+			if (isCharacter(code.substring(0,2)) && isCharacter(code.substring(3,4))&& isCharacter(code.substring(5,6)) && isNumeric(code.substring(4,5)) && "-".equals(code.substring(2,3)) ){
+				pstmt = DB.prepareStatement(sql, null);
+				rs = pstmt.executeQuery();
+				
+				if (rs.next())
+				{
+					Integer ii = new Integer(rs.getInt(1))+1;
+					DecimalFormat format = new DecimalFormat("0000"); 
+					String ret = format.format(ii);
+					mTab.setValue("value",null);
+					mTab.setValue("value", (code.substring(0, 6)+ret));	
+				}
+	
+				}
+		}
+		catch (SQLException e)
+		{
+			log.log(Level.SEVERE, sql, e);
+			return e.getLocalizedMessage();
+		}
+		finally
+		{
+			DB.close(rs, pstmt);
+		}
+
+		return "";
+	}
+
 	
 	 //Funcion que genneradora de RIF con formato J-12345678-9 o Cedula con formato V-11111111 ó E-11111111
 	// RTSC
@@ -65,7 +129,7 @@ public class LVE_Customization extends CalloutEngine{
 		
 		if (rs.getString(1).equals("RIF")){		
 			
-			if (code == null || code.length()<9 || code.length()>12 )
+			if (code == null || code.length()<10 || code.length()>12 )
 				return "Longitud de Identificación no Válida ";
 		
 			String rif=code; 
@@ -94,14 +158,7 @@ public class LVE_Customization extends CalloutEngine{
 								 isCharacter(code.substring(0,1)) && 
 								 isNumeric(code.substring(1,10))  ) ){
 									rif= code.substring(0,1)+"-"+code.substring(1,9)+"-"+code.substring(9,10);
-					}else 
-						
-						if ((code.length()==9 && 
-								 isCharacter(code.substring(0,1)) && 
-								 isNumeric(code.substring(1,9))  ) ){
-									rif= code.substring(0,1)+"-"+code.substring(1,9);
 					}else {
-						
 						return "Formato de identificación NO VALIDO. ";
 					}
 				}
@@ -169,6 +226,8 @@ public class LVE_Customization extends CalloutEngine{
 	
 	//Generación de atributos automático al empleado
 	//RTSC
+    //JCRA - Mejora incluida: La fecha por defecto de los atributos es la fecha de ingreso
+    //JCRA - Se invoca al proceso de comprobar secuencia para actualizar la secuencia de los atributos
 	public String generationAttribute (Properties ctx, int WindowNo, GridTab mTab, GridField mField, Object value)
 	{
 	
@@ -176,6 +235,10 @@ public class LVE_Customization extends CalloutEngine{
 			return "";	
 		if (mTab.getValue("HR_Employee_ID").equals(0))
 		   return "";
+		if (mTab.getValue("startdate").equals(0))
+			   return "";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"); // JCRA
 		
 		String sql = ""
 			+ "SELECT * "
@@ -186,6 +249,14 @@ public class LVE_Customization extends CalloutEngine{
 		ResultSet rs = null; 
 		try
 		{
+			// JCRA: Comprobar secuencia
+			ProcessInfo pi = new ProcessInfo("Sequence Check", 258);
+			pi.setAD_Client_ID(0);
+			pi.setAD_User_ID(100);
+			SequenceCheck sc = new SequenceCheck();
+			sc.startProcess(Env.getCtx(), pi, null);
+			System.out.println("Process=" + pi.getTitle() + " Error="+pi.isError() + " Summary=" + pi.getSummary());
+			//
 		    pstmt = DB.prepareStatement(sql, null);
 			rs = pstmt.executeQuery();				
 			if (rs.next()){
@@ -252,8 +323,8 @@ public class LVE_Customization extends CalloutEngine{
 							+ "              'Y', "
 							+ "              'Y', "
 							+ "              Now()::timestamp, "
-							+					mTab.getValue("updatedby")+", "
-							+ "              Now()::timestamp, "
+							+				 mTab.getValue("updatedby")+", "
+							+ "              '"+ sdf.format(mTab.getValue("startdate"))  + "' ," //JCRA
 							+                hr_attribute_id +" ," 
 							+ "              '"+ textMsg + "' ) ";
 			
@@ -261,11 +332,17 @@ public class LVE_Customization extends CalloutEngine{
 						log.fine("LVE_Customization : generationAttribute insert #" + no);
 									
 					}
-						
-			
 				
+				JOptionPane.showMessageDialog(null, "Fueron creados con éxito los atributos del empleado debe asignarle los valores iniciales ", "ALERTA", JOptionPane.INFORMATION_MESSAGE);
+				// JCRA: Comprobar secuencia
+				pi.setAD_Client_ID(0);
+				pi.setAD_User_ID(100);
+				sc = new SequenceCheck();
+				sc.startProcess(Env.getCtx(), pi, null);
+				System.out.println("Process=" + pi.getTitle() + " Error="+pi.isError() + " Summary=" + pi.getSummary());
 				return "Fueron creados con éxito los atributos del empleado debe asignarle los valores iniciales ";
 			}else {
+				JOptionPane.showMessageDialog(null, "El empleado no esta en nómina", "ALERTA", JOptionPane.INFORMATION_MESSAGE);
 				return "El empleado no esta en nómina"; 			
 			}
 			
@@ -279,9 +356,7 @@ public class LVE_Customization extends CalloutEngine{
 			DB.close(rs, pstmt);
 		}
 	
-	}
-	
-
+	}	
 	
 }
 
