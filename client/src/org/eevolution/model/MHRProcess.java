@@ -181,7 +181,7 @@ public class MHRProcess extends X_HR_Process implements DocAction
 			throw new AdempiereException("Debe seleccionar los empleados para los cuales se ejecutará esta nómina");
 		
 		// JCRA 09/08/2012: Validación para verificar que los empleados tengan asociados los atributos requeridos y éstos a su vez, valores asignados
-		String vp = meetsPrerequisites(get_TrxName());
+		String vp = meetsPrerequisites(get_TrxName(), getHR_Process_ID());
 		if (vp!="")
 			throw new AdempiereException(vp);
 		else {
@@ -1941,7 +1941,7 @@ public class MHRProcess extends X_HR_Process implements DocAction
 	 * Helper Method : returns the employees that are missing required attributes 
 	  * @param trx_name
 	 */	
-	public static String meetsPrerequisites(String trx_name) {
+	public static String meetsPrerequisites(String trx_name, int hr_process_id) {
 		String sResult = "";
 		PreparedStatement pstmt = null;
 		String sConsulta = ""
@@ -1958,7 +1958,10 @@ public class MHRProcess extends X_HR_Process implements DocAction
 				+ "                                 WHERE  c_bpartner_id = C.c_bpartner_id) "
 				+ "       AND C.isemployee = 'Y' "
 				+ "       AND hr_concept.isactive = 'Y' "
-				+ "       AND C.isactive = 'Y' ";
+				+ "       AND C.isactive = 'Y' "
+				+ "		  AND C.c_bpartner_id IN (SELECT c_bpartner_id "
+				+"								  FROM hr_process_employee "
+				+"								  WHERE hr_process_id = " + hr_process_id + ")";
 		pstmt= DB.prepareStatement(sConsulta,  trx_name );
 		try{
 			ResultSet rSet = pstmt.executeQuery();
