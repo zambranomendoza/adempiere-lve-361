@@ -23,7 +23,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for LCO_WithholdingType
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 3.6.0LTS+P20120111
  */
 public interface I_LCO_WithholdingType 
 {
@@ -118,32 +118,6 @@ public interface I_LCO_WithholdingType
 	  */
 	public boolean isActive();
 
-    /** Column name IsISLR */
-    public static final String COLUMNNAME_IsISLR = "IsISLR";
-
-	/** Set IsISLR.
-	  * IsISLR
-	  */
-	public void setIsISLR (boolean IsISLR);
-
-	/** Get IsISLR.
-	  * IsISLR
-	  */
-	public boolean isISLR();
-
-    /** Column name IsIVA */
-    public static final String COLUMNNAME_IsIVA = "IsIVA";
-
-	/** Set IsIVA.
-	  * IsIVA
-	  */
-	public void setIsIVA (boolean IsIVA);
-
-	/** Get IsIVA.
-	  * IsIVA
-	  */
-	public boolean isIVA();
-
     /** Column name IsSOTrx */
     public static final String COLUMNNAME_IsSOTrx = "IsSOTrx";
 
@@ -165,6 +139,32 @@ public interface I_LCO_WithholdingType
 
 	/** Get Withholding Type	  */
 	public int getLCO_WithholdingType_ID();
+
+    /** Column name LVE_IsISLR */
+    public static final String COLUMNNAME_LVE_IsISLR = "LVE_IsISLR";
+
+	/** Set LVE_IsISLR.
+	  * LVE_IsISLR
+	  */
+	public void setLVE_IsISLR (boolean LVE_IsISLR);
+
+	/** Get LVE_IsISLR.
+	  * LVE_IsISLR
+	  */
+	public boolean isLVE_IsISLR();
+
+    /** Column name LVE_IsIVA */
+    public static final String COLUMNNAME_LVE_IsIVA = "LVE_IsIVA";
+
+	/** Set LVE_IsIVA.
+	  * LVE_IsIVA
+	  */
+	public void setLVE_IsIVA (boolean LVE_IsIVA);
+
+	/** Get LVE_IsIVA.
+	  * LVE_IsIVA
+	  */
+	public boolean isLVE_IsIVA();
 
     /** Column name Name */
     public static final String COLUMNNAME_Name = "Name";
