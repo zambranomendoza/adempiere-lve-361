@@ -317,7 +317,7 @@ public class MLVEDeposit extends X_LVE_Deposit implements DocAction {
 		//
 		log.info(toString());
 		
-		List<MBankStatement> cashbooksorbanks = new ArrayList<MBankStatement>();
+		/*List<MBankStatement> cashbooksorbanks = new ArrayList<MBankStatement>();
 		
 		MBankStatement actual = null;
 		
@@ -419,7 +419,7 @@ public class MLVEDeposit extends X_LVE_Deposit implements DocAction {
 			}
 			
 			cashbookorbank.saveEx();
-		}
+		}*/
 			
 		//	User Validation
 		String valid = ModelValidationEngine.get().fireDocValidate(this, ModelValidator.TIMING_AFTER_COMPLETE);
@@ -492,7 +492,10 @@ public class MLVEDeposit extends X_LVE_Deposit implements DocAction {
 						}
 						else{
 							
-							MBankStatement bkst = mPayment.getBankStatementAssociated();
+							log.warning("Payment Process Failed: " + mPayment + " - " + " Pago Conciliado ");
+							throw new AdempiereException("Payment Process Failed: " + mPayment + " - " + " Pago Conciliado ");
+							
+							/*MBankStatement bkst = mPayment.getBankStatementAssociated();
 							
 							if(!bkst.processIt(MPayment.DOCACTION_Void)) {
 								log.warning("Payment Process Failed: " + mPayment + " - " + mPayment.getProcessMsg());
@@ -506,7 +509,7 @@ public class MLVEDeposit extends X_LVE_Deposit implements DocAction {
 								throw new AdempiereException("Payment Process Failed: " + mPayment + " - " + mPayment.getProcessMsg());
 							}
 							
-							mPayment.saveEx();
+							mPayment.saveEx();*/
 							
 						}
 					}
