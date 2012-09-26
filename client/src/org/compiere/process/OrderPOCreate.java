@@ -257,6 +257,7 @@ public class OrderPOCreate extends SvrProcess
 						poLine.setPrice();
 						poLine.saveEx();
 						
+						
 						soLines[i].setLink_OrderLine_ID(poLine.getC_OrderLine_ID());
 						soLines[i].saveEx();
 					}
