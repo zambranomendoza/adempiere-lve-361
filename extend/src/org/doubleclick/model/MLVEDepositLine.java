@@ -122,13 +122,7 @@ public class MLVEDepositLine extends X_LVE_DepositLine{
 		
 		List<MPayment> list = new Query(getCtx(), I_C_Payment.Table_Name, whereClauseFinal, get_TrxName())
 										.setParameters(getLVE_DepositLine_ID())
-										.list();
-		
-		if (!isCash()){
-			MPayment p = new MPayment(getCtx(), getC_Payment_ID(), get_TrxName());
-			list.add(p);
-		}
-			
+										.list();			
 		
 		return list.toArray(new MPayment[list.size()]);
 	}// getPayments
