@@ -13,3 +13,5 @@ INSERT INTO ad_sysconfig(
 
 UPDATE AD_ReportView SET WhereClause='docstatus not in (''VO'',''WC'', ''IN'') ',Updated=CURRENT_TIMESTAMP,UpdatedBy=0 WHERE AD_ReportView_ID=119
 ;
+
+update C_Currency set iso_code='Bs.' where  C_Currency_ID=205;
