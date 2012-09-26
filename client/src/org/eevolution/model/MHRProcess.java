@@ -784,7 +784,9 @@ public class MHRProcess extends X_HR_Process implements DocAction
 		log.info("HR_Movement deleted #"+ no);
 
 		linesConcept = MHRPayrollConcept.getPayrollConcepts(this);
-		MBPartner[] linesEmployee = MHREmployee.getEmployees(this);
+		//MBPartner[] linesEmployee = MHREmployee.getEmployees(this);
+		MBPartner[] linesEmployee = getEmployeesProcess(getCtx(),getHR_Process_ID(), get_TrxName());
+		
 		//
 		int count = 1;
 		for(MBPartner bp : linesEmployee)	//=============================================================== Employee
@@ -1936,6 +1938,17 @@ public class MHRProcess extends X_HR_Process implements DocAction
 		return result>0?true:false;			   
 	}
 	
+	private MBPartner[] getEmployeesProcess(Properties ctx, int hr_process_id, String trx_name) {
+		List<Object> params = new ArrayList<Object>();
+		StringBuffer whereClause = new StringBuffer();
+		whereClause.append(" C_BPartner_ID IN (select c_bpartner_id from hr_process_employee where hr_process_id = ? ) ");
+		params.add(hr_process_id);
+		List<MBPartner> list = new Query(ctx, MBPartner.Table_Name, whereClause.toString(), trx_name)
+								.setParameters(params)
+								.setOnlyActiveRecords(true)
+								.list();
+		return list.toArray(new MBPartner[list.size()]);
+	}
 	
 	/**
 	 * Helper Method : returns the employees that are missing required attributes 
