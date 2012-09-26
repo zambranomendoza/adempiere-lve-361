@@ -24,14 +24,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for LCO_WithholdingType
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 3.6.0LTS+P20120111 - $Id$ */
 public class X_LCO_WithholdingType extends PO implements I_LCO_WithholdingType, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110602L;
+	private static final long serialVersionUID = 20120924L;
 
     /** Standard Constructor */
     public X_LCO_WithholdingType (Properties ctx, int LCO_WithholdingType_ID, String trxName)
@@ -39,13 +39,13 @@ public class X_LCO_WithholdingType extends PO implements I_LCO_WithholdingType, 
       super (ctx, LCO_WithholdingType_ID, trxName);
       /** if (LCO_WithholdingType_ID == 0)
         {
-			setIsISLR (false);
-// N
-			setIsIVA (false);
-// N
 			setIsSOTrx (false);
 // N
 			setLCO_WithholdingType_ID (0);
+			setLVE_IsISLR (false);
+// N
+			setLVE_IsIVA (false);
+// N
 			setName (null);
         } */
     }
@@ -114,54 +114,6 @@ public class X_LCO_WithholdingType extends PO implements I_LCO_WithholdingType, 
 		return (String)get_Value(COLUMNNAME_Description);
 	}
 
-	/** Set IsISLR.
-		@param IsISLR 
-		IsISLR
-	  */
-	public void setIsISLR (boolean IsISLR)
-	{
-		set_Value (COLUMNNAME_IsISLR, Boolean.valueOf(IsISLR));
-	}
-
-	/** Get IsISLR.
-		@return IsISLR
-	  */
-	public boolean isISLR () 
-	{
-		Object oo = get_Value(COLUMNNAME_IsISLR);
-		if (oo != null) 
-		{
-			 if (oo instanceof Boolean) 
-				 return ((Boolean)oo).booleanValue(); 
-			return "Y".equals(oo);
-		}
-		return false;
-	}
-
-	/** Set IsIVA.
-		@param IsIVA 
-		IsIVA
-	  */
-	public void setIsIVA (boolean IsIVA)
-	{
-		set_Value (COLUMNNAME_IsIVA, Boolean.valueOf(IsIVA));
-	}
-
-	/** Get IsIVA.
-		@return IsIVA
-	  */
-	public boolean isIVA () 
-	{
-		Object oo = get_Value(COLUMNNAME_IsIVA);
-		if (oo != null) 
-		{
-			 if (oo instanceof Boolean) 
-				 return ((Boolean)oo).booleanValue(); 
-			return "Y".equals(oo);
-		}
-		return false;
-	}
-
 	/** Set Sales Transaction.
 		@param IsSOTrx 
 		This is a Sales Transaction
@@ -204,6 +156,54 @@ public class X_LCO_WithholdingType extends PO implements I_LCO_WithholdingType, 
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
+	}
+
+	/** Set LVE_IsISLR.
+		@param LVE_IsISLR 
+		LVE_IsISLR
+	  */
+	public void setLVE_IsISLR (boolean LVE_IsISLR)
+	{
+		set_Value (COLUMNNAME_LVE_IsISLR, Boolean.valueOf(LVE_IsISLR));
+	}
+
+	/** Get LVE_IsISLR.
+		@return LVE_IsISLR
+	  */
+	public boolean isLVE_IsISLR () 
+	{
+		Object oo = get_Value(COLUMNNAME_LVE_IsISLR);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
+
+	/** Set LVE_IsIVA.
+		@param LVE_IsIVA 
+		LVE_IsIVA
+	  */
+	public void setLVE_IsIVA (boolean LVE_IsIVA)
+	{
+		set_Value (COLUMNNAME_LVE_IsIVA, Boolean.valueOf(LVE_IsIVA));
+	}
+
+	/** Get LVE_IsIVA.
+		@return LVE_IsIVA
+	  */
+	public boolean isLVE_IsIVA () 
+	{
+		Object oo = get_Value(COLUMNNAME_LVE_IsIVA);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
 	}
 
 	/** Set Name.
