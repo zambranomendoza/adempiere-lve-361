@@ -465,7 +465,7 @@ public class LVE_MInvoice extends MInvoice
 						PreparedStatement pstmt = DB.prepareStatement(sql, get_TrxName());
 						
 						ResultSet rst2 = pstmt.executeQuery();
-					    if (rst2.next() && wt.isIVA()){
+					    if (rst2.next() && wt.isLVE_IsIVA()){
 					   
 								if (nroReten == null)
 							 		nroReten= generateNroRetention( "NroRetenIVA",get_TrxName(),getCtx());
