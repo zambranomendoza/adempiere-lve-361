@@ -33,25 +33,39 @@ o descomprimió los archivos xml de la traducción es_VE
 
 11. Ejecute el Script de customization.sql
 
-12. Ingrese a Adempiere con rol System Adminitrator ( Lenguaje
+12. Ejecute Menu -> System Admin -> General Rules ->
+Sequence Check .
+
+13. Ejecute el Script de 1Pre_Packing_deposito.sql
+
+14. Ejecute Menu -> System Admin -> General Rules ->
+Sequence Check .
+
+15. Ingrese a Adempiere con rol System Adminitrator ( Lenguaje
 English)
 
-13. Abra la ventana Menu -> Aplication Dictionary -> Aplication
+16. Abra la ventana Menu -> Aplication Dictionary -> Aplication
 Packaging -> PackIn.
 
-14. Ubique el directorio migration_LVE_361/package y ejecute los
+17. Ubique el directorio migration_LVE_361/package y ejecute los
 siguientes paquetes:
 
      LVE_DeleteOrCancelInvoice.zip
      LVE_deletePayment.zip
      LVERetenciones.zip
+     LVE_Deposit.zip
 
      Nota: luego de la ejecución de cada paquete es de GRAN IMPORTACIA
 ejecutar
 el proceso ubicado en: Menu -> System Admin -> General Rules ->
 Sequence Check .
 
-15. Ejecutar el script por consola:
+18. Ejecute el Script de 2Post_Packing_Deposito
+
+19. Ejecute Menu -> System Admin -> General Rules ->
+Sequence Check .
+
+20. Ejecutar el script por consola:
 
      LVE_361/script/Migracion LVE_361/LVE_361/LVE_postgresql.sh
 
@@ -60,29 +74,53 @@ Sequence Check .
          sudo ./LVE_postgresql.sh 361 commit | psql -U adempiere -d
 adempiere >361.lst
 
-16. Ejecutar el proceso ubicado en: Menu -> System Admin ->
+21. Ejecutar el proceso ubicado en: Menu -> System Admin ->
 General Rules -> Sequence Check.
 
-17. Ubicar y abrir el scrip de retenciones:
+22. Ubicar y abrir el scrip de retenciones:
 
     migration_LVE_361/LVE_361/withholding_LVE361.sql
     
-18. Antes de la ejecución del script previamente 
+23. Antes de la ejecución del script previamente 
 usted debe tener creada la compañía a la cual se le va a 
 aplicar la configuración, una vez que esté creada reemplace las 
 ocurrencias de  @ID_CLIENT@ por el ID que se le generó al momento 
 de la creación de la compañía.
 
-19. Proceda a la ejecución del script withholding_LVE361.sql
+24. Proceda a la ejecución del script withholding_LVE361.sql
 
-20. Ubicar y abrir el scrip de traducción de documentos:
+25. Ubicar y abrir el scrip de traducción de documentos:
 
     migration_LVE_361/LVE_361/documentsTraslation_LVE361.sql
     
-21. Antes de la ejecución del script previamente 
+26. Antes de la ejecución del script previamente 
 usted debe tener creada la compañía a la cual se le va a 
 aplicar la configuración, una vez que esté creada reemplace las 
 ocurrencias de  @ID_CLIENT@ por el ID que se le generó al momento 
 de la creación de la compañía.
 
-22. Proceda a la ejecución del script documentsTraslation_LVE361.sql
+27. Proceda a la ejecución del script documentsTraslation_LVE361.sql
+
+28. Ubicar y abrir el scrip de 3Deposito_cambios_Organizacion.sql:
+
+    migration_LVE_361/LVE_361/3Deposito_cambios_Organizacion.sql
+    
+29. Antes de la ejecución del script previamente 
+usted debe tener creada la compañía a la cual se le va a 
+aplicar la configuración, una vez que esté creada reemplace las 
+ocurrencias de  @ID_CLIENT@ por el ID que se le generó al momento 
+de la creación de la compañía.
+
+30. Proceda a la ejecución del script 3Deposito_cambios_Organizacion.sql
+
+31. Ubicar y abrir el scrip de bank_lve361.sql:
+
+    migration_LVE_361/LVE_361/bank_lve361.sql
+    
+32. Antes de la ejecución del script previamente 
+usted debe tener creada la compañía a la cual se le va a 
+aplicar la configuración, una vez que esté creada reemplace las 
+ocurrencias de  @ID_CLIENT@ por el ID que se le generó al momento 
+de la creación de la compañía.
+
+33. Proceda a la ejecución del script bank_lve361.sql
