@@ -19,6 +19,7 @@ import org.compiere.model.GridTab;  		// paquete, estos import no son necesarios
 import org.compiere.util.AdempiereSystemError; 	
 import org.compiere.util.DB;
 import org.compiere.util.Env;
+import org.adempiere.webui.component.Messagebox;
 /*
 *	<li> 
 *  @author Rafael Salazar C. (RTSC) - rsalazar@dcsla.com, Double Click Sistemas http://www.dcsla.com
@@ -228,7 +229,7 @@ public class LVE_Customization extends CalloutEngine{
 	//RTSC
     //JCRA - Mejora incluida: La fecha por defecto de los atributos es la fecha de ingreso
     //JCRA - Se invoca al proceso de comprobar secuencia para actualizar la secuencia de los atributos
-	public String generationAttribute (Properties ctx, int WindowNo, GridTab mTab, GridField mField, Object value)
+	public String generationAttribute (Properties ctx, int WindowNo, GridTab mTab, GridField mField, Object value) throws InterruptedException
 	{
 	
 		if (isCalloutActive())
@@ -247,6 +248,8 @@ public class LVE_Customization extends CalloutEngine{
 			+ "       AND isinpayroll = 'Y' ";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null; 
+		ResultSet rs2 = null;
+		Double hr_attribute_id;
 		try
 		{
 			// JCRA: Comprobar secuencia
@@ -276,73 +279,74 @@ public class LVE_Customization extends CalloutEngine{
 					// buscamos el ultimo codigo generado de los atributos
 					sql = "select max (hr_attribute_id) from hr_attribute";		
 					pstmt = null;
-					ResultSet rs2 = null; 
+					rs2 = null; 
 					pstmt = DB.prepareStatement(sql, null);
 					rs2 = pstmt.executeQuery();
-					rs2.next();
-					Double hr_attribute_id= rs2.getDouble(1);
-					String nombreConcepto= null;
-					String textMsg= null;
-					while (rs.next())
-					{
-						nombreConcepto= rs.getString(3);
-						String valor = rs.getString(2);					
-						Double hr_concept_id= rs.getDouble(1);	
-						
-						hr_attribute_id++;
-						textMsg=null;
-						if (nombreConcepto.equals("A_ESTATUS_EMPLEADO"))
-						   textMsg="ACTI";
-			
-						
-						sql = ""
-							+ "INSERT INTO hr_attribute "
-							+ "            (ad_client_id, "
-							+ "             ad_org_id, "
-							+ "             c_bpartner_id, "
-							+ "             columntype, "
-							+ "             created, "
-							+ "             createdby, "
-							+ "             hr_concept_id, "
-							+ "             hr_employee_id, "
-							+ "             isactive, "
-							+ "             isprinted, "
-							+ "             updated, "
-							+ "             updatedby, "
-							+ "             validfrom, "
-							+ "             hr_attribute_id, " 
-							+ "		        textmsg ) "
-							+ "VALUES      ( '"+ mTab.getValue("ad_client_id")  +"', "
-							+ 				 mTab.getValue("ad_org_id") +", "
-							+ 				 mTab.getValue("c_bpartner_id") +", "
-							+ "              '"+valor+"', "
-							+ "              Now()::timestamp, "
-							+				 mTab.getValue("createdby")+", "
-							+                hr_concept_id+", "
-							+				 mTab.getValue("hr_employee_id")+", "
-							+ "              'Y', "
-							+ "              'Y', "
-							+ "              Now()::timestamp, "
-							+				 mTab.getValue("updatedby")+", "
-							+ "              '"+ sdf.format(mTab.getValue("startdate"))  + "' ," //JCRA
-							+                hr_attribute_id +" ," 
-							+ "              '"+ textMsg + "' ) ";
-			
-						int no = DB.executeUpdate(sql, null);
-						log.fine("LVE_Customization : generationAttribute insert #" + no);
-									
-					}
+					if (rs2.next()){
+						hr_attribute_id= rs2.getDouble(1);
+						String nombreConcepto= null;
+						String textMsg= null;
+						while (rs.next())
+						{
+							nombreConcepto= rs.getString(3);
+							String valor = rs.getString(2);					
+							Double hr_concept_id= rs.getDouble(1);	
+							
+							hr_attribute_id++;
+							textMsg=null;
+							if (nombreConcepto.equals("A_ESTATUS_EMPLEADO"))
+							   textMsg="ACTI";
 				
-				JOptionPane.showMessageDialog(null, "Fueron creados con éxito los atributos del empleado debe asignarle los valores iniciales ", "ALERTA", JOptionPane.INFORMATION_MESSAGE);
+							
+							sql = ""
+								+ "INSERT INTO hr_attribute "
+								+ "            (ad_client_id, "
+								+ "             ad_org_id, "
+								+ "             c_bpartner_id, "
+								+ "             columntype, "
+								+ "             created, "
+								+ "             createdby, "
+								+ "             hr_concept_id, "
+								+ "             hr_employee_id, "
+								+ "             isactive, "
+								+ "             isprinted, "
+								+ "             updated, "
+								+ "             updatedby, "
+								+ "             validfrom, "
+								+ "             hr_attribute_id, " 
+								+ "		        textmsg ) "
+								+ "VALUES      ( '"+ mTab.getValue("ad_client_id")  +"', "
+								+ 				 mTab.getValue("ad_org_id") +", "
+								+ 				 mTab.getValue("c_bpartner_id") +", "
+								+ "              '"+valor+"', "
+								+ "              Now()::timestamp, "
+								+				 mTab.getValue("createdby")+", "
+								+                hr_concept_id+", "
+								+				 mTab.getValue("hr_employee_id")+", "
+								+ "              'Y', "
+								+ "              'Y', "
+								+ "              Now()::timestamp, "
+								+				 mTab.getValue("updatedby")+", "
+								+ "              '"+ sdf.format(mTab.getValue("startdate"))  + "' ," //JCRA
+								+                hr_attribute_id +" ," 
+								+ "              '"+ textMsg + "' ) ";
+				
+							int no = DB.executeUpdate(sql, null);
+							log.fine("LVE_Customization : generationAttribute insert #" + no);
+										
+						}
+				}
 				// JCRA: Comprobar secuencia
 				pi.setAD_Client_ID(0);
 				pi.setAD_User_ID(100);
 				sc = new SequenceCheck();
 				sc.startProcess(Env.getCtx(), pi, null);
 				System.out.println("Process=" + pi.getTitle() + " Error="+pi.isError() + " Summary=" + pi.getSummary());
-				return "Fueron creados con éxito los atributos del empleado debe asignarle los valores iniciales ";
+				
+				Messagebox.showDialog("Los atributos requeridos del empleado fueron creados con éxito. Debe asignarle los valores iniciales", "Atributos Requeridos Empleados", Messagebox.OK, Messagebox.INFORMATION);
+				return "Los atributos requeridos del empleado fueron creados con éxito. Debe asignarle los valores iniciales";
 			}else {
-				JOptionPane.showMessageDialog(null, "El empleado no esta en nómina", "ALERTA", JOptionPane.INFORMATION_MESSAGE);
+				Messagebox.showDialog("El empleado no esta en nómina", "Atributos Requeridos Empleados", Messagebox.OK, Messagebox.EXCLAMATION);
 				return "El empleado no esta en nómina"; 			
 			}
 			
@@ -354,6 +358,7 @@ public class LVE_Customization extends CalloutEngine{
 		finally
 		{
 			DB.close(rs, pstmt);
+			DB.close(rs2, pstmt);
 		}
 	
 	}	
