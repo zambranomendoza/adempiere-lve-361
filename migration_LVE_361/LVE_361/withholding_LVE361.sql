@@ -1,4 +1,5 @@
 -- Original contribution by Rafael Tomas Salazar Colmenarez - rsalazar@dcsla.com --- rtsc08@gmail.com  for Double Click Sistemas C.A.
+-- Contribution by Angel Parra - aparra@dcs.net.ve --- arpr18@gmail.com  for Double Click Sistemas C.A.
 -- Date:      22/08/2011 
 -- Updated: 16/09/2011
 -- Note: if you want to run script , you must  replaced all occurrences @ID_CLIENT@  the company that is creating
@@ -671,6 +672,9 @@ INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, crea
 ;
 INSERT INTO adempiere.lco_withholdingrule(ad_client_id, validfrom, created, createdby, description, isactive, isdefault, lco_bp_isic_id, lco_bp_taxpayertype_id, lco_org_isic_id, lco_org_taxpayertype_id, lco_withholdingcalc_id, lco_withholdingcategory_id, c_taxcategory_id, lco_withholdingrule_id, lco_withholdingtype_id, ad_org_id, updated, updatedby, name, lco_bp_city_id, lco_org_city_id, code)
   VALUES(@ID_CLIENT@, '2010-01-01 00:00:00.0', CURRENT_TIMESTAMP, 100, 'ISLR Pagos a Empresas Contratistas o SubContratistas domiciliadas o no en el pais, por la ejecucion de obras o de la prestacion de servicios en base a evaluaciones y ordenes de pago (PJD)', 'Y', 'N', NULL, 5000000, NULL, NULL, 5000033, 5000004, 5000011, 5000044, 5000004, 0, CURRENT_TIMESTAMP, 100, 'ISLR Pago Emp Contra, por Ejecu de Obras o Presta. Serv. PJD', NULL, NULL, '055')
+;
+
+INSERT INTO AD_Sequence (IncrementNo,StartNewYear,CurrentNextSys,IsTableID,StartNo,CurrentNext,IsAudited,IsAutoSequence,AD_Sequence_ID,DecimalPattern,Name,AD_Org_ID,AD_Client_ID,Updated,UpdatedBy,Created,CreatedBy,IsActive) VALUES (1,'N',100,'Y',1000000,1,'N','Y',(SELECT COALESCE(MAX(AD_SEQUENCE_ID)+1,0) FROM AD_SEQUENCE),'00000000','NroRetenIVA',0,@ID_CLIENT@,CURRENT_TIMESTAMP,100,CURRENT_TIMESTAMP,100,'Y')
 ;
 
 
