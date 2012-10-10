@@ -1,25 +1,21 @@
 package org.doubleclick.callout;
-
-import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
 import java.util.logging.Level;
 import org.compiere.process.*;
-
-import javax.swing.JOptionPane;
-
-import org.compiere.model.CalloutEngine;  	//notese que pertenecen al paquete 
-import org.compiere.model.GridField;     	// org.compiere.model, si crea el callout en este 
-import org.compiere.model.GridTab;  		// paquete, estos import no son necesarios. 
+import org.compiere.model.CalloutEngine;  	
+import org.compiere.model.GridField;     	
+import org.compiere.model.GridTab;  		
 import org.compiere.util.AdempiereSystemError; 	
 import org.compiere.util.DB;
 import org.compiere.util.Env;
-import org.adempiere.webui.component.Messagebox;
+//import javax.swing.JOptionPane;
+//import org.zkoss.zul.Messagebox;
+//import org.adempiere.webui.component.Messagebox;
 /*
 *	<li> 
 *  @author Rafael Salazar C. (RTSC) - rsalazar@dcsla.com, Double Click Sistemas http://www.dcsla.com
@@ -252,14 +248,6 @@ public class LVE_Customization extends CalloutEngine{
 		Double hr_attribute_id;
 		try
 		{
-			// JCRA: Comprobar secuencia
-			ProcessInfo pi = new ProcessInfo("Sequence Check", 258);
-			pi.setAD_Client_ID(0);
-			pi.setAD_User_ID(100);
-			SequenceCheck sc = new SequenceCheck();
-			sc.startProcess(Env.getCtx(), pi, null);
-			System.out.println("Process=" + pi.getTitle() + " Error="+pi.isError() + " Summary=" + pi.getSummary());
-			//
 		    pstmt = DB.prepareStatement(sql, null);
 			rs = pstmt.executeQuery();				
 			if (rs.next()){
@@ -333,22 +321,19 @@ public class LVE_Customization extends CalloutEngine{
 				
 							int no = DB.executeUpdate(sql, null);
 							log.fine("LVE_Customization : generationAttribute insert #" + no);
-										
 						}
 				}
 				// JCRA: Comprobar secuencia
-				pi.setAD_Client_ID(0);
+				ProcessInfo pi = new ProcessInfo("Sequence Check", 258);
+				pi.setAD_Client_ID(1000000);
 				pi.setAD_User_ID(100);
-				sc = new SequenceCheck();
+				SequenceCheck sc = new SequenceCheck();
 				sc.startProcess(Env.getCtx(), pi, null);
-				System.out.println("Process=" + pi.getTitle() + " Error="+pi.isError() + " Summary=" + pi.getSummary());
-				
-				Messagebox.showDialog("Los atributos requeridos del empleado fueron creados con éxito. Debe asignarle los valores iniciales", "Atributos Requeridos Empleados", Messagebox.OK, Messagebox.INFORMATION);
+				//System.out.println("Process=" + pi.getTitle() + " Error="+pi.isError() + " Summary=" + pi.getSummary());
+				//
 				return "Los atributos requeridos del empleado fueron creados con éxito. Debe asignarle los valores iniciales";
-			}else {
-				Messagebox.showDialog("El empleado no esta en nómina", "Atributos Requeridos Empleados", Messagebox.OK, Messagebox.EXCLAMATION);
+			}else
 				return "El empleado no esta en nómina"; 			
-			}
 			
 		}catch (SQLException e)
 		{
