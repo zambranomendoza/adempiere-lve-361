@@ -1,5 +1,7 @@
 -- Original contribution by Rafael Tomás Salazar Colmenárez - rsalazar@dcsla.com --- rtsc08@gmail.com  for Double Click Sistemas C.A.
--- Contribution by by Miguel Hernández Giusti - mhernandez@ghintech.com
+-- Contribution by Miguel Hernández Giusti - mhernandez@ghintech.com
+-- Contribution by Ads. Angel Parra - Double Click Sistemas C.A. - Agosto 2012 - Barquisimeto - Lara - Venezuela
+
 
 update ad_column set callout='org.doubleclick.callout.LVE_Customization.generationTaxID'  where AD_Column_ID=2909;
 
@@ -15,3 +17,10 @@ UPDATE AD_ReportView SET WhereClause='docstatus not in (''VO'',''WC'', ''IN'') '
 ;
 
 update C_Currency set iso_code='Bs.' where  C_Currency_ID=205;
+
+INSERT INTO adempiere.AD_SysConfig 
+(Name,AD_SysConfig_ID,EntityType,ConfigurationLevel,Value,Description,Created,Updated,AD_Client_ID,AD_Org_ID,CreatedBy,
+UpdatedBy,IsActive) VALUES ('skip_validation_tab',(SELECT coalesce(MAX(AD_SysConfig_ID),1000000)+1 FROM adempiere.AD_SysConfig),'DCS','O','','Insert all windows you want to skip the validation of tabs, please separate each window with the character semicolon ";"',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,0,0,100,100,'Y')
+;
+
+update ad_sysconfig set value = 'N' where name = 'ProductUOMConversionRateValidate';
