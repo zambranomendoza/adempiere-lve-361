@@ -84,84 +84,71 @@ public class LVE_CInvoiceModel implements ModelValidator
 	public String modelChange (PO po, int type) throws Exception
 	{
 		MInvoice mInvoice =  (MInvoice) po;  
+		boolean issotrx = mInvoice.get_ValueAsBoolean("IssoTrx");
 		
-		if (po.get_TableName().equals(MInvoice.Table_Name) &&
-			( type != ModelValidator.TYPE_DELETE  && 
-			  type != ModelValidator.TYPE_BEFORE_DELETE  &&
-			  type != ModelValidator.TYPE_AFTER_DELETE  	))
-		{
-			
-			String code =  mInvoice.get_ValueAsString("PoReference");
-			String LVE_controlNumber =  mInvoice.get_ValueAsString("LVE_controlNumber");
-			Integer AD_Client_ID= mInvoice.get_ValueAsInt( "AD_Client_ID");
-			Integer AD_Org_ID= mInvoice.get_ValueAsInt( "AD_Client_ID");
-			Integer C_BPartner_ID= mInvoice.get_ValueAsInt( "C_BPartner_ID");
-			Integer C_DocTypeTarget_ID = mInvoice.get_ValueAsInt("C_DocTypeTarget_ID"); 
-			String C_Invoice_ID =  mInvoice.get_ValueAsString("c_invoice_id");
-			if (code == null || code.trim().equals(""))
-				return "";
-
-			String sql = ""
-				+ "SELECT * "
-				+ "FROM   c_invoice "
-				+ "WHERE  AD_Client_ID = '"+AD_Client_ID+"'"
-				+ " AND  AD_Org_ID = '"+AD_Org_ID+"'"
-				+ " AND  C_BPartner_ID = '"+C_BPartner_ID+"'"
-				+ " AND  C_DocTypeTarget_ID = '"+C_DocTypeTarget_ID+"'"
-				+"  AND PoReference= '"+ code +"'"
-				+"  AND C_Invoice_ID <> '" + C_Invoice_ID + "'";
-			
-			PreparedStatement pstmt = null;
-			ResultSet rs = null; 
-			
-			
-			String sql2 = ""
-				+ "SELECT * "
-				+ "FROM   c_invoice "
-				+ "WHERE  AD_Client_ID = '"+AD_Client_ID+"'"
-				+ " AND  AD_Org_ID = '"+AD_Org_ID+"'"
-				+ " AND  C_BPartner_ID = '"+C_BPartner_ID+"'"
-				+ " AND  C_DocTypeTarget_ID = '"+C_DocTypeTarget_ID+"'"
-				+"  AND LVE_controlNumber= '"+ LVE_controlNumber +"'"
-				+"  AND C_Invoice_ID <> '" + C_Invoice_ID + "'";
-			
-			PreparedStatement pstmt2 = null;
-			ResultSet rs2 = null; 
-			
-			try
-			{
-				if (C_DocTypeTarget_ID!=1000002){
-					pstmt = DB.prepareStatement(sql, null);
-					rs = pstmt.executeQuery();
-				
-					if (rs.next() )
-					{
-						return "Ya existe el número del proveedor " +code;
-							
-					}
-				}				
-				pstmt2 = DB.prepareStatement(sql2, null);
-				rs2 = pstmt2.executeQuery();
-				
-				if (rs2.next())
-				{
-					return "Ya existe el número de control " +code;
-						
-				}
-		
+		if (!issotrx){
+			if (po.get_TableName().equals(MInvoice.Table_Name) &&
+					( type != ModelValidator.TYPE_DELETE  && 
+					  type != ModelValidator.TYPE_BEFORE_DELETE  &&
+					  type != ModelValidator.TYPE_AFTER_DELETE  	))
+				{			
+					String code =  mInvoice.get_ValueAsString("PoReference");
+					Integer AD_Client_ID= mInvoice.get_ValueAsInt( "AD_Client_ID");
+					Integer AD_Org_ID= mInvoice.get_ValueAsInt( "AD_Client_ID");
+					Integer C_BPartner_ID= mInvoice.get_ValueAsInt( "C_BPartner_ID");
+					Integer C_DocTypeTarget_ID = mInvoice.get_ValueAsInt("C_DocTypeTarget_ID"); 
+					String C_Invoice_ID =  mInvoice.get_ValueAsString("c_invoice_id");
 					
-			}
-			catch (SQLException e)
-			{
-				log.log(Level.SEVERE, sql, e);
-				return e.getLocalizedMessage();
-			}
-			finally
-			{
-				DB.close(rs, pstmt);
-			}
+						if (code == null || code.trim().equals(""))
+							return "";
 
+						String sql = ""
+							+ "SELECT * "
+							+ "FROM   c_invoice "
+							+ "WHERE  AD_Client_ID = '"+AD_Client_ID+"'"
+							+ " AND  AD_Org_ID = '"+AD_Org_ID+"'"
+							+ " AND  C_BPartner_ID = '"+C_BPartner_ID+"'"
+							+ " AND  C_DocTypeTarget_ID = '"+C_DocTypeTarget_ID+"'"
+							+"  AND PoReference= '"+ code +"'"
+							+"  AND C_Invoice_ID <> '" + C_Invoice_ID + "'";
+						
+						PreparedStatement pstmt = null;
+						ResultSet rs = null;
+						
+						try
+						{
+							if (C_DocTypeTarget_ID!=1000002){
+								pstmt = DB.prepareStatement(sql, null);
+								rs = pstmt.executeQuery();
+							
+								if (rs.next() )
+								{
+									return "Ya existe el número del proveedor " +code;
+										
+								}
+							}		
+								
+						}
+						catch (SQLException e)
+						{
+							log.log(Level.SEVERE, sql, e);
+							return e.getLocalizedMessage();
+						}
+						finally
+						{
+							DB.close(rs, pstmt);
+						}
 
+				}
+		}
+		
+		if (issotrx){
+			if (po.get_TableName().equals(MInvoice.Table_Name)  && type == ModelValidator.TYPE_AFTER_NEW){
+					MInvoice mInvoiceA =  (MInvoice) po;
+					DB.executeUpdateEx("UPDATE C_Invoice SET LVE_ControlNumber=? WHERE C_Invoice_ID=?", 
+					new Object[] {mInvoiceA.get_Value("Value"), mInvoiceA.getC_Invoice_ID()}, 
+					mInvoiceA.get_TrxName());
+			}
 		}
 		
 	
