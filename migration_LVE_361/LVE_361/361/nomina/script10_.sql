@@ -27,3 +27,4 @@ go
 -- Traducción sexo femenino
 UPDATE AD_Ref_List_Trl SET IsTranslated='Y',Name='Femenino',Description=NULL,Updated=now(),UpdatedBy=100 
 WHERE AD_Ref_List_ID=(select ad_ref_list_id  from ad_ref_list where name = 'Female' order by ad_ref_list_id desc limit 1 offset 0) AND AD_Language='es_VE'
+go

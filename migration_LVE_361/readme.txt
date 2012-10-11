@@ -124,3 +124,21 @@ ocurrencias de  @ID_CLIENT@ por el ID que se le generó al momento
 de la creación de la compañía.
 
 33. Proceda a la ejecución del script bank_lve361.sql
+
+34. Abra la ventana Menu -> Aplication Dictionary -> Aplication
+Packaging -> PackIn.
+
+35. Ubique el directorio migration_LVE_361/package/nomina y ejecute los
+siguientes paquetes es dicho orden:
+
+     LVE_TalentoHumanoHigiene_1.zip
+     LVE_TalentoHumanoNomina_2.zip
+     LVE_TalentoHumanoRRHH_3.zip
+     LVE_Empleado_4.zip
+     LVE_CatalogoConceptos_5.zip
+     LVE_HR_Loan_Type_6.zip
+
+     Nota: luego de la ejecución de cada paquete es de GRAN IMPORTACIA
+ejecutar
+el proceso ubicado en: Menu -> System Admin -> General Rules ->
+Sequence Check .

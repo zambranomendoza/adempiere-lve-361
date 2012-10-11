@@ -135,6 +135,7 @@ INSERT INTO adempiere.hr_payrollconcept(name, ad_org_id, ad_rule_id, created, cr
 GO
 INSERT INTO adempiere.hr_payrollconcept(name, ad_org_id, ad_rule_id, created, createdby, hr_concept_id, hr_payrollconcept_id, hr_payroll_id, isactive, isdisplayed, isinclude, isprinted, seqno, updated, ad_client_id, updatedby)
   VALUES('CC_BASE_INTERES_PRESTA_SOCIALES', 0, NULL, '2011-03-24 16:29:57.0', 100, 1000346, 1001532, 1000012, 'Y', 'Y', 'N', 'N', 240, '2011-04-16 11:49:37.0', @ad_client_id, 100)
+GO
 INSERT INTO adempiere.hr_payrollconcept(name, ad_org_id, ad_rule_id, created, createdby, hr_concept_id, hr_payrollconcept_id, hr_payroll_id, isactive, isdisplayed, isinclude, isprinted, seqno, updated, ad_client_id, updatedby)
   VALUES('CC_INTERESES_PREST_SOC_MENSUAL', 0, NULL, '2011-05-12 15:10:40.0', 100, 1000441, 1001730, 1000011, 'Y', 'Y', 'N', 'N', 50, '2011-05-12 15:10:40.0', @ad_client_id, 100)
 GO

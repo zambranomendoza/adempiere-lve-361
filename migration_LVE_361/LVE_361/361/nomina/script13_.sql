@@ -45,7 +45,7 @@ GO
 --Sueldos y Salarios
 INSERT INTO C_Charge (IsSameCurrency,IsSameTax,C_TaxCategory_ID,ChargeAmt,C_Charge_ID,IsTaxIncluded,Name,AD_Org_ID,CreatedBy,IsActive,Created,UpdatedBy,Updated,AD_Client_ID) 
 VALUES ('N','N',(select C_TaxCategory_ID from C_TaxCategory where name = 'EXENTO'),0,
-(select max(c_charge_id)+1 from c_charge),'N','Sueldos y Salarios',@AD_Org_ID,100,'Y',now(),100,now,@AD_Client_ID)
+(select max(c_charge_id)+1 from c_charge),'N','Sueldos y Salarios',@AD_Org_ID,100,'Y',now(),100,now(),@AD_Client_ID)
 GO
 INSERT INTO C_Charge_Trl (AD_Language,C_Charge_ID, Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) 
 SELECT l.AD_Language,t.C_Charge_ID, t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy 
@@ -63,7 +63,7 @@ GO
 --Retención de Seguro Social
 INSERT INTO C_Charge (IsSameCurrency,IsSameTax,C_TaxCategory_ID,ChargeAmt,C_Charge_ID,IsTaxIncluded,Name,AD_Org_ID,CreatedBy,IsActive,Created,UpdatedBy,Updated,AD_Client_ID) 
 VALUES ('N','N',(select C_TaxCategory_ID from C_TaxCategory where name = 'EXENTO'),0,
-(select max(c_charge_id)+1 from c_charge),'N','Retención de Seguro Social',@AD_Org_ID,100,'Y',now(),100,now,@AD_Client_ID)
+(select max(c_charge_id)+1 from c_charge),'N','Retención de Seguro Social',@AD_Org_ID,100,'Y',now(),100,now(),@AD_Client_ID)
 GO
 INSERT INTO C_Charge_Trl (AD_Language,C_Charge_ID, Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) 
 SELECT l.AD_Language,t.C_Charge_ID, t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy 
@@ -81,7 +81,7 @@ GO
 --Retención de LPH
 INSERT INTO C_Charge (IsSameCurrency,IsSameTax,C_TaxCategory_ID,ChargeAmt,C_Charge_ID,IsTaxIncluded,Name,AD_Org_ID,CreatedBy,IsActive,Created,UpdatedBy,Updated,AD_Client_ID) 
 VALUES ('N','N',(select C_TaxCategory_ID from C_TaxCategory where name = 'EXENTO'),0,
-(select max(c_charge_id)+1 from c_charge),'N','Retención de LPH',@AD_Org_ID,100,'Y',now(),100,now,@AD_Client_ID)
+(select max(c_charge_id)+1 from c_charge),'N','Retención de LPH',@AD_Org_ID,100,'Y',now(),100,now(),@AD_Client_ID)
 GO
 INSERT INTO C_Charge_Trl (AD_Language,C_Charge_ID, Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) 
 SELECT l.AD_Language,t.C_Charge_ID, t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy 
@@ -99,7 +99,7 @@ GO
 --Retención de ISLR
 INSERT INTO C_Charge (IsSameCurrency,IsSameTax,C_TaxCategory_ID,ChargeAmt,C_Charge_ID,IsTaxIncluded,Name,AD_Org_ID,CreatedBy,IsActive,Created,UpdatedBy,Updated,AD_Client_ID) 
 VALUES ('N','N',(select C_TaxCategory_ID from C_TaxCategory where name = 'EXENTO'),0,
-(select max(c_charge_id)+1 from c_charge),'N','Retención de ISLR',@AD_Org_ID,100,'Y',now(),100,now,@AD_Client_ID)
+(select max(c_charge_id)+1 from c_charge),'N','Retención de ISLR',@AD_Org_ID,100,'Y',now(),100,now(),@AD_Client_ID)
 GO
 INSERT INTO C_Charge_Trl (AD_Language,C_Charge_ID, Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) 
 SELECT l.AD_Language,t.C_Charge_ID, t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy 
@@ -117,7 +117,7 @@ GO
 --Retención de INCES
 INSERT INTO C_Charge (IsSameCurrency,IsSameTax,C_TaxCategory_ID,ChargeAmt,C_Charge_ID,IsTaxIncluded,Name,AD_Org_ID,CreatedBy,IsActive,Created,UpdatedBy,Updated,AD_Client_ID) 
 VALUES ('N','N',(select C_TaxCategory_ID from C_TaxCategory where name = 'EXENTO'),0,
-(select max(c_charge_id)+1 from c_charge),'N','Retención de INCES',@AD_Org_ID,100,'Y',now(),100,now,@AD_Client_ID)
+(select max(c_charge_id)+1 from c_charge),'N','Retención de INCES',@AD_Org_ID,100,'Y',now(),100,now(),@AD_Client_ID)
 GO
 INSERT INTO C_Charge_Trl (AD_Language,C_Charge_ID, Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) 
 SELECT l.AD_Language,t.C_Charge_ID, t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy 
