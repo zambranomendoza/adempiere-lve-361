@@ -77,58 +77,62 @@ adempiere >361.lst
 21. Ejecutar el proceso ubicado en: Menu -> System Admin ->
 General Rules -> Sequence Check.
 
-22. Ubicar y abrir el scrip de retenciones:
+22. En el directorio principal de su aplicacion al mismo nivel de los directorios packages y zkpackages pegar la carpeta reports ubicada en:
+
+   LVE_361/script/Migracion LVE_361/
+
+23. Ubicar y abrir el scrip de retenciones:
 
     migration_LVE_361/LVE_361/withholding_LVE361.sql
     
-23. Antes de la ejecución del script previamente 
+24. Antes de la ejecución del script previamente 
 usted debe tener creada la compañía a la cual se le va a 
 aplicar la configuración, una vez que esté creada reemplace las 
 ocurrencias de  @ID_CLIENT@ por el ID que se le generó al momento 
 de la creación de la compañía.
 
-24. Proceda a la ejecución del script withholding_LVE361.sql
+25. Proceda a la ejecución del script withholding_LVE361.sql
 
-25. Ubicar y abrir el scrip de traducción de documentos:
+26. Ubicar y abrir el scrip de traducción de documentos:
 
     migration_LVE_361/LVE_361/documentsTraslation_LVE361.sql
     
-26. Antes de la ejecución del script previamente 
+27. Antes de la ejecución del script previamente 
 usted debe tener creada la compañía a la cual se le va a 
 aplicar la configuración, una vez que esté creada reemplace las 
 ocurrencias de  @ID_CLIENT@ por el ID que se le generó al momento 
 de la creación de la compañía.
 
-27. Proceda a la ejecución del script documentsTraslation_LVE361.sql
+28. Proceda a la ejecución del script documentsTraslation_LVE361.sql
 
-28. Ubicar y abrir el scrip de 3Deposito_cambios_Organizacion.sql:
+29. Ubicar y abrir el scrip de 3Deposito_cambios_Organizacion.sql:
 
     migration_LVE_361/LVE_361/3Deposito_cambios_Organizacion.sql
     
-29. Antes de la ejecución del script previamente 
+30. Antes de la ejecución del script previamente 
 usted debe tener creada la compañía a la cual se le va a 
 aplicar la configuración, una vez que esté creada reemplace las 
 ocurrencias de  @ID_CLIENT@ por el ID que se le generó al momento 
 de la creación de la compañía.
 
-30. Proceda a la ejecución del script 3Deposito_cambios_Organizacion.sql
+31. Proceda a la ejecución del script 3Deposito_cambios_Organizacion.sql
 
-31. Ubicar y abrir el scrip de bank_lve361.sql:
+32. Ubicar y abrir el scrip de bank_lve361.sql:
 
     migration_LVE_361/LVE_361/bank_lve361.sql
     
-32. Antes de la ejecución del script previamente 
+33. Antes de la ejecución del script previamente 
 usted debe tener creada la compañía a la cual se le va a 
 aplicar la configuración, una vez que esté creada reemplace las 
 ocurrencias de  @ID_CLIENT@ por el ID que se le generó al momento 
 de la creación de la compañía.
 
-33. Proceda a la ejecución del script bank_lve361.sql
+34. Proceda a la ejecución del script bank_lve361.sql
 
-34. Abra la ventana Menu -> Aplication Dictionary -> Aplication
+35. Abra la ventana Menu -> Aplication Dictionary -> Aplication
 Packaging -> PackIn.
 
-35. Ubique el directorio migration_LVE_361/package/nomina y ejecute los
+36. Ubique el directorio migration_LVE_361/package/nomina y ejecute los
 siguientes paquetes es dicho orden:
 
      LVE_TalentoHumanoHigiene_1.zip
@@ -143,9 +147,9 @@ ejecutar
 el proceso ubicado en: Menu -> System Admin -> General Rules ->
 Sequence Check .
 
-36. Ubicar la carpeta: 
+37. Ubicar la carpeta: 
      migration_LVE_361/LVE_361/361/nomina
 
-37. Realizar los cambios indicados al comienzo de cada uno de los Script y ejecutarlos.
+38. Realizar los cambios indicados al comienzo de cada uno de los Script y ejecutarlos.
 
-38. Ejecutar el proceso ubicado en: Menu -> System Admin -> General Rules -> Sequence Check.
+39. Ejecutar el proceso ubicado en: Menu -> System Admin -> General Rules -> Sequence Check.
