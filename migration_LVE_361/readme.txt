@@ -142,3 +142,10 @@ siguientes paquetes es dicho orden:
 ejecutar
 el proceso ubicado en: Menu -> System Admin -> General Rules ->
 Sequence Check .
+
+36. Ubicar la carpeta: 
+     migration_LVE_361/LVE_361/361/nomina
+
+37. Realizar los cambios indicados al comienzo de cada uno de los Script y ejecutarlos.
+
+38. Ejecutar el proceso ubicado en: Menu -> System Admin -> General Rules -> Sequence Check.
