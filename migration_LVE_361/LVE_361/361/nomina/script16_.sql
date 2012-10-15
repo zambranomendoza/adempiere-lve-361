@@ -1,3 +1,7 @@
+-- Original contribution by Ing. Jenny Cecilia Rodriguez for Double Click Sistemas, C.A.
+
+BEGIN;
+
 -- Función lve_daysnotice
 CREATE OR REPLACE FUNCTION adempiere.lve_daysnotice (in p_ad_client_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_notice bpchar) RETURNS numeric AS
 $BODY$
@@ -19,7 +23,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 -- Función lve_daysnoticecategory
 CREATE OR REPLACE FUNCTION adempiere.lve_daysnoticecategory (in p_ad_client_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_category bpchar) RETURNS numeric AS
 $BODY$
@@ -42,7 +46,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 -- Función lve_daysnoticeinperiod
 CREATE OR REPLACE FUNCTION adempiere.lve_daysnoticeinperiod (in p_ad_client_id numeric, in p_hr_payroll_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_notice bpchar, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -65,7 +69,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 -- Función lve_daysrest
 CREATE OR REPLACE FUNCTION adempiere.lve_daysrest (in p_from timestamptz, in p_to timestamptz, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -85,7 +89,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 -- Función lve_daysrest2
 CREATE OR REPLACE FUNCTION adempiere.lve_daysrest2 (in p_from timestamptz, in p_to timestamptz, in p_dayrest1 int4, in p_dayrest2 int4) RETURNS numeric AS
 $BODY$
@@ -105,7 +109,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 -- Función lve_daysrestnoticeinperiod
 CREATE OR REPLACE FUNCTION adempiere.lve_daysrestnoticeinperiod (in p_ad_client_id numeric, in p_hr_payroll_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_concept_category bpchar, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -133,7 +137,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 -- Función lve_holidaysinperiod
 CREATE OR REPLACE FUNCTION adempiere.lve_holidaysinperiod (in p_hr_payroll_id numeric, in p_from timestamptz, in p_to timestamptz, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -155,7 +159,7 @@ BEGIN
 END;
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 -- Función lve_holidaysinperiod2
 CREATE OR REPLACE FUNCTION adempiere.lve_holidaysinperiod2 (in p_hr_payroll_id numeric, in p_from timestamptz, in p_to timestamptz, in p_dayrest1 int4, in p_dayrest2 int4) RETURNS numeric AS
 $BODY$
@@ -177,7 +181,7 @@ BEGIN
 END;
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 -- Función lve_holidaysnoticeinperiod
 CREATE OR REPLACE FUNCTION adempiere.lve_holidaysnoticeinperiod (in p_ad_client_id numeric, in p_hr_payroll_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_concept_category bpchar, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -203,7 +207,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 -- Función lve_holidaysnoticeinperiod2
 CREATE OR REPLACE FUNCTION adempiere.lve_holidaysnoticeinperiod2 (in p_ad_client_id numeric, in p_hr_payroll_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_concept_category bpchar, in p_dayrest1 int4, in p_dayrest2 int4) RETURNS numeric AS
 $BODY$
@@ -229,7 +233,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 -- Función lve_holidaysrestnoticecategory
 CREATE OR REPLACE FUNCTION adempiere.lve_holidaysrestnoticecategory (in p_ad_client_id numeric, in p_hr_payroll_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_category bpchar, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -256,7 +260,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 -- Función lve_holidaysrestnoticeinperiod
 CREATE OR REPLACE FUNCTION adempiere.lve_holidaysrestnoticeinperiod (in p_ad_client_id numeric, in p_hr_payroll_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_notice bpchar, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -281,7 +285,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 -- Actualización de reglas-----------------------------------------------------------------------------------
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -293,7 +297,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_BONO_PRODUCCION"
 
 '
 WHERE value = 'beanshell:R_BONO_PRODUCCION'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -316,7 +320,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 &&
    result = getAttribute("C_MONTO_PAGAR_BONO_AÑOS_EMPRESA");
 }'
 WHERE value = 'beanshell:R_BONO_AÑOS_EMPRESA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -330,7 +334,7 @@ if (getConcept("CC_DIAS_ADIC_VAC_PAG_SIN_DISFRU") > 0)
 
 }'
 WHERE value = 'beanshell:R_VACACIONES_PAGADAS_SIN_DISF'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -339,7 +343,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_ANTICIPO_SUELDO"
    result = getAttribute("A_ANTICIPO_SUELDO");
 '
 WHERE value = 'beanshell:R_ANTICIPO_SUELDO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -349,7 +353,7 @@ if ("S".equals(getAttributeString("A_EMPLEADO_SINDICALIZADO"))  && getAttribute(
      result=getAttribute("C_MONTO_DESCONTAR_MONTEPIO");
 '
 WHERE value = 'beanshell:R_MONTEPIO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='A_Tab.getField("isOption7").setDisplayed(A_Tab.getValue("isRegistered").equals(true));
@@ -357,7 +361,7 @@ SET script ='A_Tab.getField("isOption7").setDisplayed(A_Tab.getValue("isRegister
 
 result="";'
 WHERE value = 'beanshell:Callout_IsRegistered'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='int dayrest = (int)getAttribute("C_DIA_SEMANA_DESCANSO");
@@ -369,7 +373,7 @@ int days = DB.getSQLValue(get_TrxName(), sQuery,
 return = days * (getConcept("CC_SUELDO_MENSUAL") / getAttribute("C_DIAS_DEL_MES"));
 	'
 WHERE value = 'beanshell:R_DEDUCCION_SUSPENSION'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -377,7 +381,7 @@ SET script ='result = 0.0;
 if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_DEDUCCION_SIN_CARACTER_SALARIAL") > 0)
    result = getAttribute("A_DEDUCCION_SIN_CARACTER_SALARIAL");'
 WHERE value = 'beanshell:R_DED_SIN_CARACTER_SALARIAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -398,7 +402,7 @@ if (( "Utilidades".equals(sContract) && getAttribute("C_DESC_CUOTA_SINDICAL_UTIL
 }
 '
 WHERE value = 'beanshell:R_CUOTA_SINDICAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=1.0; 
@@ -421,7 +425,7 @@ if (value1>0) {
 }
  '
 WHERE value = 'beanshell:R_CIERRE_INTERES_PREST_PAG'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -431,7 +435,7 @@ if ("Liquidacion".equals(sContract)){
      result= LVE_Payroll.PaymentOfQuotaLiquidation(get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "S1" , new Date  (_To.getYear(), _To.getMonth(), _To.getDay()), _Process );
 }'
 WHERE value = 'beanshell:R_PRESTAMO_ESTUDIO_LIQUIDACION'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -441,7 +445,7 @@ if ("Liquidacion".equals(sContract)){
      result= LVE_Payroll.PaymentOfQuotaLiquidation(get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "P1" , new Date  (_To.getYear(), _To.getMonth(), _To.getDay()), _Process );
 }'
 WHERE value = 'beanshell:R_PRESTAMO_PERSONALES_LIQUIDAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Timestamp dateIni = LVE_Payroll.DateInitialEmployee(get_TrxName(),_C_BPartner_ID,getAD_Org_ID(),"''Mensual'',''Quincenal'',''Semanal''");
@@ -455,7 +459,7 @@ result = dateResult.getTime();
 
 '
 WHERE value = 'beanshell:R_FEC_ING_CAL_VAC_FRAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='boolean  value = "S".equals(getAttributeString("C_APLICAR_RETENCIONES_FINAL_MES").toUpperCase()); 
@@ -463,7 +467,7 @@ SET script ='boolean  value = "S".equals(getAttributeString("C_APLICAR_RETENCION
 result= value ? getConcept("CC_APLICAR_RETENCION_FINAL_MES"):getConcept("CC_NO_APLICAR_RETENCI_FINAL_MES");
 '
 WHERE value = 'beanshell:R_FECHA_INICIO_RETENCIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -490,7 +494,7 @@ if (getConcept("CC_MESES_PARA_UTILIDADES")>0){
     }
 }'
 WHERE value = 'beanshell:R_MONTO_DEVENGADO_PERIODO_UTIL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Double Hours = getConcept("CC_HORAS_JORNADA_TRABAJADOR");
@@ -503,7 +507,7 @@ else{
 }
 '
 WHERE value = 'beanshell:R_DIAS_BONO_ALIMENTACION'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0;
@@ -515,7 +519,7 @@ if (days != null && days > 0 && getConcept("CC_APLICA")==1.0)
    result = days * (getConcept("CC_SUELDO_MENSUAL") / getAttribute("C_DIAS_DEL_MES"));
 description = "Días: "  + days;'
 WHERE value = 'beanshell:R_ASIGNACION_INASISTENCIA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -528,7 +532,7 @@ if (days != null && days > 0 && getConcept("CC_APLICA")==1.0) {
 	description = "Días: " + days;
 }'
 WHERE value = 'beanshell:R_BONO_NOCTURNO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0;
@@ -543,7 +547,7 @@ else {
         result = DB.getSQLValue(get_TrxName(), sql, new Object[] {getAD_Client_ID(), _C_BPartner_ID, _From, _To});
 }'
 WHERE value = 'beanshell:R_DIAS_VACACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -557,7 +561,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0){
 
 '
 WHERE value = 'beanshell:R_TRABAJADOR_CON_ESTABI_LABOR'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -567,7 +571,7 @@ if ("Liquidacion".equals(sContract)){
      result= LVE_Payroll.PaymentOfQuotaLiquidation(get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "HB" , new Date  (_To.getYear(), _To.getMonth(), _To.getDay()), _Process );
 }'
 WHERE value = 'beanshell:R_PRESTAMO_COMPRA_VIVIENDA_LIQ'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -577,7 +581,7 @@ if ((getConcept("CC_CANCELAR_BONO_ALIMENTACION")== 1.0 && getConcept("CC_APLICAR
      result= getConcept("CC_MONTO_BONO_ALIMENTACION");
 }'
 WHERE value = 'beanshell:R_BONO_ALIMENTACION'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=1.0;
@@ -595,7 +599,7 @@ if (value1 > 0){
        result=0.0;
 }'
 WHERE value = 'beanshell:R_ACT_TOT_DISP_FOND_AHO_CIERRE'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -605,18 +609,18 @@ if ("Liquidacion".equals(sContract)){
      result= LVE_Payroll.PaymentOfQuotaLiquidation(get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "OT" , new Date  (_To.getYear(), _To.getMonth(), _To.getDay()), _Process );
 }'
 WHERE value = 'beanshell:R_PRESTAMO_OTROS_LIQUIDAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='A_Tab.setValue("C_BPartneremp_ID",(@C_BPartnerEmp_ID));'
 WHERE value = 'beanshell:BP_FijarInicial'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Float u=  ((new Float ( A_Tab.getValue("TimeEnd").getTime()-A_Tab.getValue("TimeStart").getTime()))/1000/3600)+A_Tab.getValue("dshoras");
 A_Tab.setValue("ValueNumberHour",u);'
 WHERE value = 'beanshell:BP_calculosHoras'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -631,24 +635,24 @@ if (!"Vacaciones".equals(sContract) && !"Liquidacion".equals(sContract))
 
 result = valueReturn;'
 WHERE value = 'beanshell:R_SUELDO_APLICAR_PERIODO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sQuery = "SELECT COUNT(*) FROM LVE_ISICBYCATEGORY WHERE LVE_ISIC_ID = ? AND LVE_MUNICIPALITY_ID = ?";
 Integer count = DB.getSQLValue(get_TrxName(), sQuery, new Object[] {A_Tab.getValue("LVE_ISIC_ID"), A_Tab.getValue("LVE_MUNICIPALITY_ID")});'
 WHERE value = 'beanshell:BP_Validar_Al_Eliminar_Tasa_Im'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='double sueldo = getConcept("CC_SUELDO_MENSUAL");
 result = sueldo / getAttribute("C_DIAS_DEL_MES");'
 WHERE value = 'beanshell:R_SUELDO_DIARIO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = getConceptGroup("ASG_NOV");'
 WHERE value = 'beanshell:R_DIAS_ASG_NOVEDADES_DIARIAS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -658,7 +662,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_ASIGNACION_CARAC
     result = getAttribute("A_ASIGNACION_CARACTER_SALARIAL");
 }'
 WHERE value = 'beanshell:R_ASIGNACION_CARACTER_SALARIAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -674,7 +678,7 @@ if (dias_adic != 0.0)
 result = sueldo_diario * dias_adic * recargo;
 }'
 WHERE value = 'beanshell:R_DIA_ADIC_LABORADO_FER_DIURNO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='int dias = 0;
@@ -685,7 +689,7 @@ if (_DateEnd.after(_From) && _DateEnd.before(_To)) {
 }       
 result = dias;'
 WHERE value = 'beanshell:R_DEDUCIR_DIAS_EGRESO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='int dias = 0;
@@ -694,7 +698,7 @@ if (_DateStart.after(_From) && _DateStart.before(_To)) {
 }       
 result = dias;'
 WHERE value = 'beanshell:R_DEDUCIR_DIAS_INGRESO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -707,7 +711,7 @@ if (getConcept("CC_APLICA")==1.0) {
        result = 0.0; 
 }'
 WHERE value = 'beanshell:R_APLICAR_CONCEPTO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sConsulta = ""
@@ -724,7 +728,7 @@ int meses = getMonths(fecha_nacimiento, _To);
 int edad = meses / 12;
 result = edad;'
 WHERE value = 'beanshell:R_EDAD'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0;
@@ -740,7 +744,7 @@ if  (!bCont_Vac || (bCont_Vac && dDaysVac>0))
    result = Days;
 }'
 WHERE value = 'beanshell:R_DIAS_BASE_DISFRUTE_VACAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 1.0;
@@ -754,7 +758,7 @@ if (getConcept("CC_MONTO_PRES_SOC_DIAS_ADIC") >0) {
 }					   
 '
 WHERE value = 'beanshell:R_CIERRE_VAL_INIC_ANU_SUEL_PRE'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;  /* falso, no aplicar */
@@ -774,7 +778,7 @@ if (From.getMonth() == iMes_Actual && To.getMonth()!=iMes_Actual)
 
   '
 WHERE value = 'beanshell:R_ULTIMA_SEMANA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -785,7 +789,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_ASIGNACION_SIN_C
 }
 '
 WHERE value = 'beanshell:R_ASIGNACION_SIN_C_SALARIAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Timestamp From = _From;
@@ -795,7 +799,7 @@ Timestamp dateEndMonth = LVE_Payroll.lastDayOfMonth(To);
 result= org.compiere.util.TimeUtil.isValid(From ,To, dateEndMonth) ? 1.0: 0.0;  
 '
 WHERE value = 'beanshell:R_APLICAR_ULTIMA_NOMINA_MES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;  /* falso, no aplicar */
@@ -815,7 +819,7 @@ if (("S".equals(sRetenerLRPVH) && dEdad<=dTopeEdadLRPVH) ||
 
     '
 WHERE value = 'beanshell:R_APLICAR_RETENCIONES_LRPVH'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -824,7 +828,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0){
      result= getAttribute("A_DIAS_ADICIONALES_LABORADOS") * getConcept("CC_SUELDO_DIARIO");   
 }'
 WHERE value = 'beanshell:R_DIAS_LABORADOS_FINIQ_RELACI'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -833,7 +837,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_AUTOMOVILES");
 }'
 WHERE value = 'beanshell:R_CUOTA_POLIZA_AUTOMOVILES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -843,7 +847,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_HCM");
 }'
 WHERE value = 'beanshell:R_CUOTA_POLIZA_HCM'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -868,7 +872,7 @@ result = sueldo_diario * recargo * dias_desc_trab;
 description = "Días: "  + dias_desc_trab;
 }'
 WHERE value = 'beanshell:R_RECARGO_DESCANSO_TRABAJADO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -878,7 +882,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      if (result == null) result = 0.0;
 }'
 WHERE value = 'beanshell:R_CUOTA_POLIZA_GASTOS_FUNER'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Timestamp dateIni = LVE_Payroll.DateInitialEmployee(get_TrxName(), _C_BPartner_ID, getAD_Org_ID(),null);
@@ -889,7 +893,7 @@ result = dateIni.getTime() < dateAtt.getTime() ? dateAtt.getTime() : dateIni.get
 
 '
 WHERE value = 'beanshell:R_FECHA_INGRESO_ANTIGUEDAD'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='import org.compiere.util.* ;
@@ -903,7 +907,7 @@ Timestamp to=_To;
 result=((dateEndEmployee!=null)&&(TimeUtil.isValid(from,to, dateEndEmployee)))? (double) LVE_Payroll.workDays(get_TrxName(), from,dateEndEmployee , _Payroll, "0,"+  ((Integer)getAttribute("C_DIA_SEMANA_DESCANSO")).toString()) - getConcept("CC_DIAS_DESCANSO_PERIODO") : 0;
 '
 WHERE value = 'beanshell:R_DIAS_NO_LABORABLES_POR_EGRE'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String contract=  getHR_Payroll().getHR_Contract().getValue();
@@ -913,7 +917,7 @@ result = "Liquidacion".equals(contract) &&  getConcept("CC_POR_LIQUIDAR") ==1.0
              ? LVE_Payroll.yearsElapsed(_DateStart, dateEndEmployee)
              :LVE_Payroll.yearsElapsed(_DateStart, _To) ; '
 WHERE value = 'beanshell:R_AÑOS_ANTIGUEDAD'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -922,7 +926,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_GASTOS_ODONTOLOGICOS");
 }'
 WHERE value = 'beanshell:R_CUOTA_POLIZA_GASTOS_ODON'
-GO
+;
 
 UPDATE AD_Rule SET Name='R_POR_LIQUIDAR', Value='beanshell:R_POR_LIQUIDAR',Updated=now(), UpdatedBy=100,
 script='String estatus =getAttributeString("A_ESTATUS_EMPLEADO");
@@ -932,7 +936,7 @@ if (estatus == null)
     
 result= estatus.trim().equals("PLIQ") ?1.0:0.0;'
 WHERE AD_Rule_ID=2000042 and value = 'beanshell:R_POR_LIQUIDAR'
-GO
+;
 
 UPDATE AD_Rule 
 SET Value='beanshell:R_APLICA',name='R_APLICA',Updated=now(),UpdatedBy=100,description=null,
@@ -943,7 +947,7 @@ String Status =getAttributeString("A_ESTATUS_EMPLEADO");
 if (Status.trim().equals("LIQU"))	
           result=0.0;'
 WHERE AD_Rule_ID=1000273
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -954,7 +958,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0  &&  ( !"Vacaciones".equals(sContract
 	
 '
 WHERE value = 'beanshell:R_CUOTA_PRESTAMO_OTROS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -967,7 +971,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
 
 '
 WHERE value = 'beanshell:R_CUOTA_POLIZA_ESCOLAR'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -980,7 +984,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
 
 '
 WHERE value = 'beanshell:R_EXCESO_CELULAR'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -996,7 +1000,7 @@ if (getConcept("CC_APLICA_DIAS_ADIC_PREST")==1.0){
 
 '
 WHERE value = 'beanshell:R_DIAS_ADIC_PRESTACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='    
@@ -1006,7 +1010,7 @@ result =getAttribute("A_DIAS_UTILIDADES_CASOS_ESPECIALES")>0
 
 '
 WHERE value = 'beanshell:R_DIAS_UTILIDADES_TRABAJADOR'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -1017,7 +1021,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0){
 
 }'
 WHERE value = 'beanshell:R_VACACIONES_PENDIENTES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1029,7 +1033,7 @@ if (getConcept("CC_DISFRUTAR_DIAS_ADIC_VAC")==1.0) {
         result =0;
 }'
 WHERE value = 'beanshell:R_DIAS_ADIC_VAC_PAG_SIN_DISFRU'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -1038,7 +1042,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.1 && "S".equals(getAttributeString("C_CALCU
      result= getAttribute("A_MONTO_ACUM_INICIAL_PREST_SOCIALES") + getAttribute("A_MONTO_ACUM_PRESTACIONES_SOCIALES");  
 }'
 WHERE value = 'beanshell:R_PRESTACIONES_SOCI_FIDECOMISO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1048,7 +1052,7 @@ Integer topMax= getAttribute("C_TOPE_MAXIMO_HIJOS_PARA_PAGO_DE_PRIMA") ;
 result= quantityFamily > topMax ?  topMax: quantityFamily ; 
 '
 WHERE value = 'beanshell:R_NUMERO_HIJOS_PRIMA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0;
@@ -1064,7 +1068,7 @@ if  (!bCont_Vac || (bCont_Vac && dDaysVac>0))
     result = Days;
 }'
 WHERE value = 'beanshell:R_DIAS_BASE_PAGAR_VACACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1072,13 +1076,13 @@ result =getConcept("A_ACUM_DIAS_ADIC_VACACIONES_CAUSADAS")-getConcept("A_ACUM_DI
 
 '
 WHERE value = 'beanshell:R_DIAS_ADIC_VAC_DISPONIBLE'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
 result= (getConcept("CC_APLICAR_CAL_AÑO_INIC_OPERACI") ==1.0 ? getAttribute("A_MONTO_ACUM_INI_ANTICIPOS_UTILIDADES"):0)+ getAttribute("A_MONTO_ACUM_ANTICIPO_UTILIDADES");'
 WHERE value = 'beanshell:R_ANTICIPOS_UTILIDADES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -1088,7 +1092,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0){
 
 }'
 WHERE value = 'beanshell:R_BONO_VACACIONAL_PENDIENTE'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1098,7 +1102,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0){
      result= getAttribute("A_MONTO_ACUM_INTERESES_CANCELADOS")+ getAttribute("A_MONT_ACUM_INI_INTERESES_PREST_PAG");
 }'
 WHERE value = 'beanshell:R_INTERESES_PREST_SOC_PAG'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1108,7 +1112,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_HC");
 }'
 WHERE value = 'beanshell:R_CUOTA_POLIZA_H.C'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1118,7 +1122,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_VIDA");
 }'
 WHERE value = 'beanshell:R_CUOTA_POLIZA_VIDA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1130,7 +1134,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 &&
 }
 '
 WHERE value = 'beanshell:R_BONO_MATRIMONIO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -1142,7 +1146,7 @@ if( (!"Liquidacion".equals(sContract) || ("Liquidacion".equals(sContract) && get
 
 }'
 WHERE value = 'beanshell:R_IMPUESTO_SOBRE_LA_RENTA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -1153,7 +1157,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0 && dayVacation >0 ){
 
 }'
 WHERE value = 'beanshell:R_VACACIONES_PAGADAS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -1162,7 +1166,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_CONTRA_ACCIDENTES");
 }'
 WHERE value = 'beanshell:R_CUOTA_POLIZA_CONTRA_ACCIDENT'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1172,7 +1176,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0){
      result= getAttribute("A_MONTO_ACUM_INI_ANTICIPOS_PREST_SOC")+getAttribute("A_MONTO_ACUM_ANTICIPO_PREST_SOCIALES");
 }'
 WHERE value = 'beanshell:R_ANTICIPO_PRESTACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -1181,7 +1185,7 @@ if(getConcept("CC_POR_LIQUIDAR")==1.0 && getAttribute("A_MONTO_ACUM_CANCELADO_RE
      result= getAttribute("A_MONTO_ACUM_CANCELADO_REPOSO_IVSS"); 
 }'
 WHERE value = 'beanshell:R_REPOSO_DEDUCC_LIQUIDACION'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1191,7 +1195,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0) {
      result= getAttribute("A_ANTICIPO_PRESTACIONES_SOCIALES");
 }'
 WHERE value = 'beanshell:R_ANTICIPO_PRESTACIONES_SOCIAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1201,7 +1205,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0) {
      result= getAttribute("A_ANTICIPO_UTILIDADES");
 }'
 WHERE value = 'beanshell:R_ANTICIPO_UTILIDADES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1212,7 +1216,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_UNIFORMES");
 }'
 WHERE value = 'beanshell:R_CUOTA_UNIFORMES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='long oneDay = 86400000;
@@ -1225,7 +1229,7 @@ result=  ((LVE_Payroll.monthsOnPeriod(new Timestamp( (Long) getConcept("CC_FECHA
 
 '
 WHERE value = 'beanshell:R_APLICA_DIAS_ADIC_PREST'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1235,7 +1239,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_HCM_FAMILIARES");
 }'
 WHERE value = 'beanshell:R_CUOTA_POLIZA_HCM_FAMILIARES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -1255,7 +1259,7 @@ if (! "S".equals(getAttributeString("C_PRESTACIONES_DEPOSITADAS_FIDEICOMISO")) &
 
 '
 WHERE value = 'beanshell:R_MONTO_INTERESES_PRESTACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1265,7 +1269,7 @@ result=0.0;
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0  &&  ( !"Vacaciones".equals(sContract) || ( "Vacaciones".equals(sContract)  && getConcept("CC_DIAS_VACACIONES") > 0 ) ) )
      result= LVE_Payroll.PaymentOfQuota (get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "P1" , new Date  (_To.getYear(), _To.getMonth(), _To.getDate()), _Process );'
 WHERE value = 'beanshell:R_CUOTA_PRESTAMO_PERSONALES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -1274,7 +1278,7 @@ if("S".equals(getAttributeString("C_PAGAR_SUELDO_EN_VACACIONES")) && getConcept(
 }
 '
 WHERE value = 'beanshell:R_DIAS_SUEL_PEND_PAG_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1283,7 +1287,7 @@ result=0.0;
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0  &&  ( !"Vacaciones".equals(sContract) || ( "Vacaciones".equals(sContract)  && getConcept("CC_DIAS_VACACIONES") > 0 ) ) )
      result= LVE_Payroll.PaymentOfQuota (get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "HI" , new Date  (_To.getYear(), _To.getMonth(), _To.getDate()), _Process );'
 WHERE value = 'beanshell:R_CUOTA_PRESTAMO_REMOD_VIVIEND'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1295,7 +1299,7 @@ if (monthDays >0)
 
 '
 WHERE value = 'beanshell:R_SUELDO_DIARIO_VARIABLE'
-GO
+;
 
 UPDATE AD_Rule SET Name='R_CAMBIO_STATUS_CIERRE_LIQUIDA', Value='beanshell:R_CAMBIO_STATUS_CIERRE_LIQUIDA',
 Updated=now(), UpdatedBy=100,
@@ -1311,7 +1315,7 @@ if (value1!=0 || estatus.trim().equals("PLIQ")  ){
           result=0;
 }'
 WHERE AD_Rule_ID=1000242 and value = 'beanshell:R_CAMBIO_STATUS_CIERRE_LIQUIDA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1321,7 +1325,7 @@ if (getConcept("CC_APLICA")==1.0) {
 }
 '
 WHERE value = 'beanshell:R_ANTIC_UTILIDADES_LOTTT_132'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String msg=null; 
@@ -1352,7 +1356,7 @@ if (value2>0) {
 
 '
 WHERE value = 'beanshell:R_CIERRE_ANTICIPO_PREST_UTIL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -1363,7 +1367,7 @@ if ("S".equals(getAttributeString("C_PAGAR_SUELDO_EN_VACACIONES"))){
           result=0;
 }'
 WHERE value = 'beanshell:R_ACT_CAMPO_SUELDO_PAG_VAC_CIE'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1378,7 +1382,7 @@ if (!"S".equals(getAttributeString("C_PRESTACIONES_DEPOSITADAS_FIDEICOMISO")) &&
 
 '
 WHERE value = 'beanshell:R_INTERESES_PREST_SOC_ANUALES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Timestamp To= _To.clone();
@@ -1390,7 +1394,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0  &&  ( !"Vacaciones".equals(sContract
 
 	'
 WHERE value = 'beanshell:R_CUOTA_PRESTAMO_ESTUDIO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1400,7 +1404,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0  &&  ( !"Vacaciones".equals(sContract
      result= LVE_Payroll.PaymentOfQuota (get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "HB" , new Date  (_To.getYear(), _To.getMonth(), _To.getDate()), _Process );
 '
 WHERE value = 'beanshell:R_CUOTA_PRESTAMO_COMPRA_VIVIEN'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1421,7 +1425,7 @@ if (value1>0){
 
 '
 WHERE value = 'beanshell:R_CIERRE_FEC_INTER_PREST_MENSU'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1432,7 +1436,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_NUMERO_HIJOS_NAC
 }
 '
 WHERE value = 'beanshell:R_BONO_NACIMIENTO_HIJOS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1440,40 +1444,40 @@ SET script ='
 result=getConcept("A_DIAS_VACACIONES_INASISTENCIA_INJUST")>=getAttribute("C_DIAS_MIN_DESC_VAC_POR_INASIST_INJUS")?getConcept("A_DIAS_VACACIONES_INASISTENCIA_INJUST"):0;
 '
 WHERE value = 'beanshell:R_DIAS_DESC_VAC_INAS_INJUS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result= getAttribute("C_TOPE_SALARIOS_BONO_ALIMENTACION")* getAttribute("C_SUELDO_MINIMO"); '
 WHERE value = 'beanshell:R_TOPE_SALARIO_BONO_ALIMENT'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=getConcept("CC_APLICAR_CONCEPTO");'
 WHERE value = 'beanshell:R_SUELDO_LIQUIDADO_VACACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
 result= getConcept("A_TOT_MONTO_DISPONIBLE_INTERESES_PREST"); '
 WHERE value = 'beanshell:R_VAL_INI_DEV_ANU_SUEL_ADI_PRE'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
 result= getConcept("A_TOT_MONTO_DISPONIBLE_PRESTACIONES"); '
 WHERE value = 'beanshell:R_MONTO_DISPONIBLE_PREST'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=getConcept("A_TOT_MONTO_DISPONIBLE_FONDO_AHORRO");'
 WHERE value = 'beanshell:R_TOTAL_DISP_FONDO_AHORRO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
 result= getConcept("A_TOT_MONTO_DISPONIBLE_INTERESES_PREST"); '
 WHERE value = 'beanshell:R_MONTO_DISP_INTERESES_PREST'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1481,7 +1485,7 @@ result= getConcept("A_DIAS_UTILIDADES_CASOS_ESPECIALES")>0 ? getConcept("A_DIAS_
 
 '
 WHERE value = 'beanshell:R_DIAS_UTILIDADES_POR_MES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1503,7 +1507,7 @@ Timestamp  startPayroll= new Timestamp( Math.max( dateStart.getTime() , dateStar
                 result=startPayroll.getTime();     
       }'
 WHERE value = 'beanshell:R_APLICAR_RETENCION_FINAL_MES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -1512,14 +1516,14 @@ if (getConcept("CC_APLICA")==1.0 && "S".equals(getAttributeString("C_PAGAR_BONO_
      result= getConcept("CC_VALOR_DIAS_BONO_FIN_AÑO_TRAB")* getConcept("CC_SUELDO_DIARIO_PARA_UTILIDAD");
 }'
 WHERE value = 'beanshell:R_BONO_FIN_AÑO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
 if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_MONTO_PAGAR_COMISIONES", _From)!=null)
    result = getAttribute("A_MONTO_PAGAR_COMISIONES", _From);'
 WHERE value = 'beanshell:R_COMISIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1529,7 +1533,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getConcept("CC_APLICAR_ULTIMA_NO
     result = getAttribute("A_BECA_ESTUDIO");
 }'
 WHERE value = 'beanshell:R_BECA_ESTUDIO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1544,7 +1548,7 @@ if  (!bCont_Vac || (bCont_Vac && iDiasVacPeriodo>0))
 
 '
 WHERE value = 'beanshell:R_DIAS_BASE_BONO_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1557,7 +1561,7 @@ if (getConcept("CC_APLICA")==1.0) {
 
 }'
 WHERE value = 'beanshell:R_BONO_VACACIONAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Double iAnhosAntiguedad= getConcept("CC_AÑOS_ANTIGUEDAD");
@@ -1567,7 +1571,7 @@ result= iAnhosAntiguedad > iAnhosMaxVac && iAnhosMaxVac > 0 ? iAnhosMaxVac : iAn
 		
 	'
 WHERE value = 'beanshell:R_AÑOS_ANTIGUEDAD_VACACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContrato = getHR_Payroll().getHR_Contract().getValue();
@@ -1593,7 +1597,7 @@ if ((getConcept("CC_APLICAR_RETENCIONES") == 1)
 
 '
 WHERE value = 'beanshell:R_REGIMEN_PRESTACIONAL_PA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1614,7 +1618,7 @@ if (getConcept("CC_AÑOS_ANTIGUEDAD")>0)
 
 '
 WHERE value = 'beanshell:R_AÑOS_ANTIGUEDAD_BONO_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1628,7 +1632,7 @@ result= getAttribute("A_MONTO_ACUM_INI_UTILIDADES");
 
 '
 WHERE value = 'beanshell:R_INCLUIR_ACUM_INIC_UTILIDADES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Double value1= getAttribute("A_SUELDO_MENSUAL_USD"); 
@@ -1643,7 +1647,7 @@ if (value1>0){
 }
 '
 WHERE value = 'beanshell:R_ACTUALIZAR_SUELDO_MENSUAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1656,7 +1660,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 &&
 }
 '
 WHERE value = 'beanshell:R_BONO_POR_GRADUACION'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='int dayrest = (int)getAttribute("C_DIA_SEMANA_DESCANSO");
@@ -1678,7 +1682,7 @@ int days = DB.getSQLValue(get_TrxName(), sQuery,
 result = (double)days;
 '
 WHERE value = 'beanshell:R_DIAS_DESCANSO_PERIODO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String estatus =getAttributeString("A_ESTATUS_EMPLEADO");
@@ -1689,7 +1693,7 @@ Double Aux2= (getConcept("CC_MESES_PARA_UTILIDADES") * getAttribute("C_DIAS_DEL_
 
 result= Aux2>0 ? Aux/Aux2 : 0.0; '
 WHERE value = 'beanshell:R_MONTO_DIARIO_DEVENGADO_AÑO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1697,7 +1701,7 @@ SET script ='result = 0.0;
 if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_DEDUCCION_CON_CARACTER_SALARIAL") > 0)
    result = getAttribute("A_DEDUCCION_CON_CARACTER_SALARIAL");'
 WHERE value = 'beanshell:R_DED_CON_CARACTER_SALARIAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1708,7 +1712,7 @@ double daysnotice =  DB.getSQLValue(get_TrxName(), sQuery, new Object[]  {getAD_
 result = daysnotice == null ? 0 : daysnotice;
 }'
 WHERE value = 'beanshell:R_DIAS_DESCANSO_TRABAJADO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='long oneDay = 86400000;
@@ -1732,7 +1736,7 @@ else {
 result= resultDate.getTime();
 	  '
 WHERE value = 'beanshell:R_FEC_INIC_CORT_TRIM_PAG_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='long oneDay = 86400000;
@@ -1757,7 +1761,7 @@ Integer periodContract= LVE_Payroll.periodExecutionContract(get_TrxName(), _C_BP
 result= months < periodContract? months: periodContract;
 '
 WHERE value = 'beanshell:R_MESES_PARA_UTILIDADES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1780,7 +1784,7 @@ double acumDays = getAttribute("A_ACUM_INI_DIAS_BONO_VACACIONA_NO_PAG") +
 result = acumDays + getConcept("CC_DIAS_BONO_VAC_CAUSADO");
 '
 WHERE value = 'beanshell:R_DIAS_DISPONIBLES_BONO_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='long oneDay = 86400000;
@@ -1794,7 +1798,7 @@ result = getAttribute("A_TOT_DIAS_SIN_CANCELAR_BONO_VACACIONAL", date) +
 
 '
 WHERE value = 'beanshell:R_DIAS_ACUM_BONO_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -1808,7 +1812,7 @@ if ((!"Vacaciones".equals(sContract)) || getConcept("CC_DIAS_VACACIONES") > 0){
 }
 '
 WHERE value = 'beanshell:R_MONTO_BASE_ISLR'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0; 
@@ -1827,7 +1831,7 @@ if ((From.getMonth() == CurrentMonth && To.getMonth()!=CurrentMonth) &&
    result = getConcept("CC_SUELDO_MENSUAL");
 }'
 WHERE value = 'beanshell:R_SUELDO_MES_VACACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1841,7 +1845,7 @@ if ("Vacaciones".equals(sContract))
 
 }'
 WHERE value = 'beanshell:R_VACACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -1856,7 +1860,7 @@ if ("S".equals(getAttributeString("C_PAGAR_SUELDO_EN_VACACIONES"))){
 }
 '
 WHERE value = 'beanshell:R_ACT_CAMPO_SUELDO_PAG_VACACIO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1871,7 +1875,7 @@ if ("S".equals(getAttributeString("C_PAGAR_SUELDO_EN_VACACIONES")) && "Vacacione
 
 }'
 WHERE value = 'beanshell:R_SUELDO_PENDIENTE'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1884,7 +1888,7 @@ result = daysnotice == null ? 0 : daysnotice;
 }
 '
 WHERE value = 'beanshell:R_DIAS_FERIADO_TRABAJADO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='import org.compiere.util.*;
@@ -1904,7 +1908,7 @@ if (TimeUtil.isValid(new Timestamp (dateStartRetention   ), _To , dateStartEmplo
 
 '
 WHERE value = 'beanshell:R_LUNES_RETENC_NORMAL_ING_EG'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -1923,7 +1927,7 @@ if (getConcept("CC_APLICA")==1.0) {
 
 }'
 WHERE value = 'beanshell:R_VAC_EN_FESTIVOS_DESCANSO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -1938,7 +1942,7 @@ if (value1!=0 || estatus.trim().equals("PLIQ")  ){
           result=0;
 }'
 WHERE value = 'beanshell:R_CAMBIO_STATUS_CIERRE_LIQUIDA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -1956,7 +1960,7 @@ if ("Vacaciones".equals(sContract)){
        result=0;
 }'
 WHERE value = 'beanshell:R_ACT_FECH_FIN_ULTIMA_VAC_DISF'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=1.0; 
@@ -1977,7 +1981,7 @@ if (value1 + value2 > 0){
          result=0;
 }'
 WHERE value = 'beanshell:R_CIERRE_ACUM_FONDO_AHORRO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -1986,7 +1990,7 @@ if ("S".equals(getAttributeString("C_PAGAR_BONO_FIN_ANO")) && getConcept("CC_APL
 
 }'
 WHERE value = 'beanshell:R_PROVISI_MENSUAL_BONO_FIN_ANO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -1996,7 +2000,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0){
 }
 '
 WHERE value = 'beanshell:R_INTERESES_PREST_SOCIALES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -2026,7 +2030,7 @@ if("S".equals(getAttributeString("C_PAGAR_ 100_%_DEL_REPOSO_IVSS"))){
       }  
 }'
 WHERE value = 'beanshell:R_ACT_ACUM_MONTO_PAG_REPO_IVSS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='resul=0.0; 
@@ -2038,7 +2042,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0 &&  !"Utilidades".equals(sContract) )
      
 }'
 WHERE value = 'beanshell:R_INCE_PATRONAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -2056,7 +2060,7 @@ if (!"Liquidacion".equals(sContract)|| ("Liquidacion".equals(sContract) && getCo
 }
 '
 WHERE value = 'beanshell:R_INCE_TRABAJADOR'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -2066,7 +2070,7 @@ if ("Liquidacion".equals(sContract)){
      result= LVE_Payroll.PaymentOfQuotaLiquidation(get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "HI" , new Date  (_To.getYear(), _To.getMonth(), _To.getDay()), _Process );
 }'
 WHERE value = 'beanshell:R_PRESTAMO_REMOD_VIVI_LIQUIDAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String msg=null; 
@@ -2081,7 +2085,7 @@ if (getAttribute("A_MONTO_ACUM_ANTICIPO_UTILIDADES")>0) {
 
 '
 WHERE value = 'beanshell:R_CIERRE_ANTICIP_UTIL_CONT_UTI'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String workDay = getAttributeString("A_JORNADA_LABORAL");
@@ -2092,7 +2096,7 @@ result = ("D".equals(workDay)?getAttribute("C_HORAS_JORNADA_DIURNA"):
 
 '
 WHERE value = 'beanshell:R_HORAS_JORNADA_TRABAJADOR'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -2102,7 +2106,7 @@ if (getConcept("CC_CANCELAR_BONO_ALIMENTACION")==1.0 && getConcept("CC_APLICAR_C
                   getConcept("CC_DIAS_BONO_ALIMENTACION");
 }'
 WHERE value = 'beanshell:R_MONTO_BONO_ALIMENTACION'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String jornada = getConceptString("A_JORNADA_LABORAL");
@@ -2124,7 +2128,7 @@ description = "Horas jornada " + jornada + "=" + horas;
 
 result =  horas>0 ?  (sueldo / getAttribute("C_DIAS_DEL_MES")) / horas : 0.0;'
 WHERE value = 'beanshell:R_SUELDO_HORA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -2153,7 +2157,7 @@ if (birthday != null &&
 }
 }'
 WHERE value = 'beanshell:R_BONO_CUMPLEAÑOS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Double value1= getConcept( "CC_BONO_POST_VACACIONAL");
@@ -2166,7 +2170,7 @@ if (value1>0){
         result=0.0;
 }'
 WHERE value = 'beanshell:R_ACT_FEC_ULTI_BONO_POST_VAC_P'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='long oneDay = 86400000;
@@ -2188,7 +2192,7 @@ if  ((!bCont_Vac && getConcept("CC_APLICAR_CONCEPTO") == 1.0) || (bCont_Vac && i
 
 '
 WHERE value = 'beanshell:R_FEC_ULT_MES_PROC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -2211,7 +2215,7 @@ result = days - getConcept("CC_DIAS_VACACIONES");
 
 '
 WHERE value = 'beanshell:R_DIAS_DE_SUELDO_PENDIENTE'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -2236,7 +2240,7 @@ if (getConcept("CC_APLICAR_RETENCIONES_LRPVH") == 1.0 &&
    result = salary_ret * factor / 100;
 }'
 WHERE value = 'beanshell:R_LEY_REG_PREST_VIV_HAB_PA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0;
@@ -2264,7 +2268,7 @@ else
   }
 }'
 WHERE value = 'beanshell:R_DIAS_REPOSO_EMPRESA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -2283,7 +2287,7 @@ if( "S".equals(getAttributeString("C_APLICAR_UTILIDADES_SOBRE_DEVENG_ANUAL")) &&
 }
 '
 WHERE value = 'beanshell:R_SALARIO_ESTIMADO_UTILIDADES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -2291,7 +2295,7 @@ result= LVE_Payroll.AllocationOfLoan(get_TrxName(), getAD_Org_ID(),_C_BPartner_I
 
 '
 WHERE value = 'beanshell:R_PRESTAMO_COMPRA_VIVIENDA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -2299,7 +2303,7 @@ result= LVE_Payroll.AllocationOfLoan(get_TrxName(), getAD_Org_ID(),_C_BPartner_I
 
 '
 WHERE value = 'beanshell:R_PRESTAMO_PERSONALES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -2307,7 +2311,7 @@ result= LVE_Payroll.AllocationOfLoan(get_TrxName(), getAD_Org_ID(),_C_BPartner_I
 
 '
 WHERE value = 'beanshell:R_PRESTAMO_REMODELACION_VIVIEN'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -2315,7 +2319,7 @@ result= LVE_Payroll.AllocationOfLoan(get_TrxName(), getAD_Org_ID(),_C_BPartner_I
 
 '
 WHERE value = 'beanshell:R_PRESTAMO_ESTUDIO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContrato = getHR_Payroll().getHR_Contract().getValue();
@@ -2343,7 +2347,7 @@ if ((getConcept("CC_APLICAR_RETENCIONES") == 1)
 
 '
 WHERE value = 'beanshell:R_SEGURO_SOCIAL_OBLIGATORIO_PA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -2351,7 +2355,7 @@ result= LVE_Payroll.AllocationOfLoan(get_TrxName(), getAD_Org_ID(),_C_BPartner_I
 
 '
 WHERE value = 'beanshell:R_PRESTAMO_OTROS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='long oneDay = 86400000;
@@ -2384,7 +2388,7 @@ if (value2>0) {
           result=0;
 }'
 WHERE value = 'beanshell:R_CIERRE_DIAS_VAC_BONO_VAC_CAU'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=1.0;
@@ -2414,7 +2418,7 @@ if (value > 0) {
         result=0;
 }'
 WHERE value = 'beanshell:R_ACT_MONT_DISPONI_INTERES_PRE'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -2445,14 +2449,14 @@ if (getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0){
 }
 '
 WHERE value = 'beanshell:R_BASE_INTERES_PRESTA_SOCIALES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
 result= getAttribute("C_VALOR_ANUAL_PRESTACIONES_SOCIALES") / 12 * 3; 
 '
 WHERE value = 'beanshell:R_DIAS_GARANTIA_PRESTACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=1.0;
@@ -2481,7 +2485,7 @@ if (value1 > 0) {
          result=0;
 }'
 WHERE value = 'beanshell:R_ACT_MONT_DISP_PREST_CIERRE_P'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -2497,7 +2501,7 @@ if (getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0 && getConcept("CC_APLICA")
 
 '
 WHERE value = 'beanshell:R_PROVISION_MENSUAL_VACACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -2530,7 +2534,7 @@ if (utilCompany>0) {
 
 }'
 WHERE value = 'beanshell:R_UTILIDADES_LOTTT_132'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='long oneDay = 86400000;
@@ -2555,7 +2559,7 @@ if (DaysCanceled >= 0)
         result = (DaysCaused == DaysCanceled) ?  (getConcept("CC_DIAS_BASE_BONO_VAC") + YearsAntiq - (YearsAntiq > 0 ? 1 : 0)) : 0;
 }'
 WHERE value = 'beanshell:R_DIAS_BONO_VAC_POR_AÑO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String jornada = getAttributeString("A_JORNADA_LABORAL");
@@ -2578,7 +2582,7 @@ if (horas_nov > 0.0)
   description = "Horas Extras Nocturnas: " + horas_nov;
 result = horas_nov* sueldo_hora * recargo;'
 WHERE value = 'beanshell:R_HORAS_EXTRAS_NOCTURNAS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sQuery = ""
@@ -2604,7 +2608,7 @@ else
 
 '
 WHERE value = 'beanshell:R_FEC_FIN_ULT_VAC_DISF'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -2625,7 +2629,7 @@ if ("Liquidacion".equals(sContract))
 
 '
 WHERE value = 'beanshell:R_SUELDO_EN_LIQUIDACION'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='LVE_Payroll NV = new LVE_Payroll();
@@ -2654,7 +2658,7 @@ if (getConcept("CC_CANCELAR_BONO_ALIMENTACION")==1.0 && getConcept("CC_APLICAR_C
  }
 }'
 WHERE value = 'beanshell:R_HORAS_BONO_ALIMENTACION'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -2689,7 +2693,7 @@ if (getConcept("CC_APLICAR_RETENCIONES") == 1) {
      }
 }'
 WHERE value = 'beanshell:R_LUNES_PARA_RETENCIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -2703,7 +2707,7 @@ result= days>0 ?  (getConcept("CC_DIAS_UTILIDADES_POR_MES") / days) * getConcept
 
 '
 WHERE value = 'beanshell:R_PORCION_DIARIA_UTIL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='import java.lang.Math;
@@ -2749,7 +2753,7 @@ String sContract = getHR_Payroll().getHR_Contract().getValue();
           }
 '
 WHERE value = 'beanshell:R_NO_APLICAR_RETENCI_FINAL_MES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='int dayrest = (int)getAttribute("C_DIA_SEMANA_DESCANSO");
@@ -2772,7 +2776,7 @@ result = workDays + daysnotice;
 
 '
 WHERE value = 'beanshell:R_DIAS_EFECTIVOS_TRABAJADOS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -2804,7 +2808,7 @@ if (( !"Vacaciones".equals(sContract) && "S".equals( getAttributeString("C_PAGAR
 }			   
 				'
 WHERE value = 'beanshell:R_CIERRE_FECHA_ULTIMO_MES_PROC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Timestamp To = LVE_Payroll.lastDayOfMonth(_From);
@@ -2830,7 +2834,7 @@ if (lastWeek &&
                                                                                 (Timestamp) getAttributeDate("A_FECHA_MES_ANTERIOR_PRESTACIONES", date) ); 
 }'
 WHERE value = 'beanshell:R_INTERESES_PREST_SOC_MENSUAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='import org.eevolution.model.*;
@@ -2864,7 +2868,7 @@ if (getConcept("CC_VACACIONES")>0){
     if (msg != null)  result=0;     
 }'
 WHERE value = 'beanshell:R_CIERRE_DIA_VAC_BONO_VAC_USAD'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Double value1=getConcept("CC_MONTO_INTERESES_PRESTACIONES");
@@ -2895,7 +2899,7 @@ if ((value2+value3)>0){
 
 '
 WHERE value = 'beanshell:R_CIERRE_ACUM_PREST_SOC_INTERE'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result =1.0;
@@ -2928,7 +2932,7 @@ if (value2>0) {
           result=0;
 }'
 WHERE value = 'beanshell:R_CIERRE_DIAS_PRESTACIONES_CAU'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -2943,7 +2947,7 @@ if (!LVE_Payroll.typeEndEmployee (get_TrxName(),getAD_Org_ID(),  _C_BPartner_ID,
 }
 '
 WHERE value = 'beanshell:R_VACACIONES_FRACCIONADAS_LIQU'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -2970,7 +2974,7 @@ double acumDays = getAttribute("A_ACUM_INI_DIAS_VACACIONES_VENCIDAS") +
 
 result = acumAddDays + acumDays + getConcept("CC_DIAS_VACACIONES_CAUSADAS");'
 WHERE value = 'beanshell:R_DIAS_DISPONIBLES_VACACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -3005,7 +3009,7 @@ if (  (!bVac && value1>0 && org.compiere.util.TimeUtil.isValid(date,To, dateInco
 }
 '
 WHERE value = 'beanshell:R_ACT_DIAS_DISP_VAC_BON_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -3016,7 +3020,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
              : (getAttribute("C_FACTOR_FONDO_AHORRO_EMPRESARIAL")/ 100* LVE_Payroll.sumConcept(get_TrxName(), "IsOption_9", _From, _To , _C_BPartner_ID,getHR_Payroll().getHR_Contract().getValue())).doubleValue(); 
 }'
 WHERE value = 'beanshell:R_APORTE_FONDO_AHORRO_EMPRESA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='import org.compiere.model.*;
@@ -3039,7 +3043,7 @@ result = sueldo;
 
 '
 WHERE value = 'beanshell:R_SUELDO_MENSUAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='if (A_Tab.getValue("C_BPartner_ID") != null && (A_Tab.getValue("HR_Department_ID") != null || A_Tab.getValue("HR_Job_ID") != null ))
@@ -3053,7 +3057,7 @@ if (A_Tab.getValue("C_BPartner_ID_F2") != null && A_Tab.getValue("HR_Department_
 
 result="";'
 WHERE value = 'beanshell:LVE_restart_filters'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0; 
@@ -3065,7 +3069,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
 
 '
 WHERE value = 'beanshell:R_APORTE_FONDO_AHORRO_TRABAJAD'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -3100,7 +3104,7 @@ if (bApplying && (bNomNormal || bNomVac))
 		             getConcept("CC_DIAS_BASE_DISFRUTE_VACAC");
 }	     '
 WHERE value = 'beanshell:R_DIAS_VACACIONES_CAUSADAS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;  /* falso, no aplicar */
@@ -3129,7 +3133,7 @@ if  ( (!bCont_Vac || (bCont_Vac && iDiasVacPeriodo>0)) && bAplicaPeriodo &&
 
     '
 WHERE value = 'beanshell:R_APLICAR_RETENCIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -3165,7 +3169,7 @@ if (bApplying && (bNomNormal || bNomVac))
 		             getConcept("CC_DIAS_BASE_BONO_VAC");
 }'
 WHERE value = 'beanshell:R_DIAS_BONO_VAC_CAUSADO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -3185,7 +3189,7 @@ if (getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0 &&
 }
 '
 WHERE value = 'beanshell:R_SALARIO_DIARIO_INTEGRAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -3197,14 +3201,14 @@ if (getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0 && getConcept("CC_APLICA")
 
 '
 WHERE value = 'beanshell:R_PROVISION_MENSUAL_BONO_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = LVE_Payroll.monthsOnPeriod(_DateStart , _To)
 
 '
 WHERE value = 'beanshell:R_MESES_TRABAJADOS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -3222,7 +3226,7 @@ if(getConcept("CC_MESES_TRABAJADOS")>=1 && getConcept("CC_APLI_PRES_FEC_ULT_PROC
 
 '
 WHERE value = 'beanshell:R_PORCION_DIARIA_BONO_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0;
@@ -3244,7 +3248,7 @@ if ("S".equals(sVariableSalary)) {
 
 '
 WHERE value = 'beanshell:R_PROMEDIO_TRIM_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='if (getAttributeString("C_DISFRUTAR_DIAS_ADICIONALES_VACACIONES").trim().toUpperCase().equals("S") && 
@@ -3255,7 +3259,7 @@ SET script ='if (getAttributeString("C_DISFRUTAR_DIAS_ADICIONALES_VACACIONES").t
      result=0.0;
 '
 WHERE value = 'beanshell:R_DISFRUTAR_DIAS_ADIC_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -3264,7 +3268,7 @@ if (getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0 && getConcept("CC_APLICA")
      result= getConcept("CC_DIAS_UTILIDADES_POR_MES") * getConcept("CC_SUELDO_DIARIO_PARA_UTILIDAD"); 
 }'
 WHERE value = 'beanshell:R_PROVISION_MENSUAL_UTILIDADES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -3281,7 +3285,7 @@ else
 if (month>=3 && month%3==0 && getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0 && getConcept("CC_APLICA")==1.0)
    result= getConcept("CC_SALARIO_PARA_PRESTACIONES") / getAttribute("C_DIAS_DEL_MES") * getConcept("CC_DIAS_GARANTIA_PRESTACIONES"); '
 WHERE value = 'beanshell:R_GARANTIA_PREST_SOCIALES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Timestamp dateIniEmployee = LVE_Payroll.DateInitialEmployee(get_TrxName(), _C_BPartner_ID, getAD_Org_ID(), "''Mensual'',''Semanal'', ''Quincenal''");
@@ -3292,7 +3296,7 @@ result = dateIniEmployee.getTime();
 
 '
 WHERE value = 'beanshell:R_FECHA_INGRESO_CAL_VACACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -3313,7 +3317,7 @@ if ((getConcept("CC_DIAS_VACACIONES") > 0) ||  ("Prestaciones".equals(sContract)
 }  
 result = value;'
 WHERE value = 'beanshell:R_SUELDO_DIARIO_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -3337,7 +3341,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0 && lastPayroll != null && dateEndEmployee
 
 '
 WHERE value = 'beanshell:R_PRES_SOC_DIAS_ADIC_FIN_RELAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -3354,7 +3358,7 @@ if (getConcept("CC_APLICA")==1.0)
          result= (additionalDays > topAdditionalDays ? topAdditionalDays : additionalDays) * getConcept("CC_SALARIO_PARA_PRESTACIONES") / getAttribute("C_DIAS_DEL_MES");
 }'
 WHERE value = 'beanshell:R_MONTO_PRES_SOC_DIAS_ADIC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Timestamp From = _From.clone();
@@ -3366,7 +3370,7 @@ if (From.getTime() > dtStartEmployee.getTime())
 
 result = dtStartEmployee.getTime();'
 WHERE value = 'beanshell:R_FECHA_INICIO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -3399,7 +3403,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0){
 
 '
 WHERE value = 'beanshell:R_PRESTACIONES_SOCIALES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result= 0.0;
@@ -3416,7 +3420,7 @@ if (!LVE_Payroll.typeEndEmployee (get_TrxName(),getAD_Org_ID(),  _C_BPartner_ID,
 
 '
 WHERE value = 'beanshell:R_BONO_VACACIONAL_FRACCIONADO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Timestamp To = _To;
@@ -3429,7 +3433,7 @@ if (dtEndEmployee == null || (dtEndEmployee!=null && To.getTime() < dtEndEmploye
 result = dtEndEmployee.getTime();
 '
 WHERE value = 'beanshell:R_FECHA_FIN'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -3451,7 +3455,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 &&
 }
 '
 WHERE value = 'beanshell:R_BONO_POST_VACACIONAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result= 0.0;
@@ -3486,14 +3490,14 @@ if (daysVac > 0) {
      result = (restdays * holidays) + getConcept("CC_SUELDO_DIARIO_VAC");
 }'
 WHERE value = 'beanshell:R_DESCANSOYFERIADO_VAC_VENC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Timestamp lastDate = LVE_Payroll.lastDateOfProcessGenerated(get_TrxName(), _C_BPartner_ID, getAD_Org_ID(), "''Mensual'',''Quincenal'',''Semanal''", true);
 
 result= lastDate.getTime();'
 WHERE value = 'beanshell:R_FEC_FINAL_CORT_TRIM_PAG_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Timestamp dateIni = LVE_Payroll.DateInitialEmployee(get_TrxName(), _C_BPartner_ID, getAD_Org_ID(), "''Mensual'',''Quincenal'',''Semanal''");
@@ -3505,7 +3509,7 @@ if (LVE_Payroll.yearsElapsed(dateIni, _To.clone())>0)
 else
    result = 0.0; '
 WHERE value = 'beanshell:R_ANTIGUEDAD_SUPERIOR_UN_AÑO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='long oneDay = 86400000;
@@ -3520,7 +3524,7 @@ BigDecimal sumConcept = LVE_Payroll.sumConcept(get_TrxName(), From, To , "CC_DIA
 result = sumConcept == null ? 0 : sumConcept.doubleValue();
 '
 WHERE value = 'beanshell:R_DIAS_REPOSO_PAGADO_EMPRESA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -3534,7 +3538,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 &&
 }
 '
 WHERE value = 'beanshell:R_BONO_ASISTENCIA_PUNTUAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -3549,7 +3553,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 &&
    result = getAttribute("C_MONTO_PAGAR_DE_PRIMA_POR_HIJOS") * getConcept("CC_NUMERO_HIJOS_PRIMA") * months;
 }'
 WHERE value = 'beanshell:R_PRIMA_POR_HIJOS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -3562,7 +3566,7 @@ if( (dateNextPayroll !=null) && ( getAttribute("C_AÑO_INICIO_OPERACIONES") == d
 } 
 '
 WHERE value = 'beanshell:R_APLICAR_CAL_AÑO_INIC_OPERACI'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -3576,7 +3580,7 @@ if(getConcept("CC_POR_LIQUIDAR")==1.0){
 
 }'
 WHERE value = 'beanshell:R_UTILIDADES_FRACCIONADAS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='long oneDay = 86400000;  
@@ -3594,7 +3598,7 @@ if (dateAfterLastPayroll != null)
 
 result = dateReturn.getTime();'
 WHERE value = 'beanshell:R_FECHA_INICIO_UTIL_FRAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
@@ -3615,7 +3619,7 @@ if(valor && ("Quincenal".equals(sContract) || "Semanal".equals(sContract) ) &&  
 
 }'
 WHERE value = 'beanshell:R_RETROACTIVO_SUELDO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='Timestamp dFecUltCalcPres;
@@ -3640,7 +3644,7 @@ if (!"S".equals(getAttributeString("C_PRESTACIONES_DEPOSITADAS_FIDEICOMISO")) &&
 else
    result=0.0;'
 WHERE value = 'beanshell:R_BASE_%_CALCULO_INTERES_PREST'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -3662,7 +3666,7 @@ if (("S".equals(getAttributeString("C_APLICAR_RETENCIONES_FINAL_MES"))) && LVE_P
 }
 '
 WHERE value = 'beanshell:R_MONTO_BASE_PARA_LRPVH'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='import org.eevolution.model.*;
@@ -3691,14 +3695,14 @@ result=0.0;
 if (bSalaryLessThanTop && getConcept("CC_DIAS_EFECTIVOS_TRABAJADOS") >0) 
   result=1.0;'
 WHERE value = 'beanshell:R_CANCELAR_BONO_ALIMENTACION'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='
 result = getConcept("CC_PRESTACIONES_SOCIALES");
 '
 WHERE value = 'beanshell:R_INDEMNIZACION_DESPIDO_INJUST'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='long oneDay = 86400000;
@@ -3720,7 +3724,7 @@ if ( ( value1>0 || value2 ) && (monthOnPeriod%12)==0){
         result=0.0;
 }'
 WHERE value = 'beanshell:R_CIERRE_FEC_ANUAL_VACACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -3755,7 +3759,7 @@ if (monthsWorked >= 1 && getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0){
    result= salaryAccum + (salaryVariable / divisor) + aliquots;
 }'
 WHERE value = 'beanshell:R_SALARIO_PARA_PRESTACIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String contract=  getHR_Payroll().getHR_Contract().getValue();
@@ -3766,7 +3770,7 @@ if (    ("Prestaciones".equals(contract) &&  _To.getTime() <=  getAttributeDate(
     result=0.0;
 }'
 WHERE value = 'beanshell:R_APLI_PRES_FEC_ULT_PROCESAMI'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -3789,7 +3793,7 @@ if (getAttribute("A_BONO_VEHICULO_MOTO", _From) != null &&
 
 '
 WHERE value = 'beanshell:R_BONO_VEHICULO_MOTO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0; 
@@ -3816,7 +3820,7 @@ Double salaryVariable = LVE_Payroll.sumConcept(get_TrxName(), "IsOption9", start
 
 result= ((salaryAccum + (salaryVariable / divisor)) / getAttribute("C_DIAS_DEL_MES")) + getConcept("CC_PORCION_DIARIA_BONO_VAC");'
 WHERE value = 'beanshell:R_SUELDO_DIARIO_PARA_UTILIDAD'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -3847,7 +3851,7 @@ if (!"S".equals(sVariableSalary)) {
         result = LVE_Payroll.sumConcept(get_TrxName(), "IsOption1", DateIni, DateFin, _C_BPartner_ID, "") / dFactor * 30;
 }'
 WHERE value = 'beanshell:R_SUELDO_MES_ANTERIOR_VAC'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -3870,7 +3874,7 @@ if (getConcept("CC_APLICA")==1.0) {
 	description = "Días: "  + dias_feriado_trab;
 }'
 WHERE value = 'beanshell:R_FERIADO_TRABAJADO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='import org.eevolution.model.*;
@@ -3903,7 +3907,7 @@ if (salary == 0)
 
 result = salary;'
 WHERE value = 'beanshell:R_SUELDO_MENSUAL_VARIABLE'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -3936,7 +3940,7 @@ result = (valueReturn * sueldoDiario)-LVE_Payroll.ExecutionOfConcepts(get_TrxNam
 description = "Sueldo base diario: " + sueldoDiario;
 }'
 WHERE value = 'beanshell:R_SUELDO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -3962,7 +3966,7 @@ result = sueldo_diario * dias_desc_trab;
 description = "Días: "  + dias_desc_trab;
 }'
 WHERE value = 'beanshell:R_DESCANSO_TRABAJADO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -3977,7 +3981,7 @@ if (dias_adic != 0.0)
 result = sueldo_diario * dias_adic;
 }'
 WHERE value = 'beanshell:R_DIA_ADIC_LABORADO_DIURNO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContrato = getHR_Payroll().getHR_Contract().getValue();
@@ -3992,7 +3996,7 @@ if (getConcept("CC_APLICAR_RETENCIONES_LRPVH") == 1.0 && (bCont_Vac || getConcep
    description = "Sueldo base: " + sueldobase;
 }'
 WHERE value = 'beanshell:R_LEY_REG_PREST_VIV_HAB'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0;
@@ -4017,7 +4021,7 @@ result = (daysToPay * percentclient / 100) * getConcept("CC_SUELDO_DIARIO") ;
 description = "Días de Reposo al " + percentclient + "%: " + daysToPay;
 }'
 WHERE value = 'beanshell:R_MONTO_REPOSO_EMPRESA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0;
@@ -4037,7 +4041,7 @@ result = daysToPay * getConcept("CC_SUELDO_DIARIO") ;
 description = "Días de Reposo por la Empresa: " + daysToPay;
 }'
 WHERE value = 'beanshell:R_MONTO_REPOSO_EMPRESA_DED'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -4074,7 +4078,7 @@ result = (holidaysinperiod - holidaysnoticeinperiod) *
 description = "Días Feriados: " + (holidaysinperiod - holidaysnoticeinperiod);
 }'
 WHERE value = 'beanshell:R_FERIADO_LEGAL'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContrato = getHR_Payroll().getHR_Contract().getValue();
@@ -4096,7 +4100,7 @@ if ((getConcept("CC_APLICAR_RETENCIONES") == 1) && (bCont_Vac || getConcept("CC_
   }	
 }'
 WHERE value = 'beanshell:R_SEGURO_SOCIAL_OBLIGATORIO_TR'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String sContrato = getHR_Payroll().getHR_Contract().getValue();
@@ -4116,7 +4120,7 @@ if ((getConcept("CC_APLICAR_RETENCIONES") == 1) && (bCont_Vac || getConcept("CC_
  	description = "N° Lunes: " + cant_lunes + ". Sueldo base: " + sueldobase;
    }'
 WHERE value = 'beanshell:R_REGIMEN_PRESTACIONAL_TR'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0;
@@ -4134,7 +4138,7 @@ if (daysnotice > 0) {
         result = daysnotice * (getConcept("CC_SUELDO_MENSUAL") / getAttribute("C_DIAS_DEL_MES"));
 }'
 WHERE value = 'beanshell:R_DEDUCCION_REPOSO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='String jornada = getAttributeString("A_JORNADA_LABORAL");
@@ -4156,7 +4160,7 @@ if (horas_nov != 0.0)
   description = "Horas Extras Diurnas: " + horas_nov;
 result = horas_nov* sueldo_hora * recargo;'
 WHERE value = 'beanshell:R_HORAS_EXTRAS_DIURNAS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0;
@@ -4181,7 +4185,7 @@ result = (daysToPay * percentclient / 100) * getConcept("CC_SUELDO_DIARIO") ;
 description = "Días de reposo por el I.V.S.S. (" + percentclient + "%): " + daysToPay;
 }'
 WHERE value = 'beanshell:R_DIAS_REPOSO_IVSS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0;
@@ -4206,7 +4210,7 @@ result = (daysToPay * percentclient / 100) * getConcept("CC_SUELDO_DIARIO") ;
 description = "Días de reposo por el I.V.S.S. (" + percentclient + "%): " + daysToPay;
 }'
 WHERE value = 'beanshell:R_MONTO_REPOSO_IVSS'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0;
@@ -4222,7 +4226,7 @@ if (days > 0)
 	
 description = "Días de Inasistencia: " + days;'
 WHERE value = 'beanshell:R_DEDUCCION_INASISTENCIA'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result=0.0;
@@ -4251,7 +4255,7 @@ if (("S".equals(getAttributeString("C_APLICAR_RETENCIONES_FINAL_MES"))) && LVE_P
         LVE_Payroll.GeneratedConcepts(get_TrxName(),process,"isoption1","Y", From, To,_C_BPartner_ID,"''Quincenal'',''Semanal''", "Y").doubleValue();
 }'
 WHERE value = 'beanshell:R_SUELDO_PARA_RETENCIONES'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -4276,7 +4280,7 @@ result = sueldo_diario * recargo * dias_feriado_trab;
 description = "Días: "  + dias_feriado_trab;
 }'
 WHERE value = 'beanshell:R_RECARGO_FERIADO_TRABAJADO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -4293,7 +4297,7 @@ if (dias_adic != 0.0)
 result = ( sueldo_diario * dias_adic * recargo_feriado ) * recargo_nocturno;
 }'
 WHERE value = 'beanshell:R_DIA_ADIC_LABORADO_FER_NOCTUR'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -4309,7 +4313,7 @@ if (dias_adic != 0.0)
 result = sueldo_diario * dias_adic * recargo;
 }'
 WHERE value = 'beanshell:R_DIA_ADIC_LABORADO_NOCTURNO'
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0;
@@ -4322,7 +4326,7 @@ if (days != null && days > 0 && getConcept("CC_APLICA")==1.0)
 
 description = "Días: "  + days;'
 WHERE value = 'beanshell:R_ASIGNACION_SUSPENSION'
-GO
+;
 
 INSERT INTO "adempiere"."ad_rule"("ad_client_id", "ad_org_id", "ad_rule_id", "accesslevel", 
 "created", "createdby", "description", "entitytype", "eventtype", "help", "isactive", "name", 
@@ -4364,7 +4368,7 @@ double sueldoDiario =  (getAttributeString("A_SUELDO_VARIABLE")=="S" ?
 result = (restdays) * sueldoDiario;
 description = "Días de descanso: " + (restdays);
 } ', now(), 100, 'beanshell:R_DIAS_DESCANSO_DOMINGOS')
-GO
+;
 
 UPDATE adempiere.ad_rule 
 SET script ='result = 0.0;
@@ -4405,516 +4409,516 @@ result = (restdays) * sueldoDiario;
 description = "Días de descanso: " + (restdays);
 }'
 WHERE value = 'beanshell:R_DIAS_DESCANSO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B110' WHERE value = 'beanshell:R_BONO_PRODUCCION'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B105' WHERE value = 'beanshell:R_BONO_AÑOS_EMPRESA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A304' WHERE value = 'beanshell:R_VACACIONES_PAGADAS_SIN_DISF'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E020' WHERE value = 'beanshell:R_ANTICIPO_SUELDO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E100' WHERE value = 'beanshell:R_MONTEPIO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Callout_IsRegistere' WHERE value = 'beanshell:Callout_IsRegistered'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'D103' WHERE value = 'beanshell:R_DEDUCCION_SUSPENSION'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E011' WHERE value = 'beanshell:R_DED_SIN_CARACTER_SALARIAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E060' WHERE value = 'beanshell:R_CUOTA_SINDICAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W011' WHERE value = 'beanshell:R_CIERRE_INTERES_PREST_PAG'
-GO
+;
 UPDATE adempiere.ad_rule SET description = NULL WHERE value = 'beanshell:R_PRESTAMO_ESTUDIO_LIQUIDACION'
-GO
+;
 UPDATE adempiere.ad_rule SET description = NULL WHERE value = 'beanshell:R_PRESTAMO_PERSONALES_LIQUIDAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y043' WHERE value = 'beanshell:R_FEC_ING_CAL_VAC_FRAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y040' WHERE value = 'beanshell:R_FECHA_INICIO_RETENCIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q015' WHERE value = 'beanshell:R_MONTO_DEVENGADO_PERIODO_UTIL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y021' WHERE value = 'beanshell:R_DIAS_BONO_ALIMENTACION'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A101' WHERE value = 'beanshell:R_ASIGNACION_INASISTENCIA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A005' WHERE value = 'beanshell:R_BONO_NOCTURNO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Días de vacaciones dentro del periodo actual' WHERE value = 'beanshell:R_DIAS_VACACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q032' WHERE value = 'beanshell:R_TRABAJADOR_CON_ESTABI_LABOR'
-GO
+;
 UPDATE adempiere.ad_rule SET description = NULL WHERE value = 'beanshell:R_PRESTAMO_COMPRA_VIVIENDA_LIQ'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A004' WHERE value = 'beanshell:R_BONO_ALIMENTACION'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W018' WHERE value = 'beanshell:R_ACT_TOT_DISP_FOND_AHO_CIERRE'
-GO
+;
 UPDATE adempiere.ad_rule SET description = NULL WHERE value = 'beanshell:R_PRESTAMO_OTROS_LIQUIDAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Fijar Datos Iniciales' WHERE value = 'beanshell:BP_FijarInicial'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Calculo de Horas de la Visita' WHERE value = 'beanshell:BP_calculosHoras'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q003' WHERE value = 'beanshell:R_SUELDO_APLICAR_PERIODO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = NULL WHERE value = 'beanshell:BP_Validar_Al_Eliminar_Tasa_Im'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q001' WHERE value = 'beanshell:R_SUELDO_DIARIO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = NULL WHERE value = 'beanshell:R_DIAS_ASG_NOVEDADES_DIARIAS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B100' WHERE value = 'beanshell:R_ASIGNACION_CARACTER_SALARIAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A110' WHERE value = 'beanshell:R_DIA_ADIC_LABORADO_FER_DIURNO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y001' WHERE value = 'beanshell:R_DEDUCIR_DIAS_EGRESO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y002' WHERE value = 'beanshell:R_DEDUCIR_DIAS_INGRESO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y011' WHERE value = 'beanshell:R_APLICAR_CONCEPTO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y005' WHERE value = 'beanshell:R_EDAD'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y047' WHERE value = 'beanshell:R_DIAS_BASE_DISFRUTE_VACAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W002' WHERE value = 'beanshell:R_CIERRE_VAL_INIC_ANU_SUEL_PRE'
-GO
+;
 UPDATE adempiere.ad_rule SET 
 description = 'Funcion determina si la nomina se encuentra en la ultima semana del mes' WHERE value = 'beanshell:R_ULTIMA_SEMANA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B101' WHERE value = 'beanshell:R_ASIGNACION_SIN_C_SALARIAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y081' WHERE value = 'beanshell:R_APLICAR_ULTIMA_NOMINA_MES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y041' WHERE value = 'beanshell:R_APLICAR_RETENCIONES_LRPVH'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A403' WHERE value = 'beanshell:R_DIAS_LABORADOS_FINIQ_RELACI'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E075' WHERE value = 'beanshell:R_CUOTA_POLIZA_AUTOMOVILES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E070' WHERE value = 'beanshell:R_CUOTA_POLIZA_HCM'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A104' WHERE value = 'beanshell:R_RECARGO_DESCANSO_TRABAJADO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E076' WHERE value = 'beanshell:R_CUOTA_POLIZA_GASTOS_FUNER'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y030' WHERE value = 'beanshell:R_FECHA_INGRESO_ANTIGUEDAD'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y019' WHERE value = 'beanshell:R_DIAS_NO_LABORABLES_POR_EGRE'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y009' WHERE value = 'beanshell:R_AÑOS_ANTIGUEDAD'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E077' WHERE value = 'beanshell:R_CUOTA_POLIZA_GASTOS_ODON'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y029' WHERE value = 'beanshell:R_POR_LIQUIDAR'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E034' WHERE value = 'beanshell:R_CUOTA_PRESTAMO_OTROS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E078' WHERE value = 'beanshell:R_CUOTA_POLIZA_ESCOLAR'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E090' WHERE value = 'beanshell:R_EXCESO_CELULAR'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y007' WHERE value = 'beanshell:R_DIAS_ADIC_PRESTACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y025' WHERE value = 'beanshell:R_DIAS_UTILIDADES_TRABAJADOR'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A411' WHERE value = 'beanshell:R_VACACIONES_PENDIENTES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y050' WHERE value = 'beanshell:R_DIAS_ADIC_VAC_PAG_SIN_DISFRU'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'D402' WHERE value = 'beanshell:R_PRESTACIONES_SOCI_FIDECOMISO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y069' WHERE value = 'beanshell:R_NUMERO_HIJOS_PRIMA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y048' WHERE value = 'beanshell:R_DIAS_BASE_PAGAR_VACACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y051' WHERE value = 'beanshell:R_DIAS_ADIC_VAC_DISPONIBLE'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'D200' WHERE value = 'beanshell:R_ANTICIPOS_UTILIDADES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A412' WHERE value = 'beanshell:R_BONO_VACACIONAL_PENDIENTE'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'D403' WHERE value = 'beanshell:R_INTERESES_PREST_SOC_PAG'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E072' WHERE value = 'beanshell:R_CUOTA_POLIZA_H.C'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E073' WHERE value = 'beanshell:R_CUOTA_POLIZA_VIDA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B108' WHERE value = 'beanshell:R_BONO_MATRIMONIO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'R005' WHERE value = 'beanshell:R_IMPUESTO_SOBRE_LA_RENTA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'D001' WHERE value = 'beanshell:R_VACACIONES_PAGADAS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E074' WHERE value = 'beanshell:R_CUOTA_POLIZA_CONTRA_ACCIDENT'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'D400' WHERE value = 'beanshell:R_ANTICIPO_PRESTACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'D406' WHERE value = 'beanshell:R_REPOSO_DEDUCC_LIQUIDACION'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B020' WHERE value = 'beanshell:R_ANTICIPO_PRESTACIONES_SOCIAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B021' WHERE value = 'beanshell:R_ANTICIPO_UTILIDADES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E050' WHERE value = 'beanshell:R_CUOTA_UNIFORMES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q030' WHERE value = 'beanshell:R_APLICA_DIAS_ADIC_PREST'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E071' WHERE value = 'beanshell:R_CUOTA_POLIZA_HCM_FAMILIARES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'V003' WHERE value = 'beanshell:R_MONTO_INTERESES_PRESTACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E032' WHERE value = 'beanshell:R_CUOTA_PRESTAMO_PERSONALES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'D002' WHERE value = 'beanshell:R_DIAS_SUEL_PEND_PAG_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E033' WHERE value = 'beanshell:R_CUOTA_PRESTAMO_REMOD_VIVIEND'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q033' WHERE value = 'beanshell:R_SUELDO_DIARIO_VARIABLE'
-GO
+;
 UPDATE adempiere.ad_rule SET description = NULL WHERE value = 'beanshell:R_CAMBIO_STATUS_CIERRE_LIQUIDA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A200' WHERE value = 'beanshell:R_ANTIC_UTILIDADES_LOTTT_132'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W004' WHERE value = 'beanshell:R_CIERRE_ANTICIPO_PREST_UTIL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W012' WHERE value = 'beanshell:R_ACT_CAMPO_SUELDO_PAG_VAC_CIE'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A007' WHERE value = 'beanshell:R_INTERESES_PREST_SOC_ANUALES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E030' WHERE value = 'beanshell:R_CUOTA_PRESTAMO_ESTUDIO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E031' WHERE value = 'beanshell:R_CUOTA_PRESTAMO_COMPRA_VIVIEN'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W021' WHERE value = 'beanshell:R_CIERRE_FEC_INTER_PREST_MENSU'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B102' WHERE value = 'beanshell:R_BONO_NACIMIENTO_HIJOS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y055' WHERE value = 'beanshell:R_DIAS_DESC_VAC_INAS_INJUS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y070' WHERE value = 'beanshell:R_TOPE_SALARIO_BONO_ALIMENT'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y063' WHERE value = 'beanshell:R_SUELDO_LIQUIDADO_VACACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y058' WHERE value = 'beanshell:R_VAL_INI_DEV_ANU_SUEL_ADI_PRE'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y059' WHERE value = 'beanshell:R_MONTO_DISPONIBLE_PREST'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y064' WHERE value = 'beanshell:R_TOTAL_DISP_FONDO_AHORRO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y060' WHERE value = 'beanshell:R_MONTO_DISP_INTERESES_PREST'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y012' WHERE value = 'beanshell:R_DIAS_UTILIDADES_POR_MES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y040-1' WHERE value = 'beanshell:R_APLICAR_RETENCION_FINAL_MES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A201' WHERE value = 'beanshell:R_BONO_FIN_AÑO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B112' WHERE value = 'beanshell:R_COMISIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B113' WHERE value = 'beanshell:R_BECA_ESTUDIO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y046' WHERE value = 'beanshell:R_DIAS_BASE_BONO_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A302' WHERE value = 'beanshell:R_BONO_VACACIONAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y062' WHERE value = 'beanshell:R_AÑOS_ANTIGUEDAD_VACACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'U002' WHERE value = 'beanshell:R_REGIMEN_PRESTACIONAL_PA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y054' WHERE value = 'beanshell:R_AÑOS_ANTIGUEDAD_BONO_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q012' WHERE value = 'beanshell:R_INCLUIR_ACUM_INIC_UTILIDADES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W020' WHERE value = 'beanshell:R_ACTUALIZAR_SUELDO_MENSUAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B106' WHERE value = 'beanshell:R_BONO_POR_GRADUACION'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Determina los días de descanso en un período dado' WHERE value = 'beanshell:R_DIAS_DESCANSO_PERIODO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q009' WHERE value = 'beanshell:R_MONTO_DIARIO_DEVENGADO_AÑO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E010' WHERE value = 'beanshell:R_DED_CON_CARACTER_SALARIAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A104' WHERE value = 'beanshell:R_DIAS_DESCANSO_TRABAJADO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y036' WHERE value = 'beanshell:R_FEC_INIC_CORT_TRIM_PAG_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y022' WHERE value = 'beanshell:R_MESES_PARA_UTILIDADES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y057' WHERE value = 'beanshell:R_DIAS_DISPONIBLES_BONO_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y052' WHERE value = 'beanshell:R_DIAS_ACUM_BONO_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q010' WHERE value = 'beanshell:R_MONTO_BASE_ISLR'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q022' WHERE value = 'beanshell:R_SUELDO_MES_VACACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A300' WHERE value = 'beanshell:R_VACACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W013' WHERE value = 'beanshell:R_ACT_CAMPO_SUELDO_PAG_VACACIO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A303' WHERE value = 'beanshell:R_SUELDO_PENDIENTE'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A105' WHERE value = 'beanshell:R_DIAS_FERIADO_TRABAJADO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y018' WHERE value = 'beanshell:R_LUNES_RETENC_NORMAL_ING_EG'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A301' WHERE value = 'beanshell:R_VAC_EN_FESTIVOS_DESCANSO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W009' WHERE value = 'beanshell:R_CAMBIO_STATUS_CIERRE_LIQUIDA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W025' WHERE value = 'beanshell:R_ACT_FECH_FIN_ULTIMA_VAC_DISF'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W017' WHERE value = 'beanshell:R_CIERRE_ACUM_FONDO_AHORRO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'U005' WHERE value = 'beanshell:R_PROVISI_MENSUAL_BONO_FIN_ANO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A402' WHERE value = 'beanshell:R_INTERESES_PREST_SOCIALES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W024' WHERE value = 'beanshell:R_ACT_ACUM_MONTO_PAG_REPO_IVSS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'U004' WHERE value = 'beanshell:R_INCE_PATRONAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'R004' WHERE value = 'beanshell:R_INCE_TRABAJADOR'
-GO
+;
 UPDATE adempiere.ad_rule SET description = NULL WHERE value = 'beanshell:R_PRESTAMO_REMOD_VIVI_LIQUIDAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W006' WHERE value = 'beanshell:R_CIERRE_ANTICIP_UTIL_CONT_UTI'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y071-HORAS' WHERE value = 'beanshell:R_HORAS_JORNADA_TRABAJADOR'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'V004' WHERE value = 'beanshell:R_MONTO_BONO_ALIMENTACION'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q002' WHERE value = 'beanshell:R_SUELDO_HORA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B104' WHERE value = 'beanshell:R_BONO_CUMPLEAÑOS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W026' WHERE value = 'beanshell:R_ACT_FEC_ULTI_BONO_POST_VAC_P'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y061' WHERE value = 'beanshell:R_FEC_ULT_MES_PROC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y032' WHERE value = 'beanshell:R_DIAS_DE_SUELDO_PENDIENTE'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'U003' WHERE value = 'beanshell:R_LEY_REG_PREST_VIV_HAB_PA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A100-3' WHERE value = 'beanshell:R_DIAS_REPOSO_EMPRESA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q013' WHERE value = 'beanshell:R_SALARIO_ESTIMADO_UTILIDADES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B031' WHERE value = 'beanshell:R_PRESTAMO_COMPRA_VIVIENDA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B032' WHERE value = 'beanshell:R_PRESTAMO_PERSONALES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B033' WHERE value = 'beanshell:R_PRESTAMO_REMODELACION_VIVIEN'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B030' WHERE value = 'beanshell:R_PRESTAMO_ESTUDIO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'U001' WHERE value = 'beanshell:R_SEGURO_SOCIAL_OBLIGATORIO_PA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B034' WHERE value = 'beanshell:R_PRESTAMO_OTROS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W007' WHERE value = 'beanshell:R_CIERRE_DIAS_VAC_BONO_VAC_CAU'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W015' WHERE value = 'beanshell:R_ACT_MONT_DISPONI_INTERES_PRE'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q011' WHERE value = 'beanshell:R_BASE_INTERES_PRESTA_SOCIALES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'V001-1' WHERE value = 'beanshell:R_DIAS_GARANTIA_PRESTACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W014' WHERE value = 'beanshell:R_ACT_MONT_DISP_PREST_CIERRE_P'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'U008' WHERE value = 'beanshell:R_PROVISION_MENSUAL_VACACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B200' WHERE value = 'beanshell:R_UTILIDADES_LOTTT_132'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y013' WHERE value = 'beanshell:R_DIAS_BONO_VAC_POR_AÑO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B009' WHERE value = 'beanshell:R_HORAS_EXTRAS_NOCTURNAS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y067' WHERE value = 'beanshell:R_FEC_FIN_ULT_VAC_DISF'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A001-LIQUIDACION' WHERE value = 'beanshell:R_SUELDO_EN_LIQUIDACION'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y071' WHERE value = 'beanshell:R_HORAS_BONO_ALIMENTACION'
-GO
+;
 UPDATE adempiere.ad_rule SET 
 description = 'Obtiene la cantidad de lunes dentro del período de nomina' WHERE value = 'beanshell:R_LUNES_PARA_RETENCIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q006' WHERE value = 'beanshell:R_PORCION_DIARIA_UTIL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y040-2' WHERE value = 'beanshell:R_NO_APLICAR_RETENCI_FINAL_MES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A001-1' WHERE value = 'beanshell:R_DIAS_EFECTIVOS_TRABAJADOS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W001' WHERE value = 'beanshell:R_CIERRE_FECHA_ULTIMO_MES_PROC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A006' WHERE value = 'beanshell:R_INTERESES_PREST_SOC_MENSUAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W010' WHERE value = 'beanshell:R_CIERRE_DIA_VAC_BONO_VAC_USAD'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W003' WHERE value = 'beanshell:R_CIERRE_ACUM_PREST_SOC_INTERE'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W008' WHERE value = 'beanshell:R_CIERRE_DIAS_PRESTACIONES_CAU'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A409' WHERE value = 'beanshell:R_VACACIONES_FRACCIONADAS_LIQU'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y056' WHERE value = 'beanshell:R_DIAS_DISPONIBLES_VACACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W016' WHERE value = 'beanshell:R_ACT_DIAS_DISP_VAC_BON_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'U010' WHERE value = 'beanshell:R_APORTE_FONDO_AHORRO_EMPRESA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q024' WHERE value = 'beanshell:R_SUELDO_MENSUAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'LVE_restart_filters' WHERE value = 'beanshell:LVE_restart_filters'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'E080' WHERE value = 'beanshell:R_APORTE_FONDO_AHORRO_TRABAJAD'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y016' WHERE value = 'beanshell:R_DIAS_VACACIONES_CAUSADAS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y004' WHERE value = 'beanshell:R_APLICAR_RETENCIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y017' WHERE value = 'beanshell:R_DIAS_BONO_VAC_CAUSADO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q031' WHERE value = 'beanshell:R_SALARIO_DIARIO_INTEGRAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'U007' WHERE value = 'beanshell:R_PROVISION_MENSUAL_BONO_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y014' WHERE value = 'beanshell:R_MESES_TRABAJADOS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q007' WHERE value = 'beanshell:R_PORCION_DIARIA_BONO_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q021' WHERE value = 'beanshell:R_PROMEDIO_TRIM_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y049' WHERE value = 'beanshell:R_DISFRUTAR_DIAS_ADIC_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'U006' WHERE value = 'beanshell:R_PROVISION_MENSUAL_UTILIDADES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'V001' WHERE value = 'beanshell:R_GARANTIA_PREST_SOCIALES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y053' WHERE value = 'beanshell:R_FECHA_INGRESO_CAL_VACACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q019' WHERE value = 'beanshell:R_SUELDO_DIARIO_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A401' WHERE value = 'beanshell:R_PRES_SOC_DIAS_ADIC_FIN_RELAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'V002' WHERE value = 'beanshell:R_MONTO_PRES_SOC_DIAS_ADIC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y071-FROM' WHERE value = 'beanshell:R_FECHA_INICIO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A400' WHERE value = 'beanshell:R_PRESTACIONES_SOCIALES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A410' WHERE value = 'beanshell:R_BONO_VACACIONAL_FRACCIONADO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y071-TO' WHERE value = 'beanshell:R_FECHA_FIN'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B107' WHERE value = 'beanshell:R_BONO_POST_VACACIONAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A413' WHERE value = 'beanshell:R_DESCANSOYFERIADO_VAC_VENC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y037' WHERE value = 'beanshell:R_FEC_FINAL_CORT_TRIM_PAG_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y200' WHERE value = 'beanshell:R_ANTIGUEDAD_SUPERIOR_UN_AÑO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A100-G' WHERE value = 'beanshell:R_DIAS_REPOSO_PAGADO_EMPRESA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B103' WHERE value = 'beanshell:R_BONO_ASISTENCIA_PUNTUAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B114' WHERE value = 'beanshell:R_PRIMA_POR_HIJOS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y027' WHERE value = 'beanshell:R_APLICAR_CAL_AÑO_INIC_OPERACI'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A407' WHERE value = 'beanshell:R_UTILIDADES_FRACCIONADAS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y026' WHERE value = 'beanshell:R_FECHA_INICIO_UTIL_FRAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B111' WHERE value = 'beanshell:R_RETROACTIVO_SUELDO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y010' WHERE value = 'beanshell:R_BASE_%_CALCULO_INTERES_PREST'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q023' WHERE value = 'beanshell:R_MONTO_BASE_PARA_LRPVH'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y028' WHERE value = 'beanshell:R_CANCELAR_BONO_ALIMENTACION'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A406' WHERE value = 'beanshell:R_INDEMNIZACION_DESPIDO_INJUST'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'W019' WHERE value = 'beanshell:R_CIERRE_FEC_ANUAL_VACACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q004' WHERE value = 'beanshell:R_SALARIO_PARA_PRESTACIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Y080' WHERE value = 'beanshell:R_APLI_PRES_FEC_ULT_PROCESAMI'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B109' WHERE value = 'beanshell:R_BONO_VEHICULO_MOTO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q008' WHERE value = 'beanshell:R_SUELDO_DIARIO_PARA_UTILIDAD'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q020' WHERE value = 'beanshell:R_SUELDO_MES_ANTERIOR_VAC'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A105' WHERE value = 'beanshell:R_FERIADO_TRABAJADO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q035' WHERE value = 'beanshell:R_SUELDO_MENSUAL_VARIABLE'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A001' WHERE value = 'beanshell:R_SUELDO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A102' WHERE value = 'beanshell:R_DESCANSO_TRABAJADO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A106' WHERE value = 'beanshell:R_DIA_ADIC_LABORADO_DIURNO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'R003' WHERE value = 'beanshell:R_LEY_REG_PREST_VIV_HAB'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A100-1' WHERE value = 'beanshell:R_MONTO_REPOSO_EMPRESA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A100-1.1' WHERE value = 'beanshell:R_MONTO_REPOSO_EMPRESA_DED'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A003' WHERE value = 'beanshell:R_FERIADO_LEGAL'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'R001' WHERE value = 'beanshell:R_SEGURO_SOCIAL_OBLIGATORIO_TR'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'R002' WHERE value = 'beanshell:R_REGIMEN_PRESTACIONAL_TR'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'D100' WHERE value = 'beanshell:R_DEDUCCION_REPOSO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'B008' WHERE value = 'beanshell:R_HORAS_EXTRAS_DIURNAS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'D100' WHERE value = 'beanshell:R_DIAS_REPOSO_IVSS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'D100' WHERE value = 'beanshell:R_MONTO_REPOSO_IVSS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'D101' WHERE value = 'beanshell:R_DEDUCCION_INASISTENCIA'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'Q025' WHERE value = 'beanshell:R_SUELDO_PARA_RETENCIONES'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A105' WHERE value = 'beanshell:R_RECARGO_FERIADO_TRABAJADO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A111' WHERE value = 'beanshell:R_DIA_ADIC_LABORADO_FER_NOCTUR'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A107' WHERE value = 'beanshell:R_DIA_ADIC_LABORADO_NOCTURNO'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A103' WHERE value = 'beanshell:R_ASIGNACION_SUSPENSION'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A002' WHERE value = 'beanshell:R_DIAS_DESCANSO_DOMINGOS'
-GO
+;
 UPDATE adempiere.ad_rule SET description = 'A002' WHERE value = 'beanshell:R_DIAS_DESCANSO'
-GO
+;
 --Fin Actualización de reglas--------------------------------------------------------------------------------
 
 --Inicio Insertar conceptos
 INSERT INTO adempiere.hr_concept(accountsign, isreadwrite, isreceipt, ispaid, value, name, hr_concept_category_id, hr_concept_id, hr_department_id, hr_job_id, hr_payroll_id, isactive, ad_client_id, isemployee, isprinted, isregistered, type, updated, updatedby, validfrom, validto, isdefault, ad_org_id, columntype, created, createdby, description, ad_reference_id, seqno, isoption1, isoption2, isoption3, isoption4, isoption5, isoption6, isoption7, isoption8, isoption9, isoption10, isrequiredforworker, c_charge_id)
   VALUES(NULL, 'N', 'N', 'N', 'A_DIAS_SUSPENSION_REM', 'Días de Suspención Remunerados', 1000005, 1000496, NULL, NULL, NULL, 'Y', 1000000, 'Y', 'N', 'Y', 'C', '2012-10-09 13:57:00.0', 100, NULL, NULL, 'N', 1000000, 'A', '2012-10-09 13:56:31.0', 100, 'A103', NULL, 1330, 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', NULL)
-GO
+;
 INSERT INTO adempiere.hr_concept(accountsign, isreadwrite, isreceipt, ispaid, value, name, hr_concept_category_id, hr_concept_id, hr_department_id, hr_job_id, hr_payroll_id, isactive, ad_client_id, isemployee, isprinted, isregistered, type, updated, updatedby, validfrom, validto, isdefault, ad_org_id, columntype, created, createdby, description, ad_reference_id, seqno, isoption1, isoption2, isoption3, isoption4, isoption5, isoption6, isoption7, isoption8, isoption9, isoption10, isrequiredforworker, c_charge_id)
   VALUES(NULL, 'N', 'N', 'N', 'A_TURNO_NOCTURNO', 'Días con turno nocturno', 1000000, 1000497, NULL, NULL, NULL, 'Y', 1000000, 'Y', 'N', 'Y', 'C', '2012-10-09 14:21:30.0', 100, NULL, NULL, 'N', 1000000, 'A', '2012-10-09 14:21:30.0', 100, 'A005', NULL, 1330, 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', NULL)
-GO
+;
 INSERT INTO adempiere.hr_concept(accountsign, isreadwrite, isreceipt, ispaid, value, name, hr_concept_category_id, hr_concept_id, hr_department_id, hr_job_id, hr_payroll_id, isactive, ad_client_id, isemployee, isprinted, isregistered, type, updated, updatedby, validfrom, validto, isdefault, ad_org_id, columntype, created, createdby, description, ad_reference_id, seqno, isoption1, isoption2, isoption3, isoption4, isoption5, isoption6, isoption7, isoption8, isoption9, isoption10, isrequiredforworker, c_charge_id)
   VALUES(NULL, 'N', 'N', 'N', 'C_DESGLOSAR_DIAS_DESCANSO', 'Desglosar días de descanso Si(S) No(N)', NULL, 1000498, NULL, NULL, NULL, 'Y', 1000000, 'N', 'N', 'N', 'I', '2012-10-09 14:55:50.0', 100, NULL, NULL, 'N', 1000000, 'T', '2012-10-09 14:55:50.0', 100, NULL, NULL, 170, 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', NULL)
-GO
+;
 INSERT INTO adempiere.hr_concept(accountsign, isreadwrite, isreceipt, ispaid, value, name, hr_concept_category_id, hr_concept_id, hr_department_id, hr_job_id, hr_payroll_id, isactive, ad_client_id, isemployee, isprinted, isregistered, type, updated, updatedby, validfrom, validto, isdefault, ad_org_id, columntype, created, createdby, description, ad_reference_id, seqno, isoption1, isoption2, isoption3, isoption4, isoption5, isoption6, isoption7, isoption8, isoption9, isoption10, isrequiredforworker, c_charge_id)
   VALUES('D', 'N', 'N', 'Y', 'CC_DIAS_DESCANSO_DOMINGOS', 'Días de descanso (Domingos)', 1000000, 1000499, NULL, NULL, NULL, 'Y', 1000000, 'N', 'Y', 'N', 'E', '2012-10-09 15:11:04.0', 100, NULL, NULL, 'N', 1000000, 'A', '2012-10-09 15:09:59.0', 100, 'A002', NULL, 4560, 'Y', 'Y', 'Y', 'Y', 'N', 'Y', 'N', 'Y', 'N', 'N', 'N', 1000000)
-GO
+;
 --Fin Insertar conceptos
 
 -- Inicio de actualizar conceptos
@@ -4927,7 +4931,7 @@ hr_concept_category_id = 1000004,
 isemployee = 'Y', name = 'Días Adicionales Laborados Diurno', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'A_DIAS_ADIC_LABORADOS_DIURNO'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -4938,7 +4942,7 @@ hr_concept_category_id = 1000005,
 isemployee = 'Y', name = 'Días Reposo Remunerados', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'A_DIAS_REPOSO'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -4949,7 +4953,7 @@ hr_concept_category_id = 1000005,
 isemployee = 'Y', name = 'Días Descanso Trabajados', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'A_DIAS_DESCANSO_TRABAJADO'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -4960,7 +4964,7 @@ hr_concept_category_id = 1000001,
 isemployee = 'Y', name = 'Horas No Trabajadas Nocturnas', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'E_HORAS_NO_TRABAJADAS_NOCTURNAS'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -4971,7 +4975,7 @@ hr_concept_category_id = 1000005,
 isemployee = 'Y', name = 'Días Inasistencia Justificada', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'A_DIAS_INASISTENCIA_JUSTIFICADA'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -4982,7 +4986,7 @@ hr_concept_category_id = 1000005,
 isemployee = 'Y', name = 'Días Feriado Trabajados', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'A_DIAS_FERIADO_TRABAJADO'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'Y', isoption2 = 'Y', isoption3 = 'Y',  
@@ -4993,7 +4997,7 @@ hr_concept_category_id = NULL,
 isemployee = 'N', name = 'Días de descanso trabajado', isactive = 'Y', isregistered = 'N',  
 type = 'E', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'CC_DIAS_DESCANSO_TRABAJADO'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -5004,7 +5008,7 @@ hr_concept_category_id = NULL,
 isemployee = 'N', name = 'Días de Reposo IVSS', isactive = 'N', isregistered = 'N',  
 type = 'E', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'CC_DIAS_REPOSO_IVSS'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'Y', isoption2 = 'Y', isoption3 = 'Y',  
@@ -5015,7 +5019,7 @@ hr_concept_category_id = NULL,
 isemployee = 'N', name = 'Monto de Reposo Empresa', isactive = 'Y', isregistered = 'N',  
 type = 'E', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'CC_MONTO_REPOSO_EMPRESA_DED'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -5026,7 +5030,7 @@ hr_concept_category_id = NULL,
 isemployee = 'N', name = 'Monto de Reposo IVSS', isactive = 'Y', isregistered = 'N',  
 type = 'E', columntype = 'A', c_charge_id = 1000000 
 WHERE value = 'CC_MONTO_REPOSO_IVSS'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'Y', isoption2 = 'N', isoption3 = 'Y',  
@@ -5037,7 +5041,7 @@ hr_concept_category_id = NULL,
 isemployee = 'N', name = 'Descanso Trabajado', isactive = 'Y', isregistered = 'N',  
 type = 'E', columntype = 'A', c_charge_id = 1000000 
 WHERE value = 'CC_DESCANSO_TRABAJADO'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'Y', isoption2 = 'Y', isoption3 = 'Y',  
@@ -5048,7 +5052,7 @@ hr_concept_category_id = NULL,
 isemployee = 'N', name = 'Monto de Reposo Empresa (%)', isactive = 'Y', isregistered = 'N',  
 type = 'E', columntype = 'A', c_charge_id = 1000000 
 WHERE value = 'CC_MONTO_REPOSO_EMPRESA'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -5059,7 +5063,7 @@ hr_concept_category_id = 1000006,
 isemployee = 'Y', name = 'Días Deducción por Inasistencia Injustificada', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'D_DIAS_DEDUCCION_INASISTENCIA'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -5070,7 +5074,7 @@ hr_concept_category_id = 1000001,
 isemployee = 'Y', name = 'Horas No Trabajadas Diurnas', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'E_HORAS_NO_TRABAJADAS_DIURNAS'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -5081,7 +5085,7 @@ hr_concept_category_id = 1000003,
 isemployee = 'Y', name = 'Horas Extras Nocturnas', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'A_NOV_HORAS_EXTRAS_NOCTURNAS'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -5092,7 +5096,7 @@ hr_concept_category_id = 1000007,
 isemployee = 'Y', name = 'Horas Extras Diurnas', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'A_NOV_HORAS_EXTRAS_DIURNAS'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -5103,7 +5107,7 @@ hr_concept_category_id = 1000004,
 isemployee = 'Y', name = 'Días Adicionales Laborados Nocturno', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'A_DIAS_ADIC_LABORADOS_NOCTURNO'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -5114,7 +5118,7 @@ hr_concept_category_id = 1000006,
 isemployee = 'Y', name = 'Días Deducción Reposo', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'D_DIAS_DEDUCCION_REPOSO'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -5125,7 +5129,7 @@ hr_concept_category_id = 1000004,
 isemployee = 'Y', name = 'Días Adicionales Laborados Feriado Diurno', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'A_DIAS_ADIC_LABORADOS_FERIADO_DIURNO'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -5136,7 +5140,7 @@ hr_concept_category_id = 1000004,
 isemployee = 'Y', name = 'Días Adicionales Laborados Feriado Nocturno', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'A_DIAS_ADIC_LABORADOS_FERIADO_NOCTURNO'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'Y', isoption2 = 'Y', isoption3 = 'Y',  
@@ -5147,7 +5151,7 @@ hr_concept_category_id = NULL,
 isemployee = 'N', name = 'Recargo Descanso Trabajado', isactive = 'Y', isregistered = 'N',  
 type = 'E', columntype = 'A', c_charge_id = 1000000 
 WHERE value = 'CC_RECARGO_DESCANSO_TRABAJADO'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -5158,7 +5162,7 @@ hr_concept_category_id = 1000005,
 isemployee = 'Y', name = 'Días de Suspención Remunerados', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'A_DIAS_SUSPENSION_REM'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -5169,7 +5173,7 @@ hr_concept_category_id = 1000000,
 isemployee = 'Y', name = 'Días con turno nocturno', isactive = 'Y', isregistered = 'Y',  
 type = 'C', columntype = 'A', c_charge_id = NULL 
 WHERE value = 'A_TURNO_NOCTURNO'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'N', isoption2 = 'N', isoption3 = 'N',  
@@ -5179,7 +5183,7 @@ description = NULL, hr_concept_category_id = NULL,
 isemployee = 'N', name = 'Desglosar días de descanso Si(S) No(N)', isactive = 'Y', isregistered = 'N',  
 type = 'I', columntype = 'T', c_charge_id = NULL 
 WHERE value = 'C_DESGLOSAR_DIAS_DESCANSO'
-GO
+;
 
 UPDATE adempiere.hr_concept SET 
 isoption1 = 'Y', isoption2 = 'Y', isoption3 = 'Y',  
@@ -5189,16 +5193,16 @@ description = 'A002', hr_concept_category_id = 1000000,
 isemployee = 'N', name = 'Días de descanso (Domingos)', isactive = 'Y', isregistered = 'N',  
 type = 'E', columntype = 'A', c_charge_id = 1000000 
 WHERE value = 'CC_DIAS_DESCANSO_DOMINGOS'
-GO
+;
 -- Fin de actualizar conceptos
 
 --Inicio crear atributos
 INSERT INTO adempiere.hr_attribute(ad_client_id, ad_org_id, ad_rule_id, amount, c_bpartner_id, columntype, created, createdby, description, hr_attribute_acct, hr_attribute_id, hr_concept_id, hr_department_id, hr_employee_id, hr_job_id, hr_payroll_id, isactive, isprinted, maxvalue, minvalue, qty, servicedate, textmsg, updated, updatedby, validfrom, validto)
   VALUES(1000000, 1000000, NULL, 0, NULL, 'T', '2012-10-09 14:56:07.0', 100, NULL, NULL, (SELECT MAX(hr_attribute_id) + 1 FROM hr_attribute), 1000498, NULL, NULL, NULL, NULL, 'Y', 'N', 0, 0, 0, NULL, 'S', '2012-10-09 16:54:44.0', 100, '2010-01-01 00:00:00.0', NULL)
-GO
+;
 INSERT INTO adempiere.hr_attribute(ad_client_id, ad_org_id, ad_rule_id, amount, c_bpartner_id, columntype, created, createdby, description, hr_attribute_acct, hr_attribute_id, hr_concept_id, hr_department_id, hr_employee_id, hr_job_id, hr_payroll_id, isactive, isprinted, maxvalue, minvalue, qty, servicedate, textmsg, updated, updatedby, validfrom, validto)
   VALUES(1000000, 1000000, 2000103, 0, NULL, 'A', '2012-10-09 16:48:32.0', 100, NULL, NULL, (SELECT MAX(hr_attribute_id) + 1 FROM hr_attribute), 1000499, NULL, NULL, NULL, NULL, 'Y', 'N', 0, 0, 0, NULL, NULL, '2012-10-09 16:48:32.0', 100, '2012-09-01 00:00:00.0', NULL)
-GO
+;
 --Fin crear atributos
 
 -- Traducciones de los elementos asociados a las opciones de los conceptos
@@ -5206,61 +5210,61 @@ UPDATE adempiere.ad_element_trl SET istranslated = 'Y', name = 'Caracter Salaria
 printname = 'Concepto con Caracter Salarial', 
 description = 'Indica que el concepto tiene caracter salarial'
 WHERE ad_element_id = (SELECT ad_element_id FROM ad_element WHERE columnname = 'IsOption1')
-GO
+;
 
 UPDATE adempiere.ad_element_trl SET istranslated = 'Y', name = 'Prestaciones', 
 printname = 'Prestaciones', 
 description = 'Indica que el concepto es parte del salario base para prestaciones sociales (sólo lo que es fijo)'
 WHERE ad_element_id = (SELECT ad_element_id FROM ad_element WHERE columnname = 'IsOption2')
-GO
+;
 
 UPDATE adempiere.ad_element_trl SET istranslated = 'Y', name = 'Vacaciones', 
 printname = 'Vacaciones', 
 description = 'Indica que el concepto es parte del salario base para Vacaciones'
 WHERE ad_element_id = (SELECT ad_element_id FROM ad_element WHERE columnname = 'IsOption3')
-GO
+;
 
 UPDATE adempiere.ad_element_trl SET istranslated = 'Y', name = 'Utilidades', 
 printname = 'Utilidades', 
 description = 'Indica que el concepto es parte del salario base para Utilidades (sólo lo que es fijo)'
 WHERE ad_element_id = (SELECT ad_element_id FROM ad_element WHERE columnname = 'IsOption4')
-GO
+;
 
 UPDATE adempiere.ad_element_trl SET istranslated = 'Y', name = 'Préstamos', 
 printname = 'Préstamos', 
 description = 'Indica que este concepto es de préstamos'
 WHERE ad_element_id = (SELECT ad_element_id FROM ad_element WHERE columnname = 'IsOption5')
-GO
+;
 
 UPDATE adempiere.ad_element_trl SET istranslated = 'Y', name = 'Acumulado de Asignaciones', 
 printname = 'Acumulado de Asignaciones', 
 description = 'Indica que el concepto acumula otras asignaciones que no son sueldo'
 WHERE ad_element_id = (SELECT ad_element_id FROM ad_element WHERE columnname = 'IsOption6')
-GO
+;
 
 UPDATE adempiere.ad_element_trl SET istranslated = 'Y', name = 'Bono de Alimentación', 
 printname = 'Bono de Alimentación', 
 description = 'Indica si se genera o no, bono de alimentación cuando el trabajador presente esta novedad'
 WHERE ad_element_id = (SELECT ad_element_id FROM ad_element WHERE columnname = 'IsOption7')
-GO
+;
 
 UPDATE adempiere.ad_element_trl SET istranslated = 'Y', name = 'ISLR', 
 printname = 'Impuesto Sobre La Renta', 
 description = 'Indica que el concepto es acumulado para la base del cálculo de ISLR'
 WHERE ad_element_id = (SELECT ad_element_id FROM ad_element WHERE columnname = 'IsOption8')
-GO
+;
 
 UPDATE adempiere.ad_element_trl SET istranslated = 'Y', name = 'Elemento Salarial Variable', 
 printname = 'Elemento Salarial Variable', 
 description = 'Indica si que el concepto es considerado un elemento salarial variable'
 WHERE ad_element_id = (SELECT ad_element_id FROM ad_element WHERE columnname = 'IsOption9')
-GO
+;
 
 UPDATE adempiere.ad_element_trl SET istranslated = 'Y', name = 'Actualización', 
 printname = 'Actualización', 
 description = 'Indica que la regla que ejecuta el concepto debe actualizar los atributos a los que hace referencia'
 WHERE ad_element_id = (SELECT ad_element_id FROM ad_element WHERE columnname = 'IsOption10')
-GO
+;
 -- Fin de las traducciones de los elementos asociados a las opciones de los conceptos
 
 -- Definición de nómina
@@ -5273,14 +5277,14 @@ VALUES('CC_DIAS_DESCANSO_DOMINGOS', 1000000, NULL, now(), 100,
 (select max(hr_payrollconcept_id)+1 from hr_payrollconcept), 
 (select hr_payroll_id from hr_payroll where value = 'NOMINA_QUINCENAL'), 
 'Y', 'Y', 'N', 'N', 980, now(), 1000000, 100)
-GO
+;
 -- Actualizar conceptos asociados
 UPDATE adempiere.hr_payrollconcept SET isactive = 'Y', isdisplayed = 'Y', isprinted = 'N' WHERE name = 'CC_DIA_ADIC_LABORADO_DIURNO'
-GO
+;
 UPDATE adempiere.hr_payrollconcept SET isactive = 'Y', isdisplayed = 'Y', isprinted = 'N' WHERE name = 'CC_MONTO_REPOSO_EMPRESA'
-GO
+;
 UPDATE adempiere.hr_payrollconcept SET isactive = 'Y', isdisplayed = 'Y', isprinted = 'Y' WHERE name = 'CC_UTILIDADES_LOTTT_132'
-GO
+;
 -- Fechas desde y hasta sólo para los conceptos tipo novedades
 UPDATE ad_column SET ad_reference_id = 16
 WHERE ad_column_id IN (
@@ -5288,104 +5292,104 @@ SELECT ad_column_id
 FROM ad_column WHERE ad_table_id = (SELECT ad_table_id FROM ad_table WHERE tablename = 'HR_Attribute') 
 AND columnname IN ('ValidFrom', 'ValidTo')
 )
-GO
+;
 
 -- Inactivar forma de novedades
 UPDATE AD_Menu SET IsActive='N',Updated=now(),UpdatedBy=100 
 WHERE AD_Menu_ID = (SELECT ad_menu_id FROM ad_menu WHERE name = 'Payroll Action Notice')
-GO
+;
 
 -- Actualizar el orden de los conceptos
 UPDATE AD_Tab SET SeqNo=140,Updated=now(),UpdatedBy=100 
 WHERE AD_Tab_ID=(select AD_Tab_ID from ad_tab WHERE name = 'Concept Ordering' and ad_window_id in 
 (select ad_window_id from ad_window where name = 'Payroll Concept Catalog'))
-GO
+;
 
 -- Campos de la ventana de atributos de conceptos tipo novedad
 UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Payroll Department' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Service date' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Text Message' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Payroll' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Payroll Job' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Rule' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Column Type' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Max Value' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Min Value' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=70,IsDisplayed='Y' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Business Partner ' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Amount' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Quantity' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Active' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
 
-GO
+;
 -- Quitar la condición el campo empleado en la lógica de despliegue
 UPDATE AD_Field SET DisplayLogic=NULL,Updated=now(),UpdatedBy=100 WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Business Partner ' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 -- Tiempo de la novedad
 UPDATE AD_Field_Trl SET Name='Tiempo de la Novedad',Description='Tiempo de la Novedad',Help=NULL,
@@ -5393,71 +5397,73 @@ Updated=now(),UpdatedBy=100 WHERE AD_Language='es_VE' AND AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Amount' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field_Trl SET Name='Tiempo de la Novedad',Description='Tiempo de la Novedad',Help=NULL,
 Updated=now(),UpdatedBy=100 WHERE AD_Language='es_VE' AND AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Quantity' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET IsCentrallyMaintained='N',Updated=now(), UpdatedBy=100 WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Quantity' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Field SET IsCentrallyMaintained='N',Updated=now(),UpdatedBy=100 WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Amount' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Notices Attributes' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 --Campos de la pestaña movimientos en la ventana proceso de nómina
 UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Service date' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Movement' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Process')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Printed' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Movement' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Process')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Text Message' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Movement' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Process')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=40,IsDisplayed='Y' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Description' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Movement' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Process')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=50,IsDisplayed='Y' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Active' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Movement' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Process')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Quantity' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Movement' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Process')))
-GO
+;
 
 UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=
 (select AD_Field_ID from ad_field WHERE name = 'Employee' and ad_tab_id in
 (select ad_tab_id from ad_tab where  name = 'Concept Notices' and ad_window_id in
 (select ad_window_id from ad_window where  name = 'Payroll Concept Catalog')))
-GO
+;
 
 UPDATE AD_Element_Trl SET IsTranslated='Y',Name='Requerido',PrintName='Requerido',Description='Indica que el atributo es requerido',
 Help=NULL,Updated=now(),UpdatedBy=100 WHERE AD_Language='es_VE' AND AD_Element_ID=
 (select ad_element_id from ad_element where columnname = 'isRequiredForWorker' and entitytype = 'DCS')
-GO
+;
+
+COMMIT;
