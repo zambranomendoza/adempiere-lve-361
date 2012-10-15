@@ -134,9 +134,19 @@ public class LVE_RequisitionToRfq extends SvrProcess
 					newQty.saveEx();				
 				
 			    }
+				
+				String sqlupd = ""
+					+ "UPDATE c_rfq "
+					+ "SET    referenceno= (select documentno from  m_requisition where m_requisition_id = " + p_M_Requisition_ID + " ) "
+					+ "WHERE c_rfq_id = " + p_C_Rfq_ID + "";
+				
+			    int no1 = DB.executeUpdate(sqlupd, null); 
+				log.fine("LVE_RequisitionToRfq -> c_rfq Update #" + no1);
+				String msg = (no1<0) ?" Error... LVE_RequisitionToRfq." :"";
+
 			   
 			    pstmt.close();
-			    return  "Proceso completado. "  ;
+			    return  msg + "Proceso completado. "  ;
 		}
 		
 	
