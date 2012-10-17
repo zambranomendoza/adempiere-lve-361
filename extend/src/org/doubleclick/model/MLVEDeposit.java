@@ -13,6 +13,7 @@ import org.adempiere.exceptions.AdempiereException;
 import org.compiere.model.MBankAccount;
 import org.compiere.model.MBankStatement;
 import org.compiere.model.MBankStatementLine;
+import org.compiere.model.MFactAcct;
 import org.compiere.model.MPayment;
 import org.compiere.model.ModelValidationEngine;
 import org.compiere.model.ModelValidator;
@@ -196,6 +197,7 @@ public class MLVEDeposit extends X_LVE_Deposit implements DocAction {
 				MBankAccount mBankTo = new MBankAccount(getCtx(),getC_BankAccount_ID(), get_TrxName());
 				
 				MPayment paymentBankFrom = new MPayment(getCtx(), 0 ,  get_TrxName());
+				paymentBankFrom.setAD_Org_ID(line.getAD_Org_ID());
 				paymentBankFrom.setC_BankAccount_ID(mBankFrom.getC_BankAccount_ID());
 				paymentBankFrom.setDescription(Msg.getMsg(Env.getAD_Language(getCtx()), "DocumentNo")+getDocumentNo()+" "+Msg.getMsg(Env.getAD_Language(getCtx()), "DepositNo")+" "+getDepositNo()+" "+Msg.getMsg(Env.getAD_Language(getCtx()), "Line")+" "+line.getLine());
 				paymentBankFrom.setDateAcct(getDateTrx());
@@ -221,6 +223,7 @@ public class MLVEDeposit extends X_LVE_Deposit implements DocAction {
 				paymentBankFrom.saveEx();
 				
 				MPayment paymentBankTo = new MPayment(getCtx(), 0 ,  get_TrxName());
+				paymentBankTo.setAD_Org_ID(line.getAD_Org_ID());
 				paymentBankTo.setC_BankAccount_ID(mBankTo.getC_BankAccount_ID());
 				paymentBankTo.setDescription(Msg.getMsg(Env.getAD_Language(getCtx()), "Document No")+getDocumentNo()+" "+Msg.getMsg(Env.getAD_Language(getCtx()), "Deposit No")+" "+getDepositNo()+" "+Msg.getMsg(Env.getAD_Language(getCtx()), "Line")+" "+line.getLine());
 				paymentBankTo.setDateAcct(getDateTrx());
@@ -482,12 +485,20 @@ public class MLVEDeposit extends X_LVE_Deposit implements DocAction {
 						
 						if (!mPayment.isReconciled()){
 							
-							if(!mPayment.processIt(MPayment.DOCACTION_Void)) {
+							MFactAcct.deleteEx(MPayment.Table_ID, mPayment.getC_Payment_ID(), get_TrxName());
+							
+							String sqldel = ""
+									 + "DELETE FROM c_payment "
+									 + "WHERE  c_payment_id = '"+mPayment.getC_Payment_ID()+"' ";
+								int no2 = DB.executeUpdate(sqldel, null);
+							log.fine("LVE_DeletePaymente -> c_payment Delete #" + no2);
+							
+							/*if(!mPayment.processIt(MPayment.DOCACTION_Void)) {
 								log.warning("Payment Process Failed: " + mPayment + " - " + mPayment.getProcessMsg());
 								throw new AdempiereException("Payment Process Failed: " + mPayment + " - " + mPayment.getProcessMsg());
 							}
 							
-							mPayment.saveEx();
+							mPayment.saveEx();*/
 							
 						}
 						else{
