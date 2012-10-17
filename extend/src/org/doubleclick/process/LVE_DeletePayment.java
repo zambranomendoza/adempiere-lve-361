@@ -22,6 +22,8 @@ import java.text.DecimalFormat;
 import java.util.logging.Level;
 
 import org.compiere.model.MBPartner;
+import org.compiere.model.MBankStatement;
+import org.compiere.model.MBankStatementLine;
 import org.compiere.model.MClient;
 import org.compiere.model.MCurrency;
 import org.compiere.model.MDocType;
@@ -35,6 +37,7 @@ import org.compiere.model.MLocation;
 import org.compiere.model.MOrder;
 import org.compiere.model.MOrderLine;
 import org.compiere.model.MOrderPaySchedule;
+import org.compiere.model.MPayment;
 import org.compiere.model.PO;
 import org.compiere.process.DocAction;
 import org.compiere.process.ProcessInfoParameter;
@@ -99,6 +102,38 @@ public class LVE_DeletePayment extends SvrProcess
 	protected String doIt () throws Exception
 	{
 		String msg="";
+		
+		MPayment pay = new MPayment(getCtx(), p_C_Payment_ID, get_TrxName());
+		
+		if (pay.isReconciled()){
+			String sql = "Select Name from C_BankStatementLine bl "
+					+ "inner join c_BankStatement b on bl.C_BankStatement_ID = b.C_BankStatement_ID "
+					+ "where bl.C_Payment_ID = "+p_C_Payment_ID
+					+ " and b.DocStatus in ('CO','CL') ";
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String NameBankStatement = null;
+			try
+			{
+				pstmt = DB.prepareStatement(sql, null);
+				rs = pstmt.executeQuery();
+				if (rs.next()){
+					NameBankStatement = rs.getString(1);
+				}
+			}
+			catch (Exception e)
+			{
+				log.log(Level.SEVERE, sql, e);
+			}
+			
+			rs.close();
+			pstmt.close();
+			
+			msg = "Error Pago ya fue conciliado en : "+NameBankStatement;
+			return msg;
+		}
+		
 		String sql = ""
 			+ "SELECT C_Invoice_ID FROM C_Payment " 
 			+ " Where C_Payment_ID= '" +p_C_Payment_ID+"'";

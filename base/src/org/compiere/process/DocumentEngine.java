@@ -1154,20 +1154,12 @@ public class DocumentEngine implements DocAction
 			}
 		}
 		/********************
-		 *  Manufacturing Cost Collector
+		 * Deposit Control
+		 * Double Click Sistemas C.A. Ads. Angel Parra - aparra@dcs.net.ve - arpr18@gmail.com
 		 */
 		else if (AD_Table_ID == MLVEDeposit.Table_ID)
 		{
-			if (docStatus.equals(DocumentEngine.STATUS_Drafted)
-				|| docStatus.equals(DocumentEngine.STATUS_Invalid))
-				{
-					for (int i = 0; i < options.length; i++){
-						options[i] = null;
-					}
-					options[index++] = DocumentEngine.ACTION_Prepare;
-					options[index++] = DocumentEngine.ACTION_Void;
-				}
-			else if (docStatus.equals(DocumentEngine.STATUS_Completed))
+			if (docStatus.equals(DocumentEngine.STATUS_Completed))
 			{
 				options[index++] = DocumentEngine.ACTION_Void;
 			}
