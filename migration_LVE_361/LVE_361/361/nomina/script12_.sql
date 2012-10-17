@@ -8,6 +8,8 @@ Instrucciones:
 
 */
 
+BEGIN;
+
 CREATE OR REPLACE FUNCTION adempiere.lve_birthday (in parameter_end_date timestamp, in birthday timestamp) RETURNS timestamp AS
 $BODY$
 DECLARE valor_mes varchar;
@@ -65,7 +67,7 @@ RETURN retorno_final;
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_convertdate (in p_date float8) RETURNS varchar AS
 $BODY$
@@ -94,7 +96,7 @@ RETURN valor;
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_daysnotice (in c_invoice_id numeric) RETURNS timestamp AS
 $BODY$
@@ -109,7 +111,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_daysnotice (in p_ad_client_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_notice bpchar) RETURNS numeric AS
 $BODY$
@@ -131,7 +133,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_daysnoticecategory (in p_ad_client_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_category bpchar) RETURNS numeric AS
 $BODY$
@@ -154,7 +156,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_daysnoticeinperiod (in p_ad_client_id numeric, in p_hr_payroll_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_notice bpchar, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -179,7 +181,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_daysrest (in p_from timestamptz, in p_to timestamptz, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -199,7 +201,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_daysrestnoticeinperiod (in p_ad_client_id numeric, in p_hr_payroll_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_concept_category bpchar, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -227,7 +229,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_daysvaconperiod (in p_ad_client_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz) RETURNS numeric AS
 $BODY$
@@ -254,7 +256,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_holidaysinperiod (in p_hr_payroll_id numeric, in p_from timestamptz, in p_to timestamptz, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -276,7 +278,7 @@ BEGIN
 END;
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_holidaysnoticeinperiod (in p_ad_client_id numeric, in p_hr_payroll_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_concept_category bpchar, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -302,7 +304,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_holidaysrestnoticecategory (in p_ad_client_id numeric, in p_hr_payroll_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_category bpchar, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -329,7 +331,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_holidaysrestnoticeinperiod (in p_ad_client_id numeric, in p_hr_payroll_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_to timestamptz, in p_notice bpchar, in p_dayrest int4) RETURNS numeric AS
 $BODY$
@@ -354,7 +356,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_isnull (in p1 numeric, in p2 numeric) RETURNS numeric AS
 $BODY$
@@ -365,7 +367,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_paid_loan (in parameter_lve_loan_employee_payment varchar) RETURNS varchar AS
 $BODY$
@@ -384,7 +386,7 @@ RETURN valor;
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_quota (in p_c_bpart numeric, in p_loan_emplo numeric, in p_start_date timestamp, in p_court_date timestamp) RETURNS numeric AS
 $BODY$
@@ -406,7 +408,7 @@ and llq.date1 between p_start_date and p_court_date;
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_records_islr (in p_anho numeric, in p_hr_department_id numeric, in p_c_bpartner_id numeric, in p_hr_contract_id numeric) RETURNS SETOF record AS
 $BODY$
@@ -464,7 +466,7 @@ $BODY$
 	END;
 	$BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_records_islr (in p_anho int4, in p_hr_department_id numeric, in p_c_bpartner_id numeric, in p_hr_contract_id numeric) RETURNS SETOF record AS
 $BODY$
@@ -522,7 +524,7 @@ $BODY$
 	END;
 	$BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_retentiondatefunction (in p_date timestamp, in p_c_bpartner numeric) RETURNS numeric AS
 $BODY$
@@ -552,7 +554,7 @@ RETURN acumulador;
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_retroactivevalue (in p_hr_process_id numeric, in p_hr_department_id numeric, in p_c_bpartner_id numeric, in p_amount numeric, in p_to timestamptz, in p_ad_org_id numeric) RETURNS numeric AS
 $BODY$
@@ -575,7 +577,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_subscription_fee (in lve_loan_employee_id numeric, in start_date timestamp, in end_date timestamp, in lve_loan_employee_dateloan timestamp, in p_opcion numeric) RETURNS numeric AS
 $BODY$
@@ -612,7 +614,7 @@ END IF;
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_sumvaluepayroll (in p_c_bpartner_id numeric, in p_hr_process_id numeric, in p_type bpchar) RETURNS numeric AS
 $BODY$
@@ -628,7 +630,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_valueattribute_date_operation (in p_cbpartner_taxid varchar, in p_contract varchar, in p_department varchar, in p_concept varchar, in p_c_bpartner_id numeric, in p_date timestamp) RETURNS numeric AS
 $BODY$
@@ -651,7 +653,7 @@ AND hr_attribute."validfrom" = p_date - interval '1 month';
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_valueattribute (in p_cbpartner_taxid varchar, in p_contract varchar, in p_department varchar, in p_concept varchar, in p_c_bpartner_id numeric, in p_date timestamp, in p_opcion numeric) RETURNS numeric AS
 $BODY$
@@ -706,7 +708,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_valueconcept_socialsecurity (in p_hr_concept_value varchar, in p_c_bpartner_id numeric, in p_hr_movement_validto timestamp) RETURNS numeric AS
 $BODY$
@@ -786,7 +788,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_valueconcept (in p_hr_process_id numeric, in p_hr_department_id numeric, in p_concept varchar, in p_c_bpartner_id numeric) RETURNS numeric AS
 $BODY$
@@ -803,7 +805,7 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE FUNCTION adempiere.lve_variablesalarytopexceeded (in p_ad_client_id numeric, in p_c_bpartner_id numeric, in p_from timestamptz, in p_months int4) RETURNS numeric AS
 $BODY$
@@ -824,15 +826,16 @@ BEGIN
 END;	
 $BODY$
 LANGUAGE 'plpgsql'
-GO
+;
 
 CREATE OR REPLACE VIEW adempiere.hr_movement_employee_v
 AS
 SELECT hr_process.ad_client_id, hr_process.ad_org_id, hr_process.created, hr_process.createdby, hr_process.updated, hr_process.updatedby, hr_process.isactive, c_bpartner.name, lve_sumvaluepayroll(hr_movement.c_bpartner_id, hr_process.hr_process_id, 'D'::bpchar) AS assignments, lve_isnull(lve_sumvaluepayroll(hr_movement.c_bpartner_id, hr_process.hr_process_id, 'C'::bpchar), (0)::numeric) AS deductions, (lve_sumvaluepayroll(hr_movement.c_bpartner_id, hr_process.hr_process_id, 'D'::bpchar) - lve_isnull(lve_sumvaluepayroll(hr_movement.c_bpartner_id, hr_process.hr_process_id, 'C'::bpchar), (0)::numeric)) AS total, hr_movement.c_bpartner_id, hr_process.hr_process_id FROM ((hr_process JOIN hr_movement ON ((hr_process.hr_process_id = hr_movement.hr_process_id))) JOIN c_bpartner ON ((hr_movement.c_bpartner_id = c_bpartner.c_bpartner_id))) GROUP BY hr_process.ad_client_id, hr_process.ad_org_id, hr_process.created, hr_process.createdby, hr_process.updated, hr_process.updatedby, hr_process.isactive, hr_movement.c_bpartner_id, hr_process.hr_process_id, c_bpartner.name;
-GO
+;
 
 CREATE OR REPLACE VIEW adempiere.hrv_nomina
 AS
 SELECT m.c_bpartner_id, m.textmsg, m.description, m.hr_department_id, m.hr_concept_id, m.amount, m.validfrom, m.validto, m.isprinted, c.value AS des_concep0, c.name AS des_concep1, c.isregistered, c.description AS co_concep, c.columntype AS tipo, c.type, c.accountsign, e.name2, e.name, cb.value AS cedula, cb.name AS nombre, dp.name AS despartamento, e.startdate AS fecha_inicio, orgi.taxid, orgi.logo_id, m.ad_client_id, m.ad_org_id, (0)::numeric AS total_recibo, org.description AS empresa, m.hr_process_id, py.name AS contrato, p.name AS descrip_nomina, cb.taxid AS cedula1 FROM ((((((((hr_process p JOIN hr_movement m ON ((p.hr_process_id = m.hr_process_id))) JOIN hr_employee e ON (((m.c_bpartner_id = e.c_bpartner_id) AND (p.hr_payroll_id = e.hr_payroll_id)))) JOIN hr_concept c ON ((m.hr_concept_id = c.hr_concept_id))) JOIN c_bpartner cb ON ((e.c_bpartner_id = cb.c_bpartner_id))) JOIN hr_department dp ON ((dp.hr_department_id = e.hr_department_id))) JOIN ad_orginfo orgi ON ((orgi.ad_org_id = m.ad_client_id))) JOIN ad_org org ON ((org.ad_org_id = m.ad_org_id))) JOIN hr_payroll py ON ((py.hr_payroll_id = p.hr_payroll_id)));
-GO
+
+COMMIT;
 

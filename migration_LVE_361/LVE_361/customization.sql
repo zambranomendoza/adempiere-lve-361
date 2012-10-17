@@ -24,3 +24,9 @@ UpdatedBy,IsActive) VALUES ('skip_validation_tab',(SELECT coalesce(MAX(AD_SysCon
 ;
 
 update ad_sysconfig set value = 'N' where name = 'ProductUOMConversionRateValidate';
+
+--Nomina
+
+delete from ad_menu where ad_menu_id=53109;
+delete from ad_column where ad_column_id=54740;
+

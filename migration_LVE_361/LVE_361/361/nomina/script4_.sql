@@ -20,7 +20,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_BONO_PRODUCCION"
 }
 
 ', '2010-12-06 16:40:20.0', 100, 'beanshell:R_BONO_PRODUCCION')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000142, NULL, '2010-12-06 14:42:53.0', 100, 'B105', 'U', 'H', NULL, 'Y', 'R_BONO_AÑOS_EMPRESA', 'S', 'result = 0.0;
 
@@ -41,7 +41,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 &&
 {
    result = getAttribute("C_MONTO_PAGAR_BONO_AÑOS_EMPRESA");
 }', '2011-02-21 16:10:58.0', 100, 'beanshell:R_BONO_AÑOS_EMPRESA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000095, NULL, '2010-11-22 08:10:33.0', 100, 'A304', 'U', 'H', 'Asignación por Días Adicionales de Vacaciones Sin Disfrute', 'Y', 'R_VACACIONES_PAGADAS_SIN_DISF', 'S', 'result = 0.0;
 
@@ -53,14 +53,14 @@ if (getConcept("CC_DIAS_ADIC_VAC_PAG_SIN_DISFRU") > 0)
 }
 
 }', '2011-06-21 11:19:12.0', 100, 'beanshell:R_VACACIONES_PAGADAS_SIN_DISF')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000153, NULL, '2010-12-07 08:31:07.0', 100, 'E020', 'U', 'H', NULL, 'Y', 'R_ANTICIPO_SUELDO', 'S', 'result = 0.0;
 
 if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_ANTICIPO_SUELDO") > 0)
    result = getAttribute("A_ANTICIPO_SUELDO");
 ', '2010-12-07 08:46:32.0', 100, 'beanshell:R_ANTICIPO_SUELDO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000206, NULL, '2010-12-13 12:00:19.0', 100, 'E100', 'U', 'H', NULL, 'Y', 'R_MONTEPIO', 'S', '
 result=0.0; 
@@ -68,13 +68,13 @@ result=0.0;
 if ("S".equals(getAttributeString("A_EMPLEADO_SINDICALIZADO"))  && getAttribute("C_MONTO_DESCONTAR_MONTEPIO")>0 && "S".equals(getAttributeString("C_DESCONTAR_MONTEPIO")) && getConcept("CC_APLICAR_CONCEPTO")==1.0)
      result=getAttribute("C_MONTO_DESCONTAR_MONTEPIO");
 ', '2011-05-16 10:55:17.0', 100, 'beanshell:R_MONTEPIO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000116, NULL, '2010-11-30 08:53:00.0', 100, 'Callout_IsRegistere', 'U', 'C', NULL, 'Y', 'Callout_IsRegistere', 'S', 'A_Tab.getField("isOption7").setDisplayed(A_Tab.getValue("isRegistered").equals(true));
 		A_Tab.getField("isOption8").setDisplayed(A_Tab.getValue("isRegistered").equals(true));
 
 result="";', '2010-11-30 09:01:12.0', 100, 'beanshell:Callout_IsRegistered')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000208, NULL, '2010-12-14 14:22:02.0', 100, 'D101', 'U', 'H', NULL, 'Y', 'R_DEDUCCION_INASISTENCIA', 'S', 'result = 0;
 
@@ -87,7 +87,7 @@ double days = DB.getSQLValue(get_TrxName(), sQuery,
 if (days > 0)
     result = days * (getConcept("CC_SUELDO_MENSUAL") / getAttribute("C_DIAS_DEL_MES"));
 	', '2011-05-30 16:19:13.0', 100, 'beanshell:R_DEDUCCION_INASISTENCIA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000207, NULL, '2010-12-13 14:18:35.0', 100, 'A005', 'U', 'H', NULL, 'Y', 'R_BONO_NOCTURNO', 'S', 'result = 0.0;
 
@@ -102,7 +102,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && dHours > 0)
 }
 
 ', '2011-01-31 10:29:46.0', 100, 'beanshell:R_BONO_NOCTURNO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000210, NULL, '2010-12-14 14:40:42.0', 100, 'A101', 'U', 'H', NULL, 'Y', 'R_ASIGNACION_INASISTENCIA', 'S', 'result = 0;
 
@@ -111,7 +111,7 @@ double days = DB.getSQLValue(get_TrxName(), sql , new Object[] { getAD_Client_ID
 
 if (days != null && days > 0 && getConcept("CC_APLICA")==1.0)
    result = days * (getConcept("CC_SUELDO_MENSUAL") / getAttribute("C_DIAS_DEL_MES"));', '2011-06-21 11:46:07.0', 100, 'beanshell:R_ASIGNACION_INASISTENCIA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000209, NULL, '2010-12-14 14:27:47.0', 100, 'D103', 'U', 'H', NULL, 'Y', 'R_DEDUCCION_SUSPENSION', 'S', 'int dayrest = (int)getAttribute("C_DIA_SEMANA_DESCANSO");
 String sQuery = "select lve_daysnoticeinperiod(?,?,?,?,?,?,?)";
@@ -121,13 +121,13 @@ int days = DB.getSQLValue(get_TrxName(), sQuery,
 
 return = days * (getConcept("CC_SUELDO_MENSUAL") / getAttribute("C_DIAS_DEL_MES"));
 	', '2011-02-03 15:24:30.0', 100, 'beanshell:R_DEDUCCION_SUSPENSION')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000159, NULL, '2010-12-07 10:17:51.0', 100, 'E011', 'U', 'H', NULL, 'Y', 'R_DED_SIN_CARACTER_SALARIAL', 'S', 'result = 0.0;
 
 if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_DEDUCCION_SIN_CARACTER_SALARIAL") > 0)
    result = getAttribute("A_DEDUCCION_SIN_CARACTER_SALARIAL");', '2010-12-07 10:17:51.0', 100, 'beanshell:R_DED_SIN_CARACTER_SALARIAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000205, NULL, '2010-12-13 11:40:24.0', 100, 'E060', 'U', 'H', NULL, 'Y', 'R_CUOTA_SINDICAL', 'S', '
 
@@ -146,7 +146,7 @@ if (( "Utilidades".equals(sContract) && getAttribute("C_DESC_CUOTA_SINDICAL_UTIL
      
 }
 ', '2011-05-16 10:54:52.0', 100, 'beanshell:R_CUOTA_SINDICAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000218, NULL, '2010-12-27 13:24:08.0', 100, 'A100-2', 'U', 'H', NULL, 'Y', 'R_MONTO_REPOSO_IVSS', 'S', 'result = 0;
 
@@ -163,7 +163,7 @@ if (!bPay100restingAttri && bPay100restingConst && days > 0)
 }
 }
 ', '2011-06-21 11:45:49.0', 100, 'beanshell:R_MONTO_REPOSO_IVSS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000237, NULL, '2011-01-12 09:48:31.0', 100, 'W011', 'U', 'H', NULL, 'Y', 'R_CIERRE_INTERES_PREST_PAG', 'S', 'result=1.0; 
 String msg=null;
@@ -184,7 +184,7 @@ if (value1>0) {
       result=0;
 }
  ', '2011-05-26 10:18:36.0', 100, 'beanshell:R_CIERRE_INTERES_PREST_PAG')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000247, NULL, '2011-01-17 08:40:56.0', 100, NULL, 'U', 'H', NULL, 'Y', 'R_PRESTAMO_ESTUDIO_LIQUIDACION', 'S', 'String sContract = getHR_Payroll().getHR_Contract().getValue();
 
@@ -192,7 +192,7 @@ if ("Liquidacion".equals(sContract)){
 
      result= LVE_Payroll.PaymentOfQuotaLiquidation(get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "S1" , new Date  (_To.getYear(), _To.getMonth(), _To.getDay()), _Process );
 }', '2011-02-18 10:09:42.0', 100, 'beanshell:R_PRESTAMO_ESTUDIO_LIQUIDACION')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000249, NULL, '2011-01-17 09:12:06.0', 100, NULL, 'U', 'H', NULL, 'Y', 'R_PRESTAMO_PERSONALES_LIQUIDAC', 'S', 'String sContract = getHR_Payroll().getHR_Contract().getValue();
 
@@ -200,7 +200,7 @@ if ("Liquidacion".equals(sContract)){
 
      result= LVE_Payroll.PaymentOfQuotaLiquidation(get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "P1" , new Date  (_To.getYear(), _To.getMonth(), _To.getDay()), _Process );
 }', '2011-02-18 10:09:53.0', 100, 'beanshell:R_PRESTAMO_PERSONALES_LIQUIDAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000052, NULL, '2010-10-28 16:37:50.0', 100, 'Y043', 'U', 'H', NULL, 'Y', 'R_FEC_ING_CAL_VAC_FRAC', 'S', 'Timestamp dateIni = LVE_Payroll.DateInitialEmployee(get_TrxName(),_C_BPartner_ID,getAD_Org_ID(),"''Mensual'',''Quincenal'',''Semanal''");
 Timestamp dateEnd = LVE_Payroll.DateEndEmployee(get_TrxName(),_C_BPartner_ID,getAD_Org_ID(),"''Mensual'',''Quincenal'',''Semanal''");
@@ -212,13 +212,13 @@ result = dateResult.getTime();
 
 
 ', '2011-02-21 16:15:47.0', 100, 'beanshell:R_FEC_ING_CAL_VAC_FRAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000096, NULL, '2010-11-22 10:30:11.0', 100, 'Y040', 'U', 'H', NULL, 'Y', 'R_FECHA_INICIO_RETENCIONES', 'S', 'boolean  value = "S".equals(getAttributeString("C_APLICAR_RETENCIONES_FINAL_MES").toUpperCase()); 
      
 result= value ? getConcept("CC_APLICAR_RETENCION_FINAL_MES"):getConcept("CC_NO_APLICAR_RETENCI_FINAL_MES");
 ', '2010-11-25 07:56:41.0', 100, 'beanshell:R_FECHA_INICIO_RETENCIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000127, NULL, '2010-12-06 08:43:38.0', 100, 'Q015', 'U', 'H', NULL, 'Y', 'R_MONTO_DEVENGADO_PERIODO_UTIL', 'S', 'String sContract = getHR_Payroll().getHR_Contract().getValue();
 long oneDay = 86400000;
@@ -243,7 +243,7 @@ if (getConcept("CC_MESES_PARA_UTILIDADES")>0){
    
     }
 }', '2011-05-12 16:10:49.0', 100, 'beanshell:R_MONTO_DEVENGADO_PERIODO_UTIL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000115, NULL, '2010-11-29 15:20:40.0', 100, 'Y021', 'U', 'H', NULL, 'Y', 'R_DIAS_BONO_ALIMENTACION', 'S', 'Double Hours = getConcept("CC_HORAS_JORNADA_TRABAJADOR");
 
@@ -254,7 +254,7 @@ else{
   result= 0.0;
 }
 ', '2011-06-07 14:13:24.0', 100, 'beanshell:R_DIAS_BONO_ALIMENTACION')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000019, NULL, '2010-10-12 17:53:38.0', 100, 'Días de vacaciones dentro del periodo actual', 'U', 'H', NULL, 'Y', 'R_DIAS_VACACIONES', 'S', 'result = 0;
 
@@ -267,7 +267,7 @@ else {
         String sql = "SELECT lve_daysvaconperiod(?,?,?,?)";
         result = DB.getSQLValue(get_TrxName(), sql, new Object[] {getAD_Client_ID(), _C_BPartner_ID, _From, _To});
 }', '2012-07-26 13:54:39.0', 100, 'beanshell:R_DIAS_VACACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000155, NULL, '2010-12-07 09:06:07.0', 100, 'Q032', 'U', 'H', NULL, 'Y', 'R_TRABAJADOR_CON_ESTABI_LABOR', 'S', '
 result=0.0;
@@ -279,7 +279,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0){
 }
 
 ', '2010-12-07 09:06:11.0', 100, 'beanshell:R_TRABAJADOR_CON_ESTABI_LABOR')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000248, NULL, '2011-01-17 09:10:49.0', 100, NULL, 'U', 'H', NULL, 'Y', 'R_PRESTAMO_COMPRA_VIVIENDA_LIQ', 'S', 'String sContract = getHR_Payroll().getHR_Contract().getValue();
 
@@ -287,7 +287,7 @@ if ("Liquidacion".equals(sContract)){
 
      result= LVE_Payroll.PaymentOfQuotaLiquidation(get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "HB" , new Date  (_To.getYear(), _To.getMonth(), _To.getDay()), _Process );
 }', '2011-02-18 10:09:35.0', 100, 'beanshell:R_PRESTAMO_COMPRA_VIVIENDA_LIQ')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000215, NULL, '2010-12-15 13:41:49.0', 100, 'A004', 'U', 'H', NULL, 'Y', 'R_BONO_ALIMENTACION', 'S', 'result=0.0; 
 
@@ -295,7 +295,7 @@ if ((getConcept("CC_CANCELAR_BONO_ALIMENTACION")== 1.0 && getConcept("CC_APLICAR
      "S".equals(getAttributeString("C_CANCELAR_BONO_ALIMENTACION"))){
      result= getConcept("CC_MONTO_BONO_ALIMENTACION");
 }', '2011-07-07 10:45:53.0', 100, 'beanshell:R_BONO_ALIMENTACION')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000230, NULL, '2011-01-10 11:28:37.0', 100, 'W018', 'U', 'H', NULL, 'Y', 'R_ACT_TOT_DISP_FOND_AHO_CIERRE', 'S', 'result=1.0;
 long oneDay = 86400000;
@@ -311,7 +311,7 @@ if (value1 > 0){
     if (msg != null)	
        result=0.0;
 }', '2011-05-26 10:24:41.0', 100, 'beanshell:R_ACT_TOT_DISP_FOND_AHO_CIERRE')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000250, NULL, '2011-01-17 09:14:14.0', 100, NULL, 'U', 'H', NULL, 'Y', 'R_PRESTAMO_OTROS_LIQUIDAC', 'S', 'String sContract = getHR_Payroll().getHR_Contract().getValue();
 
@@ -319,14 +319,14 @@ if ("Liquidacion".equals(sContract)){
 
      result= LVE_Payroll.PaymentOfQuotaLiquidation(get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "OT" , new Date  (_To.getYear(), _To.getMonth(), _To.getDay()), _Process );
 }', '2011-02-18 10:09:47.0', 100, 'beanshell:R_PRESTAMO_OTROS_LIQUIDAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000003, NULL, '2011-05-12 14:01:02.0', 0, 'Fijar Datos Iniciales', 'U', 'C', ' ', 'Y', 'Fijar Datos Iniciales', 'S', 'A_Tab.setValue("C_BPartneremp_ID",(@C_BPartnerEmp_ID));', '2011-05-12 14:19:44.0', 0, 'beanshell:BP_FijarInicial')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000000, NULL, '2011-04-07 16:47:02.0', 100, 'Calculo de Horas de la Visita', 'DCS', 'C', ' ', 'Y', 'Calculo de Horas de Visita', 'S', 'Float u=  ((new Float ( A_Tab.getValue("TimeEnd").getTime()-A_Tab.getValue("TimeStart").getTime()))/1000/3600)+A_Tab.getValue("dshoras");
 A_Tab.setValue("ValueNumberHour",u);', '2011-04-13 19:59:28.0', 100, 'beanshell:BP_calculosHoras')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000004, NULL, '2010-10-11 14:25:31.0', 100, 'Q003', 'U', 'H', NULL, 'Y', 'R_SUELDO_APLICAR_PERIODO', 'S', 'String sContract = getHR_Payroll().getHR_Contract().getValue();
 double valueReturn = 0;      
@@ -339,7 +339,7 @@ if (!"Vacaciones".equals(sContract) && !"Liquidacion".equals(sContract))
 }
 
 result = valueReturn;', '2011-02-03 15:31:53.0', 100, 'beanshell:R_SUELDO_APLICAR_PERIODO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000012, NULL, '2010-10-12 11:03:00.0', 100, 'A106', 'U', 'H', NULL, 'Y', 'R_DIA_ADIC_LABORADO_DIURNO', 'S', 'result = 0.0;
 
@@ -351,15 +351,15 @@ if (dias_adic != 0.0)
   description = "Dias adicionales diurnos=" + dias_adic;
 result = sueldo_diario * dias_adic;
 }', '2011-06-21 11:48:24.0', 100, 'beanshell:R_DIA_ADIC_LABORADO_DIURNO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000002, NULL, '2011-04-13 13:53:02.0', 100, NULL, 'U', 'C', ' ', 'Y', 'Validación al eliminar una tasa de impuesto', 'S', 'String sQuery = "SELECT COUNT(*) FROM LVE_ISICBYCATEGORY WHERE LVE_ISIC_ID = ? AND LVE_MUNICIPALITY_ID = ?";
 Integer count = DB.getSQLValue(get_TrxName(), sQuery, new Object[] {A_Tab.getValue("LVE_ISIC_ID"), A_Tab.getValue("LVE_MUNICIPALITY_ID")});', '2011-04-13 14:02:19.0', 100, 'beanshell:BP_Validar_Al_Eliminar_Tasa_Im')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000003, NULL, '2010-10-11 11:56:31.0', 100, 'Q001', 'U', 'H', NULL, 'Y', 'R_SUELDO_DIARIO', 'S', 'double sueldo = getConcept("CC_SUELDO_MENSUAL");
 result = sueldo / getAttribute("C_DIAS_DEL_MES");', '2010-11-02 09:31:33.0', 100, 'beanshell:R_SUELDO_DIARIO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000010, NULL, '2010-10-12 10:25:07.0', 100, 'B008', 'U', 'H', NULL, 'Y', 'R_HORAS_EXTRAS_DIURNAS', 'S', 'String jornada = getConceptString("A_JORNADA_LABORAL");
 if (jornada == null)
@@ -377,7 +377,7 @@ double horas_nov = getConcept("A_NOV_HORAS_EXTRAS_DIURNAS");
 if (horas_nov != 0.0)
   description = "Horas Novedad =" + horas_nov;
 result = horas_nov* sueldo_hora * recargo;', '2011-05-13 11:51:31.0', 100, 'beanshell:R_HORAS_EXTRAS_DIURNAS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000015, NULL, '2010-10-12 11:04:08.0', 100, 'A110', 'U', 'H', NULL, 'Y', 'R_DIA_ADIC_LABORADO_FER_DIURNO', 'S', 'result = 0.0;
 
@@ -390,7 +390,7 @@ if (dias_adic != 0.0)
   description = "Dias adicionales feriados diurnos=" + dias_adic;
 result = sueldo_diario * dias_adic * recargo;
 }', '2011-06-21 11:48:41.0', 100, 'beanshell:R_DIA_ADIC_LABORADO_FER_DIURNO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000013, NULL, '2010-10-12 11:03:16.0', 100, 'A107', 'U', 'H', NULL, 'Y', 'R_DIA_ADIC_LABORADO_NOCTURNO', 'S', 'result = 0.0;
 
@@ -403,10 +403,10 @@ if (dias_adic != 0.0)
   description = "Dias adicionales nocturnos=" + dias_adic;
 result = sueldo_diario * dias_adic * recargo;
 }', '2011-06-21 11:48:32.0', 100, 'beanshell:R_DIA_ADIC_LABORADO_NOCTURNO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000006, NULL, '2010-10-11 15:55:10.0', 100, NULL, 'U', 'H', NULL, 'Y', 'R_DIAS_ASG_NOVEDADES_DIARIAS', 'S', 'result = getConceptGroup("ASG_NOV");', '2010-12-06 16:19:28.0', 100, 'beanshell:R_DIAS_ASG_NOVEDADES_DIARIAS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000130, NULL, '2010-12-06 10:08:25.0', 100, 'B100', 'U', 'H', NULL, 'Y', 'R_ASIGNACION_CARACTER_SALARIAL', 'S', 'result = 0.0;
 
@@ -414,7 +414,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_ASIGNACION_CARAC
 {
     result = getAttribute("A_ASIGNACION_CARACTER_SALARIAL");
 }', '2010-12-06 10:08:25.0', 100, 'beanshell:R_ASIGNACION_CARACTER_SALARIAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000014, NULL, '2010-10-12 11:03:50.0', 100, 'A111', 'U', 'H', NULL, 'Y', 'R_DIA_ADIC_LABORADO_FER_NOCTUR', 'S', 'result = 0.0;
 
@@ -428,7 +428,7 @@ if (dias_adic != 0.0)
   description = "Dias adicionales feriados nocturnos=" + dias_adic;
 result = ( sueldo_diario * dias_adic * recargo_feriado ) * recargo_nocturno;
 }', '2011-06-21 11:48:51.0', 100, 'beanshell:R_DIA_ADIC_LABORADO_FER_NOCTUR')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000007, NULL, '2010-10-11 16:34:20.0', 100, 'Y001', 'U', 'H', NULL, 'Y', 'R_DEDUCIR_DIAS_EGRESO', 'S', 'int dias = 0;
 if (_DateEnd.after(_From) && _DateEnd.before(_To)) {
@@ -437,14 +437,14 @@ if (_DateEnd.after(_From) && _DateEnd.before(_To)) {
         dias--; 
 }       
 result = dias;', '2010-10-29 09:57:17.0', 100, 'beanshell:R_DEDUCIR_DIAS_EGRESO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000008, NULL, '2010-10-11 16:51:04.0', 100, 'Y002', 'U', 'H', NULL, 'Y', 'R_DEDUCIR_DIAS_INGRESO', 'S', 'int dias = 0;
 if (_DateStart.after(_From) && _DateStart.before(_To)) {
     dias = org.compiere.util.TimeUtil.getDaysBetween(_From, _DateStart);
 }       
 result = dias;', '2010-10-29 09:57:35.0', 100, 'beanshell:R_DEDUCIR_DIAS_INGRESO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000016, NULL, '2010-10-12 15:19:30.0', 100, 'A104', 'U', 'H', NULL, 'Y', 'R_RECARGO_DESCANSO_TRABAJADO', 'S', 'result = 0.0;
 
@@ -467,7 +467,7 @@ double dias_desc_trab = getConcept("CC_DIAS_DESCANSO_TRABAJADO");
 result = sueldo_diario * recargo * dias_desc_trab;
 }
 ', '2011-06-21 11:46:39.0', 100, 'beanshell:R_RECARGO_DESCANSO_TRABAJADO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000020, NULL, '2010-10-12 18:00:40.0', 100, 'Y011', 'U', 'H', NULL, 'Y', 'R_APLICAR_CONCEPTO', 'S', 'result = 0.0;
 
@@ -478,7 +478,7 @@ if (getConcept("CC_APLICA")==1.0) {
     if (_Days == dias_Vacaciones || sueldo == 0.0)
        result = 0.0; 
 }', '2012-09-17 15:53:37.0', 100, 'beanshell:R_APLICAR_CONCEPTO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000022, NULL, '2010-10-13 12:08:11.0', 100, 'Y005', 'U', 'H', NULL, 'Y', 'R_EDAD', 'S', 'String sConsulta = ""
 + "SELECT u.birthday "
@@ -493,7 +493,7 @@ Timestamp fecha_nacimiento = DB.getSQLValueTS(get_TrxName(),sConsulta,new Object
 int meses = getMonths(fecha_nacimiento, _To);
 int edad = meses / 12;
 result = edad;', '2010-11-09 17:11:23.0', 100, 'beanshell:R_EDAD')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000017, NULL, '2010-10-12 15:39:09.0', 100, 'A105', 'U', 'H', NULL, 'Y', 'R_RECARGO_FERIADO_TRABAJADO', 'S', 'result = 0.0;
 
@@ -517,7 +517,7 @@ double dias_desc_trab = getConcept("CC_DIAS_FERIADO_TRABAJADO");
 result = sueldo_diario * recargo * dias_desc_trab;
 
 }', '2011-06-21 11:47:39.0', 100, 'beanshell:R_RECARGO_FERIADO_TRABAJADO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000018, NULL, '2010-10-12 17:18:18.0', 100, 'Y047', 'U', 'H', NULL, 'Y', 'R_DIAS_BASE_DISFRUTE_VACAC', 'S', 'result = 0;
 String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -531,7 +531,7 @@ if  (!bCont_Vac || (bCont_Vac && dDaysVac>0))
        Days = getAttribute("C_DIAS_BASE_DISFRUTE_VACACIONES");
    result = Days;
 }', '2010-11-23 09:32:09.0', 100, 'beanshell:R_DIAS_BASE_DISFRUTE_VACAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000219, NULL, '2010-12-28 13:43:37.0', 100, 'W002', 'U', 'H', NULL, 'Y', 'R_CIERRE_VAL_INIC_ANU_SUEL_PRE', 'S', 'result = 1.0;
 String msg=null; 
@@ -543,7 +543,7 @@ if (getConcept("CC_MONTO_PRES_SOC_DIAS_ADIC") >0) {
         result=0.0;
 }					   
 ', '2011-05-19 09:47:38.0', 100, 'beanshell:R_CIERRE_VAL_INIC_ANU_SUEL_PRE')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000024, NULL, '2010-10-14 08:44:55.0', 100, 'Funcion determina si la nomina se encuentra en la ultima semana del mes', 'U', 'H', NULL, 'Y', 'R_ULTIMA_SEMANA', 'S', 'result = 0.0;  /* falso, no aplicar */
 
@@ -561,7 +561,7 @@ if (From.getMonth() == iMes_Actual && To.getMonth()!=iMes_Actual)
    result = 1.0; /* verdadero aplicar */
 
   ', '2010-10-29 14:26:52.0', 100, 'beanshell:R_ULTIMA_SEMANA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000131, NULL, '2010-12-06 10:12:05.0', 100, 'B101', 'U', 'H', NULL, 'Y', 'R_ASIGNACION_SIN_C_SALARIAL', 'S', 'result = 0.0;
 
@@ -570,7 +570,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_ASIGNACION_SIN_C
     result = getAttribute("A_ASIGNACION_SIN_CARACTER_SALARIAL");
 }
 ', '2010-12-06 10:25:20.0', 100, 'beanshell:R_ASIGNACION_SIN_C_SALARIAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000119, NULL, '2010-12-02 08:18:29.0', 100, 'Y081', 'U', 'H', NULL, 'Y', 'R_APLICAR_ULTIMA_NOMINA_MES', 'S', 'Timestamp From = _From;
 Timestamp To = _To;
@@ -578,7 +578,7 @@ Timestamp To = _To;
 Timestamp dateEndMonth = LVE_Payroll.lastDayOfMonth(To);
 result= org.compiere.util.TimeUtil.isValid(From ,To, dateEndMonth) ? 1.0: 0.0;  
 ', '2010-12-02 08:18:29.0', 100, 'beanshell:R_APLICAR_ULTIMA_NOMINA_MES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000032, NULL, '2010-10-15 10:38:18.0', 100, 'Y041', 'U', 'H', NULL, 'Y', 'R_APLICAR_RETENCIONES_LRPVH', 'S', 'result = 0.0;  /* falso, no aplicar */
 
@@ -596,21 +596,21 @@ if (("S".equals(sRetenerLRPVH) && dEdad<=dTopeEdadLRPVH) ||
 
 
     ', '2011-05-17 11:01:06.0', 100, 'beanshell:R_APLICAR_RETENCIONES_LRPVH')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000161, NULL, '2010-12-07 10:32:31.0', 100, 'A403', 'U', 'H', NULL, 'Y', 'R_DIAS_LABORADOS_FINIQ_RELACI', 'S', 'result=0.0;
 
 if (getConcept("CC_POR_LIQUIDAR")==1.0){
      result= getAttribute("A_DIAS_ADICIONALES_LABORADOS") * getConcept("CC_SUELDO_DIARIO");   
 }', '2012-07-30 14:08:41.0', 100, 'beanshell:R_DIAS_LABORADOS_FINIQ_RELACI')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000183, NULL, '2010-12-08 07:52:38.0', 100, 'E075', 'U', 'H', NULL, 'Y', 'R_CUOTA_POLIZA_AUTOMOVILES', 'S', 'result=0.0; 
 
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_AUTOMOVILES");
 }', '2010-12-08 07:52:38.0', 100, 'beanshell:R_CUOTA_POLIZA_AUTOMOVILES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000178, NULL, '2010-12-07 16:23:00.0', 100, 'E070', 'U', 'H', NULL, 'Y', 'R_CUOTA_POLIZA_HCM', 'S', '
 result=0.0; 
@@ -618,7 +618,7 @@ result=0.0;
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_HCM");
 }', '2010-12-07 16:23:00.0', 100, 'beanshell:R_CUOTA_POLIZA_HCM')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000184, NULL, '2010-12-08 07:56:06.0', 100, 'E076', 'U', 'H', NULL, 'Y', 'R_CUOTA_POLIZA_GASTOS_FUNER', 'S', 'result=0.0; 
 
@@ -626,13 +626,13 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_GASTOS_FUNERARIOS");
      if (result == null) result = 0.0;
 }', '2011-06-30 08:54:04.0', 100, 'beanshell:R_CUOTA_POLIZA_GASTOS_FUNER')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000026, NULL, '2010-10-14 11:13:08.0', 100, 'Q025', 'U', 'H', 'Sueldo Para Retenciones', 'Y', 'R_SUELDO_PARA_RETENCIONES', 'S', '
 result = getConcept("CC_SUELDO_MENSUAL")
 
     ', '2011-02-04 15:38:37.0', 100, 'beanshell:R_SUELDO_PARA_RETENCIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000039, NULL, '2010-10-26 09:55:34.0', 0, 'Y030', 'U', 'H', NULL, 'Y', 'R_FECHA_INGRESO_ANTIGUEDAD', 'S', 'Timestamp dateIni = LVE_Payroll.DateInitialEmployee(get_TrxName(), _C_BPartner_ID, getAD_Org_ID(),null);
 Timestamp dateAtt = getAttributeDate("C_AÑO_CORTE_ANTIGUEDAD_L_O_T");
@@ -641,7 +641,7 @@ result = dateIni.getTime() < dateAtt.getTime() ? dateAtt.getTime() : dateIni.get
 
 
 ', '2011-05-17 14:51:00.0', 100, 'beanshell:R_FECHA_INGRESO_ANTIGUEDAD')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000101, NULL, '2010-11-24 09:21:19.0', 100, 'Y019', 'U', 'H', 'Días no laborados en la nomina al momento de egreso del epleado', 'Y', 'R_DIAS_NO_LABORABLES_POR_EGRE', 'S', 'import org.compiere.util.* ;
 
@@ -653,7 +653,7 @@ Timestamp to=_To;
 
 result=((dateEndEmployee!=null)&&(TimeUtil.isValid(from,to, dateEndEmployee)))? (double) LVE_Payroll.workDays(get_TrxName(), from,dateEndEmployee , _Payroll, "0,"+  ((Integer)getAttribute("C_DIA_SEMANA_DESCANSO")).toString()) - getConcept("CC_DIAS_DESCANSO_PERIODO") : 0;
 ', '2011-02-21 16:13:56.0', 100, 'beanshell:R_DIAS_NO_LABORABLES_POR_EGRE')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000037, NULL, '2010-10-25 15:26:55.0', 0, 'Y009', 'U', 'H', NULL, 'Y', 'R_AÑOS_ANTIGUEDAD', 'S', 'String contract=  getHR_Payroll().getHR_Contract().getValue();
 Timestamp dateEndEmployee = LVE_Payroll.DateEndEmployee(get_TrxName(),_C_BPartner_ID,getAD_Org_ID(),"''Mensual'',''Quincenal'',''Semanal''"); 
@@ -661,14 +661,14 @@ Timestamp dateEndEmployee = LVE_Payroll.DateEndEmployee(get_TrxName(),_C_BPartne
 result = "Liquidacion".equals(contract) &&  getConcept("CC_POR_LIQUIDAR") ==1.0 
              ? LVE_Payroll.yearsElapsed(_DateStart, dateEndEmployee)
              :LVE_Payroll.yearsElapsed(_DateStart, _To) ; ', '2011-06-17 11:38:12.0', 100, 'beanshell:R_AÑOS_ANTIGUEDAD')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000185, NULL, '2010-12-08 08:00:15.0', 100, 'E077', 'U', 'H', NULL, 'Y', 'R_CUOTA_POLIZA_GASTOS_ODON', 'S', 'result=0.0; 
 
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_GASTOS_ODONTOLOGICOS");
 }', '2010-12-08 08:00:15.0', 100, 'beanshell:R_CUOTA_POLIZA_GASTOS_ODON')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000042, NULL, '2010-10-27 07:58:18.0', 100, 'Y029', 'U', 'H', NULL, 'Y', 'R_POR_LIQUIDAR', 'S', 'String estatus =getAttributeString("A_ESTATUS_EMPLEADO");
 
@@ -677,7 +677,7 @@ if (estatus == null)
     
 result= estatus.trim().equals("PLIQ") ?1.0:0.0;
 ', '2010-11-23 09:56:44.0', 100, 'beanshell:R_POR_LIQUIDAR')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000200, NULL, '2010-12-13 07:45:36.0', 100, 'E034', 'U', 'H', NULL, 'Y', 'R_CUOTA_PRESTAMO_OTROS', 'S', '
 String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -686,7 +686,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0  &&  ( !"Vacaciones".equals(sContract
      result= LVE_Payroll.PaymentOfQuota (get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "OT" , new Date  (_To.getYear(), _To.getMonth(), _To.getDate()),_Process );
 	
 ', '2011-02-18 10:08:42.0', 100, 'beanshell:R_CUOTA_PRESTAMO_OTROS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000186, NULL, '2010-12-08 08:08:12.0', 100, 'E078', 'U', 'H', NULL, 'Y', 'R_CUOTA_POLIZA_ESCOLAR', 'S', 'result=0.0; 
 
@@ -697,7 +697,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
 
 
 ', '2010-12-08 08:08:12.0', 100, 'beanshell:R_CUOTA_POLIZA_ESCOLAR')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000187, NULL, '2010-12-08 08:13:34.0', 100, 'E090', 'U', 'H', NULL, 'Y', 'R_EXCESO_CELULAR', 'S', 'result=0.0; 
 
@@ -708,7 +708,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
 
 
 ', '2010-12-08 08:13:34.0', 100, 'beanshell:R_EXCESO_CELULAR')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000046, NULL, '2010-10-27 10:37:58.0', 100, 'Y007', 'U', 'H', NULL, 'Y', 'R_DIAS_ADIC_PRESTACIONES', 'S', '
 long oneDay = 86400000;
@@ -722,7 +722,7 @@ if (getConcept("CC_APLICA_DIAS_ADIC_PREST")==1.0){
   result =0.0;
 
 ', '2012-07-30 15:31:48.0', 100, 'beanshell:R_DIAS_ADIC_PRESTACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000044, NULL, '2010-10-27 09:30:40.0', 100, 'Y025', 'U', 'H', NULL, 'Y', 'R_DIAS_UTILIDADES_TRABAJADOR', 'S', '    
 result =getAttribute("A_DIAS_UTILIDADES_CASOS_ESPECIALES")>0 
@@ -730,7 +730,7 @@ result =getAttribute("A_DIAS_UTILIDADES_CASOS_ESPECIALES")>0
             : getAttribute("C_DIAS_UTILIDADES");
 
 ', '2010-11-02 15:02:50.0', 100, 'beanshell:R_DIAS_UTILIDADES_TRABAJADOR')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000165, NULL, '2010-12-07 13:57:02.0', 100, 'A411', 'U', 'H', NULL, 'Y', 'R_VACACIONES_PENDIENTES', 'S', 'result=0.0; 
 
@@ -739,7 +739,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0){
      result= getConcept("CC_SUELDO_DIARIO_VAC") * getAttribute("A_TOT_DIAS_DISPONIBLES_VACACIONES");
 
 }', '2012-08-01 11:11:19.0', 100, 'beanshell:R_VACACIONES_PENDIENTES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000053, NULL, '2010-10-29 08:07:52.0', 100, 'Y050 ', 'U', 'H', NULL, 'Y', 'R_DIAS_ADIC_VAC_PAG_SIN_DISFRU', 'S', '
 if (getConcept("CC_DISFRUTAR_DIAS_ADIC_VAC")==1.0) {
@@ -749,14 +749,14 @@ if (getConcept("CC_DISFRUTAR_DIAS_ADIC_VAC")==1.0) {
 }else{
         result =0;
 }', '2010-11-08 10:54:49.0', 100, 'beanshell:R_DIAS_ADIC_VAC_PAG_SIN_DISFRU')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000171, NULL, '2010-12-07 15:03:33.0', 100, 'D402', 'U', 'H', NULL, 'Y', 'R_PRESTACIONES_SOCI_FIDECOMISO', 'S', 'result=0.0; 
 
 if (getConcept("CC_POR_LIQUIDAR")==1.1 && "S".equals(getAttributeString("C_CALCULAR_INTERES_PRESTACIONES")) ){
      result= getAttribute("A_MONTO_ACUM_INICIAL_PREST_SOCIALES") + getAttribute("A_MONTO_ACUM_PRESTACIONES_SOCIALES");  
 }', '2011-05-16 10:54:09.0', 100, 'beanshell:R_PRESTACIONES_SOCI_FIDECOMISO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000120, NULL, '2010-12-02 11:29:34.0', 100, 'Y069', 'U', 'H', NULL, 'Y', 'R_NUMERO_HIJOS_PRIMA', 'S', '
 Integer quantityFamily= LVE_Payroll.numberDependent (get_TrxName(), _C_BPartner_ID, "Hija(o)", 19);
@@ -764,7 +764,7 @@ Integer topMax= getAttribute("C_TOPE_MAXIMO_HIJOS_PARA_PAGO_DE_PRIMA") ;
 
 result= quantityFamily > topMax ?  topMax: quantityFamily ; 
 ', '2010-12-02 11:30:50.0', 100, 'beanshell:R_NUMERO_HIJOS_PRIMA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000057, NULL, '2010-11-04 07:58:03.0', 100, 'Y048', 'U', 'H', NULL, 'Y', 'R_DIAS_BASE_PAGAR_VACACIONES', 'S', 'result = 0;
 String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -778,17 +778,17 @@ if  (!bCont_Vac || (bCont_Vac && dDaysVac>0))
         Days = getAttribute("C_DIAS_BASE_PAGAR_POR_VACACIONES");
     result = Days;
 }', '2010-11-23 09:37:06.0', 100, 'beanshell:R_DIAS_BASE_PAGAR_VACACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000055, NULL, '2010-11-03 09:45:21.0', 100, 'Y051', 'U', 'H', NULL, 'Y', 'R_DIAS_ADIC_VAC_DISPONIBLE', 'S', '
 result =getConcept("A_ACUM_DIAS_ADIC_VACACIONES_CAUSADAS")-getConcept("A_ACUM_DIAS_ADIC_VACA_PAG_SIN_DISFRUT");
 
 ', '2010-11-03 11:30:21.0', 100, 'beanshell:R_DIAS_ADIC_VAC_DISPONIBLE')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000169, NULL, '2010-12-07 14:48:55.0', 100, 'D200', 'U', 'H', NULL, 'Y', 'R_ANTICIPOS_UTILIDADES', 'S', '
 result= (getConcept("CC_APLICAR_CAL_AÑO_INIC_OPERACI") ==1.0 ? getAttribute("A_MONTO_ACUM_INI_ANTICIPOS_UTILIDADES"):0)+ getAttribute("A_MONTO_ACUM_ANTICIPO_UTILIDADES");', '2010-12-07 14:48:55.0', 100, 'beanshell:R_ANTICIPOS_UTILIDADES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000166, NULL, '2010-12-07 14:22:54.0', 100, 'A412', 'U', 'H', NULL, 'Y', 'R_BONO_VACACIONAL_PENDIENTE', 'S', 'result=0.0;
 
@@ -796,7 +796,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0){
        result= getConcept("CC_SUELDO_DIARIO_VAC") * getAttribute("A_TOT_DIAS_SIN_CANCELAR_BONO_VACACIONAL");
 
 }', '2011-06-13 16:24:34.0', 100, 'beanshell:R_BONO_VACACIONAL_PENDIENTE')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000173, NULL, '2010-12-07 15:22:41.0', 100, 'D403', 'U', 'H', NULL, 'Y', 'R_INTERESES_PREST_SOC_PAG', 'S', '
 result=0.0; 
@@ -804,7 +804,7 @@ result=0.0;
 if (getConcept("CC_POR_LIQUIDAR")==1.0){
      result= getAttribute("A_MONTO_ACUM_INTERESES_CANCELADOS")+ getAttribute("A_MONT_ACUM_INI_INTERESES_PREST_PAG");
 }', '2010-12-07 15:22:41.0', 100, 'beanshell:R_INTERESES_PREST_SOC_PAG')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000180, NULL, '2010-12-07 16:51:06.0', 100, 'E072', 'U', 'H', NULL, 'Y', 'R_CUOTA_POLIZA_H.C', 'S', '
 result=0.0; 
@@ -812,7 +812,7 @@ result=0.0;
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_HC");
 }', '2010-12-07 16:51:06.0', 100, 'beanshell:R_CUOTA_POLIZA_H.C')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000181, NULL, '2010-12-07 16:54:16.0', 100, 'E073', 'U', 'H', NULL, 'Y', 'R_CUOTA_POLIZA_VIDA', 'S', '
 result=0.0; 
@@ -820,7 +820,7 @@ result=0.0;
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_VIDA");
 }', '2010-12-07 16:54:16.0', 100, 'beanshell:R_CUOTA_POLIZA_VIDA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000147, NULL, '2010-12-06 15:48:29.0', 100, 'B108', 'U', 'H', NULL, 'Y', 'R_BONO_MATRIMONIO', 'S', 'result = 0.0;
 
@@ -830,7 +830,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 &&
     result = getAttribute("C_BONO_MATRIMONIO");
 }
 ', '2011-05-16 10:53:06.0', 100, 'beanshell:R_BONO_MATRIMONIO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000188, NULL, '2010-12-08 08:42:04.0', 100, 'R005', 'U', 'H', NULL, 'Y', 'R_IMPUESTO_SOBRE_LA_RENTA', 'S', 'result=0.0; 
 String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -840,7 +840,7 @@ if( (!"Liquidacion".equals(sContract) || ("Liquidacion".equals(sContract) && get
      result= getConcept("CC_MONTO_BASE_ISLR") * getAttribute("A_FACTOR_ISLR") / 100;
 
 }', '2010-12-08 08:42:04.0', 100, 'beanshell:R_IMPUESTO_SOBRE_LA_RENTA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000167, NULL, '2010-12-07 14:36:44.0', 100, 'D001', 'U', 'H', NULL, 'Y', 'R_VACACIONES_PAGADAS', 'S', 'result=0.0; 
 Integer dayVacation= getConcept("CC_DIAS_VACACIONES");
@@ -849,14 +849,14 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0 && dayVacation >0 ){
      result=dayVacation * (getConcept("CC_SUELDO_MENSUAL") / getAttribute("C_DIAS_DEL_MES")); 
 
 }', '2011-02-03 15:33:58.0', 100, 'beanshell:R_VACACIONES_PAGADAS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000182, NULL, '2010-12-07 16:57:16.0', 100, 'E074', 'U', 'H', NULL, 'Y', 'R_CUOTA_POLIZA_CONTRA_ACCIDENT', 'S', 'result=0.0; 
 
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_CONTRA_ACCIDENTES");
 }', '2012-07-30 15:29:25.0', 100, 'beanshell:R_CUOTA_POLIZA_CONTRA_ACCIDENT')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000170, NULL, '2010-12-07 14:53:16.0', 100, 'D400', 'U', 'H', NULL, 'Y', 'R_ANTICIPO_PRESTACIONES', 'S', '
 result=0.0; 
@@ -864,14 +864,14 @@ result=0.0;
 if (getConcept("CC_POR_LIQUIDAR")==1.0){
      result= getAttribute("A_MONTO_ACUM_INI_ANTICIPOS_PREST_SOC")+getAttribute("A_MONTO_ACUM_ANTICIPO_PREST_SOCIALES");
 }', '2010-12-07 14:53:43.0', 100, 'beanshell:R_ANTICIPO_PRESTACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000174, NULL, '2010-12-07 15:54:14.0', 100, 'D406', 'U', 'H', NULL, 'Y', 'R_REPOSO_DEDUCC_LIQUIDACION', 'S', 'result=0.0; 
 
 if(getConcept("CC_POR_LIQUIDAR")==1.0 && getAttribute("A_MONTO_ACUM_CANCELADO_REPOSO_IVSS")>0){
      result= getAttribute("A_MONTO_ACUM_CANCELADO_REPOSO_IVSS"); 
 }', '2010-12-07 15:54:14.0', 100, 'beanshell:R_REPOSO_DEDUCC_LIQUIDACION')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000175, NULL, '2010-12-07 16:08:46.0', 100, 'B020', 'U', 'H', NULL, 'Y', 'R_ANTICIPO_PRESTACIONES_SOCIAL', 'S', '
 result=0.0; 
@@ -879,7 +879,7 @@ result=0.0;
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0) {
      result= getAttribute("A_ANTICIPO_PRESTACIONES_SOCIALES");
 }', '2010-12-07 16:08:46.0', 100, 'beanshell:R_ANTICIPO_PRESTACIONES_SOCIAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000176, NULL, '2010-12-07 16:12:49.0', 100, 'B021', 'U', 'H', NULL, 'Y', 'R_ANTICIPO_UTILIDADES', 'S', '
 result=0.0; 
@@ -887,7 +887,7 @@ result=0.0;
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0) {
      result= getAttribute("A_ANTICIPO_UTILIDADES");
 }', '2010-12-07 16:12:49.0', 100, 'beanshell:R_ANTICIPO_UTILIDADES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000177, NULL, '2010-12-07 16:18:29.0', 100, 'E050', 'U', 'H', NULL, 'Y', 'R_CUOTA_UNIFORMES', 'S', '
 
@@ -896,7 +896,7 @@ result=0.0;
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_UNIFORMES");
 }', '2010-12-07 16:18:29.0', 100, 'beanshell:R_CUOTA_UNIFORMES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000045, NULL, '2010-10-27 09:54:06.0', 100, 'Q030', 'U', 'H', NULL, 'Y', 'R_APLICA_DIAS_ADIC_PREST', 'S', 'long oneDay = 86400000;
 
@@ -907,7 +907,7 @@ result=  ((LVE_Payroll.monthsOnPeriod(new Timestamp( (Long) getConcept("CC_FECHA
 
 
 ', '2012-07-30 15:31:01.0', 100, 'beanshell:R_APLICA_DIAS_ADIC_PREST')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000179, NULL, '2010-12-07 16:26:47.0', 100, 'E071', 'U', 'H', NULL, 'Y', 'R_CUOTA_POLIZA_HCM_FAMILIARES', 'S', '
 result=0.0; 
@@ -915,7 +915,7 @@ result=0.0;
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
      result= getAttribute("A_CUOTA_POLIZA_HCM_FAMILIARES");
 }', '2010-12-07 16:26:47.0', 100, 'beanshell:R_CUOTA_POLIZA_HCM_FAMILIARES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000191, NULL, '2010-12-08 09:36:20.0', 100, 'V003', 'U', 'H', NULL, 'Y', 'R_MONTO_INTERESES_PRESTACIONES', 'S', 'result=0.0; 
 
@@ -933,7 +933,7 @@ if (! "S".equals(getAttributeString("C_PRESTACIONES_DEPOSITADAS_FIDEICOMISO")) &
 }
 
 ', '2012-08-01 11:00:02.0', 100, 'beanshell:R_MONTO_INTERESES_PRESTACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000199, NULL, '2010-12-13 07:44:45.0', 100, 'E032', 'U', 'H', NULL, 'Y', 'R_CUOTA_PRESTAMO_PERSONALES', 'S', '
 
@@ -941,21 +941,21 @@ String sContract = getHR_Payroll().getHR_Contract().getValue();
 result=0.0; 
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0  &&  ( !"Vacaciones".equals(sContract) || ( "Vacaciones".equals(sContract)  && getConcept("CC_DIAS_VACACIONES") > 0 ) ) )
      result= LVE_Payroll.PaymentOfQuota (get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "P1" , new Date  (_To.getYear(), _To.getMonth(), _To.getDate()), _Process );', '2011-02-18 10:08:48.0', 100, 'beanshell:R_CUOTA_PRESTAMO_PERSONALES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000168, NULL, '2010-12-07 14:43:48.0', 100, 'D002', 'U', 'H', NULL, 'Y', 'R_DIAS_SUEL_PEND_PAG_VAC', 'S', 'result=0.0; 
 if("S".equals(getAttributeString("C_PAGAR_SUELDO_EN_VACACIONES")) && getConcept("CC_APLICAR_CONCEPTO")==1.0 && getConcept("CC_DIAS_VACACIONES") > 0){
      result= getConcept("CC_DIAS_DE_SUELDO_PENDIENTE")* (getConcept("CC_SUELDO_MENSUAL") / getAttribute("C_DIAS_DEL_MES"));
 }
 ', '2011-05-16 10:53:47.0', 100, 'beanshell:R_DIAS_SUEL_PEND_PAG_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000201, NULL, '2010-12-13 07:47:33.0', 100, 'E033', 'U', 'H', NULL, 'Y', 'R_CUOTA_PRESTAMO_REMOD_VIVIEND', 'S', '
 String sContract = getHR_Payroll().getHR_Contract().getValue();
 result=0.0; 
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0  &&  ( !"Vacaciones".equals(sContract) || ( "Vacaciones".equals(sContract)  && getConcept("CC_DIAS_VACACIONES") > 0 ) ) )
      result= LVE_Payroll.PaymentOfQuota (get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "HI" , new Date  (_To.getYear(), _To.getMonth(), _To.getDate()), _Process );', '2011-02-18 10:08:55.0', 100, 'beanshell:R_CUOTA_PRESTAMO_REMOD_VIVIEND')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000121, NULL, '2010-12-02 15:02:05.0', 100, 'Q033', 'U', 'H', NULL, 'Y', 'R_SUELDO_DIARIO_VARIABLE', 'S', 'result = 0.0;
 
@@ -965,7 +965,7 @@ if (monthDays >0)
     result = getConcept("CC_SUELDO_MENSUAL_VARIABLE") / monthDays;
 
 ', '2011-07-01 16:12:36.0', 100, 'beanshell:R_SUELDO_DIARIO_VARIABLE')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000273, NULL, '2011-06-21 11:09:10.0', 100, NULL, 'U', 'H', NULL, 'Y', 'R_APLICA', 'S', 'result=1.0; 
 
@@ -973,7 +973,7 @@ String Status =getAttributeString("A_ESTATUS_EMPLEADO");
 
 if (Status.trim().equals("LIQU"))	
           result=0.0;', '2011-06-21 15:34:15.0', 100, 'beanshell:R_CAMBIO_STATUS_CIERRE_LIQUIDA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000195, NULL, '2010-12-08 11:26:15.0', 100, 'A200', 'U', 'H', NULL, 'Y', 'R_ANTIC_UTILIDADES_LOTTT_132', 'S', 'result = 0.0;
 
@@ -981,7 +981,7 @@ if (getConcept("CC_APLICA")==1.0) {
     result= getConcept("CC_DIAS_UTILIDADES_POR_MES")*getConcept("CC_MESES_PARA_UTILIDADES")*getConcept("CC_SUELDO_DIARIO_PARA_UTILIDAD");
 }
 ', '2012-08-06 15:34:21.0', 100, 'beanshell:R_ANTIC_UTILIDADES_LOTTT_132')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000124, NULL, '2010-12-02 16:49:30.0', 100, 'W004', 'U', 'H', NULL, 'Y', 'R_CIERRE_ANTICIPO_PREST_UTIL', 'S', 'String msg=null; 
 Double value1= getConcept("CC_ANTICIPO_PRESTACIONES_SOCIAL");
@@ -1010,7 +1010,7 @@ if (value2>0) {
  
 
 ', '2011-05-26 10:21:05.0', 100, 'beanshell:R_CIERRE_ANTICIPO_PREST_UTIL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000234, NULL, '2011-01-11 08:08:47.0', 100, 'W012', 'U', 'H', NULL, 'Y', 'R_ACT_CAMPO_SUELDO_PAG_VAC_CIE', 'S', 'result=0.0;
 if ("S".equals(getAttributeString("C_PAGAR_SUELDO_EN_VACACIONES"))){
@@ -1019,7 +1019,7 @@ if ("S".equals(getAttributeString("C_PAGAR_SUELDO_EN_VACACIONES"))){
      if (msg != null)	
           result=0;
 }', '2011-05-19 09:32:34.0', 100, 'beanshell:R_ACT_CAMPO_SUELDO_PAG_VAC_CIE')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000236, NULL, '2011-01-12 09:28:39.0', 100, 'A007', 'U', 'H', NULL, 'Y', 'R_INTERESES_PREST_SOC_ANUALES', 'S', '
 result=0.0; 
@@ -1032,7 +1032,7 @@ if (!"S".equals(getAttributeString("C_PRESTACIONES_DEPOSITADAS_FIDEICOMISO")) &&
 }
 
 ', '2011-06-21 11:44:47.0', 100, 'beanshell:R_INTERESES_PREST_SOC_ANUALES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000197, NULL, '2010-12-10 16:58:36.0', 100, 'E030', 'U', 'H', NULL, 'Y', 'R_CUOTA_PRESTAMO_ESTUDIO', 'S', 'Timestamp To= _To.clone();
 String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -1042,7 +1042,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0  &&  ( !"Vacaciones".equals(sContract
      result= LVE_Payroll.PaymentOfQuota (get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "S1" , new Date  (To.getYear(), To.getMonth(), To.getDate()), _Process );
 
 	', '2011-02-18 10:08:34.0', 100, 'beanshell:R_CUOTA_PRESTAMO_ESTUDIO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000172, NULL, '2010-12-07 15:08:45.0', 100, 'A103', 'U', 'H', NULL, 'Y', 'R_ASIGNACION_SUSPENSION', 'S', 'result = 0;
 
@@ -1051,7 +1051,7 @@ double days = DB.getSQLValue(get_TrxName(), sql, new Object[] {getAD_Client_ID()
 
 if (days != null && days > 0 && getConcept("CC_APLICA")==1.0)
    result = days * (getConcept("CC_SUELDO_MENSUAL") / getAttribute("C_DIAS_DEL_MES"));', '2011-06-21 11:46:15.0', 100, 'beanshell:R_ASIGNACION_SUSPENSION')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000198, NULL, '2010-12-10 16:59:19.0', 100, 'E031', 'U', 'H', NULL, 'Y', 'R_CUOTA_PRESTAMO_COMPRA_VIVIEN', 'S', '
 String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -1059,7 +1059,7 @@ result=0.0;
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0  &&  ( !"Vacaciones".equals(sContract) || ( "Vacaciones".equals(sContract)  && getConcept("CC_DIAS_VACACIONES") > 0 ) ) )
      result= LVE_Payroll.PaymentOfQuota (get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "HB" , new Date  (_To.getYear(), _To.getMonth(), _To.getDate()), _Process );
 ', '2011-02-18 10:08:07.0', 100, 'beanshell:R_CUOTA_PRESTAMO_COMPRA_VIVIEN')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000227, NULL, '2011-01-10 08:40:02.0', 100, 'W021', 'U', 'H', NULL, 'Y', 'R_CIERRE_FEC_INTER_PREST_MENSU', 'S', '
 Double value1= getConcept("CC_MONTO_INTERESES_PRESTACIONES");
@@ -1078,7 +1078,7 @@ if (value1>0){
 }
 
 ', '2011-05-19 09:21:34.0', 100, 'beanshell:R_CIERRE_FEC_INTER_PREST_MENSU')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000132, NULL, '2010-12-06 10:25:55.0', 100, 'B102', 'U', 'H', NULL, 'Y', 'R_BONO_NACIMIENTO_HIJOS', 'S', 'result = 0.0;
 
@@ -1087,40 +1087,40 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_NUMERO_HIJOS_NAC
     result = getAttribute("A_NUMERO_HIJOS_NACIDOS") * getAttribute("C_BONO_NACIMIENTO_HIJOS");
 }
 ', '2010-12-06 10:25:55.0', 100, 'beanshell:R_BONO_NACIMIENTO_HIJOS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000061, NULL, '2010-11-08 08:36:07.0', 100, 'Y055', 'U', 'H', NULL, 'Y', 'R_DIAS_DESC_VAC_INAS_INJUS', 'S', '
 
 result=getConcept("A_DIAS_VACACIONES_INASISTENCIA_INJUST")>=getAttribute("C_DIAS_MIN_DESC_VAC_POR_INASIST_INJUS")?getConcept("A_DIAS_VACACIONES_INASISTENCIA_INJUST"):0;
 ', '2010-11-08 10:52:13.0', 100, 'beanshell:R_DIAS_DESC_VAC_INAS_INJUS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000068, NULL, '2010-11-08 14:55:12.0', 100, 'Y070', 'U', 'H', NULL, 'Y', 'R_TOPE_SALARIO_BONO_ALIMENT', 'S', 'result= getAttribute("C_TOPE_SALARIOS_BONO_ALIMENTACION")* getAttribute("C_SUELDO_MINIMO"); ', '2011-05-11 09:56:28.0', 100, 'beanshell:R_TOPE_SALARIO_BONO_ALIMENT')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000066, NULL, '2010-11-08 14:18:31.0', 100, 'Y063', 'U', 'H', NULL, 'Y', 'R_SUELDO_LIQUIDADO_VACACIONES', 'S', 'result=getConcept("CC_APLICAR_CONCEPTO");', '2010-11-08 14:18:31.0', 100, 'beanshell:R_SUELDO_LIQUIDADO_VACACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000062, NULL, '2010-11-08 09:06:55.0', 100, 'Y058', 'U', 'H', NULL, 'Y', 'R_VAL_INI_DEVENG_ANUAL_SUEL_ADIC_PRES', 'S', '
 result= getConcept("A_TOT_MONTO_DISPONIBLE_INTERESES_PREST"); ', '2010-11-08 11:22:31.0', 100, 'beanshell:R_VAL_INI_DEV_ANU_SUEL_ADI_PRE')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000063, NULL, '2010-11-08 11:27:59.0', 100, 'Y059', 'U', 'H', NULL, 'Y', 'R_MONTO_DISPONIBLE_PREST', 'S', '
 result= getConcept("A_TOT_MONTO_DISPONIBLE_PRESTACIONES"); ', '2010-11-08 11:28:29.0', 100, 'beanshell:R_MONTO_DISPONIBLE_PREST')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000067, NULL, '2010-11-08 14:38:19.0', 100, 'Y064', 'U', 'H', NULL, 'Y', 'R_TOTAL_DISP_FONDO_AHORRO', 'S', 'result=getConcept("A_TOT_MONTO_DISPONIBLE_FONDO_AHORRO");', '2010-11-08 14:38:19.0', 100, 'beanshell:R_TOTAL_DISP_FONDO_AHORRO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000064, NULL, '2010-11-08 11:37:47.0', 100, 'Y060', 'U', 'H', NULL, 'Y', 'R_MONTO_DISP_INTERESES_PREST', 'S', '
 result= getConcept("A_TOT_MONTO_DISPONIBLE_INTERESES_PREST"); ', '2010-11-08 11:40:05.0', 100, 'beanshell:R_MONTO_DISP_INTERESES_PREST')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000058, NULL, '2010-11-05 09:57:01.0', 100, 'Y012', 'U', 'H', NULL, 'Y', 'R_DIAS_UTILIDADES_POR_MES', 'S', '
 result= getConcept("A_DIAS_UTILIDADES_CASOS_ESPECIALES")>0 ? getConcept("A_DIAS_UTILIDADES_CASOS_ESPECIALES")/12: getAttribute("C_DIAS_UTILIDADES")/12; 
 
 ', '2011-03-31 14:04:50.0', 100, 'beanshell:R_DIAS_UTILIDADES_POR_MES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000098, NULL, '2010-11-23 08:01:01.0', 100, 'Y040-1', 'U', 'H', NULL, 'Y', 'R_APLICAR_RETENCION_FINAL_MES', 'S', '
 import java.lang.Math;
@@ -1140,19 +1140,19 @@ Timestamp  startPayroll= new Timestamp( Math.max( dateStart.getTime() , dateStar
 
                 result=startPayroll.getTime();     
       }', '2011-02-21 16:09:25.0', 100, 'beanshell:R_APLICAR_RETENCION_FINAL_MES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000196, NULL, '2010-12-08 11:33:50.0', 100, 'A201', 'U', 'H', NULL, 'Y', 'R_BONO_FIN_AÑO', 'S', 'result=0.0; 
 
 if (getConcept("CC_APLICA")==1.0 && "S".equals(getAttributeString("C_PAGAR_BONO_FIN_ANO"))) {
      result= getConcept("CC_VALOR_DIAS_BONO_FIN_AÑO_TRAB")* getConcept("CC_SUELDO_DIARIO_PARA_UTILIDAD");
 }', '2011-06-30 08:53:25.0', 100, 'beanshell:R_BONO_FIN_AÑO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000126, NULL, '2010-12-03 16:56:03.0', 100, 'B112', 'U', 'H', NULL, 'Y', 'R_COMISIONES', 'S', 'result = 0.0;
 if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_MONTO_PAGAR_COMISIONES", _From)!=null)
    result = getAttribute("A_MONTO_PAGAR_COMISIONES", _From);', '2012-09-13 14:58:32.0', 100, 'beanshell:R_COMISIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000128, NULL, '2010-12-06 08:49:31.0', 100, 'B113', 'U', 'H', NULL, 'Y', 'R_BECA_ESTUDIO', 'S', 'result = 0.0;
 
@@ -1160,7 +1160,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getConcept("CC_APLICAR_ULTIMA_NO
 {
     result = getAttribute("A_BECA_ESTUDIO");
 }', '2011-02-01 09:15:50.0', 100, 'beanshell:R_BECA_ESTUDIO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000080, NULL, '2010-11-17 12:04:06.0', 100, 'Y046', 'U', 'H', NULL, 'Y', 'R_DIAS_BASE_BONO_VAC', 'S', 'result = 0.0;
 
@@ -1173,7 +1173,7 @@ if  (!bCont_Vac || (bCont_Vac && iDiasVacPeriodo>0))
              					getAttribute("C_DIAS_BASE_BONO_VACACIONAL");
 
 ', '2011-04-25 14:23:31.0', 100, 'beanshell:R_DIAS_BASE_BONO_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000085, NULL, '2010-11-18 14:28:11.0', 100, 'A302', 'U', 'H', NULL, 'Y', 'R_BONO_VACACIONAL', 'S', 'result = 0.0;
 
@@ -1184,7 +1184,7 @@ if (getConcept("CC_APLICA")==1.0) {
       result=getConcept("CC_DIAS_BONO_VAC_POR_AÑO") * getConcept("CC_SUELDO_DIARIO_VAC");
 
 }', '2011-06-29 14:40:10.0', 100, 'beanshell:R_BONO_VACACIONAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000065, NULL, '2010-11-08 11:52:28.0', 100, 'Y062', 'U', 'H', NULL, 'Y', 'R_AÑOS_ANTIGUEDAD_VACACIONES', 'S', 'Double iAnhosAntiguedad= getConcept("CC_AÑOS_ANTIGUEDAD");
 Double iAnhosMaxVac = getAttribute("C_DIAS_TOPE_DISFRUTE_VACACIONES")-getConcept("CC_DIAS_BASE_DISFRUTE_VACAC")+1;
@@ -1192,7 +1192,7 @@ Double iAnhosMaxVac = getAttribute("C_DIAS_TOPE_DISFRUTE_VACACIONES")-getConcept
 result= iAnhosAntiguedad > iAnhosMaxVac && iAnhosMaxVac > 0 ? iAnhosMaxVac : iAnhosAntiguedad;
 		
 	', '2012-07-26 08:17:38.0', 100, 'beanshell:R_AÑOS_ANTIGUEDAD_VACACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000073, NULL, '2010-11-10 08:17:12.0', 100, 'U002', 'U', 'H', NULL, 'Y', 'R_REGIMEN_PRESTACIONAL_PA', 'S', 'String sContrato = getHR_Payroll().getHR_Contract().getValue();
 boolean bCont_Vac = "Vacaciones".equals(sContrato);
@@ -1216,7 +1216,7 @@ if ((getConcept("CC_APLICAR_RETENCIONES") == 1)
 
 
 ', '2011-03-23 08:04:41.0', 100, 'beanshell:R_REGIMEN_PRESTACIONAL_PA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000079, NULL, '2010-11-17 11:54:18.0', 100, 'Y054', 'U', 'H', NULL, 'Y', 'R_AÑOS_ANTIGUEDAD_BONO_VAC', 'S', 'result = 0.0;
 
@@ -1235,7 +1235,7 @@ if (getConcept("CC_AÑOS_ANTIGUEDAD")>0)
 
 
 ', '2011-04-25 14:24:26.0', 100, 'beanshell:R_AÑOS_ANTIGUEDAD_BONO_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000134, NULL, '2010-12-06 10:50:38.0', 100, 'Q012', 'U', 'H', NULL, 'Y', 'R_INCLUIR_ACUM_INIC_UTILIDADES', 'S', '
 Timestamp nextPayroll= LVE_Payroll.nextPayroll(get_TrxName(), _Payroll, "Utilidades", _To, _C_BPartner_ID);
@@ -1247,7 +1247,7 @@ result= getAttribute("A_MONTO_ACUM_INI_UTILIDADES");
 }
 
 ', '2011-05-12 16:08:17.0', 100, 'beanshell:R_INCLUIR_ACUM_INIC_UTILIDADES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000228, NULL, '2011-01-10 10:33:36.0', 100, 'W020', 'U', 'H', NULL, 'Y', 'R_ACTUALIZAR_SUELDO_MENSUAL', 'S', 'Double value1= getAttribute("A_SUELDO_MENSUAL_USD"); 
 result=0.0;
@@ -1260,7 +1260,7 @@ if (value1>0){
           result=0;
 }
 ', '2011-05-19 09:22:09.0', 100, 'beanshell:R_ACTUALIZAR_SUELDO_MENSUAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000143, NULL, '2010-12-06 14:57:29.0', 100, 'B106', 'U', 'H', NULL, 'Y', 'R_BONO_POR_GRADUACION', 'S', 'result = 0.0;
 
@@ -1271,7 +1271,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 &&
      result = getAttribute("C_MONTO_PAGAR_BONO_POR_GRADUACION");
 }
 ', '2011-05-16 10:52:55.0', 100, 'beanshell:R_BONO_POR_GRADUACION')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000021, NULL, '2010-10-13 12:02:58.0', 100, 'Determina los días de descanso en un período dado', 'U', 'H', NULL, 'Y', 'R_DIAS_DESCANSO_PERIODO', 'S', 'int dayrest = (int)getAttribute("C_DIA_SEMANA_DESCANSO");
 String sQuery = "select lve_daysrest(?,?,?) - lve_daysrestnoticeinperiod(?,?,?,?,?,?,?)";
@@ -1291,7 +1291,7 @@ int days = DB.getSQLValue(get_TrxName(), sQuery,
 
 result = (double)days;
 ', '2011-02-21 16:13:38.0', 100, 'beanshell:R_DIAS_DESCANSO_PERIODO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000135, NULL, '2010-12-06 11:10:08.0', 100, 'Q009', 'U', 'H', NULL, 'Y', 'R_MONTO_DIARIO_DEVENGADO_AÑO', 'S', 'String estatus =getAttributeString("A_ESTATUS_EMPLEADO");
 
@@ -1300,13 +1300,13 @@ Aux = Aux + getConcept("CC_INCLUIR_ACUM_INIC_UTILIDADES")+getConcept("CC_MONTO_D
 Double Aux2= (getConcept("CC_MESES_PARA_UTILIDADES") * getAttribute("C_DIAS_DEL_MES"))>0 ? (getConcept("CC_MESES_PARA_UTILIDADES")*getAttribute("C_DIAS_DEL_MES")) : 1.0;
 
 result= Aux2>0 ? Aux/Aux2 : 0.0; ', '2010-12-06 11:12:55.0', 100, 'beanshell:R_MONTO_DIARIO_DEVENGADO_AÑO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000158, NULL, '2010-12-07 10:15:34.0', 100, 'E010', 'U', 'H', NULL, 'Y', 'R_DED_CON_CARACTER_SALARIAL', 'S', 'result = 0.0;
 
 if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 && getAttribute("A_DEDUCCION_CON_CARACTER_SALARIAL") > 0)
    result = getAttribute("A_DEDUCCION_CON_CARACTER_SALARIAL");', '2010-12-07 10:15:34.0', 100, 'beanshell:R_DED_CON_CARACTER_SALARIAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000263, NULL, '2011-03-21 16:15:24.0', 100, 'A104', 'U', 'H', NULL, 'Y', 'R_DIAS_DESCANSO_TRABAJADO', 'S', 'result = 0.0;
 
@@ -1315,7 +1315,7 @@ String sQuery = "SELECT lve_daysnotice(?,?,?,?,?)";
 double daysnotice =  DB.getSQLValue(get_TrxName(), sQuery, new Object[]  {getAD_Client_ID(), _C_BPartner_ID, _From, _To, "A_DIAS_DESCANSO_TRABAJADO"});
 result = daysnotice == null ? 0 : daysnotice;
 }', '2011-06-21 11:47:06.0', 100, 'beanshell:R_DIAS_DESCANSO_TRABAJADO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000089, NULL, '2010-11-19 11:56:24.0', 100, 'Y036', 'U', 'H', NULL, 'Y', 'R_FEC_INIC_CORT_TRIM_PAG_VAC', 'S', 'long oneDay = 86400000;
 String contract=  getHR_Payroll().getHR_Contract().getValue();
@@ -1337,7 +1337,7 @@ else {
 
 result= resultDate.getTime();
 	  ', '2012-08-08 15:10:15.0', 100, 'beanshell:R_FEC_INIC_CORT_TRIM_PAG_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000117, NULL, '2010-11-30 08:55:07.0', 100, 'Y022', 'U', 'H', NULL, 'Y', 'R_MESES_PARA_UTILIDADES', 'S', 'long oneDay = 86400000;
 String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -1360,7 +1360,7 @@ if ("Prestaciones".equals(sContract)){
 Integer periodContract= LVE_Payroll.periodExecutionContract(get_TrxName(), _C_BPartner_ID, "Utilidades", "M", process);
 result= months < periodContract? months: periodContract;
 ', '2011-06-30 08:57:16.0', 100, 'beanshell:R_MESES_PARA_UTILIDADES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000081, NULL, '2010-11-17 13:54:13.0', 100, 'Y057', 'U', 'H', NULL, 'Y', 'R_DIAS_DISPONIBLES_BONO_VAC', 'S', 'result = 0.0;
 
@@ -1381,7 +1381,7 @@ double acumDays = getAttribute("A_ACUM_INI_DIAS_BONO_VACACIONA_NO_PAG") +
 
 result = acumDays + getConcept("CC_DIAS_BONO_VAC_CAUSADO");
 ', '2011-07-01 10:40:00.0', 100, 'beanshell:R_DIAS_DISPONIBLES_BONO_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000082, NULL, '2010-11-18 09:49:53.0', 100, 'Y052', 'U', 'H', NULL, 'Y', 'R_DIAS_ACUM_BONO_VAC', 'S', 'long oneDay = 86400000;
 Timestamp From = (Timestamp) _From.clone();
@@ -1393,7 +1393,7 @@ result = getAttribute("A_TOT_DIAS_SIN_CANCELAR_BONO_VACACIONAL", date) +
               getConcept("CC_DIAS_BONO_VAC_CAUSADO");
 
 ', '2011-06-30 09:28:50.0', 100, 'beanshell:R_DIAS_ACUM_BONO_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000122, NULL, '2010-12-02 15:06:52.0', 100, 'A003', 'U', 'H', NULL, 'Y', 'R_FERIADO_LEGAL', 'S', 'result = 0.0;
 
@@ -1430,7 +1430,7 @@ result = (holidaysinperiod - holidaysnoticeinperiod) *
               getConcept("CC_SUELDO_DIARIO_VARIABLE") : 
              (getConcept("CC_SUELDO_MENSUAL") / getAttribute("C_DIAS_DEL_MES")) );
 }', '2012-01-30 11:26:05.0', 100, 'beanshell:R_FERIADO_LEGAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000141, NULL, '2010-12-06 14:37:22.0', 100, 'Q010', 'U', 'H', NULL, 'Y', 'R_MONTO_BASE_ISLR', 'S', '
 String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -1442,7 +1442,7 @@ if ((!"Vacaciones".equals(sContract)) || getConcept("CC_DIAS_VACACIONES") > 0){
 
 }
 ', '2011-08-16 15:28:35.0', 100, 'beanshell:R_MONTO_BASE_ISLR')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000088, NULL, '2010-11-18 17:00:51.0', 100, 'Q022', 'U', 'H', NULL, 'Y', 'R_SUELDO_MES_VACACIONES', 'S', 'result = 0.0; 
 
@@ -1459,7 +1459,7 @@ if ((From.getMonth() == CurrentMonth && To.getMonth()!=CurrentMonth) &&
 {
    result = getConcept("CC_SUELDO_MENSUAL");
 }', '2010-11-24 08:06:30.0', 100, 'beanshell:R_SUELDO_MES_VACACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000094, NULL, '2010-11-19 16:41:05.0', 100, 'A300', 'U', 'H', NULL, 'Y', 'R_VACACIONES', 'S', 'result = 0.0;
 
@@ -1471,7 +1471,7 @@ if ("Vacaciones".equals(sContract))
    result = getConcept("CC_DIAS_VACACIONES") * getConcept("CC_SUELDO_DIARIO_VAC");
 
 }', '2011-06-21 11:18:09.0', 100, 'beanshell:R_VACACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000233, NULL, '2011-01-10 15:47:30.0', 100, 'W013', 'U', 'H', NULL, 'Y', 'R_ACT_CAMPO_SUELDO_PAG_VACACIO', 'S', 'result=0.0;
 
@@ -1484,7 +1484,7 @@ if ("S".equals(getAttributeString("C_PAGAR_SUELDO_EN_VACACIONES"))){
     }
 }
 ', '2011-05-19 09:37:22.0', 100, 'beanshell:R_ACT_CAMPO_SUELDO_PAG_VACACIO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000110, NULL, '2010-11-25 16:09:04.0', 100, 'A303', 'U', 'H', NULL, 'Y', 'R_SUELDO_PENDIENTE', 'S', 'result = 0.0;
 
@@ -1497,7 +1497,7 @@ if ("S".equals(getAttributeString("C_PAGAR_SUELDO_EN_VACACIONES")) && "Vacacione
 }
 
 }', '2011-06-21 11:19:01.0', 100, 'beanshell:R_SUELDO_PENDIENTE')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000264, NULL, '2011-03-21 16:49:49.0', 100, 'A105', 'U', 'H', NULL, 'Y', 'R_DIAS_FERIADO_TRABAJADO', 'S', 'result = 0.0;
 
@@ -1508,7 +1508,7 @@ double daysnotice =  DB.getSQLValue(get_TrxName(), sQuery, new Object[]  {getAD_
 result = daysnotice == null ? 0 : daysnotice;
 }
 ', '2011-06-21 11:48:15.0', 100, 'beanshell:R_DIAS_FERIADO_TRABAJADO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000100, NULL, '2010-11-23 16:31:01.0', 100, 'Y018', 'U', 'H', NULL, 'Y', 'R_LUNES_RETENC_NORMAL_ING_EG', 'S', 'import org.compiere.util.*;
 Timestamp dateStartEmployee = LVE_Payroll.DateInitialEmployee(get_TrxName(),_C_BPartner_ID,getAD_Org_ID(),"''Mensual'',''Quincenal'',''Semanal''");
@@ -1526,7 +1526,7 @@ if (TimeUtil.isValid(new Timestamp (dateStartRetention   ), _To , dateStartEmplo
 }
 
 ', '2011-02-21 16:21:11.0', 100, 'beanshell:R_LUNES_RETENC_NORMAL_ING_EG')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000107, NULL, '2010-11-25 09:43:40.0', 100, 'A301', 'U', 'H', NULL, 'Y', 'R_VAC_EN_FESTIVOS_DESCANSO', 'S', 'result = 0.0;
 
@@ -1543,7 +1543,7 @@ if (getConcept("CC_APLICA")==1.0) {
    }
 
 }', '2011-06-29 11:38:42.0', 100, 'beanshell:R_VAC_EN_FESTIVOS_DESCANSO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000242, NULL, '2011-01-13 08:43:13.0', 100, 'W009', 'U', 'H', NULL, 'Y', 'R_CAMBIO_STATUS_CIERRE_LIQUIDA', 'S', 'result=0.0; 
 String msg=null; 
@@ -1556,7 +1556,7 @@ if (value1!=0 || estatus.trim().equals("PLIQ")  ){
      if (msg != null)	
           result=0;
 }', '2011-05-19 09:39:26.0', 100, 'beanshell:R_CAMBIO_STATUS_CIERRE_LIQUIDA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000245, NULL, '2011-01-13 10:22:14.0', 100, 'W025', 'U', 'H', NULL, 'Y', 'R_ACT_FECH_FIN_ULTIMA_VAC_DISF', 'S', 'result=0.0;
 String msg=null;
@@ -1572,7 +1572,7 @@ if ("Vacaciones".equals(sContract)){
    if (msg != null)	
        result=0;
 }', '2011-05-19 09:17:35.0', 100, 'beanshell:R_ACT_FECH_FIN_ULTIMA_VAC_DISF')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000244, NULL, '2011-01-13 09:44:24.0', 100, 'W017', 'U', 'H', NULL, 'Y', 'R_CIERRE_ACUM_FONDO_AHORRO', 'S', 'result=1.0; 
 String msg=null; 
@@ -1591,7 +1591,7 @@ if (value1 + value2 > 0){
     if (msg != null)	
          result=0;
 }', '2011-05-26 10:24:31.0', 100, 'beanshell:R_CIERRE_ACUM_FONDO_AHORRO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000257, NULL, '2011-02-11 09:12:13.0', 100, 'D100', 'U', 'H', NULL, 'Y', 'R_DEDUCCION_REPOSO', 'S', 'result = 0;
 
@@ -1610,14 +1610,14 @@ if (daysnotice > 0)
         description = "Días de Reposo IVSS: " + daysnotice;
         result = daysnotice * (getConcept("CC_SUELDO_MENSUAL") / getAttribute("C_DIAS_DEL_MES"));
 }', '2011-05-19 11:25:56.0', 100, 'beanshell:R_DEDUCCION_REPOSO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000254, NULL, '2011-01-17 10:18:56.0', 100, 'U005', 'U', 'H', 'INCE PATRONAL', 'Y', 'R_PROVISI_MENSUAL_BONO_FIN_ANO', 'S', 'result=0.0;
 if ("S".equals(getAttributeString("C_PAGAR_BONO_FIN_ANO")) && getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0 && getConcept("CC_APLICA")==1.0){
      result= (getConcept("CC_VALOR_DIAS_BONO_FIN_AÑO_TRAB")/12)* getConcept("CC_SUELDO_DIARIO_PARA_UTILIDAD");
 
 }', '2011-06-21 11:40:07.0', 100, 'beanshell:R_PROVISI_MENSUAL_BONO_FIN_ANO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000160, NULL, '2010-12-07 10:19:18.0', 100, 'A402', 'U', 'H', NULL, 'Y', 'R_INTERESES_PREST_SOCIALES', 'S', 'result=0.0; 
 
@@ -1625,7 +1625,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0){
       result= getAttribute("A_MONTO_ACUM_INI_INTERESES_PREST_SOC")+getAttribute("A_MONTO_ACUM_INTERESES_PRESTACIONES");
 }
 ', '2012-07-30 15:22:27.0', 100, 'beanshell:R_INTERESES_PREST_SOCIALES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000241, NULL, '2011-01-13 08:19:29.0', 100, 'W024', 'U', 'H', NULL, 'Y', 'R_ACT_ACUM_MONTO_PAG_REPO_IVSS', 'S', 'result=0.0;
 String msg=null; 
@@ -1653,7 +1653,7 @@ if("S".equals(getAttributeString("C_PAGAR_ 100_%_DEL_REPOSO_IVSS"))){
               result=0;
       }  
 }', '2012-07-30 15:42:15.0', 100, 'beanshell:R_ACT_ACUM_MONTO_PAG_REPO_IVSS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000253, NULL, '2011-01-17 10:08:00.0', 100, 'U004', 'U', 'H', 'INCE PATRONAL', 'Y', 'R_INCE_PATRONAL', 'S', 'resul=0.0; 
 Double mount = LVE_Payroll.ExecutionOfConcepts(get_TrxName(),process,"isoption8","Y",_Payroll);
@@ -1663,7 +1663,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0 &&  !"Utilidades".equals(sContract) )
  result= (getAttribute("C_FACTOR_INCE_PATRONAL")/100)* mount;  
      
 }', '2012-08-07 10:00:31.0', 100, 'beanshell:R_INCE_PATRONAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000252, NULL, '2011-01-17 09:58:11.0', 100, 'R004', 'U', 'H', 'INCE TRABAJADOR', 'Y', 'R_INCE_TRABAJADOR', 'S', '
 
@@ -1679,7 +1679,7 @@ if (!"Liquidacion".equals(sContract)|| ("Liquidacion".equals(sContract) && getCo
 
 }
 ', '2012-08-07 09:55:45.0', 100, 'beanshell:R_INCE_TRABAJADOR')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000251, NULL, '2011-01-17 09:15:55.0', 100, NULL, 'U', 'H', NULL, 'Y', 'R_PRESTAMO_REMOD_VIVI_LIQUIDAC', 'S', 'String sContract = getHR_Payroll().getHR_Contract().getValue();
 
@@ -1687,7 +1687,7 @@ if ("Liquidacion".equals(sContract)){
 
      result= LVE_Payroll.PaymentOfQuotaLiquidation(get_TrxName(), getAD_Org_ID() , _C_BPartner_ID , "HI" , new Date  (_To.getYear(), _To.getMonth(), _To.getDay()), _Process );
 }', '2011-02-18 10:10:00.0', 100, 'beanshell:R_PRESTAMO_REMOD_VIVI_LIQUIDAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000222, NULL, '2010-12-29 11:22:00.0', 100, 'W006', 'U', 'H', NULL, 'Y', 'R_CIERRE_ANTICIP_UTIL_CONT_UTI', 'S', 'String msg=null; 
 result =1.0;
@@ -1700,7 +1700,7 @@ if (getAttribute("A_MONTO_ACUM_ANTICIPO_UTILIDADES")>0) {
 
 
 ', '2011-05-19 09:43:50.0', 100, 'beanshell:R_CIERRE_ANTICIP_UTIL_CONT_UTI')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000239, NULL, '2011-01-13 08:11:09.0', 100, 'A100-4', 'U', 'H', NULL, 'Y', 'R_DIAS_REPOSO_IVSS', 'S', 'result = 0;
 
@@ -1720,7 +1720,7 @@ if (!bPay100restingAttri && bPay100restingConst && daysnotice > 0)
         result = daysnotice - daysrestclient - daysPaid;
   }
 }', '2011-02-14 08:56:41.0', 100, 'beanshell:R_DIAS_REPOSO_IVSS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000267, NULL, '2011-05-02 08:37:07.0', 100, 'Y071-HORAS', 'U', 'H', NULL, 'Y', 'R_HORAS_JORNADA_TRABAJADOR', 'S', 'String workDay = getAttributeString("A_JORNADA_LABORAL");
 
@@ -1729,7 +1729,7 @@ result = ("D".equals(workDay)?getAttribute("C_HORAS_JORNADA_DIURNA"):
              getAttribute("C_HORAS_JORNADA_MIXTA")));
 
 ', '2011-05-17 11:03:12.0', 100, 'beanshell:R_HORAS_JORNADA_TRABAJADOR')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000202, NULL, '2010-12-13 09:36:22.0', 100, 'V004', 'U', 'H', NULL, 'Y', 'R_MONTO_BONO_ALIMENTACION', 'S', 'result=0.0; 
 
@@ -1737,7 +1737,7 @@ if (getConcept("CC_CANCELAR_BONO_ALIMENTACION")==1.0 && getConcept("CC_APLICAR_C
      result= getAttribute("C_VALOR_BONO_ALIMENTARIO")* LVE_Payroll.tributaryUnit(get_TrxName(),getAD_Org_ID(), _From ,  _To)*    
                   getConcept("CC_DIAS_BONO_ALIMENTACION");
 }', '2011-05-23 13:51:22.0', 100, 'beanshell:R_MONTO_BONO_ALIMENTACION')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000009, NULL, '2010-10-11 17:08:24.0', 100, 'Q002', 'U', 'H', NULL, 'Y', 'R_SUELDO_HORA', 'S', 'String jornada = getConceptString("A_JORNADA_LABORAL");
 
@@ -1757,7 +1757,7 @@ if ("M".equals(jornada))  /* Mixta */
 description = "Horas jornada " + jornada + "=" + horas;
 
 result =  horas>0 ?  (sueldo / getAttribute("C_DIAS_DEL_MES")) / horas : 0.0;', '2011-01-31 11:06:20.0', 100, 'beanshell:R_SUELDO_HORA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000140, NULL, '2010-12-06 14:24:19.0', 100, 'B104', 'U', 'H', NULL, 'Y', 'R_BONO_CUMPLEAÑOS', 'S', 'result = 0.0;
 if (getConcept("CC_APLICAR_CONCEPTO")==1.0) {
@@ -1784,7 +1784,7 @@ if (birthday != null &&
    result = getAttribute("C_MONTO_PAGAR_BONO_CUMPLEAÑOS");
 }
 }', '2011-06-21 11:43:03.0', 100, 'beanshell:R_BONO_CUMPLEAÑOS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000226, NULL, '2011-01-10 08:14:38.0', 100, 'W026', 'U', 'H', NULL, 'Y', 'R_ACT_FEC_ULTI_BONO_POST_VAC_P', 'S', 'Double value1= getConcept( "CC_BONO_POST_VACACIONAL");
 result=0.0; 
@@ -1795,7 +1795,7 @@ if (value1>0){
      if (msg != null)	
         result=0.0;
 }', '2011-05-19 09:16:43.0', 100, 'beanshell:R_ACT_FEC_ULTI_BONO_POST_VAC_P')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000217, NULL, '2010-12-27 13:23:29.0', 100, 'A100-1', 'U', 'H', NULL, 'Y', 'R_MONTO_REPOSO_EMPRESA', 'S', 'result = 0;
 
@@ -1818,7 +1818,7 @@ if (days > 0 && getConcept("CC_APLICA")==1.0)
   result = days * (getConcept("CC_SUELDO_MENSUAL") / getAttribute("C_DIAS_DEL_MES"));
 }
    ', '2011-06-21 11:45:16.0', 100, 'beanshell:R_MONTO_REPOSO_EMPRESA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000077, NULL, '2010-11-17 10:05:05.0', 100, 'Y061', 'U', 'H', NULL, 'Y', 'R_FEC_ULT_MES_PROC', 'S', 'long oneDay = 86400000;
 String sContrato = getHR_Payroll().getHR_Contract().getValue();
@@ -1838,7 +1838,7 @@ if  ((!bCont_Vac && getConcept("CC_APLICAR_CONCEPTO") == 1.0) || (bCont_Vac && i
 }
 
 ', '2011-06-08 10:49:22.0', 100, 'beanshell:R_FEC_ULT_MES_PROC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000109, NULL, '2010-11-25 15:48:23.0', 100, 'Y032', 'U', 'H', NULL, 'Y', 'R_DIAS_DE_SUELDO_PENDIENTE', 'S', 'String sContract = getHR_Payroll().getHR_Contract().getValue();
 double days = 0;
@@ -1859,7 +1859,7 @@ switch (sContract)
 result = days - getConcept("CC_DIAS_VACACIONES");
 
 ', '2012-07-26 16:45:41.0', 100, 'beanshell:R_DIAS_DE_SUELDO_PENDIENTE')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000074, NULL, '2010-11-10 08:22:04.0', 100, 'U003', 'U', 'H', 'Ley Régimen Prestacional de Vivienda y Hábitat (Patronal)', 'Y', 'R_LEY_REG_PREST_VIV_HAB_PA', 'S', 'result = 0.0;
 String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -1882,7 +1882,7 @@ if (getConcept("CC_APLICAR_RETENCIONES_LRPVH") == 1.0 &&
    }
    result = salary_ret * factor / 100;
 }', '2012-08-08 11:57:39.0', 100, 'beanshell:R_LEY_REG_PREST_VIV_HAB_PA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000240, NULL, '2011-01-13 08:12:06.0', 100, 'A100-3', 'U', 'H', NULL, 'Y', 'R_DIAS_REPOSO_EMPRESA', 'S', 'result = 0;
 result = 0.0;
@@ -1908,7 +1908,7 @@ else
      result = (daysrestclient - daysPaid)  ;
   }
 }', '2011-05-19 11:41:44.0', 100, 'beanshell:R_DIAS_REPOSO_EMPRESA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000133, NULL, '2010-12-06 10:30:57.0', 100, 'Q013', 'U', 'H', NULL, 'Y', 'R_SALARIO_ESTIMADO_UTILIDADES', 'S', '
 String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -1925,31 +1925,31 @@ if( "S".equals(getAttributeString("C_APLICAR_UTILIDADES_SOBRE_DEVENG_ANUAL")) &&
      
 }
 ', '2011-02-03 15:31:05.0', 100, 'beanshell:R_SALARIO_ESTIMADO_UTILIDADES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000259, NULL, '2011-02-17 14:29:20.0', 100, 'B031', 'U', 'H', NULL, 'Y', 'R_PRESTAMO_COMPRA_VIVIENDA', 'S', '
 result= LVE_Payroll.AllocationOfLoan(get_TrxName(), getAD_Org_ID(),_C_BPartner_ID, "HB", _From, _To ).doubleValue();
 
 ', '2011-02-17 15:36:21.0', 100, 'beanshell:R_PRESTAMO_COMPRA_VIVIENDA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000261, NULL, '2011-02-17 15:06:36.0', 100, 'B032', 'U', 'H', NULL, 'Y', 'R_PRESTAMO_PERSONALES', 'S', '
 result= LVE_Payroll.AllocationOfLoan(get_TrxName(), getAD_Org_ID(),_C_BPartner_ID, "P1", _From, _To ).doubleValue();
 
 ', '2011-02-17 15:36:26.0', 100, 'beanshell:R_PRESTAMO_PERSONALES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000262, NULL, '2011-02-17 15:07:43.0', 100, 'B033', 'U', 'H', NULL, 'Y', 'R_PRESTAMO_REMODELACION_VIVIEN', 'S', '
 result= LVE_Payroll.AllocationOfLoan(get_TrxName(), getAD_Org_ID(),_C_BPartner_ID, "HI", _From, _To ).doubleValue();
 
 ', '2011-02-17 15:36:32.0', 100, 'beanshell:R_PRESTAMO_REMODELACION_VIVIEN')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000258, NULL, '2011-02-17 14:28:39.0', 100, 'B030', 'U', 'H', ' ', 'Y', 'R_PRESTAMO_ESTUDIO', 'S', '
 result= LVE_Payroll.AllocationOfLoan(get_TrxName(), getAD_Org_ID(),_C_BPartner_ID, "S1", _From, _To ).doubleValue();
 
 ', '2011-02-17 15:59:27.0', 100, 'beanshell:R_PRESTAMO_ESTUDIO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000072, NULL, '2010-11-10 08:07:35.0', 100, 'U001', 'U', 'H', 'Seguro Social Obligatorio (Patronal)', 'Y', 'R_SEGURO_SOCIAL_OBLIGATORIO_PA', 'S', 'String sContrato = getHR_Payroll().getHR_Contract().getValue();
 boolean bCont_Vac = "Vacaciones".equals(sContrato);
@@ -1975,13 +1975,13 @@ if ((getConcept("CC_APLICAR_RETENCIONES") == 1)
  
 
 ', '2011-03-21 14:53:53.0', 100, 'beanshell:R_SEGURO_SOCIAL_OBLIGATORIO_PA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000260, NULL, '2011-02-17 14:32:44.0', 100, 'B034', 'U', 'H', NULL, 'Y', 'R_PRESTAMO_OTROS', 'S', '
 result= LVE_Payroll.AllocationOfLoan(get_TrxName(), getAD_Org_ID(),_C_BPartner_ID, "OT", _From, _To ).doubleValue();
 
 ', '2011-02-17 15:36:37.0', 100, 'beanshell:R_PRESTAMO_OTROS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000224, NULL, '2010-12-29 13:19:24.0', 100, 'W007', 'U', 'H', NULL, 'Y', 'R_CIERRE_DIAS_VAC_BONO_VAC_CAU', 'S', 'long oneDay = 86400000;
 Timestamp From = (Timestamp) _From.clone();
@@ -2012,7 +2012,7 @@ if (value2>0) {
      if (msg != null)	
           result=0;
 }', '2011-06-30 08:55:42.0', 100, 'beanshell:R_CIERRE_DIAS_VAC_BONO_VAC_CAU')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000265, NULL, '2011-03-30 14:08:57.0', 100, 'A100-1.1', 'U', 'H', NULL, 'Y', 'R_MONTO_REPOSO_EMPRESA_DED', 'S', 'result = 0;
 
@@ -2029,7 +2029,7 @@ if (days > 0 && getConcept("CC_APLICA")==1.0)
     result = days * (getConcept("CC_SUELDO_MENSUAL") / getAttribute("C_DIAS_DEL_MES"));
 }
    ', '2011-06-21 11:45:41.0', 100, 'beanshell:R_MONTO_REPOSO_EMPRESA_DED')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000231, NULL, '2011-01-10 15:36:17.0', 100, 'W015', 'U', 'H', NULL, 'Y', 'R_ACT_MONT_DISPONI_INTERES_PRE', 'S', 'result=1.0;
 long oneDay = 86400000;
@@ -2057,7 +2057,7 @@ if (value > 0) {
    if (msg != null)	
         result=0;
 }', '2011-06-10 08:49:11.0', 100, 'beanshell:R_ACT_MONT_DISPONI_INTERES_PRE')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000144, NULL, '2010-12-06 14:58:45.0', 100, 'Q011', 'U', 'H', NULL, 'Y', 'R_BASE_INTERES_PRESTA_SOCIALES', 'S', 'result=0.0;
 
@@ -2086,12 +2086,12 @@ if (getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0){
                       : dAcumPrestSoc-dAcumAnticPrest;
 }
 ', '2011-06-03 09:41:01.0', 100, 'beanshell:R_BASE_INTERES_PRESTA_SOCIALES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000266, NULL, '2011-04-14 09:35:02.0', 100, 'V001-1', 'U', 'H', NULL, 'Y', 'R_DIAS_GARANTIA_PRESTACIONES', 'S', '
 result= getAttribute("C_VALOR_ANUAL_PRESTACIONES_SOCIALES") / 12 * 3; 
 ', '2012-07-30 10:46:38.0', 100, 'beanshell:R_DIAS_GARANTIA_PRESTACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000232, NULL, '2011-01-10 15:41:17.0', 100, 'W014', 'U', 'H', NULL, 'Y', 'R_ACT_MONT_DISP_PREST_CIERRE_P', 'S', 'result=1.0;
 long oneDay = 86400000;
@@ -2118,7 +2118,7 @@ if (value1 > 0) {
     if (msg != null)	
          result=0;
 }', '2012-07-30 11:09:02.0', 100, 'beanshell:R_ACT_MONT_DISP_PREST_CIERRE_P')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000270, NULL, '2011-05-26 15:43:31.0', 100, 'A104', 'U', 'H', NULL, 'Y', 'R_DESCANSO_TRABAJADO', 'S', 'result = 0.0;
 
@@ -2141,7 +2141,7 @@ double dias_desc_trab = getConcept("CC_DIAS_DESCANSO_TRABAJADO");
 result = sueldo_diario * dias_desc_trab;
 }
 ', '2011-06-21 11:16:30.0', 100, 'beanshell:R_DESCANSO_TRABAJADO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000194, NULL, '2010-12-08 10:57:01.0', 100, 'U008', 'U', 'H', NULL, 'Y', 'R_PROVISION_MENSUAL_VACACIONES', 'S', 'result=0.0; 
 
@@ -2155,7 +2155,7 @@ if (getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0 && getConcept("CC_APLICA")
 }
 
 ', '2011-06-21 11:39:19.0', 100, 'beanshell:R_PROVISION_MENSUAL_VACACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000102, NULL, '2012-08-06 16:02:56.0', 100, 'B200', 'U', 'H', NULL, 'Y', 'R_UTILIDADES_LOTTT_132', 'S', 'result=0.0; 
 double utilCompany = getAttribute("C_UTILIDADES_EMPRESA");
@@ -2186,7 +2186,7 @@ if (utilCompany>0) {
 }
 
 }', '2012-08-08 15:10:52.0', 100, 'beanshell:R_UTILIDADES_LOTTT_132')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000011, NULL, '2010-10-12 10:31:37.0', 100, 'B009', 'U', 'H', NULL, 'Y', 'R_HORAS_EXTRAS_NOCTURNAS', 'S', 'String jornada = getConceptString("A_JORNADA_LABORAL");
 if (jornada == null)
@@ -2206,7 +2206,7 @@ double horas_nov = getConcept("A_NOV_HORAS_EXTRAS_NOCTURNAS");
 if (horas != 0.0)
   description = "Horas Extras=" + horas_nov;
 result = horas_nov * sueldo_hora * recargo;', '2011-05-13 11:58:13.0', 100, 'beanshell:R_HORAS_EXTRAS_NOCTURNAS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000083, NULL, '2010-11-18 10:12:12.0', 100, 'Y013', 'U', 'H', NULL, 'Y', 'R_DIAS_BONO_VAC_POR_AÑO', 'S', 'long oneDay = 86400000;
 Timestamp From = (Timestamp) _From.clone();
@@ -2229,7 +2229,7 @@ if (DaysCanceled >= 0)
         // Advancement vacation bonus
         result = (DaysCaused == DaysCanceled) ?  (getConcept("CC_DIAS_BASE_BONO_VAC") + YearsAntiq - (YearsAntiq > 0 ? 1 : 0)) : 0;
 }', '2011-06-30 09:26:41.0', 100, 'beanshell:R_DIAS_BONO_VAC_POR_AÑO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000076, NULL, '2010-11-16 16:10:01.0', 100, 'Y067', 'U', 'H', NULL, 'Y', 'R_FEC_FIN_ULT_VAC_DISF', 'S', 'String sQuery = ""
 	+ "SELECT MAX(d.enddate) " 
@@ -2253,7 +2253,7 @@ else
 
 
 ', '2012-07-27 14:09:00.0', 100, 'beanshell:R_FEC_FIN_ULT_VAC_DISF')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000005, NULL, '2010-10-11 14:30:36.0', 100, 'A001-LIQUIDACION', 'U', 'H', NULL, 'Y', 'R_SUELDO_EN_LIQUIDACION', 'S', 'result = 0.0;
 
@@ -2272,7 +2272,7 @@ if ("Liquidacion".equals(sContract))
 }
 
 ', '2011-06-20 10:32:56.0', 100, 'beanshell:R_SUELDO_EN_LIQUIDACION')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000114, NULL, '2010-11-29 15:10:12.0', 100, 'Y071', 'U', 'H', NULL, 'Y', 'R_HORAS_BONO_ALIMENTACION', 'S', 'LVE_Payroll NV = new LVE_Payroll();
 if (getConcept("CC_CANCELAR_BONO_ALIMENTACION")==1.0 && getConcept("CC_APLICAR_CONCEPTO")==1.0){
@@ -2299,7 +2299,7 @@ if (getConcept("CC_CANCELAR_BONO_ALIMENTACION")==1.0 && getConcept("CC_APLICAR_C
          result = bonHours;
  }
 }', '2011-06-07 11:02:11.0', 100, 'beanshell:R_HORAS_BONO_ALIMENTACION')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000027, NULL, '2010-10-14 11:29:23.0', 100, 'Obtiene la cantidad de lunes dentro del período de nomina ', 'U', 'H', NULL, 'Y', 'R_LUNES_PARA_RETENCIONES', 'S', 'result=0.0;
 if (getConcept("CC_APLICAR_RETENCIONES") == 1) {
@@ -2332,7 +2332,7 @@ if (getConcept("CC_APLICAR_RETENCIONES") == 1) {
         result -= LVE_Payroll.dayOnPeriod(From2, To2, 1); 
      }
 }', '2012-08-07 15:40:08.0', 100, 'beanshell:R_LUNES_PARA_RETENCIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000029, NULL, '2010-10-15 09:57:32.0', 100, 'R002', 'U', 'H', NULL, 'Y', 'R_REGIMEN_PRESTACIONAL_TR', 'S', 'String sContrato = getHR_Payroll().getHR_Contract().getValue();
 boolean bCont_Vac = "Vacaciones".equals(sContrato);
@@ -2355,7 +2355,7 @@ if ((getConcept("CC_APLICAR_RETENCIONES") == 1) && (bCont_Vac || getConcept("CC_
 
 
 ', '2012-08-07 15:13:32.0', 100, 'beanshell:R_REGIMEN_PRESTACIONAL_TR')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000137, NULL, '2010-12-06 13:43:46.0', 100, 'Q006', 'U', 'H', NULL, 'Y', 'R_PORCION_DIARIA_UTIL', 'S', 'result=0.0;
 if (getConcept("CC_MESES_TRABAJADOS")>=1 &&  getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")== 1.0){
@@ -2367,7 +2367,7 @@ result= days>0 ?  (getConcept("CC_DIAS_UTILIDADES_POR_MES") / days) * getConcept
 }
 
 ', '2012-08-08 14:30:08.0', 100, 'beanshell:R_PORCION_DIARIA_UTIL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000099, NULL, '2010-11-23 08:05:11.0', 100, 'Y040-2', 'U', 'H', NULL, 'Y', 'R_NO_APLICAR_RETENCI_FINAL_MES', 'S', 'import java.lang.Math;
 
@@ -2411,7 +2411,7 @@ String sContract = getHR_Payroll().getHR_Contract().getValue();
 		} 
           }
 ', '2012-08-07 15:43:18.0', 100, 'beanshell:R_NO_APLICAR_RETENCI_FINAL_MES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000112, NULL, '2010-11-26 08:35:08.0', 100, 'A001-1', 'U', 'H', NULL, 'Y', 'R_DIAS_EFECTIVOS_TRABAJADOS', 'S', 'int dayrest = (int)getAttribute("C_DIA_SEMANA_DESCANSO");
 
@@ -2432,7 +2432,7 @@ double workDays =  (double) LVE_Payroll.workDays(get_TrxName(), dtStartEmployee,
 result = workDays + daysnotice;
 
 ', '2011-06-07 13:57:06.0', 100, 'beanshell:R_DIAS_EFECTIVOS_TRABAJADOS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000216, NULL, '2010-12-23 08:24:51.0', 100, 'W001', 'U', 'H', NULL, 'Y', 'R_CIERRE_FECHA_ULTIMO_MES_PROC', 'S', '
 String msg=null;
@@ -2462,7 +2462,7 @@ if (( !"Vacaciones".equals(sContract) && "S".equals( getAttributeString("C_PAGAR
                       }
 }			   
 				', '2011-06-30 08:55:22.0', 100, 'beanshell:R_CIERRE_FECHA_ULTIMO_MES_PROC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000235, NULL, '2011-01-12 08:39:24.0', 100, 'A006', 'U', 'H', NULL, 'Y', 'R_INTERESES_PREST_SOC_MENSUAL', 'S', 'Timestamp To = LVE_Payroll.lastDayOfMonth(_From);
 if (To.getTime() > _To.getTime())
@@ -2486,7 +2486,7 @@ if (lastWeek &&
              result= LVE_Payroll.generatedValue(get_TrxName() , _C_BPartner_ID, "CC_MONTO_INTERESES_PRESTACIONES", getAD_Org_ID() , 
                                                                                 (Timestamp) getAttributeDate("A_FECHA_MES_ANTERIOR_PRESTACIONES", date) ); 
 }', '2011-06-10 08:48:48.0', 100, 'beanshell:R_INTERESES_PREST_SOC_MENSUAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000238, NULL, '2011-01-12 14:33:33.0', 100, 'W010', 'U', 'H', NULL, 'Y', 'R_CIERRE_DIA_VAC_BONO_VAC_USAD', 'S', 'import org.eevolution.model.*;
 LVE_Payroll NV = new LVE_Payroll();
@@ -2518,7 +2518,7 @@ if (getConcept("CC_VACACIONES")>0){
                 getConcept("CC_DIAS_BONO_VAC_POR_AÑO")), _C_BPartner_ID);
     if (msg != null)  result=0;     
 }', '2011-06-30 08:58:58.0', 100, 'beanshell:R_CIERRE_DIA_VAC_BONO_VAC_USAD')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000221, NULL, '2010-12-29 10:40:20.0', 100, 'W003', 'U', 'H', NULL, 'Y', 'R_CIERRE_ACUM_PREST_SOC_INTERE', 'S', 'Double value1=getConcept("CC_MONTO_INTERESES_PRESTACIONES");
 Double value2=getConcept("CC_GARANTIA_PREST_SOCIALES");
@@ -2547,7 +2547,7 @@ if ((value2+value3)>0){
 }
 
 ', '2012-07-30 10:58:07.0', 100, 'beanshell:R_CIERRE_ACUM_PREST_SOC_INTERE')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000225, NULL, '2010-12-29 14:30:22.0', 100, 'W008', 'U', 'H', NULL, 'Y', 'R_CIERRE_DIAS_PRESTACIONES_CAU', 'S', 'result =1.0;
 Double value1=  0;
@@ -2578,7 +2578,7 @@ if (value2>0) {
      if (msg != null)	
           result=0;
 }', '2012-07-30 11:39:08.0', 100, 'beanshell:R_CIERRE_DIAS_PRESTACIONES_CAU')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000213, NULL, '2010-12-15 12:53:42.0', 100, 'A409', 'U', 'H', NULL, 'Y', 'R_VACACIONES_FRACCIONADAS_LIQU', 'S', '
 result=0.0; 
@@ -2591,7 +2591,7 @@ if (!LVE_Payroll.typeEndEmployee (get_TrxName(),getAD_Org_ID(),  _C_BPartner_ID,
      result= getConcept("CC_SUELDO_DIARIO_VAC")* value3; 
 }
 ', '2012-07-30 16:14:02.0', 100, 'beanshell:R_VACACIONES_FRACCIONADAS_LIQU')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000087, NULL, '2010-11-18 15:22:20.0', 100, 'Y056', 'U', 'H', NULL, 'Y', 'R_DIAS_DISPONIBLES_VACACIONES', 'S', 'result = 0.0;
 
@@ -2616,7 +2616,7 @@ double acumDays = getAttribute("A_ACUM_INI_DIAS_VACACIONES_VENCIDAS") +
 
 
 result = acumAddDays + acumDays + getConcept("CC_DIAS_VACACIONES_CAUSADAS");', '2011-07-01 10:34:34.0', 100, 'beanshell:R_DIAS_DISPONIBLES_VACACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000243, NULL, '2011-01-13 09:35:38.0', 100, 'W016', 'U', 'H', NULL, 'Y', 'R_ACT_DIAS_DISP_VAC_BON_VAC', 'S', 'result=0.0; 
 String msg=null;
@@ -2649,7 +2649,7 @@ if (  (!bVac && value1>0 && org.compiere.util.TimeUtil.isValid(date,To, dateInco
      if (msg != null)  result=0;
 }
 ', '2012-08-07 15:48:18.0', 100, 'beanshell:R_ACT_DIAS_DISP_VAC_BON_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000204, NULL, '2010-12-13 10:26:57.0', 100, 'U010', 'U', 'H', NULL, 'Y', 'R_APORTE_FONDO_AHORRO_EMPRESA', 'S', 'result=0.0; 
 
@@ -2658,7 +2658,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
              ? ( getAttribute("C_FACTOR_FONDO_AHORRO_EMPRESARIAL")/100* getConcept("CC_APORTE_FONDO_AHORRO_TRABAJAD")) 
              : (getAttribute("C_FACTOR_FONDO_AHORRO_EMPRESARIAL")/ 100* LVE_Payroll.sumConcept(get_TrxName(), "IsOption_9", _From, _To , _C_BPartner_ID,getHR_Payroll().getHR_Contract().getValue())).doubleValue(); 
 }', '2012-07-26 16:47:54.0', 100, 'beanshell:R_APORTE_FONDO_AHORRO_EMPRESA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000002, NULL, '2010-10-11 11:31:16.0', 100, 'Q024', 'U', 'H', NULL, 'Y', 'R_SUELDO_MENSUAL', 'S', 'import org.compiere.model.*;
 
@@ -2679,7 +2679,7 @@ if (sueldo > 0) {
 result = sueldo;
 
 ', '2012-01-30 11:30:36.0', 100, 'beanshell:R_SUELDO_MENSUAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000274, NULL, '2011-10-04 15:16:22.0', 100, 'LVE_restart_filters', 'U', 'C', NULL, 'Y', 'LVE_restart_filters', 'S', 'if (A_Tab.getValue("C_BPartner_ID") != null && (A_Tab.getValue("HR_Department_ID") != null || A_Tab.getValue("HR_Job_ID") != null ))
 	A_Tab.setValue("C_BPartner_ID",null);
@@ -2691,7 +2691,7 @@ if (A_Tab.getValue("C_BPartner_ID_F2") != null && A_Tab.getValue("HR_Department_
 	A_Tab.setValue("C_BPartner_ID_F2_ID",null);
 
 result="";', '2011-10-13 16:26:56.0', 100, 'beanshell:LVE_restart_filters')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000203, NULL, '2010-12-13 10:14:40.0', 100, 'E080', 'U', 'H', NULL, 'Y', 'R_APORTE_FONDO_AHORRO_TRABAJAD', 'S', 'result = 0.0; 
 
@@ -2701,7 +2701,7 @@ if (getConcept("CC_APLICAR_CONCEPTO")==1.0){
 }
 
 ', '2012-07-26 08:05:35.0', 100, 'beanshell:R_APORTE_FONDO_AHORRO_TRABAJAD')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000028, NULL, '2010-10-14 14:30:49.0', 100, 'R001', 'U', 'H', 'Seguro Social Obligatorio (Trabajadores)', 'Y', 'R_SEGURO_SOCIAL_OBLIGATORIO_TR', 'S', 'String sContrato = getHR_Payroll().getHR_Contract().getValue();
 
@@ -2723,7 +2723,7 @@ if ((getConcept("CC_APLICAR_RETENCIONES") == 1) && (bCont_Vac || getConcept("CC_
 }
 
 ', '2012-08-07 15:13:10.0', 100, 'beanshell:R_SEGURO_SOCIAL_OBLIGATORIO_TR')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000084, NULL, '2010-11-18 14:26:44.0', 100, 'Y016', 'U', 'H', NULL, 'Y', 'R_DIAS_VACACIONES_CAUSADAS', 'S', 'result = 0.0;
 
@@ -2756,7 +2756,7 @@ if (bApplying && (bNomNormal || bNomVac))
 		             getConcept("CC_DIAS_BASE_DISFRUTE_VACAC")+(getConcept("CC_AÑOS_ANTIGUEDAD_VACACIONES")-1) : 
 		             getConcept("CC_DIAS_BASE_DISFRUTE_VACAC");
 }	     ', '2012-08-08 14:11:23.0', 100, 'beanshell:R_DIAS_VACACIONES_CAUSADAS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000025, NULL, '2010-10-14 10:22:50.0', 100, 'Y004', 'U', 'H', NULL, 'Y', 'R_APLICAR_RETENCIONES', 'S', 'result = 0.0;  /* falso, no aplicar */
 
@@ -2783,7 +2783,7 @@ if  ( (!bCont_Vac || (bCont_Vac && iDiasVacPeriodo>0)) && bAplicaPeriodo &&
     result = 1.0; /* verdadero aplicar */
 
     ', '2012-08-07 14:49:03.0', 100, 'beanshell:R_APLICAR_RETENCIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000078, NULL, '2010-11-17 11:32:30.0', 100, 'Y017', 'U', 'H', NULL, 'Y', 'R_DIAS_BONO_VAC_CAUSADO', 'S', 'result = 0.0;
 String sContract = getHR_Payroll().getHR_Contract().getValue();
@@ -2817,7 +2817,7 @@ if (bApplying && (bNomNormal || bNomVac))
 		             getConcept("CC_DIAS_BASE_BONO_VAC")+(getConcept("CC_AÑOS_ANTIGUEDAD_BONO_VAC")-1) : 
 		             getConcept("CC_DIAS_BASE_BONO_VAC");
 }', '2012-09-17 15:53:57.0', 100, 'beanshell:R_DIAS_BONO_VAC_CAUSADO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000148, NULL, '2010-12-06 16:06:59.0', 100, 'Q031', 'U', 'H', NULL, 'Y', 'R_SALARIO_DIARIO_INTEGRAL', 'S', 'String sContract = getHR_Payroll().getHR_Contract().getValue();
 
@@ -2835,7 +2835,7 @@ if (getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0 &&
     result= value;
 }
 ', '2012-08-27 11:09:41.0', 1000369, 'beanshell:R_SALARIO_DIARIO_INTEGRAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000193, NULL, '2010-12-08 10:41:15.0', 100, 'U007', 'U', 'H', NULL, 'Y', 'R_PROVISION_MENSUAL_BONO_VAC', 'S', 'result=0.0; 
 
@@ -2845,12 +2845,12 @@ if (getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0 && getConcept("CC_APLICA")
 }
 
 ', '2012-04-24 09:28:50.0', 100, 'beanshell:R_PROVISION_MENSUAL_BONO_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000036, NULL, '2010-10-25 15:14:29.0', 0, 'Y014', 'U', 'H', NULL, 'Y', 'R_MESES_TRABAJADOS', 'S', 'result = LVE_Payroll.monthsOnPeriod(_DateStart , _To)
 
 ', '2012-04-24 08:55:30.0', 100, 'beanshell:R_MESES_TRABAJADOS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000139, NULL, '2010-12-06 14:19:02.0', 100, 'Q007', 'U', 'H', NULL, 'Y', 'R_PORCION_DIARIA_BONO_VAC', 'S', 'result=0.0;
 Double days = getAttribute("C_DIAS_DEL_MES");
@@ -2866,7 +2866,7 @@ if(getConcept("CC_MESES_TRABAJADOS")>=1 && getConcept("CC_APLI_PRES_FEC_ULT_PROC
 }
 
 ', '2012-07-31 13:38:06.0', 100, 'beanshell:R_PORCION_DIARIA_BONO_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000091, NULL, '2010-11-19 14:45:05.0', 100, 'Q021', 'U', 'H', 'Salario promedio de los ultimos 3 meses, si el salario del trabajador es variable', 'Y', 'R_PROMEDIO_TRIM_VAC', 'S', 'result = 0;
 String sVariableSalary = getAttributeString("A_SUELDO_VARIABLE");
@@ -2886,7 +2886,7 @@ if ("S".equals(sVariableSalary)) {
 }
 
 ', '2012-08-01 10:24:02.0', 100, 'beanshell:R_PROMEDIO_TRIM_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000054, NULL, '2010-10-29 08:40:54.0', 100, 'Y049', 'U', 'H', NULL, 'Y', 'R_DISFRUTAR_DIAS_ADIC_VAC', 'S', 'if (getAttributeString("C_DISFRUTAR_DIAS_ADICIONALES_VACACIONES").trim().toUpperCase().equals("S") && 
    (getAttributeString("A_DISFRUTAR_DIAS_ADICIONALES_VACACIONES")==null || 
@@ -2895,14 +2895,14 @@ INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, 
 }else
      result=0.0;
 ', '2012-07-26 08:25:38.0', 100, 'beanshell:R_DISFRUTAR_DIAS_ADIC_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000192, NULL, '2010-12-08 09:44:53.0', 100, 'U006', 'U', 'H', NULL, 'Y', 'R_PROVISION_MENSUAL_UTILIDADES', 'S', 'result=0.0; 
 
 if (getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0 && getConcept("CC_APLICA")==1.0) {
      result= getConcept("CC_DIAS_UTILIDADES_POR_MES") * getConcept("CC_SUELDO_DIARIO_PARA_UTILIDAD"); 
 }', '2012-09-17 15:52:35.0', 100, 'beanshell:R_PROVISION_MENSUAL_UTILIDADES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000189, NULL, '2010-12-08 08:58:36.0', 100, 'V001', 'U', 'H', 'Causación de los días correspondiente a la garantía de prestaciones sociales, según los artículos N° 122 y 142; y disposición transitoria 2da', 'Y', 'R_GARANTIA_PREST_SOCIALES', 'S', 'result=0.0;
 
@@ -2917,7 +2917,7 @@ else
 
 if (month>=3 && month%3==0 && getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0 && getConcept("CC_APLICA")==1.0)
    result= getConcept("CC_SALARIO_PARA_PRESTACIONES") / getAttribute("C_DIAS_DEL_MES") * getConcept("CC_DIAS_GARANTIA_PRESTACIONES"); ', '2012-09-17 15:52:49.0', 100, 'beanshell:R_GARANTIA_PREST_SOCIALES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000049, NULL, '2010-10-28 15:19:46.0', 100, 'Y053', 'U', 'H', NULL, 'Y', 'R_FECHA_INGRESO_CALCULO_VACACIONES', 'S', 'Timestamp dateIniEmployee = LVE_Payroll.DateInitialEmployee(get_TrxName(), _C_BPartner_ID, getAD_Org_ID(), "''Mensual'',''Semanal'', ''Quincenal''");
 Timestamp dateEndPayroll = _To.clone();
@@ -2926,7 +2926,7 @@ dateIniEmployee.setYear(dateEndPayroll.getYear());
 result = dateIniEmployee.getTime();
 
 ', '2012-07-26 16:46:07.0', 100, 'beanshell:R_FECHA_INGRESO_CAL_VACACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000093, NULL, '2010-11-19 16:10:55.0', 100, 'Q019', 'U', 'H', 'Artículo 121. El salario base para el cálculo de lo que corresponda al trabajador o trabajadora por concepto de vacaciones, será el salario normal devengado en el mes efectivo de labores inmediatamente anterior a la oportunidad del disfrute.  En caso de salario por unidad de obra, por pieza, a destajo o a comisión, será el promedio del salario normal devengado durante los tres meses inmediatamente anteriores a la oportunidad del disfrute.  ', 'Y', 'R_SUELDO_DIARIO_VAC', 'S', 'String sContract = getHR_Payroll().getHR_Contract().getValue();
 String sVariableSalary = getAttributeString("A_SUELDO_VARIABLE");
@@ -2945,7 +2945,7 @@ if ((getConcept("CC_DIAS_VACACIONES") > 0) ||  ("Prestaciones".equals(sContract)
    value = value * (dDaysBaseVac > 0 ? dDaysPayVac / dDaysBaseVac : 1);
 }  
 result = value;', '2012-08-01 10:27:29.0', 100, 'beanshell:R_SUELDO_DIARIO_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000157, NULL, '2010-12-07 10:02:05.0', 100, 'A401', 'U', 'H', NULL, 'Y', 'R_PRES_SOC_DIAS_ADIC_FIN_RELAC', 'S', '
 result=0.0; 
@@ -2967,7 +2967,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0 && lastPayroll != null && dateEndEmployee
 
 
 ', '2012-08-08 15:09:09.0', 100, 'beanshell:R_PRES_SOC_DIAS_ADIC_FIN_RELAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000190, NULL, '2010-12-08 09:24:22.0', 100, 'V002', 'U', 'H', NULL, 'Y', 'R_MONTO_PRES_SOC_DIAS_ADIC', 'S', 'result=0.0; 
 
@@ -2982,7 +2982,7 @@ if (getConcept("CC_APLICA")==1.0)
     if ( (month%12)==0 && getConcept("CC_AÑOS_ANTIGUEDAD")>1  && getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI") == 1.0 ) 
          result= (additionalDays > topAdditionalDays ? topAdditionalDays : additionalDays) * getConcept("CC_SALARIO_PARA_PRESTACIONES") / getAttribute("C_DIAS_DEL_MES");
 }', '2012-08-08 15:09:33.0', 100, 'beanshell:R_MONTO_PRES_SOC_DIAS_ADIC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000269, NULL, '2011-05-03 08:13:25.0', 100, 'Y071-FROM', 'U', 'H', NULL, 'Y', 'R_FECHA_INICIO', 'S', 'Timestamp From = _From.clone();
 
@@ -2992,7 +2992,7 @@ if (From.getTime() > dtStartEmployee.getTime())
    dtStartEmployee = From;  
 
 result = dtStartEmployee.getTime();', '2011-06-07 11:40:53.0', 100, 'beanshell:R_FECHA_INICIO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000156, NULL, '2010-12-07 09:34:01.0', 100, 'A400', 'U', 'H', NULL, 'Y', 'R_PRESTACIONES_SOCIALES', 'S', 'result=0.0;
 long oneDay = 86400000; 
@@ -3023,7 +3023,7 @@ if (getConcept("CC_POR_LIQUIDAR")==1.0){
 
 
 ', '2012-08-08 15:16:42.0', 100, 'beanshell:R_PRESTACIONES_SOCIALES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000214, NULL, '2010-12-15 13:18:40.0', 100, 'A410', 'U', 'H', NULL, 'Y', 'R_BONO_VACACIONAL_FRACCIONADO', 'S', 'result= 0.0;
 
@@ -3038,7 +3038,7 @@ if (!LVE_Payroll.typeEndEmployee (get_TrxName(),getAD_Org_ID(),  _C_BPartner_ID,
 } 
 
 ', '2012-07-30 16:14:24.0', 100, 'beanshell:R_BONO_VACACIONAL_FRACCIONADO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000268, NULL, '2011-05-02 16:09:55.0', 100, 'Y071-TO', 'U', 'H', NULL, 'Y', 'R_FECHA_FIN', 'S', 'Timestamp To = _To;
 
@@ -3049,7 +3049,7 @@ if (dtEndEmployee == null || (dtEndEmployee!=null && To.getTime() < dtEndEmploye
 
 result = dtEndEmployee.getTime();
 ', '2011-05-02 16:15:21.0', 100, 'beanshell:R_FECHA_FIN')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000146, NULL, '2010-12-06 15:22:31.0', 100, 'B107', 'U', 'H', NULL, 'Y', 'R_BONO_POST_VACACIONAL', 'S', 'result = 0.0;
 
@@ -3069,7 +3069,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 &&
     result = getAttribute("C_MONTO_PAGAR_BONO_POST_VACACIONAL");
 }
 ', '2012-07-26 16:23:07.0', 100, 'beanshell:R_BONO_POST_VACACIONAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000101, NULL, '2012-08-02 16:03:00.0', 100, 'A413', 'U', 'H', NULL, 'Y', 'R_DESCANSOYFERIADO_VAC_VENC', 'S', 'result= 0.0;
 long oneDay = 86400000;
@@ -3102,12 +3102,12 @@ if (daysVac > 0) {
      }
      result = (restdays * holidays) + getConcept("CC_SUELDO_DIARIO_VAC");
 }', '2012-08-06 10:48:25.0', 100, 'beanshell:R_DESCANSOYFERIADO_VAC_VENC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000086, NULL, '2010-11-18 15:10:07.0', 100, 'Y037', 'U', 'H', NULL, 'Y', 'R_FEC_FINAL_CORT_TRIM_PAG_VAC', 'S', 'Timestamp lastDate = LVE_Payroll.lastDateOfProcessGenerated(get_TrxName(), _C_BPartner_ID, getAD_Org_ID(), "''Mensual'',''Quincenal'',''Semanal''", true);
 
 result= lastDate.getTime();', '2012-07-26 10:17:09.0', 100, 'beanshell:R_FEC_FINAL_CORT_TRIM_PAG_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000030, NULL, '2010-10-15 10:18:05.0', 100, 'Y200', 'U', 'H', NULL, 'Y', 'R_ANTIGUEDAD_SUPERIOR_UN_AÑO', 'S', 'Timestamp dateIni = LVE_Payroll.DateInitialEmployee(get_TrxName(), _C_BPartner_ID, getAD_Org_ID(), "''Mensual'',''Quincenal'',''Semanal''");
 
@@ -3117,7 +3117,7 @@ if (LVE_Payroll.yearsElapsed(dateIni, _To.clone())>0)
    result =1.0;
 else
    result = 0.0; ', '2011-04-06 11:37:02.0', 100, 'beanshell:R_ANTIGUEDAD_SUPERIOR_UN_AÑO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000256, NULL, '2011-02-08 11:02:40.0', 100, 'A100-G', 'U', 'H', 'Retorna los días de reposo que han sido pagados por cuenta de la empresa en los ultimos "X" días, hasta el día anterior al inicio de la nómina actual; en donde "X" viene dado por lo definido en la constante C_DIAS_CONTINUOS_PARA_PAGAR_NUEVO_REPOSO.', 'Y', 'R_DIAS_REPOSO_PAGADO_EMPRESA', 'S', 'long oneDay = 86400000;
 long continuousdays = getAttribute("C_DIAS_CONTINUOS_PARA_PAGAR_NUEVO_REPOSO") ; 
@@ -3130,7 +3130,7 @@ BigDecimal sumConcept = LVE_Payroll.sumConcept(get_TrxName(), From, To , "CC_DIA
 
 result = sumConcept == null ? 0 : sumConcept.doubleValue();
 ', '2012-07-26 16:05:56.0', 100, 'beanshell:R_DIAS_REPOSO_PAGADO_EMPRESA')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000138, NULL, '2010-12-06 13:48:01.0', 100, 'B103', 'U', 'H', NULL, 'Y', 'R_BONO_ASISTENCIA_PUNTUAL', 'S', 'result = 0.0;
 
@@ -3142,7 +3142,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 &&
     result = getAttribute("C_MONTO_BONO_ASISTENCIA_PUNTUAL") * months;
 }
 ', '2012-07-26 16:21:25.0', 100, 'beanshell:R_BONO_ASISTENCIA_PUNTUAL')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000129, NULL, '2010-12-06 09:10:42.0', 100, 'B114', 'U', 'H', NULL, 'Y', 'R_PRIMA_POR_HIJOS', 'S', 'result = 0.0;
 
@@ -3155,7 +3155,7 @@ if (getConcept("CC_APLICAR_CONCEPTO") == 1.0 &&
    double months = LVE_Payroll.periodExecutionContract(get_TrxName(), _C_BPartner_ID, getHR_Payroll().getHR_Contract().getValue(), "D", process) / getAttribute("C_DIAS_DEL_MES");
    result = getAttribute("C_MONTO_PAGAR_DE_PRIMA_POR_HIJOS") * getConcept("CC_NUMERO_HIJOS_PRIMA") * months;
 }', '2012-07-26 16:26:40.0', 100, 'beanshell:R_PRIMA_POR_HIJOS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000108, NULL, '2010-11-25 09:51:10.0', 100, 'Y027', 'U', 'H', NULL, 'Y', 'R_APLICAR_CAL_AÑO_INIC_OPERACI', 'S', '
 result=0.0;
@@ -3166,7 +3166,7 @@ if( (dateNextPayroll !=null) && ( getAttribute("C_AÑO_INICIO_OPERACIONES") == d
    result=1.0;
 } 
 ', '2012-07-26 16:44:54.0', 100, 'beanshell:R_APLICAR_CAL_AÑO_INIC_OPERACI')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000163, NULL, '2010-12-07 11:43:35.0', 100, 'A407', 'U', 'H', NULL, 'Y', 'R_UTILIDADES_FRACCIONADAS', 'S', '
 result=0.0; 
@@ -3178,7 +3178,7 @@ if(getConcept("CC_POR_LIQUIDAR")==1.0){
     result= days * getConcept("CC_SUELDO_DIARIO_PARA_UTILIDAD");
 
 }', '2012-08-01 11:10:25.0', 100, 'beanshell:R_UTILIDADES_FRACCIONADAS')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000075, NULL, '2010-11-10 10:51:43.0', 100, 'Y026', 'U', 'H', NULL, 'Y', 'R_FECHA_INICIO_UTIL_FRAC', 'S', 'long oneDay = 86400000;  
 Timestamp dateIniEmployee = LVE_Payroll.DateInitialEmployee(get_TrxName(), _C_BPartner_ID, getAD_Org_ID(), "''Mensual'',''Quincenal'',''Semanal''");
@@ -3194,7 +3194,7 @@ if (dateAfterLastPayroll != null)
 }
 
 result = dateReturn.getTime();', '2011-06-30 08:57:36.0', 100, 'beanshell:R_FECHA_INICIO_UTIL_FRAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000246, NULL, '2011-01-13 15:20:37.0', 100, 'B111', 'U', 'H', NULL, 'Y', 'R_RETROACTIVO_SUELDO', 'S', '
 
@@ -3213,7 +3213,7 @@ if(valor && ("Quincenal".equals(sContract) || "Semanal".equals(sContract) ) &&  
 //(LVE_Payroll.monthsOnPeriod(From, To) * getConcept("CC_SUELDO") - LVE_Payroll.generatedValue (get_TrxName() ,_C_BPartner_ID,"CC_SUELDO",  //getAD_Org_ID(), (Timestamp)  getAttributeDate("C_FECHA_INICIO_RETROACTIVO"), (Timestamp)  getAttributeDate("C_FECHA_FIN_RETROACTIVO") ) );
 
 }', '2012-07-26 16:25:24.0', 100, 'beanshell:R_RETROACTIVO_SUELDO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000048, NULL, '2010-10-27 14:39:32.0', 100, 'Y010', 'U', 'H', ' ', 'Y', 'R_BASE_%_CALCULO_INTERES_PREST', 'S', 'Timestamp dFecUltCalcPres;
 Double dValorTabla=0.0;
@@ -3236,7 +3236,7 @@ if (!"S".equals(getAttributeString("C_PRESTACIONES_DEPOSITADAS_FIDEICOMISO")) &&
 }
 else
    result=0.0;', '2012-07-26 16:41:21.0', 100, 'beanshell:R_BASE_%_CALCULO_INTERES_PREST')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000150, NULL, '2010-12-06 16:29:06.0', 100, 'Q023', 'U', 'H', NULL, 'Y', 'R_MONTO_BASE_PARA_LRPVH', 'S', 'result=0.0;
 Timestamp From = _From.clone();
@@ -3256,7 +3256,7 @@ if (("S".equals(getAttributeString("C_APLICAR_RETENCIONES_FINAL_MES"))) && LVE_P
                      LVE_Payroll.ExecutionOfConcepts(get_TrxName(),process,"isoption1","Y",_Payroll)  ;
 }
 ', '2012-07-26 16:38:33.0', 100, 'beanshell:R_MONTO_BASE_PARA_LRPVH')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000113, NULL, '2010-11-26 08:42:17.0', 100, 'Y028', 'U', 'H', NULL, 'Y', 'R_CANCELAR_BONO_ALIMENTACION', 'S', 'import org.eevolution.model.*;
 LVE_Payroll NV = new LVE_Payroll();
@@ -3283,14 +3283,14 @@ if ((sIsvariableSalary!=null) && ("S".equals(sIsvariableSalary)))
 result=0.0;
 if (bSalaryLessThanTop && getConcept("CC_DIAS_EFECTIVOS_TRABAJADOS") >0) 
   result=1.0;', '2012-07-26 16:45:21.0', 100, 'beanshell:R_CANCELAR_BONO_ALIMENTACION')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000212, NULL, '2010-12-15 11:16:45.0', 100, 'A406', 'U', 'H', 'Art 80 LOTTT  ..Se considerará despido indirecto: a) La exigencia que haga el patrono o la patrona al trabajador o trabajadora para que realice un trabajo de índole manifiestamente distinta de aquel al que está obligado por Decreto 8.938 Pág. 38 el contrato o por la Ley, o que sea incompatible con la dignidad y capacidad profesional del trabajador o trabajadora, o de que preste sus servicios en condiciones que acarreen un cambio de su residencia, salvo que en el contrato se haya convenido lo contrario o la naturaleza del trabajo, implique cambios sucesivos de residencia para el trabajador o trabajadora, o que el cambio sea justificado y no acarree perjuicio a éste. b) La reducción del salario. c) El traslado del trabajador o trabajadora a un puesto inferior. d) El cambio arbitrario del horario de trabajo. e) Otros hechos semejantes que alteren las condiciones existentes de trabajo. En todos estos casos el trabajador o la trabajadora tendrá derecho a recibir, además de sus prestaciones sociales, un
 monto equivalente a éstas por concepto de indemnización.
 ', 'Y', 'R_INDEMNIZACION_DESPIDO_INJUST', 'S', '
 result = getConcept("CC_PRESTACIONES_SOCIALES");
 ', '2012-08-01 11:21:55.0', 100, 'beanshell:R_INDEMNIZACION_DESPIDO_INJUST')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000023, NULL, '2010-10-13 16:06:10.0', 100, 'A002', 'U', 'H', NULL, 'Y', 'R_DIAS_DESCANSO', 'S', 'result = 0.0;
 
@@ -3328,7 +3328,7 @@ result = (restdays) * sueldoDiario;
 description = "Días de descanso del periodo: " + (restdays);
 } 
 ', '2012-09-17 15:48:59.0', 100, 'beanshell:R_DIAS_DESCANSO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000229, NULL, '2011-01-10 11:06:39.0', 100, 'W019', 'U', 'H', NULL, 'Y', 'R_CIERRE_FEC_ANUAL_VACACIONES', 'S', 'long oneDay = 86400000;
 
@@ -3348,7 +3348,7 @@ if ( ( value1>0 || value2 ) && (monthOnPeriod%12)==0){
      if (msg != null)	
         result=0.0;
 }', '2012-09-17 15:53:14.0', 100, 'beanshell:R_CIERRE_FEC_ANUAL_VACACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000123, NULL, '2010-12-02 15:20:21.0', 100, 'Q004', 'U', 'H', 'Salario Para Prestaciones Mensual - Art 122:  El salario base para el cálculo de lo que corresponda al trabajador y trabajadora por concepto de prestaciones sociales, y de indemnizaciones por motivo de la terminación de la relación de trabajo, será el último salario devengado, calculado de manera que integre todos los conceptos salariales percibidos por el trabajador o trabajadora. 
 En caso de salario por unidad de obra, por pieza, a destajo, a comisión o de cualquier otra modalidad de salario variable, la base para el cálculo será el promedio del salario devengado durante los seis meses inmediatamente anteriores, calculado de manera que integre todos los conceptos salariales percibidos por el trabajador o trabajadora.', 'Y', 'R_SALARIO_PARA_PRESTACIONES', 'S', 'result=0.0; 
@@ -3382,7 +3382,7 @@ if (monthsWorked >= 1 && getConcept("CC_APLI_PRES_FEC_ULT_PROCESAMI")==1.0){
 
    result= salaryAccum + (salaryVariable / divisor) + aliquots;
 }', '2012-09-17 15:50:20.0', 100, 'beanshell:R_SALARIO_PARA_PRESTACIONES')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000069, NULL, '2010-11-08 15:14:39.0', 100, 'Y080', 'U', 'H', NULL, 'Y', 'R_APLI_PRES_FEC_ULT_PROCESAMI', 'S', 'String contract=  getHR_Payroll().getHR_Contract().getValue();
 
@@ -3391,7 +3391,7 @@ if (    ("Prestaciones".equals(contract) &&  _To.getTime() <=  getAttributeDate(
 }else{
     result=0.0;
 }', '2012-09-17 15:54:20.0', 100, 'beanshell:R_APLI_PRES_FEC_ULT_PROCESAMI')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000151, NULL, '2010-12-06 16:30:39.0', 100, 'B109', 'U', 'H', NULL, 'Y', 'R_BONO_VEHICULO_MOTO', 'S', 'result = 0.0;
 
@@ -3412,7 +3412,7 @@ if (getAttribute("A_BONO_VEHICULO_MOTO", _From) != null &&
 }
 
 ', '2012-09-13 15:10:13.0', 100, 'beanshell:R_BONO_VEHICULO_MOTO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000272, NULL, '2011-06-20 09:16:03.0', 100, 'A001', 'U', 'H', NULL, 'Y', 'R_SUELDO', 'S', 'result = 0.0;
 
@@ -3447,7 +3447,7 @@ double sueldoDiario =  ("S".equals(getAttributeString("A_SUELDO_VARIABLE") )?
 
 result = (valueReturn * sueldoDiario)-LVE_Payroll.ExecutionOfConcepts(get_TrxName(),process,"isoption6","Y",_Payroll);
 }', '2012-09-17 15:48:36.0', 100, 'beanshell:R_SUELDO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000271, NULL, '2011-05-26 15:56:36.0', 100, 'A105', 'U', 'H', NULL, 'Y', 'R_FERIADO_TRABAJADO', 'S', 'result = 0.0;
 
@@ -3468,7 +3468,7 @@ double dias_desc_trab = getConcept("CC_DIAS_FERIADO_TRABAJADO");
 result = sueldo_diario * dias_desc_trab;
 }
 ', '2012-09-17 15:49:26.0', 100, 'beanshell:R_FERIADO_TRABAJADO')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000136, NULL, '2010-12-06 11:20:15.0', 100, 'Q008', 'U', 'H', 'Salario del mes anterior + promedio de los elementos salariales variables + porción de bono vacacional', 'Y', 'R_SUELDO_DIARIO_PARA_UTILIDAD', 'S', 'result=0.0; 
 long oneDay = 86400000;
@@ -3493,7 +3493,7 @@ Double salaryAccum = LVE_Payroll.sumConcept(get_TrxName(), "IsOption4", startDat
 Double salaryVariable = LVE_Payroll.sumConcept(get_TrxName(), "IsOption9", startDate,  endDate, "''Mensual'',''Quincenal'',''Semanal''", _C_BPartner_ID).doubleValue();
 
 result= ((salaryAccum + (salaryVariable / divisor)) / getAttribute("C_DIAS_DEL_MES")) + getConcept("CC_PORCION_DIARIA_BONO_VAC");', '2012-09-17 15:50:41.0', 100, 'beanshell:R_SUELDO_DIARIO_PARA_UTILIDAD')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000090, NULL, '2010-11-19 14:17:23.0', 100, 'Q020', 'U', 'H', NULL, 'Y', 'R_SUELDO_MES_ANTERIOR_VAC', 'S', 'result = 0.0;
 long oneDay = 86400000;
@@ -3522,7 +3522,7 @@ if (!"S".equals(sVariableSalary)) {
     if (DateIni != null && DateFin != null)
         result = LVE_Payroll.sumConcept(get_TrxName(), "IsOption1", DateIni, DateFin, _C_BPartner_ID, "") / dFactor * 30;
 }', '2012-09-17 15:51:13.0', 100, 'beanshell:R_SUELDO_MES_ANTERIOR_VAC')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 1000106, NULL, '2010-11-24 15:25:05.0', 100, 'Q035', 'U', 'H', NULL, 'Y', 'R_SUELDO_MENSUAL_VARIABLE', 'S', 'import org.eevolution.model.*;
 double salary = 0;
@@ -3553,7 +3553,7 @@ if (salary == 0)
    salary = getConcept("CC_SUELDO_MENSUAL");
 
 result = salary;', '2012-09-17 15:51:33.0', 100, 'beanshell:R_SUELDO_MENSUAL_VARIABLE')
-GO
+;
 INSERT INTO ADEMPIERE.AD_RULE(ad_client_id, ad_org_id, ad_rule_id, accesslevel, created, createdby, description, entitytype, eventtype, help, isactive, name, ruletype, script, updated, updatedby, value)
   VALUES(@ad_client_id, 0, 2000033, NULL, '2010-10-15 11:01:54.0', 100, 'R003', 'U', 'H', 'Ley Régimen Prestacional de Vivienda y Hábitat (Trabajador)', 'Y', 'R_LEY_REG_PREST_VIV_HAB', 'S', '
 String sContrato = getHR_Payroll().getHR_Contract().getValue();
@@ -3566,6 +3566,6 @@ if (getConcept("CC_APLICAR_RETENCIONES_LRPVH") == 1.0 &&
    (bCont_Vac || getConcept("CC_APLICAR_CONCEPTO") == 1.0)){
    
    result = getConcept("CC_MONTO_BASE_PARA_LRPVH") * factor / 100;
-}', '2012-09-17 15:51:46.0', 100, 'beanshell:R_LEY_REG_PREST_VIV_HAB')
+}', '2012-09-17 15:51:46.0', 100, 'beanshell:R_LEY_REG_PREST_VIV_HAB');
 
 COMMIT;
