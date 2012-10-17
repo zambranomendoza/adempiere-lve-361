@@ -117,22 +117,26 @@ de la creación de la compañía.
 
 31. Proceda a la ejecución del script 3Deposito_cambios_Organizacion.sql
 
-32. Ubicar y abrir el scrip de bank_lve361.sql:
+32. Ubicar y abrir el scrip de controlnumbervalidation.sql:
+
+    migration_LVE_361/LVE_361/controlnumbervalidation.sql
+
+33. Ubicar y abrir el scrip de bank_lve361.sql:
 
     migration_LVE_361/LVE_361/bank_lve361.sql
     
-33. Antes de la ejecución del script previamente 
+34. Antes de la ejecución del script previamente 
 usted debe tener creada la compañía a la cual se le va a 
 aplicar la configuración, una vez que esté creada reemplace las 
 ocurrencias de  @ID_CLIENT@ por el ID que se le generó al momento 
 de la creación de la compañía.
 
-34. Proceda a la ejecución del script bank_lve361.sql
+35. Proceda a la ejecución del script bank_lve361.sql
 
-35. Abra la ventana Menu -> Aplication Dictionary -> Aplication
+36. Abra la ventana Menu -> Aplication Dictionary -> Aplication
 Packaging -> PackIn.
 
-36. Ubique el directorio migration_LVE_361/package/nomina y ejecute los
+37. Ubique el directorio migration_LVE_361/package/nomina y ejecute los
 siguientes paquetes es dicho orden:
 
      LVE_TalentoHumanoHigiene_1.zip
@@ -147,9 +151,9 @@ ejecutar
 el proceso ubicado en: Menu -> System Admin -> General Rules ->
 Sequence Check .
 
-37. Ubicar la carpeta: 
+38. Ubicar la carpeta: 
      migration_LVE_361/LVE_361/361/nomina
 
-38. Realizar los cambios indicados al comienzo de cada uno de los Script y ejecutarlos.
+39. Realizar los cambios indicados al comienzo de cada uno de los Script y ejecutarlos.
 
-39. Ejecutar el proceso ubicado en: Menu -> System Admin -> General Rules -> Sequence Check.
+40. Ejecutar el proceso ubicado en: Menu -> System Admin -> General Rules -> Sequence Check.
