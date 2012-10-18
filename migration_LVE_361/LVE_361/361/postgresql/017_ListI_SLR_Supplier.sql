@@ -1,7 +1,7 @@
 
 -- Original contribution by Rafael Tomás Salazar Colmenárez - rsalazar@dcsla.com --- rtsc08@gmail.com  for Double Click Sistemas C.A.
 
-BEGIN;
+
 
 CREATE OR REPLACE VIEW lve_retentionislrlist AS 
  SELECT ci.ad_org_id AS ad, ci.ad_client_id, ci.c_bpartner_id, ao.name AS namemp, aoi.taxid AS rifemp, lve_addres(aoi.c_location_id) AS addresemp, (bp.name::text || ' '::text) || "isnull"(bp.name2::text, ''::text) AS namepro, bp.taxid AS rifpro, iw.dateacct AS fecha, 
@@ -123,5 +123,11 @@ INSERT INTO AD_TreeNodeMM (AD_Client_ID,AD_Org_ID, IsActive,Created,CreatedBy,Up
 ;
 
 
+INSERT INTO LVE_SqlScript
+(LVE_SqlScript_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,Date1,
+LastScript,ScriptUser) VALUES
+((select case when max(LVE_SqlScript_ID) is null then 1000000 else max(LVE_SqlScript_ID)+1 end from LVE_SqlScript),0,0,'Y',CURRENT_TIMESTAMP,0,CURRENT_TIMESTAMP,0,CURRENT_TIMESTAMP,
+'017_List_ISLR_Supplier.sql',
+'Rafael Salazar C.')
+;
 
-COMMIT;
