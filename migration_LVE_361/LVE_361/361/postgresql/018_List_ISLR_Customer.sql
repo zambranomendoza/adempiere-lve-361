@@ -123,4 +123,10 @@ INSERT INTO AD_TreeNodeMM (AD_Client_ID,AD_Org_ID, IsActive,Created,CreatedBy,Up
 ;
 
 
-
+INSERT INTO LVE_SqlScript
+(LVE_SqlScript_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,Date1,
+LastScript,ScriptUser) VALUES
+((select case when max(LVE_SqlScript_ID) is null then 1000000 else max(LVE_SqlScript_ID)+1 end from LVE_SqlScript),0,0,'Y',CURRENT_TIMESTAMP,0,CURRENT_TIMESTAMP,0,CURRENT_TIMESTAMP,
+'018_List_ISLR_Customer.sql',
+'Rafael Salazar C.')
+;
